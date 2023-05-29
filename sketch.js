@@ -1,8 +1,14 @@
+let stage1;
+
+function preload(){
+  stage1 = new Stage1();
+}
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-  background(220);
-  ellipse(30, 30, 30, 30);
+  background(100);
+  stage1.display();
 }
