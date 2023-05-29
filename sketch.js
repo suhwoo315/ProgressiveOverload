@@ -1,5 +1,8 @@
-let phase = 0;
+let phase = 2;
+let scene = 0;
+let cut = 0;
 
+let tutorial1;
 let stage1;
 
 let video;
@@ -15,6 +18,7 @@ let rightWristX = 0;
 let rightWristY = 0;
 
 function preload(){
+  tutorial1 = new Tutorial1();
   stage1 = new Stage1();
 
   leftWristValues[0] = [];
@@ -29,7 +33,6 @@ function setup() {
   video = createCapture(VIDEO);
   video.size(width, height);
 
-  // poseNet = ml5.poseNet(video, modelReady);
   poseNet = ml5.poseNet(video);
   poseNet.on("pose", function (results) {
     poses = results;
@@ -39,25 +42,37 @@ function setup() {
 }
 
 function draw() {
-  background(220);
-  
-  track();
-  stage1.check(leftWristY, rightWristY);
-
-  push();
-  translate(width, 0);
-  scale(-1, 1);
-  // fill(255, 0, 0);
-  // ellipse(leftWristX, leftWristY, 30, 30);
-  // ellipse(rightWristX, rightWristY, 30, 30);
-  stage1.display();
-  image(video, windowWidth - 320, windowHeight - 240, 320, 240);
-  pop();
+  if (phase == 2){
+    if (scene == 0){ // tutorial1
+      tutorial1.display(cut);
+    }
+    else if (scene == 1){ // stage1
+      track();
+      stage1.check(leftWristY, rightWristY);
+      stage1.display();
+    }
+  }
 }
 
-// function modelReady() {
-//   select("#status").html("Model Loaded");
-// }
+function keyPressed(){
+  console.log("pressed");
+  if (keyCode == ENTER){
+    if (phase == 2){
+      if (scene == 0){ // tutorial1
+        if (cut < tutorial1.numCuts){
+          cut++;
+        }
+        else {
+          scene++;
+          cut = 0;
+        }
+      }
+      else if (scene == 1){ // stage1
+        //
+      }
+    }
+  }
+}
 
 function track(){
   for (let i = 0; i < poses.length; i++) {

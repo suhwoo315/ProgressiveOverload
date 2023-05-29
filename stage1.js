@@ -13,6 +13,11 @@ class Stage1 {
 
     display(){
         if (this.score < 10){
+            background(100);
+            textSize(32);
+            text("score: " + this.score, 10, 30);
+            if (this.isGoingUp) text("Up!", 10, 100);
+            else text("Down!", 10, 170);
             imageMode(CENTER);
             image(this.anim[this.animIndex], width/2, height/2, 400, 400);
         }
@@ -24,11 +29,6 @@ class Stage1 {
     }
 
     check(leftWristY, rightWristY){
-        textSize(32);
-        text("score: " + this.score, 10, 30);
-        if (this.isGoingUp) text("Up!", 10, 100);
-        else text("Down!", 10, 170);
-        
         if (this.score < 10){
             let y = (leftWristY + rightWristY) / 2;
             this.prevAnimIndex = this.animIndex;
