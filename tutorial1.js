@@ -12,7 +12,7 @@ class Tutorial1 {
             rect(width/2, height*3/4, width - 50, height/4);
             textSize(24);
             fill(0);
-            text("블라블라", width/2, height*3/4);
+            text("하이~~ 이제부터 운동할 거여~~ ( 엔터 눌러서 다음으로 >_< )", width/2, height*3/4);
             image(this.coach_strict, width/4, height*3/5, 300, 300);
         }
         else if (cut == 1){
@@ -32,7 +32,7 @@ class Tutorial1 {
             rect(width/2, height*3/4, width - 50, height/4);
             textSize(24);
             fill(0);
-            text("좀 더 멀리 가서 들어봐라", width/2, height*3/4);
+            text("안 보인다~~ 좀 더 멀리 가서 들어봐라", width/2, height*3/4);
             image(this.coach_strict, width/4, height*3/5, 300, 300);
         }
         else if (cut == 3){
@@ -42,7 +42,7 @@ class Tutorial1 {
             rect(width/2, height*3/4, width - 50, height/4);
             textSize(24);
             fill(0);
-            text("잘했다 내려봐라", width/2, height*3/4);
+            text("잘했다~~ 이제 내려봐라", width/2, height*3/4);
             image(this.coach_strict, width/4, height*3/5, 300, 300);
         }
         else if (cut == 4){
@@ -52,7 +52,7 @@ class Tutorial1 {
             rect(width/2, height*3/4, width - 50, height/4);
             textSize(24);
             fill(0);
-            text("좀 더 멀리 가서 내려봐라", width/2, height*3/4);
+            text("안 보인다~~ 좀 더 멀리 가서 내려봐라", width/2, height*3/4);
             image(this.coach_strict, width/4, height*3/5, 300, 300);
         }
         else if (cut == 5){
@@ -62,7 +62,7 @@ class Tutorial1 {
             rect(width/2, height*3/4, width - 50, height/4);
             textSize(24);
             fill(0);
-            text("오케이 굿 이제 실전이다~~", width/2, height*3/4);
+            text("오케이 굿 이제 실전이다~~ ( 엔터 눌러서 다음으로 >_< )", width/2, height*3/4);
             image(this.coach_strict, width/4, height*3/5, 300, 300);
         }
     }
