@@ -6,7 +6,7 @@ let video;
 let poseNet;
 let poses = [];
 
-let tracking_num = 15;
+let tracking_num = 5;
 let leftWristValues = [];
 let rightWristValues = [];
 let leftWristX = 0;
@@ -39,15 +39,19 @@ function setup() {
 }
 
 function draw() {
-  background(100);
+  background(220);
+  
   track();
-  fill(255, 0, 0);
+  stage1.check(leftWristY, rightWristY);
 
   push();
   translate(width, 0);
   scale(-1, 1);
-  ellipse(leftWristX, leftWristY, 30, 30);
-  ellipse(rightWristX, rightWristY, 30, 30);
+  // fill(255, 0, 0);
+  // ellipse(leftWristX, leftWristY, 30, 30);
+  // ellipse(rightWristX, rightWristY, 30, 30);
+  stage1.display();
+  image(video, windowWidth - 320, windowHeight - 240, 320, 240);
   pop();
 }
 
