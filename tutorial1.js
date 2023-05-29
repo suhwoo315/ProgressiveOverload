@@ -1,7 +1,13 @@
 class Tutorial1 {
     constructor(){
         this.cut = 0;
-        this.dialogue = ["대사1", "대사2", "대사3", "대사4"];
+        this.dialogue = ["첫 번째 미션에 온 것을 환영한다.",
+                            "미션에 앞서서 너가 해야 할 운동을 알려주지.",
+                            "이 운동은 [오버 헤드 프레스]다.",
+                            "이 운동은 삼각근 성장에 전반적으로 도움이 되지.",
+                            "양손에 하나씩 덤벨을 들고",
+                            "어깨 위아래로 수직으로 움직이면 된다.",
+                            "지금부터 10회 반복, 실시!!"];
         this.coach_strict = loadImage('assets/tutorial1/coach_strict.png'); //나중에 배열로 만들기
         this.keyWasDown = false;
     }
