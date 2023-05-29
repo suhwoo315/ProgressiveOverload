@@ -55,8 +55,7 @@ function draw() {
 }
 
 function keyPressed(){
-  console.log("pressed");
-  if (keyCode == ENTER){
+  if (keyCode === ENTER){
     if (phase == 2){
       if (scene == 0){ // tutorial1
         if (cut < tutorial1.numCuts){
