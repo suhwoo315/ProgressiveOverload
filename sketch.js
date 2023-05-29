@@ -1,18 +1,26 @@
 let phase = 0;
+
 let stage1;
 
 let video;
 let poseNet;
 let poses = [];
 
-let num = 10;
-let x_values = [];
-let y_values = [];
-let x_mean = 0;
-let y_mean = 0;
+let tracking_num = 15;
+let leftWristValues = [];
+let rightWristValues = [];
+let leftWristX = 0;
+let leftWristY = 0;
+let rightWristX = 0;
+let rightWristY = 0;
 
 function preload(){
   stage1 = new Stage1();
+
+  leftWristValues[0] = [];
+  leftWristValues[1] = [];
+  rightWristValues[0] = [];
+  rightWristValues[1] = [];
 }
 
 function setup() {
@@ -33,6 +41,14 @@ function setup() {
 function draw() {
   background(100);
   track();
+  fill(255, 0, 0);
+
+  push();
+  translate(width, 0);
+  scale(-1, 1);
+  ellipse(leftWristX, leftWristY, 30, 30);
+  ellipse(rightWristX, rightWristY, 30, 30);
+  pop();
 }
 
 // function modelReady() {
@@ -40,34 +56,47 @@ function draw() {
 // }
 
 function track(){
-  let result = [];
-
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i].pose;
-    for (let j = 0; j < pose.keypoints.length; j++) {
-      let keypoint = pose.keypoints[j];
-      if (j == 10) { // 
-        if (keypoint.score > 0.3) {
-          if (x_values.length < num) {
-            x_values.push(keypoint.position.x);
-            y_values.push(keypoint.position.y);
-          }
+    let leftWrist = pose.keypoints[9];
+    let rightWrist = pose.keypoints[10];
 
-          if (x_values.length == num) {
-            x_mean = 0;
-            for (let i = 0; i < num; i++) x_mean += x_values[i];
-            x_mean /= num;
-            x_values = [];
+    if (leftWrist.score > 0.3){
+      if (leftWristValues[0].length < tracking_num) {
+        leftWristValues[0].push(leftWrist.position.x);
+        leftWristValues[1].push(leftWrist.position.y);
+      }
 
-            y_mean = 0;
-            for (let i = 0; i < num; i++) y_mean += y_values[i];
-            y_mean /= num;
-            y_values = [];
-          }
-        }
+      if (leftWristValues[0].length == tracking_num) {
+        leftWristX = 0;
+        for (let i = 0; i < tracking_num; i++) leftWristX += leftWristValues[0][i];
+        leftWristX /= tracking_num;
+        leftWristValues[0] = [];
+
+        leftWristY = 0;
+        for (let i = 0; i < tracking_num; i++) leftWristY += leftWristValues[1][i];
+        leftWristY /= tracking_num;
+        leftWristValues[1] = [];
+      }
+    }
+
+    if (rightWrist.score > 0.3){
+      if (rightWristValues[0].length < tracking_num) {
+        rightWristValues[0].push(rightWrist.position.x);
+        rightWristValues[1].push(rightWrist.position.y);
+      }
+
+      if (rightWristValues[0].length == tracking_num) {
+        rightWristX = 0;
+        for (let i = 0; i < tracking_num; i++) rightWristX += rightWristValues[0][i];
+        rightWristX /= tracking_num;
+        rightWristValues[0] = [];
+
+        rightWristY = 0;
+        for (let i = 0; i < tracking_num; i++) rightWristY += rightWristValues[1][i];
+        rightWristY /= tracking_num;
+        rightWristValues[1] = [];
       }
     }
   }
-
-  return result;
 }
