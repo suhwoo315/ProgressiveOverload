@@ -22,18 +22,21 @@ let map1;
 let story1;
 let tutorial1;
 let stage1;
+let clear1;
 
 // phase2의 클래스 생성 - reverse curl
 let map2;
 let story2;
 let tutorial2;
 let stage2;
+let clear2;
 
 // phase3의 클래스 생성 - overhead press
 let map3;
 let story3;
 let tutorial3;
 let stage3;
+let clear3;
 
 // phase4의 클래스 생성 - boss stage
 let map4;
@@ -41,15 +44,58 @@ let story4;
 let tutorial4;
 let stage4;
 
-// phase의 클래스 생성 - end
+// phase5의 클래스 생성 - end
 let gameOutro;
 
 
 
 
 
-// 각 단계에 필요한 asset
-//
+// asset - 전체
+let ui = []
+let max = []
+let coach = []
+let bgm = []
+
+// asset - phase0
+let gameTitle_bg = []
+let gameTitle_ui = []
+let gameIntro_bg = []
+let gameIntro_ui = []
+
+// asset - phase1
+let map1_bg = []
+let map1_chr = []
+let story1_bg = []
+let stage1_bg = []
+let stage1_chr = []
+let stage1_sil = []
+let stage1_ui = []
+let clear1_bg = []
+
+// asset - phase2
+let map2_bg = []
+let map2_chr = []
+let story2_bg = []
+let stage2_bg = []
+let stage2_chr = []
+let stage2_sil = []
+let stage2_ui = []
+let clear2_bg = []
+
+// asset - phase3
+let map3_bg = []
+let map3_chr = []
+let story3_bg = []
+let stage3_bg = []
+let stage3_chr = []
+let stage3_sil = []
+let stage3_ui = []
+let clear3_bg = []
+
+// asset - phase4
+
+// asset - phase5
 
 
 
