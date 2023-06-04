@@ -12,6 +12,7 @@ class Stage1 {
         this.isGoingUp = true;
     }
 
+    // 알맞은 화면을 표시한다
     display(){
         if (this.score < 10){
             background(100);
@@ -47,6 +48,7 @@ class Stage1 {
         }
     }
 
+    // 플레이어의 현재 위치를 확인해서 점수를 부여한다
     check(leftWristY, rightWristY){
         if (this.score < 10){
             let y = (leftWristY + rightWristY) / 2;
