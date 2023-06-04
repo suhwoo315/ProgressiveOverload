@@ -13,38 +13,38 @@
 let phase = 1;
 let scene = 0;
 
-// phase0의 클래스 생성 - start
+// phase0의 클래스 - start
 let gameTitle;
 let gameIntro;
 
-// phase1의 클래스 생성 - dumbbell curl
+// phase1의 클래스 - dumbbell curl
 let map1;
 let story1;
 let tutorial1;
 let stage1;
 let clear1;
 
-// phase2의 클래스 생성 - reverse curl
+// phase2의 클래스 - reverse curl
 let map2;
 let story2;
 let tutorial2;
 let stage2;
 let clear2;
 
-// phase3의 클래스 생성 - overhead press
+// phase3의 클래스 - overhead press
 let map3;
 let story3;
 let tutorial3;
 let stage3;
 let clear3;
 
-// phase4의 클래스 생성 - boss stage
+// phase4의 클래스 - boss stage
 let map4;
 let story4;
 let tutorial4;
 let stage4;
 
-// phase5의 클래스 생성 - end
+// phase5의 클래스 - end
 let gameOutro;
 
 
@@ -119,10 +119,16 @@ let rightWristY = 0;
 
 
 
-// 각 단계의 클래스 및 변수 초기화
+// 각 단계의 클래스 생성
+// asset 불러오기
+// 변수 초기화
 function preload(){
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
+
+  for(let i=0; i<6; i++){
+    stage1_chr[i] = loadImage('assets/stage1/chr' + i + '.png');
+  }
 
   leftWristValues[0] = [];
   leftWristValues[1] = [];
