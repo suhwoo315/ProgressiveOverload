@@ -70,13 +70,13 @@ class Stage1 {
                     this.animIndex = 3;
                 }
             }
-            else if (y < height*6/9) {
+            else if (y < height*5.5/9) {
                 if (this.prevAnimIndex == 1 && this.isGoingUp || this.prevAnimIndex == 3 && !this.isGoingUp){
                     this.animIndex = 2;
                     this.isBottom = true;
                 }
             }
-            else if (y < height*7/9) {
+            else if (y < height*6/9) {
                 if (this.prevAnimIndex == 0 && this.isGoingUp || this.prevAnimIndex == 2 && !this.isGoingUp){
                     this.animIndex = 1;
                     this.isBottom = true;
