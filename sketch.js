@@ -5,30 +5,73 @@
  * bodytracking 함수/변수를 제공한다
 */
 
-// 게임 단계 - phase, scene, cut(tutorial 클래스 안에서 다룸)
+
+
+
+
+// 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 1;
 let scene = 0;
 
-// 각 단계의 클래스 생성
+// phase0의 클래스 생성 - start
+let gameTitle;
+let gameIntro;
+
+// phase1의 클래스 생성 - dumbbell curl
+let map1;
+let story1;
 let tutorial1;
 let stage1;
 
+// phase2의 클래스 생성 - reverse curl
+let map2;
+let story2;
+let tutorial2;
+let stage2;
+
+// phase3의 클래스 생성 - overhead press
+let map3;
+let story3;
+let tutorial3;
+let stage3;
+
+// phase4의 클래스 생성 - boss stage
+let map4;
+let story4;
+let tutorial4;
+let stage4;
+
+// phase의 클래스 생성 - end
+let gameOutro;
+
+
+
+
+
 // 각 단계에 필요한 asset
+//
+
+
+
 
 
 // bodytracking 관련 변수
 let video;
 let poseNet;
 let poses = [];
-
-// 손목의 위치 변수 - 이 변수들을 사용해서 플레이어의 위치 확인
 let tracking_num = 5;
 let leftWristValues = [];
 let rightWristValues = [];
+
+// 손목의 위치 변수 - 이 변수들을 사용해서 플레이어의 위치 확인
 let leftWristX = 0;
 let leftWristY = 0;
 let rightWristX = 0;
 let rightWristY = 0;
+
+
+
+
 
 // 각 단계의 클래스 및 변수 초기화
 function preload(){
@@ -56,33 +99,49 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  if (phase == 1){
-    if (scene == 0){ // tutorial1
-      tutorial1.display();
-    }
-    else if (scene == 1){ // stage1
-      track();
-      stage1.check(leftWristY, rightWristY);
-      stage1.display();
-    }
+  switch(phase){
+    case 0:
+    case 1:
+      if (scene == 0){ // tutorial1
+        tutorial1.display();
+      }
+      else if (scene == 1){ // stage1
+        track();
+        stage1.check(leftWristY, rightWristY);
+        stage1.display();
+      }
+      break;
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    default:
   }
 }
 
 // ENTER 키를 누를 때, 다음 단계로 넘어간다
 function keyPressed(){
   if (keyCode === ENTER){
-    if (phase == 1){
-      if (scene == 0){ // tutorial1
-        if (tutorial1.getCut() < tutorial1.getMaxCut()){
-          tutorial1.increaseCut();
+    switch(phase){
+      case 0:
+      case 1:
+        if (scene == 0){ // tutorial1
+          if (tutorial1.getCut() < tutorial1.getMaxCut()){
+            tutorial1.increaseCut();
+          }
+          else {
+            scene++;
+          }
         }
-        else {
-          scene++;
+        else if (scene == 1){ // stage1
+          //
         }
-      }
-      else if (scene == 1){ // stage1
-        //
-      }
+        break;
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+      default:
     }
   }
 }
