@@ -1,5 +1,6 @@
 class Tutorial1 {
     constructor(){
+        this.MaxCut = 7;
         this.cut = 0;
         this.dialogue = ["첫 번째 미션에 온 것을 환영한다. \n 나와 앞으로 함께하려면 ENTER 키를 누르거라.",
                             "미션에 앞서서 너가 해야 할 운동을 알려주지.",
@@ -9,7 +10,6 @@ class Tutorial1 {
                             "어깨 위아래로 수직으로 움직이면 된다.",
                             "지금부터 10회 반복, 실시!!"];
         this.coach_strict = loadImage('assets/tutorial1/coach_strict.png'); //나중에 배열로 만들기
-        this.keyWasDown = false;
     }
 
     display(){
@@ -23,15 +23,15 @@ class Tutorial1 {
         image(this.coach_strict, width/8, height*2.2/5, 300, 300);
     }
 
-    increase(){
-        this.cut++;
+    getCut(){
+        return this.cut;
     }
 
-    checkKeyboard(){ // keyPressed() 물어보기
-        let result = false;
-        let temp;
-        if (!(temp = keyIsDown(ENTER)) && this.keyWasDown) result = true;
-        this.keyWasDown = temp;
-        return result;
+    getMaxCut(){
+        return this.MaxCut - 1;
+    }
+
+    increaseCut(){
+        this.cut++;
     }
 }

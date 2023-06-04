@@ -44,10 +44,6 @@ function draw() {
   if (phase == 2){
     if (scene == 0){ // tutorial1
       tutorial1.display();
-      if (tutorial1.checkKeyboard()){
-        if (tutorial1.cut < tutorial1.dialogue.length - 1) tutorial1.increase();
-        else scene++;
-      }
     }
     else if (scene == 1){ // stage1
       track();
@@ -57,19 +53,23 @@ function draw() {
   }
 }
 
-// function keyPressed(){
-//   console.log("pressed");
-//   if (keyCode === ENTER){
-//     if (phase == 2){
-//       if (scene == 0){ // tutorial1
-//         tutorial1.increase();
-//       }
-//       else if (scene == 1){ // stage1
-//         //
-//       }
-//     }
-//   }
-// }
+function keyPressed(){
+  if (keyCode === ENTER){
+    if (phase == 2){
+      if (scene == 0){ // tutorial1
+        if (tutorial1.getCut() < tutorial1.getMaxCut()){
+          tutorial1.increaseCut();
+        }
+        else {
+          scene++;
+        }
+      }
+      else if (scene == 1){ // stage1
+        //
+      }
+    }
+  }
+}
 
 function track(){
   for (let i = 0; i < poses.length; i++) {
