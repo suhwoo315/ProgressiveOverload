@@ -10,7 +10,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
+let phase = 0;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -132,8 +132,30 @@ function preload(){
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
 
+  for(let i=0; i<7; i++){
+    ui[i] = loadImage('assets/ui/' + i + '.png');
+  }
+  for(let i=0; i<4; i++){
+    max[i] = loadImage('assets/max/' + i + '.png');
+  }
+  for(let i=0; i<3; i++){
+    coach[i] = loadImage('assets/coach/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    bgm[i] = loadImage('assets/bgm/' + i + '.png');
+  }
+
+  for(let i=0; i<5; i++){
+    stage1_bg[i] = loadImage('assets/stage1/bg/' + i + '.png');
+  }
   for(let i=0; i<6; i++){
-    stage1_chr[i] = loadImage('assets/stage1/chr' + i + '.png');
+    stage1_chr[i] = loadImage('assets/stage1/chr/' + i + '.png');
+  }
+  for(let i=0; i<3; i++){
+    stage1_sil[i] = loadImage('assets/stage1/sil/' + i + '.png');
+  }
+  for(let i=0; i<5; i++){
+    stage1_ui[i] = loadImage('assets/stage1/ui/' + i + '.png');
   }
 
   leftWristValues[0] = [];
