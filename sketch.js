@@ -108,12 +108,18 @@ let poses = [];
 let tracking_num = 5;
 let leftWristValues = [];
 let rightWristValues = [];
+let leftShoulderValues = [];
+let rightShoulderValues = [];
 
 // 손목의 위치 변수 - 이 변수들을 사용해서 플레이어의 위치 확인
 let leftWristX = 0;
 let leftWristY = 0;
 let rightWristX = 0;
 let rightWristY = 0;
+let leftShoulderX = 0;
+let leftShoulderY = 0;
+let rightShoulderX = 0;
+let rightShoulderY = 0;
 
 
 
@@ -149,20 +155,32 @@ function setup() {
   video.hide();
 }
 
+
+
+
+
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
   switch(phase){
     case 0:
+
     case 1:
       if (scene == 0){ // tutorial1
         tutorial1.display();
+        if (tutorial1.getCut() == 2){
+          if (tutorial1.checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY)) tutorial1.increaseCut();
+        }
+        else if (tutorial1.getCut() == 7){
+          if (tutorial1.checkCount(leftWristY, rightWristY)) tutorial1.increaseCut();
+        }
       }
       else if (scene == 1){ // stage1
-        track();
+        trackWrists();
         stage1.check(leftWristY, rightWristY);
         stage1.display();
       }
       break;
+    
     case 2:
     case 3:
     case 4:
@@ -176,10 +194,13 @@ function keyPressed(){
   if (keyCode === ENTER){
     switch(phase){
       case 0:
+
       case 1:
         if (scene == 0){ // tutorial1
-          if (tutorial1.getCut() < tutorial1.getMaxCut()){
-            tutorial1.increaseCut();
+          if (tutorial1.getCut < tutorial1.getMaxCut()){
+            if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
+              tutorial1.increaseCut();
+            }
           }
           else {
             scene++;
@@ -189,6 +210,7 @@ function keyPressed(){
           //
         }
         break;
+
       case 2:
       case 3:
       case 4:
@@ -198,8 +220,12 @@ function keyPressed(){
   }
 }
 
+
+
+
+
 // bodytracking - 손목의 위치 변수에 플레이어의 현재 위치를 저장한다
-function track(){
+function trackWrists(){
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i].pose;
     let leftWrist = pose.keypoints[9];
@@ -240,6 +266,53 @@ function track(){
         for (let i = 0; i < tracking_num; i++) rightWristY += rightWristValues[1][i];
         rightWristY /= tracking_num;
         rightWristValues[1] = [];
+      }
+    }
+  }
+}
+
+// bodytracking - 손목의 위치 변수에 플레이어의 현재 위치를 저장한다
+function trackWrists(){
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i].pose;
+    let leftShoulder = pose.keypoints[5];
+    let rightShoulder = pose.keypoints[6];
+
+    if (leftShoulder.score > 0.3){
+      if (leftShoulderValues[0].length < tracking_num) {
+        leftShoulderValues[0].push(leftShoulder.position.x);
+        leftShoulderValues[1].push(leftShoulder.position.y);
+      }
+
+      if (leftShoulderValues[0].length == tracking_num) {
+        leftShoulderX = 0;
+        for (let i = 0; i < tracking_num; i++) leftShoulderX += leftShoulderValues[0][i];
+        leftShoulderX /= tracking_num;
+        leftShoulderValues[0] = [];
+
+        leftShoulderY = 0;
+        for (let i = 0; i < tracking_num; i++) leftShoulderY += leftShoulderValues[1][i];
+        leftShoulderY /= tracking_num;
+        leftShoulderValues[1] = [];
+      }
+    }
+
+    if (rightShoulder.score > 0.3){
+      if (rightShoulderValues[0].length < tracking_num) {
+        rightShoulderValues[0].push(rightShoulder.position.x);
+        rightShoulderValues[1].push(rightShoulder.position.y);
+      }
+
+      if (rightShoulderValues[0].length == tracking_num) {
+        rightShoulderX = 0;
+        for (let i = 0; i < tracking_num; i++) rightShoulderX += rightShoulderValues[0][i];
+        rightShoulderX /= tracking_num;
+        rightShoulderValues[0] = [];
+
+        rightShoulderY = 0;
+        for (let i = 0; i < tracking_num; i++) rightShoulderY += rightShoulderValues[1][i];
+        rightShoulderY /= tracking_num;
+        rightShoulderValues[1] = [];
       }
     }
   }

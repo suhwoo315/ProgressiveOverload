@@ -26,6 +26,8 @@ class Tutorial1 {
                 image(stage1_ui[1], width/2, height*2/5, 300, 300);
                 image(ui[5], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
+                break;
+
             case 4:
             case 5:
             case 6:
@@ -34,12 +36,16 @@ class Tutorial1 {
                 image(coach[0], width/2, height*2/5, 300, 300);
                 image(ui[4], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
+                break;
+
             case 7:
                 image(stage1_bg[this.cut], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(stage1_chr[0], width/2, height*2/5, 300, 300);
                 image(ui[4], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
+                break;
+
             case 8:
             case 9:
                 image(stage1_bg[this.cut], 0, 0);
@@ -47,11 +53,14 @@ class Tutorial1 {
                 image(stage1_chr[0], width/2, height*2/5, 300, 300);
                 image(ui[4], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
+                break;
+
             default:
                 background(255, 0, 0);
                 textSize(32);
                 fill("black");
                 text("error", windowWidth/2, windowHeight/2);
+                break;
         }
     }
 
@@ -68,5 +77,25 @@ class Tutorial1 {
     // 다음 cut으로 넘어간다
     increaseCut(){
         this.cut++;
+    }
+
+    // 플레이어가 테두리 안으로 들어왔는지 확인한다
+    checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY){
+        if (leftShoulderX > width/3 && rightShoulderX < width*2/3 &&
+            leftShoulderY > height*2/4 && leftShoulderY < height*3/4 &&
+            rightShoulderY > height*2/4 && rightShoulderY < height*3/4){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    // 플레이어의 자세가 기준선을 주어진 횟수만큼 넘었는지 확인한다
+    checkCount(leftWristY, rightWristY){
+        
+
+        if (this.count > 0) return false;
+        else return true;
     }
 }
