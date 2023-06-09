@@ -10,8 +10,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
-let scene = 3;
+let phase = 0;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -52,46 +52,46 @@ let gameOutro;
 
 
 // asset - 전체
-let ui = []
-let max = []
-let coach = []
-let bgm = []
+let ui = [];
+let max = [];
+let coach = [];
+let bgm = [];
 
 // asset - phase0
-let gameTitle_bg = []
-let gameTitle_ui = []
-let gameIntro_bg = []
-let gameIntro_ui = []
+let gameTitle_bg = [];
+let gameTitle_ui = [];
+let gameIntro_bg = [];
+let gameIntro_ui = [];
 
 // asset - phase1
-let map1_bg = []
-let map1_chr = []
-let story1_bg = []
-let stage1_bg = []
-let stage1_chr = []
-let stage1_sil = []
-let stage1_ui = []
-let clear1_bg = []
+let map1_bg = [];
+let map1_chr = [];
+let story1_bg = [];
+let stage1_bg = [];
+let stage1_chr = [];
+let stage1_sil = [];
+let stage1_ui = [];
+let clear1_bg = [];
 
 // asset - phase2
-let map2_bg = []
-let map2_chr = []
-let story2_bg = []
-let stage2_bg = []
-let stage2_chr = []
-let stage2_sil = []
-let stage2_ui = []
-let clear2_bg = []
+let map2_bg = [];
+let map2_chr = [];
+let story2_bg = [];
+let stage2_bg = [];
+let stage2_chr = [];
+let stage2_sil = [];
+let stage2_ui = [];
+let clear2_bg = [];
 
 // asset - phase3
-let map3_bg = []
-let map3_chr = []
-let story3_bg = []
-let stage3_bg = []
-let stage3_chr = []
-let stage3_sil = []
-let stage3_ui = []
-let clear3_bg = []
+let map3_bg = [];
+let map3_chr = [];
+let story3_bg = [];
+let stage3_bg = [];
+let stage3_chr = [];
+let stage3_sil = [];
+let stage3_ui = [];
+let clear3_bg = [];
 
 // asset - phase4
 
@@ -129,33 +129,68 @@ let rightShoulderY = 0;
 // asset 불러오기
 // 변수 초기화
 function preload(){
+  gameTitle = new GameTitle(); 
+  gameIntro = new GameIntro();
+  map1 = new Map1();
+  story1 = new Story1();
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
 
-  for(let i=0; i<7; i++){
-    ui[i] = loadImage('assets/ui/' + i + '.png');
-  }
+  //max
   for(let i=0; i<4; i++){
     max[i] = loadImage('assets/max/' + i + '.png');
   }
+
+  //ui
+  for(let i=0; i<7; i++){
+    ui[i] = loadImage('assets/ui/' + i + '.png');
+  }
+
+  //coach
   for(let i=0; i<2; i++){
     coach[i] = loadImage('assets/coach/' + i + '.png');
   }
+  
+  //bgm
   for(let i=0; i<1; i++){
     bgm[i] = loadImage('assets/bgm/' + i + '.png');
   }
 
-  for(let i=0; i<5; i++){
-    stage1_bg[i] = loadImage('assets/stage1/bg/' + i + '.png');
+  //gameTitle
+  for(let i=0; i<1; i++){
+    gameTitle_bg[i] = loadImage('assets/gameTitle/bg/gameTitle_bg' + i + '.png');
   }
+  for(let i=0; i<2; i++){
+    gameTitle_ui[i] = loadImage('assets/gameTitle/ui/gameTitle_ui' + i + '.png');
+  }
+  
+  //gameIntro
+  for(let i=0; i<4; i++){
+    gameIntro_bg[i] = loadImage('assets/gameIntro/bg/gameIntro_bg' + i + '.png');
+  }
+
+  for(let i=0; i<1; i++){
+    gameIntro_ui[i] = loadImage('assets/gameIntro/ui/gameIntro_ui' + i + '.png');
+  }
+  
+  //map1
+  for(let i=0; i<1; i++){
+    map1_bg[i] = loadImage('assets/map1/bg/map1_bg' + i + '.png');
+  }
+
+  for(let i=0; i<1; i++){
+    map1_chr[i] = loadImage('assets/map1/chr/map1_chr' + i + '.png');
+  }
+  
+  //story1
+  for(let i=0; i<1; i++){
+    story1_bg[i] = loadImage('assets/story1/bg/story1_bg' + i + '.png');
+  }
+
+
+  //stage1
   for(let i=0; i<6; i++){
     stage1_chr[i] = loadImage('assets/stage1/chr/' + i + '.png');
-  }
-  for(let i=0; i<3; i++){
-    stage1_sil[i] = loadImage('assets/stage1/sil/' + i + '.png');
-  }
-  for(let i=0; i<5; i++){
-    stage1_ui[i] = loadImage('assets/stage1/ui/' + i + '.png');
   }
 
   leftWristValues[0] = [];
@@ -187,12 +222,29 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log(phase + " " + scene + " " + tutorial1.getCut());
+  console.log("phase " + phase);
+  console.log("scene " + scene);
   switch(phase){
-    case 0:
+    case 0: //phase0 : gameTitle~gameIntro
+      if(scene == 0){
+        gameTitle.display();
+      } 
+      else if (scene == 1){
+        gameIntro.display();
+      }
+      break;
 
-    case 1:
-      if (scene == 3){ // tutorial1
+    case 1: //phase1 : map1~clear1
+      if (scene == 0){ // map1
+         map1.move();
+        map1.display();
+       
+        
+      }
+      else if (scene == 1){ // story1
+        story1.display();
+      }
+      else if (scene == 2){ //tutorial1
         tutorial1.display();
         if (tutorial1.getCut() == 2){
           
@@ -203,17 +255,20 @@ function draw() {
           if (tutorial1.checkCount(leftWristY, rightWristY)) tutorial1.increaseCut();
         }
       }
-      else if (scene == 4){ // stage1
+      else if (scene == 3){ //stage1
         trackWrists();
         stage1.check(leftWristY, rightWristY);
         stage1.display();
       }
+      else if (scene == 4){ //clear1
+        
+      }
       break;
     
-    case 2:
-    case 3:
-    case 4:
-    case 5:
+    case 2: //phase2
+    case 3: //phase3
+    case 4: //phase4
+    case 5: //phase5
     default:
   }
 }
@@ -223,10 +278,36 @@ function keyPressed(){
   if (keyCode === ENTER){
     switch(phase){
       case 0:
+        if (scene == 0){ //gameTitle
+          if(gameTitle.credit == false){
+            scene++;
+          }
+        }
+        else if (scene == 1 && gameIntro.cut < gameIntro.maxcut){ //gameIntro
+          gameIntro.cut++; //배경이 바뀜
+          
+        }
+        else if (scene == 1 && gameIntro.cut == gameIntro.maxcut){
+            phase++;
+            scene = 0;
+            
+        }
+      break;
 
       case 1:
-        if (scene == 3){ // tutorial1
-          if (tutorial1.getCut() < tutorial1.getMaxCut()){
+        if(scene == 0){ //map1
+          map1.moveOn = true;
+        }
+        else if (scene == 1 && story1.cut < story1.maxcut){ //story1
+            story1.cut++;
+            console.log("cut++");
+        }
+        else if(scene == 1 && story1.cut == story1.maxcut){
+            scene++;
+            console.log("scene++");
+        }
+        else if (scene == 2){ //tutorial1
+          if (tutorial1.getCut < tutorial1.getMaxCut()){
             if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
               tutorial1.increaseCut();
             }
@@ -235,10 +316,13 @@ function keyPressed(){
             scene++;
           }
         }
-        else if (scene == 4){ // stage1
-          //
+        else if (scene == 3){ //stage1
+
         }
-        break;
+        else if (scene == 4){ //clear1
+
+        }
+      break;
 
       case 2:
       case 3:
@@ -249,6 +333,33 @@ function keyPressed(){
   }
 }
 
+
+
+function mouseClicked() {
+  switch(phase){
+    case 0:
+      if (scene == 0 && gameTitle.credit == false){ // gameTitle
+        if (mouseX >= width / 2 - 200 &&
+            mouseX <= width / 2 + 200 && 
+            mouseY >= height / 2 + 50 - 60 &&
+            mouseY <= height / 2 + 50 + 60){ //start
+          scene++;
+        }
+        else if (mouseX >= width / 2 - 80 &&
+                mouseX <= width / 2 + 80 && 
+                mouseY >= height / 2 + 200 - 60 &&
+                mouseY <= height / 2 + 200 + 60){ //credit
+          gameTitle.credit = !gameTitle.credit;
+        }
+      }
+      else if (scene == 0 && gameTitle.credit == true){
+        gameTitle.credit = !gameTitle.credit;
+      }
+    break;
+      
+  }
+  
+}
 
 
 
