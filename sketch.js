@@ -193,6 +193,14 @@ function preload(){
     stage1_chr[i] = loadImage('assets/stage1/chr/' + i + '.png');
   }
 
+  for(let i=0; i<5; i++){
+    stage1_ui[i] = loadImage('assets/stage1/chr/' + i + '.png');
+  }
+
+  for(let i=0; i<5; i++){
+    stage1_bg[i] = loadImage('assets/stage1/chr/' + i + '.png');
+  }
+
   leftWristValues[0] = [];
   leftWristValues[1] = [];
   rightWristValues[0] = [];
