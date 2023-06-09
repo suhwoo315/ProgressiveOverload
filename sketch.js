@@ -187,7 +187,6 @@ function preload(){
     story1_bg[i] = loadImage('assets/story1/bg/story1_bg' + i + '.png');
   }
 
-
   //stage1
   for(let i=0; i<6; i++){
     stage1_chr[i] = loadImage('assets/stage1/chr/' + i + '.png');
@@ -199,6 +198,10 @@ function preload(){
 
   for(let i=0; i<5; i++){
     stage1_bg[i] = loadImage('assets/stage1/bg/' + i + '.png');
+  }
+
+  for(let i=0; i<3; i++){
+    stage1_sil[i] = loadImage('assets/stage1/sil/' + i + '.png');
   }
 
   leftWristValues[0] = [];
@@ -255,12 +258,16 @@ function draw() {
       else if (scene == 2){ //tutorial1
         tutorial1.display();
         if (tutorial1.getCut() == 2){
-          
           trackShoulders();
           if (tutorial1.checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY)) tutorial1.increaseCut();
         }
         else if (tutorial1.getCut() == 7){
-          if (tutorial1.checkCount(leftWristY, rightWristY)) tutorial1.increaseCut();
+          trackWrists();
+          if (tutorial1.checkCount(leftWristY, rightWristY)){
+            tutorial1.increaseCut();
+            tutorial1.increaseCut();
+            tutorial1.increaseCut();
+          }
         }
       }
       else if (scene == 3){ //stage1
