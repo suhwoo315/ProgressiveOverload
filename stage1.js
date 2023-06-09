@@ -3,7 +3,6 @@ class Stage1 {
         this.count = 5;
         this.currChr = 0;
         this.prevChr = 0;
-        this.isBottom = false;
         this.isGoingUp = true;
     }
 
@@ -52,7 +51,6 @@ class Stage1 {
                 if (this.prevChr == 4 && this.isGoingUp){
                     this.currChr = 5;
                     this.isGoingUp = !this.isGoingUp;
-                    this.isBottom = false;
                     this.count--;
                 }
             }
@@ -69,20 +67,17 @@ class Stage1 {
             else if (y < height*5.5/9) {
                 if (this.prevChr == 1 && this.isGoingUp || this.prevChr == 3 && !this.isGoingUp){
                     this.currChr = 2;
-                    this.isBottom = true;
                 }
             }
             else if (y < height*6/9) {
                 if (this.prevChr == 0 && this.isGoingUp || this.prevChr == 2 && !this.isGoingUp){
                     this.currChr = 1;
-                    this.isBottom = true;
                 }
             }
             else {
                 if (this.prevChr == 1 && !this.isGoingUp){
                     this.currChr = 0;
                     this.isGoingUp = !this.isGoingUp;
-                    this.isBottom = true;
                 }
             }
         }
