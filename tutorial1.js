@@ -56,7 +56,7 @@ class Tutorial1 {
             case 4:
             case 5:
             case 6:
-                image(stage1_bg[1], 0, 0);
+                image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(coach[0], width/2, height*2/5, 300, 300);
                 image(ui[4], width/2, height*4/5, 500, 200);
@@ -64,7 +64,7 @@ class Tutorial1 {
                 break;
 
             case 7:
-                image(stage1_bg[1], 0, 0);
+                image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(stage1_ui[2], width/3.5, height*2/5, 300, 300);
                 image(stage1_sil[this.currSil], width/3, height*2/5, 300, 300);
@@ -83,7 +83,7 @@ class Tutorial1 {
 
             case 10:
             case 11:
-                image(stage1_bg[1], 0, 0);
+                image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(coach[0], width/2, height*2/5, 300, 300);
                 image(ui[4], width/2, height*4/5, 500, 200);
@@ -181,6 +181,7 @@ class Tutorial1 {
         }
     }
 
+    // 움직이는 아령 UI를 그린다
     drawDumbbell(y){
         let maxY = height*2/5 + 100;
         let minY = height*2/5 - 100;

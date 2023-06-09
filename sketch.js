@@ -135,7 +135,8 @@ function preload(){
   story1 = new Story1();
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
-
+  clear1 = new Clear1();
+  
   //max
   for(let i=0; i<4; i++){
     max[i] = loadImage('assets/max/' + i + '.png');
@@ -272,11 +273,11 @@ function draw() {
       }
       else if (scene == 3){ //stage1
         trackWrists();
-        stage1.check(leftWristY, rightWristY);
         stage1.display();
+        stage1.check(leftWristY, rightWristY);
       }
       else if (scene == 4){ //clear1
-        
+        clear1.display();
       }
       break;
     
@@ -332,7 +333,7 @@ function keyPressed(){
           }
         }
         else if (scene == 3){ //stage1
-
+          if (stage1.isCleared()) scene++;
         }
         else if (scene == 4){ //clear1
 
