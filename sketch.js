@@ -137,77 +137,80 @@ function preload(){
   stage1 = new Stage1();
   clear1 = new Clear1();
 
+  //sketch
   //max
   for(let i=0; i<4; i++){
-    max[i] = loadImage('assets/max/' + i + '.png');
+    max[i] = loadImage('assets/sketch/max/' + i + '.png');
   }
 
   //ui
   for(let i=0; i<7; i++){
-    ui[i] = loadImage('assets/ui/' + i + '.png');
+    ui[i] = loadImage('assets/sketch/ui/' + i + '.png');
   }
 
   //coach
   for(let i=0; i<2; i++){
-    coach[i] = loadImage('assets/coach/' + i + '.png');
+    coach[i] = loadImage('assets/sketch/coach/' + i + '.png');
   }
   
   //bgm
   for(let i=0; i<1; i++){
-    bgm[i] = loadImage('assets/bgm/' + i + '.png');
+    bgm[i] = loadImage('assets/sketch/bgm/' + i + '.png');
   }
 
+  //phase0
   //gameTitle
   for(let i=0; i<1; i++){
-    gameTitle_bg[i] = loadImage('assets/gameTitle/bg/gameTitle_bg' + i + '.png');
+    gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/gameTitle_bg' + i + '.png');
   }
   for(let i=0; i<2; i++){
-    gameTitle_ui[i] = loadImage('assets/gameTitle/ui/gameTitle_ui' + i + '.png');
+    gameTitle_ui[i] = loadImage('assets/phase0/gameTitle/ui/gameTitle_ui' + i + '.png');
   }
   
   //gameIntro
   for(let i=0; i<4; i++){
-    gameIntro_bg[i] = loadImage('assets/gameIntro/bg/gameIntro_bg' + i + '.png');
+    gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/gameIntro_bg' + i + '.png');
   }
 
   for(let i=0; i<1; i++){
-    gameIntro_ui[i] = loadImage('assets/gameIntro/ui/gameIntro_ui' + i + '.png');
+    gameIntro_ui[i] = loadImage('assets/phase0/gameIntro/ui/gameIntro_ui' + i + '.png');
   }
   
+  //phase1
   //map1
   for(let i=0; i<1; i++){
-    map1_bg[i] = loadImage('assets/map1/bg/map1_bg' + i + '.png');
+    map1_bg[i] = loadImage('assets/phase1/map1/bg/map1_bg' + i + '.png');
   }
 
   for(let i=0; i<1; i++){
-    map1_chr[i] = loadImage('assets/map1/chr/map1_chr' + i + '.png');
+    map1_chr[i] = loadImage('assets/phase1/map1/chr/map1_chr' + i + '.png');
   }
   
   //story1
   for(let i=0; i<1; i++){
-    story1_bg[i] = loadImage('assets/story1/bg/story1_bg' + i + '.png');
+    story1_bg[i] = loadImage('assets/phase1/story1/bg/story1_bg' + i + '.png');
   }
 
   //stage1
   for(let i=0; i<6; i++){
-    stage1_chr[i] = loadImage('assets/stage1/chr/' + i + '.png');
+    stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
 
   for(let i=0; i<5; i++){
-    stage1_ui[i] = loadImage('assets/stage1/ui/' + i + '.png');
+    stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png');
   }
 
   for(let i=0; i<5; i++){
-    stage1_bg[i] = loadImage('assets/stage1/bg/' + i + '.png');
+    stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
 
   for(let i=0; i<3; i++){
-    stage1_sil[i] = loadImage('assets/stage1/sil/' + i + '.png');
+    stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
   }
 
   // clear1
   for(let i=0; i<2; i++){
-    clear1_bg[i] = loadImage('assets/clear1/bg/' + i + '.png');
+    clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
   }
 
   leftWristValues[0] = [];
