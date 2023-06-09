@@ -6,12 +6,16 @@ class Stage1 {
         this.prevChr = 0;
         this.isGoingUp = true;
         this.bgOn = false;
+        this.cut = 0;
+        this.maxCut = 1;
+        this.dialogue = ["첫 번째 도전과제를 달성하였습니다!",
+                        "벨트를 획득하였습니다."];
     }
 
     // 알맞은 화면을 표시한다
     display(){
         if (this.count > 0){
-            background(100);
+            background(100); // 나중에 지우기
             image(stage1_bg[5 - this.count], 0, 0, windowHeight, windowWidth);
             image(stage1_chr[this.currChr], width/2, height*2/5, 300, 300);
             image(stage1_sil[this.currSil], width/3, height*2/5, 300, 300);
@@ -23,17 +27,12 @@ class Stage1 {
         else {
             if (!this.bgOn){
                 background(255, 255, 255, 150);
-                image(ui[6], width/2, height/2, 350, 250);
-                fill("black");
-                text("벨트 획득!", width/2, height/2);
                 this.bgOn = true;
             }
+            image(ui[6], width/2, height/2, 350, 250);
+            fill("black");
+            text(this.dialogue[this.cut], width/2, height/2);
         }
-    }
-
-    // 스테이지를 클리어했는지 알려준다
-    isCleared(){
-        return this.count <= 0;
     }
 
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다

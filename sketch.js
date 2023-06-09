@@ -136,7 +136,7 @@ function preload(){
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
   clear1 = new Clear1();
-  
+
   //max
   for(let i=0; i<4; i++){
     max[i] = loadImage('assets/max/' + i + '.png');
@@ -203,6 +203,11 @@ function preload(){
 
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/stage1/sil/' + i + '.png');
+  }
+
+  // clear1
+  for(let i=0; i<2; i++){
+    clear1_bg[i] = loadImage('assets/clear1/bg/' + i + '.png');
   }
 
   leftWristValues[0] = [];
@@ -333,10 +338,15 @@ function keyPressed(){
           }
         }
         else if (scene == 3){ //stage1
-          if (stage1.isCleared()) scene++;
+          if (stage1.cut < stage1.maxCut) stage1.cut++;
+          else scene++;
         }
         else if (scene == 4){ //clear1
-
+          if (clear1.cut < clear1.maxCut) clear1.cut++;
+          else {
+            phase++;
+            scene = 0;
+          }
         }
       break;
 
