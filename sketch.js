@@ -194,11 +194,11 @@ function preload(){
   }
 
   for(let i=0; i<5; i++){
-    stage1_ui[i] = loadImage('assets/stage1/chr/' + i + '.png');
+    stage1_ui[i] = loadImage('assets/stage1/ui/' + i + '.png');
   }
 
   for(let i=0; i<5; i++){
-    stage1_bg[i] = loadImage('assets/stage1/chr/' + i + '.png');
+    stage1_bg[i] = loadImage('assets/stage1/bg/' + i + '.png');
   }
 
   leftWristValues[0] = [];
@@ -315,7 +315,7 @@ function keyPressed(){
             console.log("scene++");
         }
         else if (scene == 2){ //tutorial1
-          if (tutorial1.getCut < tutorial1.getMaxCut()){
+          if (tutorial1.getCut() < tutorial1.getMaxCut()){
             if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
               tutorial1.increaseCut();
             }
