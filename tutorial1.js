@@ -1,7 +1,7 @@
 class Tutorial1 {
     constructor(){
         this.cut = 0; // 현재 cut
-        this.MaxCut = 12; // cut의 총 개수
+        this.maxCut = 11; // cut의 총 개수
         this.dialogue = ["지금부터 실제 운동을 하시게 됩니다.", // 0
                         "화면 앞에 있는 덤벨을 들고 의자에 앉아주세요.", // 1
                         "운동을 시작하기 전, 우선 화면에 표시된 사람 모습 실루엣에 몸을 맞춰주세요.", // 2
@@ -104,9 +104,9 @@ class Tutorial1 {
         return this.cut;
     }
 
-    // cut의 총 개수를 반환한다 - sketch.js에서 사용하기 쉽도록 -1을 했다
+    // cut의 총 개수를 반환한다
     getMaxCut(){
-        return this.MaxCut - 1;
+        return this.maxCut;
     }
 
     // 다음 cut으로 넘어간다
