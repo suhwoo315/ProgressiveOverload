@@ -172,6 +172,7 @@ function preload(){
   for(let i=0; i<4; i++){
     gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/gameIntro_bg' + i + '.png');
   }
+
   for(let i=0; i<1; i++){
     gameIntro_ui[i] = loadImage('assets/phase0/gameIntro/ui/gameIntro_ui' + i + '.png');
   }
@@ -181,6 +182,7 @@ function preload(){
   for(let i=0; i<1; i++){
     map1_bg[i] = loadImage('assets/phase1/map1/bg/map1_bg' + i + '.png');
   }
+
   for(let i=0; i<1; i++){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/map1_chr' + i + '.png');
   }
@@ -194,12 +196,15 @@ function preload(){
   for(let i=0; i<6; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
+
   for(let i=0; i<5; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png');
   }
+
   for(let i=0; i<5; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
+
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
   }
@@ -209,35 +214,35 @@ function preload(){
     clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
   }
 
-  // stage4
-  for(let i=0; i<3; i++){
-    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
-  }
-  for(let i=0; i<1; i++){
-    stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<1; i++){
-    stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default' + i + '.png'); // 1
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<8; i++){
-    stage4_ui[i] = loadImage('assets/phase4/stage4/ui' + i + '.png');
-  }
-
+    // stage4
+    // for(let i=0; i<3; i++){
+    //   stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
+    // }
+    // for(let i=0; i<1; i++){
+    //   stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
+    // }
+    // for(let i=0; i<2; i++){
+    //   stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
+    // }
+    // for(let i=0; i<2; i++){
+    //   stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
+    // }
+    // for(let i=0; i<2; i++){
+    //   stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
+    // }
+    // for(let i=0; i<1; i++){
+    //   stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default' + i + '.png'); // 1
+    // }
+    // for(let i=0; i<2; i++){
+    //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
+    // }
+    // for(let i=0; i<2; i++){
+    //   stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
+    // }
+    // for(let i=0; i<8; i++){
+    //   stage4_ui[i] = loadImage('assets/phase4/stage4/ui' + i + '.png');
+    // }
+  
 
   leftWristValues[0] = [];
   leftWristValues[1] = [];
@@ -335,6 +340,7 @@ function draw() {
         }
         else if(stage4.check2sec() == false){
           stage4.changeGame();
+          savedtime = millis();
         }
       }
     }
