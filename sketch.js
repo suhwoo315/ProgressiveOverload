@@ -292,6 +292,24 @@ function draw() {
     case 2: //phase2
     case 3: //phase3
     case 4: //phase4
+      if(gaming == true){
+        stage4.displayGame();
+        stage4.check3sec();
+        stage4.checkA();
+        stage4.checkB();
+        stage4.checkC();
+        stage4.play();
+      }
+      else if(gaming == false){
+        stage4.check2sec();
+        if (stage4.check2sec() == true){
+          stage4.gauge();
+          stage4.displayResult();
+        }
+        else if(stage4.check2sec() == false){
+          stage4.changeGame();
+        }
+      }
     case 5: //phase5
     default:
   }
