@@ -53,18 +53,30 @@ class Stage4 {
 // 제한된 시간 안에 동작을 성공해야한다
      play(){
       //gaming=true일 때만 실행. 3초 내에 미션을 수행했는지를 점검
-       if(this.seq[this.index] == 'A'||'B'){
-         if(check3sec() == false){//시간을 넘겨서 미션실패
-           this.attackFail = true;
-           this.gaming = false;
-         }
-         else{ //시간 안에 성공
-           if(checkA() == true || checkB() == true){ // checkA는 seq==A일 때, checkB는 seq==B일 일 때로 변경해서 일대일 대응시켜야 함.
-             this.attackSuccess = true;
-             this.gaming = false;
-           }
-         }  
-       }
+      if(this.seq[this.index] == 'A'){
+        if(checkTime() == false){//시간을 넘겨서 미션실패
+          this.attackFail = true;
+          this.gaming = false;
+        }
+        else{ //시간 안에 성공
+          if(checkA() == true){
+            this.attackSuccess = true;
+            this.gaming = false;
+          }
+        }  
+      }
+      else if(this.seq[this.index] == 'B'){
+        if(checkTime() == false){//시간을 넘겨서 미션실패
+          this.attackFail = true;
+          this.gaming = false;
+        }
+        else{ //시간 안에 성공
+          if(checkB() == true){
+            this.attackSuccess = true;
+            this.gaming = false;
+          }
+        }  
+      }
        else if(this.seq[this.index] == 'C'){
          if(check3sec() == false){//시간을 넘겨서 미션실패
            this.defendFail = true;
