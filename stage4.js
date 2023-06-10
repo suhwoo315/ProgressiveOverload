@@ -22,6 +22,15 @@ class Stage4 {
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
+
+      // 배경
+      if (this.countBoss > 6) image(stage4_bg[0], 0, 0, windowWidth, windowHeight);
+      else if (this.countBoss > 3) image(stage4_bg[1], 0, 0, windowWidth, windowHeight);
+      else image(stage4_bg[2], 0, 0, windowWidth, windowHeight);
+
+      // 캐릭터
+      image(stage4_chr_max_default[0], windowWidth/2 - 100, windoHeight/2, 50, 100);
+
       if(this.seq[this.index] == "A"){
         
       }
