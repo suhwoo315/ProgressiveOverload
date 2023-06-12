@@ -17,8 +17,8 @@ class Tutorial1 {
         this.count = 3;
         this.currSil = 0;
         this.currChr = 0;
-        this.touchLower = true;
-        this.touchUpper = false;
+        this.touchLower = false;
+        this.touchUpper = true;
     }
 
     // 해당 cut에 알맞은 화면을 표시한다

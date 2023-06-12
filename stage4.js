@@ -21,8 +21,8 @@ class Stage4 {
         // 아직 쓰일지 모르는 변수들
         this.currSil = 0;
         this.currChr = 0;
-        this.touchLower = true;
-        this.touchUpper = false;
+        this.touchLower = false;
+        this.touchUpper = true;
         this.actionTime = 3000;
         this.resultTime = 2000;
         
