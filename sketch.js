@@ -10,8 +10,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
-let scene = 3;
+let phase = 0;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -310,6 +310,7 @@ function setup() {
   video.hide();
 
   myFont = loadFont('assets/sketch/font/neodgm.ttf'); //폰트 불러오기
+  textFont(myFont);
   noCursor(); //마우스커서 없애기
   angleMode(DEGREES); //3초 타이머 관련
 }
