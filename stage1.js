@@ -53,6 +53,7 @@ class Stage1 {
                     this.count--;
                     this.touchLower = false;
                     this.touchUpper = true;
+                    stage1_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }
             else if (y < upperBound + (lowerBound-upperBound)*1/4) {
@@ -152,7 +153,12 @@ class Stage1 {
     }
 
     // 사운드 구현
-    sound(){
-        if(this.count == 4) stage1_snd[2].play(); 
-    }
+    //sound(){
+    // 카운트가 하나 줄면(덤벨 게이지가 하나 사라지면) 성공했다는 소리가 난다
+        //if (this.count < 5) {
+            //stage1_snd[2].play();
+            //stage1_snd[2].setLoop(false);
+            
+        //}
+    //}
 }

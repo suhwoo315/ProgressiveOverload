@@ -405,7 +405,7 @@ function draw() {
         trackWrists();
         stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
-        stage1.sound();
+        //stage1.sound();
       }
       else if (scene == 4){ //clear1
         clear1.display();
@@ -415,22 +415,36 @@ function draw() {
     case 2: //phase2
     case 3: //phase3
     case 4: //phase4
-      if(stage4.countMax > 0 && stage4.countBoss > 0){
-        if(stage4.gaming == true){
-        stage4.arcLength += 1;
-        stage4.displayGame();
+      if (scene == 0){ // map4
+        map4.move();
+        map4.display();
       }
-      else if(stage4.gaming == false){
-        if (stage4.check2sec() == true){
-          stage4.gauge();
-          stage4.displayResult();
+      else if (scene == 1){ // story4
+        story4.display();
+      }
+      else if (scene == 2){ // tutorial4
+        tutorial4.display();
+      }
+      else if (scene == 3){ // stage4
+        trackWrists();
+        if(stage4.countMax > 0 && stage4.countBoss > 0){
+          if(stage4.gaming == true){
+          stage4.arcLength += 1;
+          stage4.displayGame();
         }
-        else if(stage4.check2sec() == false){
-          stage4.changeGame();
-          savedtime = millis();
+        else if(stage4.gaming == false){
+          if (stage4.check2sec() == true){
+            stage4.gauge();
+            stage4.displayResult();
+          }
+          else if(stage4.check2sec() == false){
+            stage4.changeGame();
+            savedtime = millis();
+          }
         }
       }
     }
+      
     else {
       // 나중에 채우기, 맥스 피가 0이 되거나 보스 피가 0이 됐을 때
     }
