@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
+let phase = 4;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -51,6 +51,8 @@ let gameOutro;
 let ui = [];
 let max = [];
 let coach = [];
+let boss = [];
+let ua  = [];
 let bgm = [];
 
 // asset - phase0
@@ -193,7 +195,7 @@ function preload(){
 
   //boss v
   for(let i=0; i<1; i++){
-    coach[i] = loadImage('assets/sketch/boss/' + i + '.png');
+    boss[i] = loadImage('assets/sketch/boss/' + i + '.png');
   }
 
   //coach v
@@ -208,7 +210,7 @@ function preload(){
 
   //ua v
   for(let i=0; i<1; i++){
-    coach[i] = loadImage('assets/sketch/ua/' + i + '.png');
+    ua[i] = loadImage('assets/sketch/ua/' + i + '.png');
   }
 
   //ui v
@@ -415,7 +417,7 @@ function draw() {
     case 2: //phase2
     case 3: //phase3
     case 4: //phase4
-      if (scene == 0){ // map4
+      if(scene == 0){ // map4
         map4.move();
         map4.display();
       }
@@ -444,7 +446,6 @@ function draw() {
         }
       }
     }
-      
     else {
       // 나중에 채우기, 맥스 피가 0이 되거나 보스 피가 0이 됐을 때
     }
@@ -519,6 +520,7 @@ function keyPressed(){
           else {
             phase = 4;
             scene = 0;
+            savedtime = millis();
           }
         }
       break;

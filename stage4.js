@@ -1,9 +1,9 @@
 class Stage4 {
     constructor(){
-        this.seq = ["A", //0 A= 덤벨컬
-                    "C", //1 B=리버스컬
-                    "B",
-                   "C", "A", "A", "C"]; //2 C=프레스
+        this.seq = ["B", //0 A= 덤벨컬
+                    "A", //1 B=리버스컬
+                    "C",
+                   "B", "C", "A", "C"]; //2 C=프레스
         this.index = 0; //sequence의 인덱스
         this.gaming = true ; //동작을 수행, false는 결과를 보여주는 단계
         this.attackSuccess = false; // A,B에 성공, 보스의 hp -
@@ -15,7 +15,7 @@ class Stage4 {
 
         this.startAngle = -90;
         this.endAngle = 0;
-        this.radius = 200;
+        this.radius = 45;
         this.arcLength = 10;
 
         // 아직 쓰일지 모르는 변수들
@@ -50,7 +50,7 @@ class Stage4 {
       
 
       // 캐릭터
-      image(stage4_chr_boss_default[0], width/2 + 400, height/2 + 20, 500, 500); //boss
+      image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
       // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
       image(max[5], width / 2 - 100, height / 2, 600, 600); //max
       
@@ -174,35 +174,35 @@ class Stage4 {
         }
 
         //세 번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
           image(stage4_ui[3], aX3, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
           image(stage4_ui[4], bX3, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
           image(stage4_ui[5], cX3, iconY, iconW, iconH);
         }
 
         //네 번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+        if(this.seq[(this.index+3)%this.seq.length] == 'A') {
           image(stage4_ui[3], aX4, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+        else if(this.seq[(this.index+3)%this.seq.length] == 'B'){
           image(stage4_ui[4], bX4, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+        else if(this.seq[(this.index+3)%this.seq.length] == 'C'){
           image(stage4_ui[5], cX4, iconY, iconW, iconH);
         }
 
         //다섯 번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+        if(this.seq[(this.index+4)%this.seq.length] == 'A') {
           image(stage4_ui[3], aX5, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+        else if(this.seq[(this.index+4)%this.seq.length] == 'B'){
           image(stage4_ui[4], bX5, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+        else if(this.seq[(this.index+4)%this.seq.length] == 'C'){
           image(stage4_ui[5], cX5, iconY, iconW, iconH);
         }
         
@@ -218,28 +218,52 @@ class Stage4 {
         //ui
         //시퀀스 아이콘 5개
         //현재 진행중인 운동
-        image(stage4_ui[4], iconX, iconY, iconW, iconH);
-        //다음으로 오는 운동
+        image(stage4_ui[4], bX1, iconY, iconW, iconH);
+        
+        // 두번째로 오는 운동
         if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+          image(stage4_ui[3], aX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2, height / 2, width, height);
+          image(stage4_ui[4], bX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+          image(stage4_ui[5], cX2, iconY, iconW, iconH);
         }
 
-        //다음 다음에 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
-          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        //세 번째로 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX3, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+          image(stage4_ui[4], bX3, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+          image(stage4_ui[5], cX3, iconY, iconW, iconH);
         }
+
+        //네 번째로 오는 운동
+        if(this.seq[(this.index+3)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+3)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+3)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX4, iconY, iconW, iconH);
+        }
+
+        //다섯 번째로 오는 운동
+        if(this.seq[(this.index+4)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+4)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+4)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX5, iconY, iconW, iconH);
+        }
+        
         
         //운동 실루엣
         image(stage4_sil[3], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
@@ -253,28 +277,52 @@ class Stage4 {
         //ui
         //시퀀스 아이콘 3개
         //현재 진행중인 운동
-        image(stage4_ui[5], width / 2 - 282, height / 2, width, height);
-        //다음으로 오는 운동
+        image(stage4_ui[5], cX1, iconY, iconW, iconH);
+        
+        // 두번째로 오는 운동
         if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+          image(stage4_ui[3], aX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2, height / 2, width, height);
+          image(stage4_ui[4], bX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+          image(stage4_ui[5], cX2, iconY, iconW, iconH);
         }
 
-        //다음 다음에 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
-          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        //세 번째로 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX3, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+          image(stage4_ui[4], bX3, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+          image(stage4_ui[5], cX3, iconY, iconW, iconH);
         }
+
+        //네 번째로 오는 운동
+        if(this.seq[(this.index+3)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+3)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+3)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX4, iconY, iconW, iconH);
+        }
+
+        //다섯 번째로 오는 운동
+        if(this.seq[(this.index+4)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+4)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+4)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX5, iconY, iconW, iconH);
+        }
+        
 
         //운동 실루엣
         image(stage4_sil[6], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
@@ -289,11 +337,14 @@ class Stage4 {
       this.endAngle = map(this.arcLength, 10, 300, 0, 360);
 
       // 부채꼴 그리기
-      fill(255, 0, 0); // 색상 설정
-      // arc(width / 2, height / 2, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
+      fill(0, 90); // 색상 설정
+      noStroke();
+      arc(135, 70, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
 
       if (this.arcLength > 300) {
         this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
+        fill(255, 0, 0);
+        rect(width / 2, height / 2, 500, 500);
       }
 
     }//displayGame()의 끝
@@ -303,14 +354,12 @@ class Stage4 {
 
 
 
-
-
-    check3sec(){
-      //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
-      let passedTime = millis() - savedTime;
-      if(passedTime > this.actionTime) return false;
-        else return true;
-    }
+    // check3sec(){
+    //   //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
+    //   let passedTime = millis() - savedTime;
+    //   if(passedTime > this.actionTime) return false;
+    //     else return true;
+    // }
 
     check(upperFraction, lowerFraction){
       let y = (leftWristY + rightWristY) / 2;
@@ -440,16 +489,24 @@ class Stage4 {
 
     displayResult(){//동작에 대한 결과 asset 예시 miss 등, 줄어든 게이지 asset, 리듬게임 아이콘 asset
       if(this.attackSuccess == true){
-        
+        rectMode(CENTER);
+        fill(255, 0, 0);
+        rect(width / 2, height / 2, 500, 500);
       }
       else if(this.attackFail == true){
-        
+        rectMode(CENTER);
+        fill(255, 0, 0);
+        rect(width / 2, height / 2, 500, 500);
       }
       else if(this.defendSuccess == true){
-        
+        rectMode(CENTER);
+        fill(255, 0, 0);
+        rect(width / 2, height / 2, 500, 500);
       }
       else if(this.defendFail == true){
-        
+        rectMode(CENTER);
+        fill(255, 0, 0);
+        rect(width / 2, height / 2, 500, 500);
       }
     }
 
