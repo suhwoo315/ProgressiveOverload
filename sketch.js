@@ -47,9 +47,6 @@ let stage4;
 let gameOutro;
 
 
-
-
-
 // asset - 전체
 let ui = [];
 let max = [];

@@ -57,13 +57,13 @@ class Stage4 {
       //ui
       imageMode(CORNER);
       // image(stage4_ui[6], width / 2 - 20 - 100, height / 2, width, height); // 시퀀스 바
-      image(stage4_ui[6], 0, 0, width * 0.7, height* 0.7);
+      image(stage4_ui[6], 40, 0, width * 0.7 - 150, height* 0.8 + 5);
       imageMode(CENTER);
       image(stage4_ui[14], width / 2, height / 2 + 80, width, height); //운동 이름
       
       image(stage4_ui[13], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
-      image(stage4_ui[0], width / 2, height / 2 + 80, width, height); //게이지 바
-      image(stage4_ui[1], width / 2, height / 2 + 80, width, height); //게이지 아령, 사람 손 위치에 따라서 다르게
+      image(stage4_ui[0], width / 2 - 10, height / 2 + 60, width, height); //게이지 바
+      image(stage4_ui[1], width / 2 - 10, height / 2 + 60, width, height); //게이지 아령, 사람 손 위치에 따라서 다르게
 
       //hp bar
       image(stage4_ui[2], width / 2, height / 2 + 50, width, height); //보스와 맥스의 hp
@@ -134,35 +134,76 @@ class Stage4 {
       }
 
       //운동에 따라 달라지는 asset : 시퀀스 아이콘, 운동 실루엣
+      let aX1 = width / 2 - 330;
+      let aX2 = width / 2 - 330 + 126;
+      let aX3 = width / 2 - 330 + 126*2;
+      let aX4 = width / 2 - 330 + 126*3;
+      let aX5 = width / 2 - 330 + 126*4;
+      let bX1 = width / 2 - 330 - 126;
+      let bX2 = width / 2 - 330;
+      let bX3 = width / 2 - 330 + 126;
+      let bX4 = width / 2 - 330 + 126*2;
+      let bX5 = width / 2 - 330 + 126*3;
+      let cX1 = width / 2 - 330 - 126*2;
+      let cX2 = width / 2 - 330 - 126;
+      let cX3 = width / 2 - 330;
+      let cX4 = width / 2 - 330 + 126;
+      let cX5 = width / 2 - 330 + 126*2;
+      let iconY = height / 2 - 44;
+      let iconW = width * 0.9;
+      let iconH = height * 0.9;
       if(this.seq[this.index] == "A"){
         //ui
-        //시퀀스 아이콘 3개 a = stage4_ui[3] / b = stage4_ui[4] / c = stage4_ui[5]
-        //a의 x좌표 : width / 2 || width / 2 + 142 || width / 2 + 282
+        //시퀀스 아이콘 5개 a = stage4_ui[3] / b = stage4_ui[4] / c = stage4_ui[5]
+        //a의 x좌표 : width / 2 - 330 || width / 2 - 330 + 126 || width / 2 - 330 + 126*2|| width / 2 - 330 + 126*3 || width / 2 - 330 + 126*3
         //b의 x좌표 : width / 2 - 142 || width / 2 || 2 or width + 142
         //c의 x좌표 : width / 2 - 282 || width / 2 - 142 || width / 2
         
         //현재 진행중인 운동
-        image(stage4_ui[3], width / 2, height / 2, width, height);
-        //다음으로 오는 운동
+        image(stage4_ui[3], aX1, iconY, iconW, iconH);
+        
+        // 두번째로 오는 운동
         if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+          image(stage4_ui[3], aX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2, height / 2, width, height);
+          image(stage4_ui[4], bX2, iconY, iconW, iconH);
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+          image(stage4_ui[5], cX2, iconY, iconW, iconH);
         }
 
-        //다음 다음에 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
-          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        //세 번째로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX3, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX3, iconY, iconW, iconH);
         }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX3, iconY, iconW, iconH);
+        }
+
+        //네 번째로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX4, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX4, iconY, iconW, iconH);
+        }
+
+        //다섯 번째로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], aX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], bX5, iconY, iconW, iconH);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], cX5, iconY, iconW, iconH);
         }
         
         //운동 실루엣
@@ -175,9 +216,9 @@ class Stage4 {
       }
       else if(this.seq[this.index] == "B"){
         //ui
-        //시퀀스 아이콘 3개
+        //시퀀스 아이콘 5개
         //현재 진행중인 운동
-        image(stage4_ui[4], width / 2 - 142, height / 2, width, height);
+        image(stage4_ui[4], iconX, iconY, iconW, iconH);
         //다음으로 오는 운동
         if(this.seq[(this.index+1)%this.seq.length] == 'A') {
           image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
