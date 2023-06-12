@@ -144,6 +144,14 @@ let leftShoulderY = 0;
 let rightShoulderX = 0;
 let rightShoulderY = 0;
 
+// 각 운동의 위, 아래 바운더리
+let dumbbellCurlUpper = 6/10;
+let dumbbellCurlLower = 8/10;
+let reverseCurlUpper = 6/10;
+let reverseCurlLower = 8/10;
+let pressUpper = 3/10;
+let pressLower = 4.8/10;
+
 
 // 각 단계의 클래스 생성
 // asset 불러오기
@@ -324,8 +332,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log("phase " + phase);
-  console.log("scene " + scene);
+  //console.log("phase " + phase);
+  //console.log("scene " + scene);
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
@@ -348,13 +356,15 @@ function draw() {
       }
       else if (scene == 2){ //tutorial1
         tutorial1.display();
+        /*
         if (tutorial1.getCut() == 2){
           trackShoulders();
-          if (tutorial1.checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY)) tutorial1.increaseCut();
+          if (tutorial1.checkSilhouette()) tutorial1.increaseCut();
         }
-        else if (tutorial1.getCut() == 7){
+        
+        else */ if (tutorial1.getCut() == 5){ //7
           trackWrists();
-          if (tutorial1.checkCount(leftWristY, rightWristY)){
+          if (tutorial1.checkCount()){
             tutorial1.increaseCut();
             tutorial1.increaseCut();
             tutorial1.increaseCut();
@@ -364,7 +374,7 @@ function draw() {
       else if (scene == 3){ //stage1
         trackWrists();
         stage1.display();
-        stage1.check(leftWristY, rightWristY);
+        stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
       }
       else if (scene == 4){ //clear1
         clear1.display();
@@ -378,15 +388,8 @@ function draw() {
         if(stage4.gaming == true){
         stage4.arcLength += 1;
         stage4.displayGame();
-        
-        // stage4.check3sec();
-        // stage4.checkA();
-        // stage4.checkB();
-        // stage4.checkC();
-        // stage4.play();
-       }
-        else if(stage4.gaming == false){
-        // stage4.check2sec();
+      }
+      else if(stage4.gaming == false){
         if (stage4.check2sec() == true){
           stage4.gauge();
           stage4.displayResult();
@@ -447,15 +450,14 @@ function keyPressed(){
         }
         else if (scene == 1 && story1.cut < story1.maxcut){ //story1
             story1.cut++;
-            console.log("cut++");
         }
         else if(scene == 1 && story1.cut == story1.maxcut){
             scene++;
-            console.log("scene++");
         }
         else if (scene == 2){ //tutorial1
           if (tutorial1.getCut() < tutorial1.getMaxCut()){
-            if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
+            //if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
+            if (tutorial1.getCut() != 5){
               tutorial1.increaseCut();
             }
           }
@@ -470,7 +472,7 @@ function keyPressed(){
         else if (scene == 4){ //clear1
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
-            phase++;
+            phase = 4;
             scene = 0;
           }
         }

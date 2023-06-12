@@ -19,13 +19,18 @@ class Stage4 {
         this.arcLength = 10;
 
         // 아직 쓰일지 모르는 변수들
-        this.isGoingup = true;
+        this.currSil = 0;
         this.currChr = 0;
-        this.prevChr = 0;
+        this.touchLower = true;
+        this.touchUpper = false;
         this.actionTime = 3000;
         this.resultTime = 2000;
         
     }
+
+
+
+
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
@@ -252,6 +257,13 @@ class Stage4 {
 
     }//displayGame()의 끝
   
+
+
+
+
+
+
+
     check3sec(){
       //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
       let passedTime = millis() - savedTime;
@@ -259,61 +271,59 @@ class Stage4 {
         else return true;
     }
 
-    checkA(leftWristY, rightWristY){//stage1 참고, 동작 수행 여부 판단
-        if (this.count > 0){
-            let y = (leftWristY + rightWristY) / 2;
-            this.drawDumbbell(y);
-            this.prevChr = this.currChr;
+    check(upperFraction, lowerFraction){
+      let y = (leftWristY + rightWristY) / 2;
+      this.drawDumbbell(y);
 
-            if (y < height*3/9) {
-                if (this.prevChr == 4 && this.isGoingUp){
-                    this.currSil = 2;
-                    this.currChr = 5;
-                    this.isGoingUp = !this.isGoingUp;
-                    this.count--;
+      let upperBound = height*upperFraction;
+      let lowerBound = height*lowerFraction;
 
-                }
-            }
-            else if (y < height*4/9) {
-                if (this.prevChr == 3 && this.isGoingUp || this.prevChr == 5 && !this.isGoingUp){
-                    this.currChr = 4;
-                }
-            }
-            else if (y < height*5/9) {
-                if (this.prevChr == 2 && this.isGoingUp || this.prevChr == 4 && !this.isGoingUp){
-                    this.currSil = 1;
-                    this.currChr = 3;
-                }
-            }
-            else if (y < height*5.5/9) {
-                if (this.prevChr == 1 && this.isGoingUp || this.prevChr == 3 && !this.isGoingUp){
-                    this.currChr = 2;
-                }
-            }
-            else if (y < height*6/9) {
-                if (this.prevChr == 0 && this.isGoingUp || this.prevChr == 2 && !this.isGoingUp){
-                    this.currSil = 0;
-                    this.currChr = 1;
-                }
-            }
-            else {
-                if (this.prevChr == 1 && !this.isGoingUp){
-                    this.currChr = 0;
-                    this.isGoingUp = !this.isGoingUp;
-                }
-            }
-        }
-    }
-    
+      if (y < upperBound) {
+          this.currChr = 5;
+          this.currSil = 2;
+          if (this.touchLower){
+              this.count--;
+              this.touchLower = false;
+              this.touchUpper = true;
+          }
+      }
+      else if (y < upperBound + (lowerBound-upperBound)*1/4) {
+          this.currChr = 4;
+          this.currSil = 2;
+      }
+      else if (y < upperBound + (lowerBound-upperBound)*2/4) {
+          this.currChr = 3;
+          this.currSil = 1;
+      }
+      else if (y < upperBound + (lowerBound-upperBound)*3/4) {
+          this.currChr = 2;
+          this.currSil = 1;
+      }
+      else if (y < lowerBound) {
+          this.currChr = 1;
+          this.currSil = 0;
+      }
+      else {
+          this.currChr = 0;
+          this.currSil = 0;
+          if (this.touchUpper){
+              this.touchLower = true;
+              this.touchUpper = false;
+          }
+      }
 
-    checkB(){//stage2 참고, 동작 수행 여부 판단
-      
+      textSize(100);
+      fill("black");
+      text(this.currChr, 50, 400);
     }
 
-    checkC(){//stage3 참고, 동작 수행 여부 판단
-      
-    }
-
+  // 움직이는 아령 UI를 그린다
+  drawDumbbell(y){
+    let maxY = height*2/5 + 100;
+    let minY = height*2/5 - 100;
+    let dumbbellY = y/height * (minY - maxY);
+    //image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
+  }
 
 // 제한된 시간 안에 동작을 성공해야한다
      play(){
@@ -325,7 +335,7 @@ class Stage4 {
           savedTime = millis();
         }
         else{ //시간 안에 성공
-          if(checkA() == true){
+          if(check(dumbbellCurlUpper, dumbbellCurlLower) == true){
             this.attackSuccess = true;
             this.gaming = false;
             savedTime = millis();
@@ -339,7 +349,7 @@ class Stage4 {
           savedTime = millis();
         }
         else{ //시간 안에 성공
-          if(checkB() == true){
+          if(check(reverseCurlUpper, reverseCurlLower) == true){
             this.attackSuccess = true;
             this.gaming = false;
             savedTime = millis();
@@ -353,7 +363,7 @@ class Stage4 {
            savedTime = millis();
          }
          else{ //시간 안에 성공
-           if(checkC() == true){
+           if(check(pressUpper, pressLower) == true){
              this.defendSuccess = true;
              this.gaming = false;
              savedTime = millis();
@@ -364,6 +374,11 @@ class Stage4 {
      // }
     // 알맞은 화면을 표시한다
     }
+
+
+
+
+
 
 
     //////////////gaming == false일 때의 함수/////////////

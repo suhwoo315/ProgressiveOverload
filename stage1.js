@@ -3,8 +3,8 @@ class Stage1 {
         this.count = 5;
         this.currSil = 0;
         this.currChr = 0;
-        this.prevChr = 0;
-        this.isGoingUp = true;
+        //this.prevChr = 0;
+        //this.isGoingUp = true;
         this.touchLower = true;
         this.touchUpper = false;
         this.bgOn = false;
@@ -38,28 +38,18 @@ class Stage1 {
     }
 
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다
-    check(leftWristY, rightWristY){
+    check(upperFraction, lowerFraction){
         if (this.count > 0){
             let y = (leftWristY + rightWristY) / 2;
             this.drawDumbbell(y);
-            this.prevChr = this.currChr;
 
-            let upperFraction = 3/10;
-            let lowerFraction = 4.8/10;
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
-
-            // debugging
-            fill(0);
-            stroke(5);
-            line(0, upperBound, width, upperBound);
-            line(0, lowerBound, width, lowerBound);
 
             if (y < upperBound) {
                 this.currChr = 5;
                 this.currSil = 2;
                 if (this.touchLower){
-                    console.log("Top!");
                     this.count--;
                     this.touchLower = false;
                     this.touchUpper = true;
@@ -85,7 +75,6 @@ class Stage1 {
                 this.currChr = 0;
                 this.currSil = 0;
                 if (this.touchUpper){
-                    console.log("Bottom!");
                     this.touchLower = true;
                     this.touchUpper = false;
                 }
