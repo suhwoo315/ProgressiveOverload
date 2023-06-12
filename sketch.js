@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
+let phase = 4;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -381,6 +381,21 @@ function draw() {
     case 2: //phase2
     case 3: //phase3
     case 4: //phase4
+      if(scene == 0){ //map4
+
+      }
+      else if(scene == 1){ //story4
+
+      }
+      else if(scene == 2){ //tutorial4
+        
+      }
+      else if(scene == 3){ //stage4
+        
+      }
+      else if(scene == 4){ //clear4
+        
+      }
       if(stage4.countMax > 0 && stage4.countBoss > 0){
         if(stage4.gaming == true){
         stage4.arcLength += 1;
@@ -471,6 +486,7 @@ function keyPressed(){
           else {
             phase = 4;
             scene = 0;
+            savedtime = millis();
           }
         }
       break;
