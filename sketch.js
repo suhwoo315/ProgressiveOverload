@@ -10,7 +10,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
+let phase = 0;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -46,9 +46,6 @@ let stage4;
 
 // phase5의 클래스 - end
 let gameOutro;
-
-
-
 
 
 // asset - 전체
