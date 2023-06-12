@@ -58,7 +58,6 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 textLeading(35);
-                textFont(myFont);
                 textStyle('normal');
                 fill(0);
                 textSize(25);

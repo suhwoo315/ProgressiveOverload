@@ -45,17 +45,20 @@ class Stage4 {
       
 
       // 캐릭터
-      image(stage4_chr_boss_default[0], width/2 + 300, height/2 + 50, 250, 500); //boss
+      image(stage4_chr_boss_default[0], width/2 + 400, height/2 + 20, 500, 500); //boss
       // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
       image(max[5], width / 2 - 100, height / 2, 600, 600); //max
       
       //ui
-      image(stage4_ui[6], width / 2 - 20, height / 2, width, height); // 시퀀스 바
-      image(stage4_ui[14], width / 2, height / 2, width, height); //운동 이름
+      imageMode(CORNER);
+      // image(stage4_ui[6], width / 2 - 20 - 100, height / 2, width, height); // 시퀀스 바
+      image(stage4_ui[6], 0, 0, width * 0.7, height* 0.7);
+      imageMode(CENTER);
+      image(stage4_ui[14], width / 2, height / 2 + 80, width, height); //운동 이름
       
-      image(stage4_ui[13], width / 2, height / 2 + 40, width, height); //실루엣 배경
-      image(stage4_ui[0], width / 2, height / 2, width, height); //게이지 바
-      image(stage4_ui[1], width / 2, height / 2, width, height); //게이지 아령, 사람 손 위치에 따라서 다르게
+      image(stage4_ui[13], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
+      image(stage4_ui[0], width / 2, height / 2 + 80, width, height); //게이지 바
+      image(stage4_ui[1], width / 2, height / 2 + 80, width, height); //게이지 아령, 사람 손 위치에 따라서 다르게
 
       //hp bar
       image(stage4_ui[2], width / 2, height / 2 + 50, width, height); //보스와 맥스의 hp
@@ -157,15 +160,13 @@ class Stage4 {
           image(stage4_ui[5], width / 2, height / 2, width, height); //c
         }
         
-        
-
         //운동 실루엣
-        image(stage4_sil[0], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 0~2 중 다르게
+        image(stage4_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 0~2 중 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
         fill(0);
-        text("덤벨 컬", width / 8 - 30, height / 2 - 230);
+        text("덤벨 컬", width / 8 - 30, height / 2 - 230 + 80);
       }
       else if(this.seq[this.index] == "B"){
         //ui
@@ -195,12 +196,12 @@ class Stage4 {
         }
         
         //운동 실루엣
-        image(stage4_sil[3], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 3~5 다르게
+        image(stage4_sil[3], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
         fill(0);
-        text("리버스 컬", width / 8 - 30, height / 2 - 230);
+        text("리버스 컬", width / 8 - 30, height / 2 - 230 + 80);
       }
       else if(this.seq[this.index] == "C"){
         //ui
@@ -230,12 +231,12 @@ class Stage4 {
         }
 
         //운동 실루엣
-        image(stage4_sil[6], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 3~5 다르게
+        image(stage4_sil[6], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
         fill(0);
-        text("오버헤드 프레스", width / 8 - 30, height / 2 - 230);
+        text("오버헤드 프레스", width / 8 - 30, height / 2 - 230 + 80);
       }
 
       // 호의 길이에 따라 끝 각도 계산

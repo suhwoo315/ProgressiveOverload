@@ -14,6 +14,7 @@ class Map1 {
       
           // 캐릭터 그리기
           image(map1_chr[0], this.chrX, this.chrY, 200, 200);
+          image(map1_chr[1], width / 2, height / 2, width, height);
           
     }
 
