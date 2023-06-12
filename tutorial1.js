@@ -1,11 +1,11 @@
 class Tutorial1 {
     constructor(){
         this.cut = 0; // 현재 cut
-        this.maxCut = 11; // cut의 총 개수
+        this.maxCut = 9; // cut의 총 개수
         this.dialogue = ["지금부터 실제 운동을 하시게 됩니다.", // 0
                         "화면 앞에 있는 덤벨을 들고 의자에 앉아주세요.", // 1
-                        "운동을 시작하기 전, 우선 화면에 표시된 사람 모습 실루엣에 몸을 맞춰주세요.", // 2
-                        "성공적으로 인식되었습니다!", // 3
+                        // "운동을 시작하기 전, 우선 화면에 표시된 사람 모습 실루엣에 몸을 맞춰주세요.", // 2
+                        // "성공적으로 인식되었습니다!", // 3
                         "바벨을 안전하게 빼기 위한 동작이니 잘 따라해 보라고!", // 4
                         "먼저 앞에 있는 덤벨을 잡고", // 5
                         "두 팔에 힘을 줘서 덤벨을 올려봐!", // 6
@@ -17,8 +17,8 @@ class Tutorial1 {
         this.count = 3;
         this.currSil = 0;
         this.currChr = 0;
-        this.prevChr = 0;
-        this.isGoingUp = true;
+        this.touchLower = true;
+        this.touchUpper = false;
     }
 
     // 해당 cut에 알맞은 화면을 표시한다
@@ -32,6 +32,7 @@ class Tutorial1 {
                 text(this.dialogue[this.cut], width/2, height*4/5);
                 break;
 
+            /*
             case 2:
                 push();
                 translate(width, 0);
@@ -52,10 +53,11 @@ class Tutorial1 {
                 image(ui[5], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
                 break;
+            */
 
-            case 4:
-            case 5:
-            case 6:
+            case 2: //4
+            case 3: //5
+            case 4: //6
                 image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(coach[0], width/2, height*2/5, 300, 300);
@@ -63,7 +65,7 @@ class Tutorial1 {
                 text(this.dialogue[this.cut], width/2, height*4/5);
                 break;
 
-            case 7:
+            case 5: //7
                 image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(stage1_ui[2], width/3.5, height*2/5, 300, 300);
@@ -81,8 +83,8 @@ class Tutorial1 {
                 }
                 break;
 
-            case 10:
-            case 11:
+            case 8: //10
+            case 9: //11
                 image(stage1_bg[0], 0, 0);
                 image(stage1_ui[0], 20, 20, 100, 50);
                 image(coach[0], width/2, height*2/5, 300, 300);
@@ -115,7 +117,7 @@ class Tutorial1 {
     }
 
     // 플레이어가 테두리 안으로 들어왔는지 확인한다
-    checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY){
+    checkSilhouette(){
         if (leftShoulderX > width/6 && rightShoulderX < width*5/6 &&
             leftShoulderY > height*2/5 && leftShoulderY < height*3/5 &&
             rightShoulderY > height*2/5 && rightShoulderY < height*3/5){
@@ -127,6 +129,7 @@ class Tutorial1 {
     }
 
     // 플레이어의 손목 위치를 확인해서 동작 횟수를 차감한다
+    /*
     checkWrist(leftWristY, rightWristY){
         let y = (leftWristY + rightWristY) / 2;
         this.drawDumbbell(y);
@@ -169,11 +172,59 @@ class Tutorial1 {
             }
         }
     }
+    */
+
+    check(upperFraction, lowerFraction){
+
+        let y = (leftWristY + rightWristY) / 2;
+        this.drawDumbbell(y);
+
+        let upperBound = height*upperFraction;
+        let lowerBound = height*lowerFraction;
+
+        if (y < upperBound) {
+            this.currChr = 5;
+            this.currSil = 2;
+            if (this.touchLower){
+                this.count--;
+                this.touchLower = false;
+                this.touchUpper = true;
+            }
+        }
+        else if (y < upperBound + (lowerBound-upperBound)*1/4) {
+            this.currChr = 4;
+            this.currSil = 2;
+        }
+        else if (y < upperBound + (lowerBound-upperBound)*2/4) {
+            this.currChr = 3;
+            this.currSil = 1;
+        }
+        else if (y < upperBound + (lowerBound-upperBound)*3/4) {
+            this.currChr = 2;
+            this.currSil = 1;
+        }
+        else if (y < lowerBound) {
+            this.currChr = 1;
+            this.currSil = 0;
+        }
+        else {
+            this.currChr = 0;
+            this.currSil = 0;
+            if (this.touchUpper){
+                this.touchLower = true;
+                this.touchUpper = false;
+            }
+        }
+
+        textSize(100);
+        fill("white");
+        text(this.currChr, 400, 400);
+    }
 
     // 플레이어의 자세가 기준선을 주어진 횟수만큼 넘었는지 확인한다
-    checkCount(leftWristY, rightWristY){
+    checkCount(){
         if (this.count > 0){
-            this.checkWrist(leftWristY, rightWristY);
+            this.check(dumbbellCurlUpper, dumbbellCurlLower);
             return false;
         }
         else {
