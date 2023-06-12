@@ -10,8 +10,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 1;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -105,7 +105,7 @@ let clear3_bg = [];
 let video;
 let poseNet;
 let poses = [];
-let tracking_num = 5;
+let tracking_num = 10;
 let leftWristValues = [];
 let rightWristValues = [];
 let leftShoulderValues = [];
@@ -210,33 +210,33 @@ function preload(){
   }
 
   // stage4
-  for(let i=0; i<3; i++){
-    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
-  }
-  for(let i=0; i<1; i++){
-    stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<1; i++){
-    stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default' + i + '.png'); // 1
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<8; i++){
-    stage4_ui[i] = loadImage('assets/phase4/stage4/ui' + i + '.png');
-  }
+  // for(let i=0; i<3; i++){
+  //   stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
+  // }
+  // for(let i=0; i<1; i++){
+  //   stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<1; i++){
+  //   stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default' + i + '.png'); // 1
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<8; i++){
+  //   stage4_ui[i] = loadImage('assets/phase4/stage4/ui' + i + '.png');
+  // }
 
 
   leftWristValues[0] = [];
@@ -268,8 +268,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log("phase " + phase);
-  console.log("scene " + scene);
+  //console.log("phase " + phase);
+  //console.log("scene " + scene);
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
@@ -491,7 +491,7 @@ function trackWrists(){
 
 // bodytracking - 손목의 위치 변수에 플레이어의 현재 위치를 저장한다
 function trackShoulders(){
-  console.log(leftShoulderX + " " + leftShoulderY + " " + rightShoulderX + " " + rightShoulderY);
+  //console.log(leftShoulderX + " " + leftShoulderY + " " + rightShoulderX + " " + rightShoulderY);
 
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i].pose;

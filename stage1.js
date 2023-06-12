@@ -5,6 +5,8 @@ class Stage1 {
         this.currChr = 0;
         this.prevChr = 0;
         this.isGoingUp = true;
+        this.touchLower = true;
+        this.touchUpper = false;
         this.bgOn = false;
         this.cut = 0;
         this.maxCut = 1;
@@ -42,31 +44,96 @@ class Stage1 {
             this.drawDumbbell(y);
             this.prevChr = this.currChr;
 
-            if (y < height*3/9) {
+            let upperFraction = 3/10;
+            let lowerFraction = 4.8/10;
+            let upperBound = height*upperFraction;
+            let lowerBound = height*lowerFraction;
+
+            // debugging
+            fill(0);
+            stroke(5);
+            line(0, upperBound, width, upperBound);
+            line(0, lowerBound, width, lowerBound);
+
+            if (y < upperBound) {
+                this.currChr = 5;
+                this.currSil = 2;
+                if (this.touchLower){
+                    console.log("Top!");
+                    this.count--;
+                    this.touchLower = false;
+                    this.touchUpper = true;
+                }
+            }
+            else if (y < upperBound + (lowerBound-upperBound)*1/4) {
+                this.currChr = 4;
+                this.currSil = 2;
+            }
+            else if (y < upperBound + (lowerBound-upperBound)*2/4) {
+                this.currChr = 3;
+                this.currSil = 1;
+            }
+            else if (y < upperBound + (lowerBound-upperBound)*3/4) {
+                this.currChr = 2;
+                this.currSil = 1;
+            }
+            else if (y < lowerBound) {
+                this.currChr = 1;
+                this.currSil = 0;
+            }
+            else {
+                this.currChr = 0;
+                this.currSil = 0;
+                if (this.touchUpper){
+                    console.log("Bottom!");
+                    this.touchLower = true;
+                    this.touchUpper = false;
+                }
+            }
+
+            textSize(100);
+            fill("black");
+            text(this.currChr, 50, 400);
+        }
+    }
+
+    /*
+    check(leftWristY, rightWristY){
+        if (this.count > 0){
+            let y = (leftWristY + rightWristY) / 2;
+            this.drawDumbbell(y);
+            this.prevChr = this.currChr;
+
+            let upperFraction = 3/10;
+            let lowerFraction = 5.5/10;
+            let upperBound = height*upperFraction;
+            let lowerBound = height*lowerFraction;
+
+            if (y < upperBound) {
                 if (this.prevChr == 4 && this.isGoingUp){
-                    this.currSil = 2;
                     this.currChr = 5;
                     this.isGoingUp = !this.isGoingUp;
                     this.count--;
                 }
             }
-            else if (y < height*4/9) {
+            else if (y < upperBound + (lowerBound-upperBound)*1/4) {
                 if (this.prevChr == 3 && this.isGoingUp || this.prevChr == 5 && !this.isGoingUp){
+                    this.currSil = 2;
                     this.currChr = 4;
                 }
             }
-            else if (y < height*5/9) {
+            else if (y < upperBound + (lowerBound-upperBound)*2/4) {
                 if (this.prevChr == 2 && this.isGoingUp || this.prevChr == 4 && !this.isGoingUp){
                     this.currSil = 1;
                     this.currChr = 3;
                 }
             }
-            else if (y < height*5.5/9) {
+            else if (y < upperBound + (lowerBound-upperBound)*3/4) {
                 if (this.prevChr == 1 && this.isGoingUp || this.prevChr == 3 && !this.isGoingUp){
                     this.currChr = 2;
                 }
             }
-            else if (y < height*6/9) {
+            else if (y < lowerBound) {
                 if (this.prevChr == 0 && this.isGoingUp || this.prevChr == 2 && !this.isGoingUp){
                     this.currSil = 0;
                     this.currChr = 1;
@@ -78,8 +145,14 @@ class Stage1 {
                     this.isGoingUp = !this.isGoingUp;
                 }
             }
+
+            console.log(this.currChr);
+            textSize(100);
+            fill("black");
+            text(this.currChr, 50, 400);
         }
     }
+    */
 
     // 움직이는 아령 UI를 그린다
     drawDumbbell(y){

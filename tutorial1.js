@@ -116,9 +116,9 @@ class Tutorial1 {
 
     // 플레이어가 테두리 안으로 들어왔는지 확인한다
     checkSilhouette(leftShoulderX, leftShoulderY, rightShoulderX, rightShoulderY){
-        if (leftShoulderX > width/7 && rightShoulderX < width*6/7 &&
-            leftShoulderY > height*4/5 && leftShoulderY < height &&
-            rightShoulderY > height*4/5 && rightShoulderY < height){
+        if (leftShoulderX > width/6 && rightShoulderX < width*5/6 &&
+            leftShoulderY > height*2/5 && leftShoulderY < height*3/5 &&
+            rightShoulderY > height*2/5 && rightShoulderY < height*3/5){
             return true;
         }
         else {
