@@ -27,7 +27,7 @@ class Tutorial1 {
             case 0:
             case 1:
                 background(100);
-                image(stage1_ui[1], width/2, height*2/5, 300, 300);
+                image(stage1_ui[1], 1000, 500, 300, 300);
                 image(ui[5], width/2, height*4/5, 500, 200);
                 text(this.dialogue[this.cut], width/2, height*4/5);
                 break;

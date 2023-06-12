@@ -1,9 +1,9 @@
 class Stage4 {
     constructor(){
         this.seq = ["A", //0 A= 덤벨컬
-                    "B", //1 B=리버스컬
-                    "C",
-                   "B"]; //2 C=프레스
+                    "C", //1 B=리버스컬
+                    "B",
+                   "C", "A", "A", "C"]; //2 C=프레스
         this.index = 0; //sequence의 인덱스
         this.gaming = true ; //동작을 수행, false는 결과를 보여주는 단계
         this.attackSuccess = false; // A,B에 성공, 보스의 hp -
@@ -12,6 +12,11 @@ class Stage4 {
         this.defendFail = false; // C 실패, Max의 hp - 
         this.countMax = 3; // max의 hp, 0이 되면 게임 종료
         this.countBoss = 9; // 보스의 hp, 0이 되면 게임 종료
+
+        this.startAngle = -90;
+        this.endAngle = 0;
+        this.radius = 200;
+        this.arcLength = 10;
 
         // 아직 쓰일지 모르는 변수들
         this.isGoingup = true;
@@ -22,25 +27,227 @@ class Stage4 {
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
-
+      //운동에 상관없는 asset : 배경, 캐릭터, ui, hp bar, hp
       // 배경
-      if (this.countBoss > 6) image(stage4_bg[0], 0, 0, windowWidth, windowHeight);
-      else if (this.countBoss > 3) image(stage4_bg[1], 0, 0, windowWidth, windowHeight);
-      else image(stage4_bg[2], 0, 0, windowWidth, windowHeight);
+      imageMode(CENTER); //보스 hp에 따라서 달라짐 9~7, 6~4, 3~0
+      if(this.countBoss > 6) {
+        image(stage4_bg[0], width / 2, height / 2, width, height);
+      }
+      else if(this.countBoss >= 4 && this.countBoss <= 6){
+        image(stage4_bg[1], width / 2, height / 2, width, height);
+      }
+      else if(this.countBoss < 4){
+        image(stage4_bg[2], width / 2, height / 2, width, height);
+      }
+      image(stage4_ui[15], width / 2, height / 2, width, height);
+      
 
       // 캐릭터
-      image(stage4_chr_max_default[0], windowWidth/2 - 100, windoHeight/2, 50, 100);
+      image(stage4_chr_boss_default[0], width/2 + 300, height/2 + 50, 250, 500); //boss
+      // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
+      image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+      
+      //ui
+      image(stage4_ui[6], width / 2 - 20, height / 2, width, height); // 시퀀스 바
+      image(stage4_ui[14], width / 2, height / 2, width, height); //운동 이름
+      
+      image(stage4_ui[13], width / 2, height / 2 + 40, width, height); //실루엣 배경
+      image(stage4_ui[0], width / 2, height / 2, width, height); //게이지 바
+      image(stage4_ui[1], width / 2, height / 2, width, height); //게이지 아령, 사람 손 위치에 따라서 다르게
 
+      //hp bar
+      image(stage4_ui[2], width / 2, height / 2 + 50, width, height); //보스와 맥스의 hp
+      //max hp
+      if(this.countMax == 3){
+        fill(0, 255, 0); //green
+        rectMode(CORNER);
+        rect(width / 2 - 350, height - 135 + 50, 470, 60); 
+      }
+      else if(this.countMax == 2){
+        fill(255, 255, 0); //yellow
+        rectMode(CORNER);
+        rect(width / 2 - 350 + (470 * 1/3), height - 135 + 50, 470 * 2/3, 60); 
+      }
+      else if(this.countMax == 1){
+        fill(255, 0, 0); //red
+        rectMode(CORNER);
+        rect((width / 2) - 350 + (470 * 2/3), height - 135 + 50, 470 * 1/3, 60); 
+      }
+      
+      //boss hp : 1~3 red  4~6 yellow 7~9 blue
+      switch(this.countBoss){
+        case 1:
+          fill(255, 0, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 1/9, 60);
+          break;
+        case 2:
+          fill(255, 0, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 2/9, 60);
+          break;
+        case 3:
+          fill(255, 0, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 3/9, 60);
+          break;
+        case 4:
+          fill(255, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 4/9, 60);
+          break;
+        case 5:
+          fill(255, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 5/9, 60);
+          break;
+        case 6:
+          fill(255, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 6/9, 60);
+          break;
+        case 7:
+          fill(0, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 7/9, 60);
+          break;
+        case 8:
+          fill(0, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470 * 8/9, 60);
+          break;
+        case 9:
+          fill(0, 255, 0);
+          rectMode(CORNER);
+          rect(width / 2 + 135, height - 135 + 50, 470, 60);
+          break;
+      }
+
+      //운동에 따라 달라지는 asset : 시퀀스 아이콘, 운동 실루엣
       if(this.seq[this.index] == "A"){
+        //ui
+        //시퀀스 아이콘 3개 a = stage4_ui[3] / b = stage4_ui[4] / c = stage4_ui[5]
+        //a의 x좌표 : width / 2 || width / 2 + 142 || width / 2 + 282
+        //b의 x좌표 : width / 2 - 142 || width / 2 || 2 or width + 142
+        //c의 x좌표 : width / 2 - 282 || width / 2 - 142 || width / 2
         
+        //현재 진행중인 운동
+        image(stage4_ui[3], width / 2, height / 2, width, height);
+        //다음으로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+        }
+
+        //다음 다음에 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
+          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+        }
+        
+        
+
+        //운동 실루엣
+        image(stage4_sil[0], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 0~2 중 다르게
+        //text
+        textAlign(RIGHT, CENTER);
+        textSize(25);
+        fill(0);
+        text("덤벨 컬", width / 8 - 30, height / 2 - 230);
       }
       else if(this.seq[this.index] == "B"){
+        //ui
+        //시퀀스 아이콘 3개
+        //현재 진행중인 운동
+        image(stage4_ui[4], width / 2 - 142, height / 2, width, height);
+        //다음으로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+        }
+
+        //다음 다음에 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
+          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+        }
         
+        //운동 실루엣
+        image(stage4_sil[3], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 3~5 다르게
+        //text
+        textAlign(RIGHT, CENTER);
+        textSize(25);
+        fill(0);
+        text("리버스 컬", width / 8 - 30, height / 2 - 230);
       }
       else if(this.seq[this.index] == "C"){
-        
+        //ui
+        //시퀀스 아이콘 3개
+        //현재 진행중인 운동
+        image(stage4_ui[5], width / 2 - 282, height / 2, width, height);
+        //다음으로 오는 운동
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
+          image(stage4_ui[3], width / 2 + 142, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2 - 142, height / 2, width, height);
+        }
+
+        //다음 다음에 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A'){
+          image(stage4_ui[3], width / 2 + 282, height / 2, width, height); //a
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          image(stage4_ui[4], width / 2 + 142, height / 2, width, height); //b
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          image(stage4_ui[5], width / 2, height / 2, width, height); //c
+        }
+
+        //운동 실루엣
+        image(stage4_sil[6], width / 10 + 20, height / 2 - 20, 300, 300); //캠 인식에 따라서 3~5 다르게
+        //text
+        textAlign(RIGHT, CENTER);
+        textSize(25);
+        fill(0);
+        text("오버헤드 프레스", width / 8 - 30, height / 2 - 230);
       }
-    }
+
+      // 호의 길이에 따라 끝 각도 계산
+      this.endAngle = map(this.arcLength, 10, 300, 0, 360);
+
+      // 부채꼴 그리기
+      fill(255, 0, 0); // 색상 설정
+      // arc(width / 2, height / 2, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
+
+      if (this.arcLength > 300) {
+        this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
+      }
+
+    }//displayGame()의 끝
   
     check3sec(){
       //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};

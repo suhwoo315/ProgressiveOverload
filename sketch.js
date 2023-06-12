@@ -63,17 +63,18 @@ let gameTitle_ui = [];
 let gameIntro_bg = [];
 let gameIntro_ui = [];
 
-// asset - phase1
+// asset - phase1 dumbbell curl
 let map1_bg = [];
 let map1_chr = [];
 let story1_bg = [];
+let story1_ui = [];
 let stage1_bg = [];
 let stage1_chr = [];
 let stage1_sil = [];
 let stage1_ui = [];
 let clear1_bg = [];
 
-// asset - phase2
+// asset - phase2 reverse curl
 let map2_bg = [];
 let map2_chr = [];
 let story2_bg = [];
@@ -83,7 +84,7 @@ let stage2_sil = [];
 let stage2_ui = [];
 let clear2_bg = [];
 
-// asset - phase3
+// asset - phase3 overhead press
 let map3_bg = [];
 let map3_chr = [];
 let story3_bg = [];
@@ -93,12 +94,34 @@ let stage3_sil = [];
 let stage3_ui = [];
 let clear3_bg = [];
 
-// asset - phase4
+// asset - phase4 boss stage
+let map4_bg = [];
+let map4_chr = [];
+let story4_bg = [];
+let tutorial4_bg = [];
+let tutorial4_chr_defend = [];
+let tutorial4_chr_kick = [];
+let tutorial4_chr_punch = [];
+let tutorial4_sil = [];
+let tutorial4_ui = [];
+let stage4_bg = [];
+let stage4_chr_boss_attack = [];
+let stage4_chr_boss_default = [];
+let stage4_chr_boss_defend = [];
+let stage4_chr_max_default = [];
+let stage4_chr_max_defend = [];
+let stage4_chr_max_kick = [];
+let stage4_chr_max_punch = [];
+let stage4_sil = [];
+let stage4_ui = [];
+let clear4_bg = [];
+let clear4_ui = [];
 
-// asset - phase5
 
+// asset - phase5 gameOutro
 
-
+// asset - exit
+let exit = false;
 
 
 // bodytracking 관련 변수
@@ -122,59 +145,72 @@ let rightShoulderX = 0;
 let rightShoulderY = 0;
 
 
-
-
-
 // 각 단계의 클래스 생성
 // asset 불러오기
 // 변수 초기화
 function preload(){
+  //phase0
   gameTitle = new GameTitle(); 
   gameIntro = new GameIntro();
+  //phase1
   map1 = new Map1();
   story1 = new Story1();
   tutorial1 = new Tutorial1();
   stage1 = new Stage1();
   clear1 = new Clear1();
+  //phase2
+  //phase3
+  //phase4
   stage4 = new Stage4();
+  //phase5
+
+
 
   //sketch
-  //max
-  for(let i=0; i<4; i++){
-    max[i] = loadImage('assets/sketch/max/' + i + '.png');
-  }
-
-  //ui
-  for(let i=0; i<7; i++){
-    ui[i] = loadImage('assets/sketch/ui/' + i + '.png');
-  }
-
-  //coach
-  for(let i=0; i<2; i++){
-    coach[i] = loadImage('assets/sketch/coach/' + i + '.png');
-  }
-  
   //bgm
   for(let i=0; i<1; i++){
     bgm[i] = loadImage('assets/sketch/bgm/' + i + '.png');
   }
 
+  //boss v
+  for(let i=0; i<1; i++){
+    coach[i] = loadImage('assets/sketch/boss/' + i + '.png');
+  }
+
+  //coach v
+  for(let i=0; i<3; i++){
+    coach[i] = loadImage('assets/sketch/coach/' + i + '.png');
+  }
+
+  //max v
+  for(let i=0; i<8; i++){
+    max[i] = loadImage('assets/sketch/max/' + i + '.png');
+  }
+
+  //ua v
+  for(let i=0; i<1; i++){
+    coach[i] = loadImage('assets/sketch/ua/' + i + '.png');
+  }
+
+  //ui v
+  for(let i=0; i<8; i++){
+    ui[i] = loadImage('assets/sketch/ui/' + i + '.png');
+  }
+  
+
   //phase0
   //gameTitle
   for(let i=0; i<1; i++){
-    gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/gameTitle_bg' + i + '.png');
-  }
-  for(let i=0; i<2; i++){
-    gameTitle_ui[i] = loadImage('assets/phase0/gameTitle/ui/gameTitle_ui' + i + '.png');
+    gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/' + i + '.png');
   }
   
-  //gameIntro
+  //gameIntro v
   for(let i=0; i<4; i++){
-    gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/gameIntro_bg' + i + '.png');
-  }
+    gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/' + i + '.png');
+  } 
   for(let i=0; i<1; i++){
-    gameIntro_ui[i] = loadImage('assets/phase0/gameIntro/ui/gameIntro_ui' + i + '.png');
-  }
+    gameIntro_ui[i] = loadImage('assets/phase0/gameIntro/ui/' + i + '.png');
+  } 
   
   //phase1
   //map1
@@ -185,58 +221,70 @@ function preload(){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/map1_chr' + i + '.png');
   }
   
-  //story1
+  //story1 v
   for(let i=0; i<1; i++){
-    story1_bg[i] = loadImage('assets/phase1/story1/bg/story1_bg' + i + '.png');
+    story1_bg[i] = loadImage('assets/phase1/story1/bg/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    story1_ui[i] = loadImage('assets/phase1/story1/ui/' + i + '.png');
   }
 
   //stage1
   for(let i=0; i<6; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<5; i++){
-    stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png');
+  for(let i=0; i<12; i++){
+    stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
-  for(let i=0; i<5; i++){
+  for(let i=0; i<1; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
-  }
+  } //v
 
   // clear1
   for(let i=0; i<2; i++){
     clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
   }
 
-  // stage4
+  //phase2
+  //phase3
+
+  //phase4
+  //stage4
   for(let i=0; i<3; i++){
-    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
+    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png'); //bg
   }
+  // for(let i=0; i<1; i++){
+  //   stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_kick[i] = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
+  // }
   for(let i=0; i<1; i++){
-    stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
-  }
+    stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default/' + i + '.png'); // 1
+  } //v
+  // for(let i=0; i<2; i++){
+  //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
+  // } 
   for(let i=0; i<2; i++){
-    stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<1; i++){
-    stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default' + i + '.png'); // 1
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
-  }
-  for(let i=0; i<2; i++){
-    stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
-  }
-  for(let i=0; i<8; i++){
-    stage4_ui[i] = loadImage('assets/phase4/stage4/ui' + i + '.png');
-  }
+    stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend/' + i + '.png'); // 2
+  } //v
+  for(let i=0; i<9; i++){
+    stage4_sil[i] = loadImage('assets/phase4/stage4/sil/' + i + '.png'); // 9
+  } //v a:012, b: 345, c:678
+  for(let i=0; i<16; i++){
+    stage4_ui[i] = loadImage('assets/phase4/stage4/ui/' + i + '.png'); //15
+  } //v
+
+  //phase5
 
 
   leftWristValues[0] = [];
@@ -251,7 +299,14 @@ function preload(){
 
 // 기본 설정
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // createCanvas(windowWidth, windowHeight);
+  let canvasWidth = 1920*0.7;
+  let canvasHeight = 1080*0.7;
+  let canvas = createCanvas(canvasWidth, canvasHeight);
+  canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
+  canvas.style('display', 'block');
+  canvas.style('margin', 'auto');
+  // createCanvas(1920* 0.7, 1080 * 0.7); //width 1044, height 756
 
   video = createCapture(VIDEO);
   video.size(width, height);
@@ -260,6 +315,10 @@ function setup() {
     poses = results;
   });
   video.hide();
+
+  myFont = loadFont('assets/sketch/font/neodgm.ttf'); //폰트 불러오기
+  noCursor(); //마우스커서 없애기
+  angleMode(DEGREES); //3초 타이머 관련
 }
 
 
@@ -268,24 +327,25 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
+  textFont(myFont);
   console.log("phase " + phase);
   console.log("scene " + scene);
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
         gameTitle.display();
+        
       } 
       else if (scene == 1){
         gameIntro.display();
+        
       }
       break;
 
     case 1: //phase1 : map1~clear1
       if (scene == 0){ // map1
-         map1.move();
+        map1.move();
         map1.display();
-       
-        
       }
       else if (scene == 1){ // story1
         story1.display();
@@ -319,15 +379,17 @@ function draw() {
     case 3: //phase3
     case 4: //phase4
       if(stage4.countMax > 0 && stage4.countBoss > 0){
-        if(gaming == true){
+        if(stage4.gaming == true){
+        stage4.arcLength += 1;
         stage4.displayGame();
+        
         // stage4.check3sec();
         // stage4.checkA();
         // stage4.checkB();
         // stage4.checkC();
-        stage4.play();
+        // stage4.play();
       }
-      else if(gaming == false){
+      else if(stage4.gaming == false){
         // stage4.check2sec();
         if (stage4.check2sec() == true){
           stage4.gauge();
@@ -339,22 +401,37 @@ function draw() {
       }
     }
     else {
-      // 나중에 채우기
+      // 나중에 채우기, 맥스 피가 0이 되거나 보스 피가 0이 됐을 때
     }
     case 5: //phase5
     default:
   }
+  //exit
+  if(phase == 1 || phase == 2 || phase == 3 || phase == 4 || scene == 1){
+    image(ui[0], width / 2 - 20, height / 2 + 10 ,  width, height); 
+  } 
+  
+  if(exit == true){
+    imageMode(CENTER);
+    image(ui[1], width / 2, height / 2, width, height);
+    image(ui[2], width / 2, height / 2, width, height);
+    image(ui[3], width / 2, height / 2, width, height);
+  }
+  //mouse cursor
+  imageMode(CORNER);
+  image(ui[7], mouseX, mouseY, ui[7].width / 2, ui[7].height / 2);
+  imageMode(CENTER);
+  
 }
 
-// ENTER 키를 누를 때, 다음 단계로 넘어간다
+// SPACEBAR 키를 누를 때, 다음 단계로 넘어간다
 function keyPressed(){
-  if (keyCode === ENTER){
+  if (keyCode === 32){
     switch(phase){
       case 0:
         if (scene == 0){ //gameTitle
-          if(gameTitle.credit == false){
-            scene++;
-          }
+          scene++;
+          
         }
         else if (scene == 1 && gameIntro.cut < gameIntro.maxcut){ //gameIntro
           gameIntro.cut++; //배경이 바뀜
@@ -437,6 +514,78 @@ function mouseClicked() {
       
   }
   
+  // rect(width - 70, 63, 90, 90); exit box size
+  if(mouseX >= width - 70 - 45 &&
+     mouseX <= width - 70 + 45 &&
+     mouseY >= 63 - 45 &&
+     mouseY <= 64 + 45){
+      exit = true;
+  }
+  // rect(width / 2 - 120, height / 2 + 65, 220, 50); yes box size
+  // rect(width / 2 + 135, height / 2 + 65, 220, 50); no box size
+  // rect(width / 2 + 251, height / 2 - 88, 24, 24); x box size
+  if(exit == true){
+    if(mouseX >= width / 2 - 120 - 110 &&
+       mouseX <= width / 2 - 120 + 110 &&
+       mouseY >= height / 2 + 65 - 25 &&
+       mouseY <= height / 2 + 65 + 25){
+        phase = 0;
+        scene = 0;
+        //turn every cut to 0
+        gameIntro.cut = 0;
+
+        //phase1
+        map1.cut = 0;
+        map1.moveOn = false;
+        story1.cut = 0;
+        tutorial1.cut = 0;
+        tutorial1.count = 3;
+        stage1.cut = 0;
+        stage1.count = 5;
+        clear1.cut = 0;
+        stage4.countBoss = 0;
+        stage4.countMax = 0;
+
+        // // phase2의 클래스 - reverse curl
+        // let map2;
+        // let story2;
+        // let tutorial2;
+        // let stage2;
+        // let clear2;
+
+        // // phase3의 클래스 - overhead press
+        // let map3;
+        // let story3;
+        // let tutorial3;
+        // let stage3;
+        // let clear3;
+
+        // // phase4의 클래스 - boss stage
+        // let map4;
+        // let story4;
+        // let tutorial4;
+        // let stage4;
+
+        // // phase5의 클래스 - end
+        // let gameOutro;
+        exit = false;
+    }
+    else if(mouseX >= width / 2 + 135 - 110 &&
+       mouseX <= width / 2 + 135 + 110 &&
+       mouseY >= height / 2 + 65 - 25 &&
+       mouseY <= height / 2 + 65 + 25){
+        exit = false;
+    }
+    else if(mouseX >= width / 2 + 251 - 22 &&
+       mouseX <= width / 2 + 251 + 22 &&
+       mouseY >= height / 2 - 88 - 12 &&
+       mouseY <= height / 2 - 88 + 12){
+        exit = false;
+    }
+    
+    
+  }
+     
 }
 
 

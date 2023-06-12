@@ -5,7 +5,7 @@ class Stage1 {
         this.currChr = 0;
         this.prevChr = 0;
         this.isGoingUp = true;
-        this.bgOn = false;
+        this.bgOn = falses;
         this.cut = 0;
         this.maxCut = 1;
         this.dialogue = ["첫 번째 도전과제를 달성하였습니다!",
@@ -16,7 +16,7 @@ class Stage1 {
     display(){
         if (this.count > 0){
             background(100); // 나중에 지우기
-            image(stage1_bg[5 - this.count], 0, 0, windowHeight, windowWidth);
+            image(stage1_bg[0], 0, 0, width, height);
             image(stage1_chr[this.currChr], width/2, height*2/5, 300, 300);
             image(stage1_sil[this.currSil], width/3, height*2/5, 300, 300);
             image(stage1_ui[2], width/3.5, height*2/5, 150, 150);
