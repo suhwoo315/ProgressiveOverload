@@ -150,4 +150,9 @@ class Stage1 {
         let dumbbellY = y/height * (minY - maxY);
         image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
     }
+
+    // 사운드 구현
+    sound(){
+        if(this.count == 4) stage1_snd[2].play(); 
+    }
 }
