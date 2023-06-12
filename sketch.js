@@ -217,6 +217,7 @@ function preload(){
   for(let i=0; i<1; i++){
     map1_bg[i] = loadImage('assets/phase1/map1/bg/map1_bg' + i + '.png');
   }
+
   for(let i=0; i<1; i++){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/map1_chr' + i + '.png');
   }
@@ -239,6 +240,7 @@ function preload(){
   for(let i=0; i<1; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
+
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
   } //v
@@ -397,6 +399,7 @@ function draw() {
         }
         else if(stage4.check2sec() == false){
           stage4.changeGame();
+          savedtime = millis();
         }
       }
     }
