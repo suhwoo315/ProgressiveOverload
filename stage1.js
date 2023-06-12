@@ -5,8 +5,8 @@ class Stage1 {
         this.currChr = 0;
         //this.prevChr = 0;
         //this.isGoingUp = true;
-        this.touchLower = true;
-        this.touchUpper = false;
+        this.touchLower = false;
+        this.touchUpper = true;
         this.bgOn = false;
         this.cut = 0;
         this.maxCut = 1;

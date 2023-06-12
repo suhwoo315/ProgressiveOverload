@@ -8,7 +8,6 @@
 
 
 
-
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 0;
 let scene = 0;
@@ -154,6 +153,7 @@ let pressLower = 4.8/10;
 // asset 불러오기
 // 변수 초기화
 function preload(){
+
   //phase0
   gameTitle = new GameTitle(); 
   gameIntro = new GameIntro();
