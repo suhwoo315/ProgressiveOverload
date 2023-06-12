@@ -51,6 +51,8 @@ let gameOutro;
 let ui = [];
 let max = [];
 let coach = [];
+let boss = [];
+let ua  = [];
 let bgm = [];
 
 // asset - phase0
@@ -179,7 +181,7 @@ function preload(){
 
   //boss v
   for(let i=0; i<1; i++){
-    coach[i] = loadImage('assets/sketch/boss/' + i + '.png');
+    boss[i] = loadImage('assets/sketch/boss/' + i + '.png');
   }
 
   //coach v
@@ -194,7 +196,7 @@ function preload(){
 
   //ua v
   for(let i=0; i<1; i++){
-    coach[i] = loadImage('assets/sketch/ua/' + i + '.png');
+    ua[i] = loadImage('assets/sketch/ua/' + i + '.png');
   }
 
   //ui v
@@ -471,6 +473,7 @@ function keyPressed(){
           else {
             phase = 4;
             scene = 0;
+            savedtime = millis();
           }
         }
       break;

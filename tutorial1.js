@@ -26,10 +26,16 @@ class Tutorial1 {
         switch(this.cut){
             case 0:
             case 1:
+                //bg
                 background(100);
-                image(stage1_ui[1], 1000, 500, 300, 300);
-                image(ui[5], width/2, height*4/5, 500, 200);
-                text(this.dialogue[this.cut], width/2, height*4/5);
+                //ui
+                imageMode(CENTER);
+                image(ui[5], width/2, height/2-180, width, height-100);
+                //text
+                textSize(25);
+                fill(0);
+                text(this.dialogue[this.cut], width/2, height/2);
+                //image(stage1_ui[1], 1000, 500, 300, 300);
                 break;
 
             /*
@@ -58,38 +64,72 @@ class Tutorial1 {
             case 2: //4
             case 3: //5
             case 4: //6
-                image(stage1_bg[0], 0, 0);
-                image(stage1_ui[0], 20, 20, 100, 50);
-                image(coach[0], width/2, height*2/5, 300, 300);
-                image(ui[4], width/2, height*4/5, 500, 200);
-                text(this.dialogue[this.cut], width/2, height*4/5);
+                //bg
+                imageMode(CENTER);
+                image(stage1_bg[0], width/2, height/2, width, height);
+                //chr
+                image(coach[0], width / 2, height / 2, coach[0].width / 3, coach[0].height / 3);
+                //ui
+                image(stage1_ui[0], 20, 20, 100, 50); // 운동 이름
+                image(ui[6], width/2, height/2, width, height); //네모 박스
+                image(ui[4], width/2, height/2, width, height); //게이지바
+                //text
+                textSize(25);
+                textAlign(CENTER, CENTER);
+                fill(255);
+                text("코치 볼트", width / 2 - 460, height / 2 + 65);
+                textAlign(LEFT, TOP);
+                fill(0);
+                text(this.dialogue[this.cut], width/2-580, height-250);
                 break;
 
             case 5: //7
-                image(stage1_bg[0], 0, 0);
-                image(stage1_ui[0], 20, 20, 100, 50);
-                image(stage1_ui[2], width/3.5, height*2/5, 300, 300);
-                image(stage1_sil[this.currSil], width/3, height*2/5, 300, 300);
-                image(stage1_chr[this.currChr], width/2, height*2/5, 300, 300);
-                image(ui[4], width/2, height*4/5, 500, 200);
+                //bg
+                imageMode(CENTER);
+                image(stage1_bg[0], width/2, height/2, width, height);
+                //sil
+                image(stage1_sil[this.currSil], width/2 - 400, height/2, 300, 300);
+                //chr
+                image(stage1_chr[this.currChr], width/2 + 50, height/2+20, 500, 500);
+                //ui
+                image(stage1_ui[0], 20, 20, 100, 50); // 운동 이름
+                image(stage1_ui[2], width / 2 - 180, height / 2-30, width, height); //게이지바
+                image(ui[4], width/2, height/2+200, width, height/2); // 박스
+                //text
+                textSize(25);
+                textAlign(CENTER, CENTER);
+                fill(255);
+                text("코치 볼트", width / 2 - 460, height / 2 + 65+170);
+                textAlign(LEFT, TOP);
+                fill(0);
                 if (this.count == 2){
-                    text(this.dialogue[this.cut + 1], width/2, height*4/5);
+                    text(this.dialogue[this.cut + 1], width/2-580, height-100);
                 }
                 else if (this.count == 1){
-                    text(this.dialogue[this.cut + 2], width/2, height*4/5);
+                    text(this.dialogue[this.cut + 2], width/2-580, height-100);
                 }
                 else {
-                    text(this.dialogue[this.cut], width/2, height*4/5);
+                    text(this.dialogue[this.cut], width/2-580, height-100);
                 }
                 break;
 
             case 8: //10
             case 9: //11
-                image(stage1_bg[0], 0, 0);
+                //bg
+                image(stage1_bg[0], width/2, height/2, width, height);
+                //chr
+                image(coach[0], width / 2, height / 2, coach[0].width / 3, coach[0].height / 3);
+                //ui
                 image(stage1_ui[0], 20, 20, 100, 50);
-                image(coach[0], width/2, height*2/5, 300, 300);
-                image(ui[4], width/2, height*4/5, 500, 200);
-                text(this.dialogue[this.cut], width/2, height*4/5);
+                image(ui[4], width/2, height/2, width, height);
+                //text
+                textSize(25);
+                textAlign(CENTER, CENTER);
+                fill(255);
+                text("코치 볼트", width / 2 - 460, height / 2 + 65);
+                textAlign(LEFT, TOP);
+                fill(0);
+                text(this.dialogue[this.cut], width/2-580, height-250);
                 break;
 
             default:
@@ -216,9 +256,9 @@ class Tutorial1 {
             }
         }
 
-        textSize(100);
-        fill("white");
-        text(this.currChr, 400, 400);
+        // textSize(100);
+        // fill("white");
+        // text(this.currChr, 400, 400);
     }
 
     // 플레이어의 자세가 기준선을 주어진 횟수만큼 넘었는지 확인한다
