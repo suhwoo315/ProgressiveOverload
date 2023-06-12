@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
+let phase = 4;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -58,44 +58,57 @@ let bgm = [];
 // asset - phase0
 let gameTitle_bg = [];
 let gameTitle_ui = [];
+let gameTitle_snd = [];
 let gameIntro_bg = [];
 let gameIntro_ui = [];
+let gameIntro_snd = [];
 
 // asset - phase1 dumbbell curl
 let map1_bg = [];
 let map1_chr = [];
+let map1_snd = [];
 let story1_bg = [];
+let story1_snd = [];
 let story1_ui = [];
 let stage1_bg = [];
 let stage1_chr = [];
 let stage1_sil = [];
+let stage1_snd = [];
 let stage1_ui = [];
 let clear1_bg = [];
 
 // asset - phase2 reverse curl
 let map2_bg = [];
 let map2_chr = [];
+let map2_snd = [];
 let story2_bg = [];
+let story2_snd = [];
 let stage2_bg = [];
 let stage2_chr = [];
 let stage2_sil = [];
+let stage2_snd = [];
 let stage2_ui = [];
 let clear2_bg = [];
 
 // asset - phase3 overhead press
 let map3_bg = [];
 let map3_chr = [];
+let map3_snd = [];
 let story3_bg = [];
+let story3_snd = [];
 let stage3_bg = [];
 let stage3_chr = [];
 let stage3_sil = [];
+let stage3_snd = [];
 let stage3_ui = [];
 let clear3_bg = [];
 
 // asset - phase4 boss stage
 let map4_bg = [];
 let map4_chr = [];
+let map4_snd = [];
 let story4_bg = [];
+let story4_snd = [];
 let tutorial4_bg = [];
 let tutorial4_chr_defend = [];
 let tutorial4_chr_kick = [];
@@ -111,6 +124,7 @@ let stage4_chr_max_defend = [];
 let stage4_chr_max_kick = [];
 let stage4_chr_max_punch = [];
 let stage4_sil = [];
+let stage4_snd = [];
 let stage4_ui = [];
 let clear4_bg = [];
 let clear4_ui = [];
@@ -210,11 +224,17 @@ function preload(){
   for(let i=0; i<1; i++){
     gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/' + i + '.png');
   }
-  
+  for(let i=0; i<0; i++){
+    gameTitle_snd[i] = loadSound('assets/phase0/gameTitle/snd/' + i + '.mp3');
+  }
+
   //gameIntro v
   for(let i=0; i<4; i++){
     gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/' + i + '.png');
-  } 
+  }
+  for(let i=0; i<0; i++){
+    gameIntro_snd[i] = loadSound('assets/phase0/gameIntro/snd/' + i + '.mp3');
+  }  
   for(let i=0; i<1; i++){
     gameIntro_ui[i] = loadImage('assets/phase0/gameIntro/ui/' + i + '.png');
   } 
@@ -224,7 +244,9 @@ function preload(){
   for(let i=0; i<1; i++){
     map1_bg[i] = loadImage('assets/phase1/map1/bg/' + i + '.png');
   }
-
+  for(let i=0; i<0; i++){
+    map1_snd[i] = loadSound('assets/phase1/map1/snd/' + i + '.mp3');
+  }
   for(let i=0; i<2; i++){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/' + i + '.png');
   }
@@ -232,6 +254,9 @@ function preload(){
   //story1 v
   for(let i=0; i<1; i++){
     story1_bg[i] = loadImage('assets/phase1/story1/bg/' + i + '.png');
+  }
+  for(let i=0; i<0; i++){
+    story1_snd[i] = loadSound('assets/phase1/story1/snd/' + i + '.mp3');
   }
   for(let i=0; i<1; i++){
     story1_ui[i] = loadImage('assets/phase1/story1/ui/' + i + '.png');
@@ -247,10 +272,15 @@ function preload(){
   for(let i=0; i<1; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
-
+  for(let i=0; i<3; i++){
+    stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
+  }
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
   } //v
+  for(let i=0; i<3; i++){
+    stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
+  }
 
   // clear1
   for(let i=0; i<2; i++){
@@ -287,6 +317,9 @@ function preload(){
   }
   for(let i=0; i<9; i++){
     stage4_sil[i] = loadImage('assets/phase4/stage4/sil/' + i + '.png');
+  }
+  for(let i=0; i<10; i++){
+    stage4_snd[i] = loadSound('assets/phase4/stage4/snd/' + i + '.mp3');
   }
 
 
@@ -374,6 +407,7 @@ function draw() {
         trackWrists();
         stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
+        stage1.sound();
       }
       else if (scene == 4){ //clear1
         clear1.display();
@@ -383,6 +417,21 @@ function draw() {
     case 2: //phase2
     case 3: //phase3
     case 4: //phase4
+      if(scene == 0){ //map4
+
+      }
+      else if(scene == 1){ //story4
+
+      }
+      else if(scene == 2){ //tutorial4
+        
+      }
+      else if(scene == 3){ //stage4
+        
+      }
+      else if(scene == 4){ //clear4
+        
+      }
       if(stage4.countMax > 0 && stage4.countBoss > 0){
         if(stage4.gaming == true){
         stage4.arcLength += 1;
