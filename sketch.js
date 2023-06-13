@@ -10,7 +10,7 @@
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 4;
-let scene = 3;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -185,6 +185,7 @@ function preload(){
   //phase2
   //phase3
   //phase4
+  tutorial4 = new Tutorial4();
   stage4 = new Stage4();
   //phase5
 
@@ -450,7 +451,7 @@ function draw() {
             }
           }
         }
-        else {
+        else { // temporary ending
           if (stage4.countMax <= 0){
             background(0);
             fill(255, 0, 0);
@@ -470,6 +471,7 @@ function draw() {
     case 5: //phase5
     default:
   }
+
   //exit
   if(phase == 1 || phase == 2 || phase == 3 || phase == 4 || scene == 1){
     image(ui[0], width / 2 - 20, height / 2 + 10 ,  width, height); 
@@ -481,6 +483,7 @@ function draw() {
     image(ui[2], width / 2, height / 2, width, height);
     image(ui[3], width / 2, height / 2, width, height);
   }
+
   //mouse cursor
   imageMode(CORNER);
   image(ui[7], mouseX, mouseY, ui[7].width / 2, ui[7].height / 2);
@@ -537,8 +540,7 @@ function keyPressed(){
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
             phase = 4;
-            scene = 0;
-            savedtime = millis();
+            scene = 2;
           }
         }
       break;
@@ -546,6 +548,21 @@ function keyPressed(){
       case 2:
       case 3:
       case 4:
+        if (scene == 2){
+          if (tutorial4.getCut() < tutorial4.getMaxCut()){
+            tutorial4.increaseCut();
+          }
+          else {
+
+            scene++;
+          }
+        }
+        else if (scene == 3 && !stage4.gameStarted){
+          console.log("HERE!");
+          stage4.gameStarted = true;
+          stage4.gaming = true;
+          savedtime = millis();
+        }
       case 5:
       default:
     }

@@ -1,11 +1,13 @@
 class Stage4 {
     constructor(){
+        this.gameStarted = false;
+
         this.seq = ["B", //0 A= 덤벨컬
                     "A", //1 B=리버스컬
                     "C",
                    "B", "C", "A", "C"]; //2 C=프레스
         this.index = 0; //sequence의 인덱스
-        this.gaming = true ; //동작을 수행, false는 결과를 보여주는 단계
+        this.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
         this.attackSuccess = false; // A,B에 성공, 보스의 hp -
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
@@ -29,6 +31,16 @@ class Stage4 {
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
+      if (!this.gameStarted){
+        image(stage4_bg[0], width / 2, height / 2, width, height);
+        rectMode(CORNER);
+        fill(255, 150);
+        rect(0, 0, width, height);
+        textAlign(CENTER, CENTER);
+        text("자, 그럼 ENTER를 눌러서 시작해볼까!!!", width/2, height/2);
+        return;
+      }
+
       //운동에 상관없는 asset : 배경, 캐릭터, ui, hp bar, hp
       // 배경
       imageMode(CENTER); //보스 hp에 따라서 달라짐 9~7, 6~4, 3~0
