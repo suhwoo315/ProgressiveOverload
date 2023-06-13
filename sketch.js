@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
-let scene = 2;
+let phase = 0;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -297,33 +297,33 @@ function preload(){
   for(let i=0; i<1; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
-  for(let i=0; i<1; i++){
-    stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
-  }
+  // for(let i=0; i<1; i++){
+  //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
+  // }
 
   // stage4
   for(let i=0; i<3; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
   
-  // for(let i=0; i<1; i++){
-  //   stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
-  // }
+  for(let i=0; i<1; i++){
+    stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default/' + i + '.png'); // 1
+  }
   for(let i=0; i<2; i++){
     stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch/' + i + '.png'); // 2
   }
   for(let i=0; i<2; i++){
     stage4_chr_max_kick[i] = loadImage('assets/phase4/stage4/chr/max/kick/' + i + '.png'); // 2
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend/' + i + '.png'); // 2
   }
   for(let i=0; i<1; i++){
     stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default/' + i + '.png'); // 1
   }
-  // for(let i=0; i<2; i++){
-  //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack/' + i + '.png'); // 2
-  // }
+  for(let i=0; i<1; i++){
+    stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack/' + i + '.png'); // 2
+  }
   for(let i=0; i<2; i++){
     stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend/' + i + '.png'); // 2
   }
@@ -380,8 +380,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log("phase " + phase);
-  console.log("scene " + scene);
+  // console.log("phase " + phase);
+  // console.log("scene " + scene);
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
@@ -442,7 +442,7 @@ function draw() {
         // story4.display();
       }
       else if (scene == 2){ // tutorial4
-        // tutorial4.display();
+        tutorial4.display();
       }
       else if (scene == 3){ // stage4
         if(stage4.countMax > 0 && stage4.countBoss > 0){
@@ -450,7 +450,7 @@ function draw() {
             trackWrists();
             stage4.play();
             stage4.displayGame();
-            stage4.arcLength += 3;
+            stage4.arcLength += 0.7;
           }
           else if(stage4.gaming == false){
             if (stage4.check2sec() == true){
@@ -542,16 +542,19 @@ function keyPressed(){
           }
           else {
             scene++;
-            map4.moveOn = true;
+            //map4.moveOn = true;
           }
         }
         else if (scene == 3){ //stage1
-          if (stage1.cut < stage1.maxCut) stage1.cut++;
-          else scene++;
+          if (stage1.count <= 0){
+            if (stage1.cut < stage1.maxCut) stage1.cut++;
+            else scene++;
+          }
         }
         else if (scene == 4){ //clear1
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
+            console.log("NEXT");
             phase = 4;
             scene = 2;
           }

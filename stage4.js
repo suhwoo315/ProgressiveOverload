@@ -25,7 +25,7 @@ class Stage4 {
         this.currChr = 0;
         this.touchUpper = false;
         this.touchLower = false;
-        this.actionTime = 5000;
+        this.actionTime = 9000;
         this.resultTime = 2000;
     }
 
@@ -37,7 +37,7 @@ class Stage4 {
         fill(255, 150);
         rect(0, 0, width, height);
         textAlign(CENTER, CENTER);
-        text("자, 그럼 ENTER를 눌러서 시작해볼까!!!", width/2, height/2);
+        text("자, 그럼 SPACE BAR를 눌러서 시작해볼까!!!", width/2, height/2);
         return;
       }
 
@@ -54,50 +54,6 @@ class Stage4 {
         image(stage4_bg[2], width / 2, height / 2, width, height);
       }
       image(stage4_ui[15], width / 2, height / 2, width, height);
-      
-
-      if (this.gaming){
-        // 캐릭터
-        image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
-        // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
-        image(max[5], width / 2 - 100, height / 2, 600, 600); //max
-      }
-      else {
-        if(this.attackSuccess == true){
-          image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
-          switch(this.seq[this.index]){
-            case 'A':
-              if (frameCount % 20 < 10) image(stage4_chr_max_punch[0], width / 2 - 100, height / 2, 600, 600);
-              else image(stage4_chr_max_punch[1], width / 2 - 100, height / 2, 600, 600);
-              break;
-            case 'B':
-              if (frameCount % 20 < 10) image(stage4_chr_max_kick[0], width / 2 - 100, height / 2, 600, 600);
-              else image(stage4_chr_max_kick[1], width / 2 - 100, height / 2, 600, 600);
-              break;
-            default:
-              break;
-          }
-          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
-        }
-        else if(this.attackFail == true){
-          if (frameCount % 20 < 10) image(stage4_chr_boss_defend[0], width/2 + 400, height/2  - 100, 450, 450);
-          else image(stage4_chr_boss_defend[1], width/2 + 400, height/2  - 100, 450, 450);
-          image(max[5], width / 2 - 100, height / 2, 600, 600); //max
-          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
-        }
-        else if(this.defendSuccess == true){
-          image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
-          if (frameCount % 20 < 10) image(stage4_chr_max_defend[0], width / 2 - 100, height / 2, 600, 600);
-          else image(stage4_chr_max_defend[0], width / 2 - 100, height / 2, 600, 600); // 에셋 나오면 1로 고치기
-          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
-        }
-        else if(this.defendFail == true){
-          if (frameCount % 20 < 10) image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //에셋 나오면 고치기
-          else image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); // 에셋 나오면 고치기
-          image(max[5], width / 2 - 100, height / 2, 600, 600); //max
-          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
-        }
-      }
       
       //ui
       imageMode(CORNER);
@@ -375,14 +331,14 @@ class Stage4 {
         textAlign(RIGHT, CENTER);
         textSize(25);
         fill(0);
-        text("오버헤드 프레스", width / 8 - 30, height / 2 - 230 + 80);
+        text("오버헤드 프레스", width / 8 + 30, height / 2 - 230 + 80);
       }
 
       // 호의 길이에 따라 끝 각도 계산
       this.endAngle = map(this.arcLength, 0, 300, 0, 360);
 
       // 부채꼴 그리기
-      fill(0, 90); // 색상 설정
+      fill(0); // 색상 설정
       noStroke();
       arc(135, 70, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
 
@@ -390,6 +346,51 @@ class Stage4 {
         this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
         fill(255, 0, 0);
         //rect(width / 2, height / 2, 500, 500);
+      }
+
+      if (this.gaming){
+        // 캐릭터
+        image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+        image(stage4_chr_max_default[0], width/2, height/2, 600, 600); //max
+        //image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+      }
+      else {
+        if(this.attackSuccess == true){
+          if (!stage4_snd[3].isPlaying()) stage4_snd[3].play();
+          image(stage4_chr_boss_defend[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+          switch(this.seq[this.index]){
+            case 'A':
+              if (frameCount % 20 < 10) image(stage4_chr_max_punch[0], width / 2, height / 2, 600, 600);
+              else image(stage4_chr_max_punch[1], width / 2, height / 2, 600, 600);
+              break;
+            case 'B':
+              if (frameCount % 20 < 10) image(stage4_chr_max_kick[0], width / 2, height / 2, 600, 600);
+              else image(stage4_chr_max_kick[1], width / 2, height / 2, 600, 600);
+              break;
+            default:
+              break;
+          }
+          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
+        }
+        else if(this.attackFail == true){
+          if (!stage4_snd[9].isPlaying()) stage4_snd[9].play();
+          image(stage4_chr_boss_defend[1], width/2 + 400, height/2  - 100, 450, 450);
+          image(stage4_chr_max_default[0], width/2, height/2, 600, 600); //max
+          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
+        }
+        else if(this.defendSuccess == true){
+          if (!stage4_snd[5].isPlaying()) stage4_snd[5].play();
+          image(stage4_chr_boss_attack[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+          image(stage4_chr_max_defend[1], width / 2, height / 2, 600, 600);
+          image(stage4_chr_max_defend[0], width / 2, height / 2, 600, 600);
+          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
+        }
+        else if(this.defendFail == true){
+          if (!stage4_snd[3].isPlaying()) stage4_snd[3].play();
+          image(stage4_chr_boss_attack[0], width/2 + 400, height/2  - 100, 450, 450);
+          image(stage4_chr_max_default[0], width/2, height/2, 600, 600); //max
+          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
+        }
       }
 
     }//displayGame()의 끝

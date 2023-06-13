@@ -7,10 +7,15 @@ class Clear1{
     }
 
     display(){
-        image(stage1_bg[0], 0, 0);
-        image(coach[0], width/2, height*2/5, 300, 300);
-        image(ui[4], width/2, height*4/5, 500, 200);
+        imageMode(CENTER);
+        image(stage1_bg[0], width/2, height/2, width, height);
+        image(coach[0], width / 2, height / 2, max[3].width / 3, max[3].height / 3);
+        image(ui[4], width/2, height/2, width, height);
         textAlign(LEFT, TOP)
+        fill(0);
         text(this.dialogue[this.cut], width/2 - 580, height - 250);
+        textAlign(CENTER, CENTER);
+        fill(255);
+        text("코치 볼트", width / 2 - 460, height / 2 + 65);
     }
 }
