@@ -476,7 +476,7 @@ function draw() {
             fill(0, 255, 0);
             textSize(100);
             textAlign(CENTER, CENTER);
-            text("YOU WON", width/2, height/2);
+            text("YOU WIN", width/2, height/2);
           }
         }
       }
@@ -642,6 +642,12 @@ function mouseClicked() {
         clear1.cut = 0;
         stage4.countBoss = 0;
         stage4.countMax = 0;
+        stage4.index = 0; //sequence의 인덱스
+        stage4.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
+        stage4.attackSuccess = false; // A,B에 성공, 보스의 hp -
+        stage4.attackFail = false; // A,B 실패, 아무 영향 없음
+        stage4.defendSuccess = false; // C 성공, 아무 영향 없음.
+        stage4.defendFail = false;
 
         // // phase2의 클래스 - reverse curl
         // let map2;
