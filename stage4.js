@@ -1,11 +1,13 @@
 class Stage4 {
     constructor(){
+        this.gameStarted = false;
+
         this.seq = ["B", //0 A= 덤벨컬
                     "A", //1 B=리버스컬
                     "C",
                    "B", "C", "A", "C"]; //2 C=프레스
         this.index = 0; //sequence의 인덱스
-        this.gaming = true ; //동작을 수행, false는 결과를 보여주는 단계
+        this.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
         this.attackSuccess = false; // A,B에 성공, 보스의 hp -
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
@@ -21,19 +23,24 @@ class Stage4 {
         // 아직 쓰일지 모르는 변수들
         this.currSil = 0;
         this.currChr = 0;
+        this.touchUpper = false;
         this.touchLower = false;
-        this.touchUpper = true;
-        this.actionTime = 3000;
+        this.actionTime = 5000;
         this.resultTime = 2000;
-        
     }
-
-
-
-
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
+      if (!this.gameStarted){
+        image(stage4_bg[0], width / 2, height / 2, width, height);
+        rectMode(CORNER);
+        fill(255, 150);
+        rect(0, 0, width, height);
+        textAlign(CENTER, CENTER);
+        text("자, 그럼 ENTER를 눌러서 시작해볼까!!!", width/2, height/2);
+        return;
+      }
+
       //운동에 상관없는 asset : 배경, 캐릭터, ui, hp bar, hp
       // 배경
       imageMode(CENTER); //보스 hp에 따라서 달라짐 9~7, 6~4, 3~0
@@ -49,10 +56,48 @@ class Stage4 {
       image(stage4_ui[15], width / 2, height / 2, width, height);
       
 
-      // 캐릭터
-      image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
-      // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
-      image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+      if (this.gaming){
+        // 캐릭터
+        image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+        // image(stage4_chr_max_default[0], width/2 - 100, height/2, 50, 100); //max
+        image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+      }
+      else {
+        if(this.attackSuccess == true){
+          image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+          switch(this.seq[this.index]){
+            case 'A':
+              if (frameCount % 20 < 10) image(stage4_chr_max_punch[0], width / 2 - 100, height / 2, 600, 600);
+              else image(stage4_chr_max_punch[1], width / 2 - 100, height / 2, 600, 600);
+              break;
+            case 'B':
+              if (frameCount % 20 < 10) image(stage4_chr_max_kick[0], width / 2 - 100, height / 2, 600, 600);
+              else image(stage4_chr_max_kick[1], width / 2 - 100, height / 2, 600, 600);
+              break;
+            default:
+              break;
+          }
+          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
+        }
+        else if(this.attackFail == true){
+          if (frameCount % 20 < 10) image(stage4_chr_boss_defend[0], width/2 + 400, height/2  - 100, 450, 450);
+          else image(stage4_chr_boss_defend[1], width/2 + 400, height/2  - 100, 450, 450);
+          image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
+        }
+        else if(this.defendSuccess == true){
+          image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //boss
+          if (frameCount % 20 < 10) image(stage4_chr_max_defend[0], width / 2 - 100, height / 2, 600, 600);
+          else image(stage4_chr_max_defend[0], width / 2 - 100, height / 2, 600, 600); // 에셋 나오면 1로 고치기
+          image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
+        }
+        else if(this.defendFail == true){
+          if (frameCount % 20 < 10) image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); //에셋 나오면 고치기
+          else image(stage4_chr_boss_default[0], width/2 + 400, height/2  - 100, 450, 450); // 에셋 나오면 고치기
+          image(max[5], width / 2 - 100, height / 2, 600, 600); //max
+          image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
+        }
+      }
       
       //ui
       imageMode(CORNER);
@@ -207,7 +252,7 @@ class Stage4 {
         }
         
         //운동 실루엣
-        image(stage4_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 0~2 중 다르게
+        image(stage4_sil[this.currSil], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 0~2 중 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
@@ -266,7 +311,7 @@ class Stage4 {
         
         
         //운동 실루엣
-        image(stage4_sil[3], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
+        image(stage4_sil[this.currSil + 3], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
@@ -325,7 +370,7 @@ class Stage4 {
         
 
         //운동 실루엣
-        image(stage4_sil[6], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 3~5 다르게
+        image(stage4_sil[this.currSil + 6], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //캠 인식에 따라서 6~8 다르게
         //text
         textAlign(RIGHT, CENTER);
         textSize(25);
@@ -334,7 +379,7 @@ class Stage4 {
       }
 
       // 호의 길이에 따라 끝 각도 계산
-      this.endAngle = map(this.arcLength, 10, 300, 0, 360);
+      this.endAngle = map(this.arcLength, 0, 300, 0, 360);
 
       // 부채꼴 그리기
       fill(0, 90); // 색상 설정
@@ -344,22 +389,19 @@ class Stage4 {
       if (this.arcLength > 300) {
         this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
         fill(255, 0, 0);
-        rect(width / 2, height / 2, 500, 500);
+        //rect(width / 2, height / 2, 500, 500);
       }
 
     }//displayGame()의 끝
   
-
-
-
-
-
-    // check3sec(){
-    //   //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
-    //   let passedTime = millis() - savedTime;
-    //   if(passedTime > this.actionTime) return false;
-    //     else return true;
-    // }
+    check3sec(){
+      //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
+      let passedTime = millis() - savedTime;
+      if(passedTime > this.actionTime){
+        return false;
+      }
+      else return true;
+    }
 
     check(upperFraction, lowerFraction){
       let y = (leftWristY + rightWristY) / 2;
@@ -369,13 +411,9 @@ class Stage4 {
       let lowerBound = height*lowerFraction;
 
       if (y < upperBound) {
-          this.currChr = 5;
-          this.currSil = 2;
-          if (this.touchLower){
-              this.count--;
-              this.touchLower = false;
-              this.touchUpper = true;
-          }
+        this.currChr = 5;
+        this.currSil = 2;
+        this.touchUpper = true;
       }
       else if (y < upperBound + (lowerBound-upperBound)*1/4) {
           this.currChr = 4;
@@ -396,36 +434,36 @@ class Stage4 {
       else {
           this.currChr = 0;
           this.currSil = 0;
-          if (this.touchUpper){
-              this.touchLower = true;
-              this.touchUpper = false;
-          }
+          this.touchLower = true;
       }
 
-      textSize(100);
-      fill("black");
-      text(this.currChr, 50, 400);
+      if (this.touchLower && this.touchUpper) return true;
+      else return false;
+
+      // textSize(100);
+      // fill("black");
+      // text(this.currChr, 50, 400);
     }
 
   // 움직이는 아령 UI를 그린다
-  drawDumbbell(y){
+    drawDumbbell(y){
     let maxY = height*2/5 + 100;
     let minY = height*2/5 - 100;
     let dumbbellY = y/height * (minY - maxY);
     //image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
-  }
+    }
 
 // 제한된 시간 안에 동작을 성공해야한다
-     play(){
+    play(){
       //gaming=true일 때만 실행. 3초 내에 미션을 수행했는지를 점검
       if(this.seq[this.index] == 'A'){
-        if(checkTime() == false){//시간을 넘겨서 미션실패
+        if(this.check3sec() == false){//시간을 넘겨서 미션실패
           this.attackFail = true;
           this.gaming = false;
           savedTime = millis();
         }
         else{ //시간 안에 성공
-          if(check(dumbbellCurlUpper, dumbbellCurlLower) == true){
+          if(this.check(dumbbellCurlUpper, dumbbellCurlLower) == true){
             this.attackSuccess = true;
             this.gaming = false;
             savedTime = millis();
@@ -433,13 +471,13 @@ class Stage4 {
         }  
       }
       else if(this.seq[this.index] == 'B'){
-        if(checkTime() == false){//시간을 넘겨서 미션실패
+        if(this.check3sec() == false){//시간을 넘겨서 미션실패
           this.attackFail = true;
           this.gaming = false;
           savedTime = millis();
         }
         else{ //시간 안에 성공
-          if(check(reverseCurlUpper, reverseCurlLower) == true){
+          if(this.check(reverseCurlUpper, reverseCurlLower) == true){
             this.attackSuccess = true;
             this.gaming = false;
             savedTime = millis();
@@ -447,13 +485,13 @@ class Stage4 {
         }  
       }
        else if(this.seq[this.index] == 'C'){
-         if(check3sec() == false){//시간을 넘겨서 미션실패
+         if(this.check3sec() == false){//시간을 넘겨서 미션실패
            this.defendFail = true;
            this.gaming = false;
            savedTime = millis();
          }
          else{ //시간 안에 성공
-           if(check(pressUpper, pressLower) == true){
+           if(this.check(pressUpper, pressLower) == true){
              this.defendSuccess = true;
              this.gaming = false;
              savedTime = millis();
@@ -465,59 +503,33 @@ class Stage4 {
     // 알맞은 화면을 표시한다
     }
 
-
-
-
-
-
-
     //////////////gaming == false일 때의 함수/////////////
     check2sec(){//this.displayResult를 2초 동안 실행
       let passedTime = millis()-savedTime
-      if(passedTime > this.resultTime) return false;
-        else return true;
+      if(passedTime > this.resultTime){
+        return false;
+      }
+      else return true;
     }
 
-    gauge(){//gauge함수에 따라서 displayResult 내의 게이지 속성이 달라짐
+    changeGame(){//점수 계산 및 초기화
+      this.index = (this.index+1)%this.seq.length;
       if (this.attackSuccess == true) {
         this.countBoss--; // 보스 hp 감소
       }
       else if (this.defendFail == true) {
         this.countMax--; // 맥스 hp 감소
+        console.log(this.countMax);
       }
-    }
-
-    displayResult(){//동작에 대한 결과 asset 예시 miss 등, 줄어든 게이지 asset, 리듬게임 아이콘 asset
-      if(this.attackSuccess == true){
-        rectMode(CENTER);
-        fill(255, 0, 0);
-        rect(width / 2, height / 2, 500, 500);
-      }
-      else if(this.attackFail == true){
-        rectMode(CENTER);
-        fill(255, 0, 0);
-        rect(width / 2, height / 2, 500, 500);
-      }
-      else if(this.defendSuccess == true){
-        rectMode(CENTER);
-        fill(255, 0, 0);
-        rect(width / 2, height / 2, 500, 500);
-      }
-      else if(this.defendFail == true){
-        rectMode(CENTER);
-        fill(255, 0, 0);
-        rect(width / 2, height / 2, 500, 500);
-      }
-    }
-
-    changeGame(){//초기화
-      if(attackSuccess == truth || attackFail == truth || defendSuccess == truth || defendFail == truth){
-        this.index = (this.index+1)%this.seq.length;
-      }
+      
       this.attackSuccess = false;
       this.attackFail = false;
       this.defendSuccess = false;
       this.defendFail = false;
+      this.touchLower = false;
+      this.touchUpper = false;
       this.gaming = true;
-  }
+      this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
+      fill(255, 0, 0);
+    }
 }

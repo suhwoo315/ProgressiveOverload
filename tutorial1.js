@@ -241,6 +241,7 @@ class Tutorial1 {
                 this.count--;
                 this.touchLower = false;
                 this.touchUpper = true;
+                stage1_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
             }
         }
         else if (y < upperBound + (lowerBound-upperBound)*1/4) {

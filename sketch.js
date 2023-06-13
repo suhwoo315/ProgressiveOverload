@@ -10,7 +10,7 @@
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 4;
-let scene = 0;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -164,6 +164,9 @@ let reverseCurlLower = 8/10;
 let pressUpper = 3/10;
 let pressLower = 4.8/10;
 
+// 시간
+let savedTime = 0;
+
 
 // 각 단계의 클래스 생성
 // asset 불러오기
@@ -184,6 +187,7 @@ function preload(){
   //phase4
   map4 = new Map4();
   story4 = new Story4();
+  tutorial4 = new Tutorial4();
   stage4 = new Stage4();
   //phase5
 
@@ -309,7 +313,7 @@ function preload(){
     stage4_chr_max_punch[i] = loadImage('assets/phase4/stage4/chr/max/punch/' + i + '.png'); // 2
   }
   for(let i=0; i<2; i++){
-    stage4_chr_max_kick = loadImage('assets/phase4/stage4/chr/max/kick/' + i + '.png'); // 2
+    stage4_chr_max_kick[i] = loadImage('assets/phase4/stage4/chr/max/kick/' + i + '.png'); // 2
   }
   for(let i=0; i<1; i++){
     stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend/' + i + '.png'); // 2
@@ -318,11 +322,11 @@ function preload(){
     stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default/' + i + '.png'); // 1
   }
   // for(let i=0; i<2; i++){
-  //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack' + i + '.png'); // 2
+  //   stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack/' + i + '.png'); // 2
   // }
-  // for(let i=0; i<2; i++){
-  //   stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend' + i + '.png'); // 2
-  // }
+  for(let i=0; i<2; i++){
+    stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend/' + i + '.png'); // 2
+  }
   for(let i=0; i<16; i++){
     stage4_ui[i] = loadImage('assets/phase4/stage4/ui/' + i + '.png');
   }
@@ -346,6 +350,7 @@ function preload(){
 
 // 기본 설정
 function setup() {
+
   // createCanvas(windowWidth, windowHeight);
   let canvasWidth = 1920*0.7;
   let canvasHeight = 1080*0.7;
@@ -440,30 +445,45 @@ function draw() {
         // tutorial4.display();
       }
       else if (scene == 3){ // stage4
-        trackWrists();
         if(stage4.countMax > 0 && stage4.countBoss > 0){
           if(stage4.gaming == true){
-          stage4.arcLength += 1;
-          stage4.displayGame();
-        }
-        else if(stage4.gaming == false){
-          if (stage4.check2sec() == true){
-            stage4.gauge();
-            stage4.displayResult();
+            trackWrists();
+            stage4.play();
+            stage4.displayGame();
+            stage4.arcLength += 3;
           }
-          else if(stage4.check2sec() == false){
-            stage4.changeGame();
-            savedtime = millis();
+          else if(stage4.gaming == false){
+            if (stage4.check2sec() == true){
+              stage4.displayGame();
+              stage4.arcLength = 299.5;
+            }
+            else if(stage4.check2sec() == false){
+              stage4.changeGame();
+              savedtime = millis();
+            }
+          }
+        }
+        else { // temporary ending
+          if (stage4.countMax <= 0){
+            background(0);
+            fill(255, 0, 0);
+            textSize(100);
+            textAlign(CENTER, CENTER);
+            text("GAME OVER", width/2, height/2);
+          }
+          else {
+            background(0);
+            fill(0, 255, 0);
+            textSize(100);
+            textAlign(CENTER, CENTER);
+            text("YOU WON", width/2, height/2);
           }
         }
       }
-    }
-    else {
-      // 나중에 채우기, 맥스 피가 0이 되거나 보스 피가 0이 됐을 때
-    }
     case 5: //phase5
     default:
   }
+
   //exit
   if(phase == 1 || phase == 2 || phase == 3 || phase == 4 || scene == 1){
     image(ui[0], width / 2 - 20, height / 2 + 10 ,  width, height); 
@@ -475,6 +495,7 @@ function draw() {
     image(ui[2], width / 2, height / 2, width, height);
     image(ui[3], width / 2, height / 2, width, height);
   }
+
   //mouse cursor
   imageMode(CORNER);
   image(ui[7], mouseX, mouseY, ui[7].width / 2, ui[7].height / 2);
@@ -532,8 +553,7 @@ function keyPressed(){
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
             phase = 4;
-            scene = 0;
-            savedtime = millis();
+            scene = 2;
           }
         }
       break;
@@ -541,6 +561,21 @@ function keyPressed(){
       case 2:
       case 3:
       case 4:
+        if (scene == 2){
+          if (tutorial4.getCut() < tutorial4.getMaxCut()){
+            tutorial4.increaseCut();
+          }
+          else {
+
+            scene++;
+          }
+        }
+        else if (scene == 3 && !stage4.gameStarted){
+          console.log("HERE!");
+          stage4.gameStarted = true;
+          stage4.gaming = true;
+          savedtime = millis();
+        }
       case 5:
       default:
     }

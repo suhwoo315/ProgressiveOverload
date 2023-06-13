@@ -4,17 +4,17 @@ class Map4 {
       this.chrY = height * 2/3;
       this.targetX = 0;
       this.targetY = 0;
-      this.speed = 5;
+      // this.speed = 5;
       this.moveOn = false;
     }
   
     display() {
           imageMode(CENTER);
-          image(map4_bg[0], width / 2, height / 2, width, height);
+          image(map1_bg[0], width / 2, height / 2, width, height);
       
           // 캐릭터 그리기
-          // image(map1_chr[0], this.chrX, this.chrY, 200, 200);
-          image(map4_chr[0], width / 2, height / 2, width, height);
+          image(map1_chr[0], this.chrX, this.chrY, 200, 200);
+          image(map1_chr[1], width / 2, height / 2, width, height);
           
     }
 
@@ -47,4 +47,3 @@ class Map4 {
         
       
 }
-
