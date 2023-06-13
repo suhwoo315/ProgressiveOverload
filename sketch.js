@@ -182,6 +182,8 @@ function preload(){
   //phase2
   //phase3
   //phase4
+  map4 = new Map4();
+  story4 = new Story4();
   stage4 = new Stage4();
   //phase5
 
@@ -247,7 +249,7 @@ function preload(){
   for(let i=0; i<0; i++){
     map1_snd[i] = loadSound('assets/phase1/map1/snd/' + i + '.mp3');
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<1; i++){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/' + i + '.png');
   }
   
@@ -287,10 +289,19 @@ function preload(){
     clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
   }
 
+  // map4
+  for(let i=0; i<1; i++){
+    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
+  }
+
   // stage4
   for(let i=0; i<3; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
+  
   // for(let i=0; i<1; i++){
   //   stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default' + i + '.png'); // 1
   // }
@@ -364,8 +375,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  //console.log("phase " + phase);
-  //console.log("scene " + scene);
+  console.log("phase " + phase);
+  console.log("scene " + scene);
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
@@ -380,7 +391,7 @@ function draw() {
 
     case 1: //phase1 : map1~clear1
       if (scene == 0){ // map1
-        map1.move();
+        // map1.move();
         map1.display();
       }
       else if (scene == 1){ // story1
@@ -388,6 +399,7 @@ function draw() {
       }
       else if (scene == 2){ //tutorial1
         tutorial1.display();
+        console.log(tutorial1.cut);
         /*
         if (tutorial1.getCut() == 2){
           trackShoulders();
@@ -422,10 +434,10 @@ function draw() {
         map4.display();
       }
       else if (scene == 1){ // story4
-        story4.display();
+        // story4.display();
       }
       else if (scene == 2){ // tutorial4
-        tutorial4.display();
+        // tutorial4.display();
       }
       else if (scene == 3){ // stage4
         trackWrists();
@@ -492,7 +504,7 @@ function keyPressed(){
 
       case 1:
         if(scene == 0){ //map1
-          map1.moveOn = true;
+          scene++;
         }
         else if (scene == 1 && story1.cut < story1.maxcut){ //story1
             story1.cut++;
@@ -509,6 +521,7 @@ function keyPressed(){
           }
           else {
             scene++;
+            map4.moveOn = true;
           }
         }
         else if (scene == 3){ //stage1

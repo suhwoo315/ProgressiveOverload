@@ -10,6 +10,7 @@ class Clear1{
         image(stage1_bg[0], 0, 0);
         image(coach[0], width/2, height*2/5, 300, 300);
         image(ui[4], width/2, height*4/5, 500, 200);
-        text(this.dialogue[this.cut], width/2, height*4/5);
+        textAlign(LEFT, TOP)
+        text(this.dialogue[this.cut], width/2 - 580, height - 250);
     }
 }

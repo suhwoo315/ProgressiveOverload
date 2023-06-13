@@ -17,25 +17,71 @@ class Stage1 {
     // 알맞은 화면을 표시한다
     display(){
         if (this.count > 0){
-            background(100); // 나중에 지우기
-            image(stage1_bg[0], 0, 0, width, height);
-            image(stage1_chr[this.currChr], width/2, height*2/5, 300, 300);
-            image(stage1_sil[this.currSil], width/3, height*2/5, 300, 300);
-            image(stage1_ui[2], width/3.5, height*2/5, 150, 150);
-            for(let i=0; i<this.count; i++){
-                image(stage1_ui[4], 50 + i * 250, height*4/5, 150, 150);
+            imageMode(CENTER);
+            image(stage1_bg[0], width / 2, height / 2, width, height); //background
+            if(this.count == 4){
+                image(stage1_ui[7], width / 2, height / 2, width, height);
             }
+            else if(this.count == 3){
+                image(stage1_ui[8], width / 2, height / 2, width, height);
+            }
+            else if(this.count == 2){
+                image(stage1_ui[9], width / 2, height / 2, width, height);
+            }
+            else if(this.count == 1){
+                image(stage1_ui[10], width / 2, height / 2, width, height);
+            }
+            image(stage1_chr[this.currChr], width/2 + 50, height/2+20, 500, 500); // character 
+            image(stage1_ui[6], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
+            image(stage1_sil[this.currSil], width / 10 + 20, height / 2 - 20 + 80, 300, 300); //sil
+            image(stage1_ui[2], width / 2 - 10, height / 2 + 60, width, height); //게이지 바
+            image(stage1_ui[0], width / 2, height / 2 + 80, width, height); // 운동 이름
+            
+            image(stage1_ui[4], width / 2, height / 2, width, height);
+            if(this.count == 4){ //회색 아령
+                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
+               
+            }
+            else if(this.count == 3){
+                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
+                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
+            }
+            else if(this.count == 2){
+                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
+                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
+                image(stage1_ui[5], width / 2, height / 2, width, height);
+            }
+            else if(this.count == 1){
+                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
+                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
+                image(stage1_ui[5], width / 2, height / 2, width, height);
+                image(stage1_ui[5], width / 2 - 210, height / 2, width, height);
+            }
+            
+
+            // for(let i=0; i<this.count; i++){
+            //     image(stage1_ui[5], width / 2 + 420 - 210 * i, height / 2, width, height);
+            // }
         }
         else {
             if (!this.bgOn){
                 background(255, 255, 255, 150);
                 this.bgOn = true;
             }
-            image(ui[6], width/2, height/2, 350, 250);
+            fill(255);
+            rectMode(CENTER);
+            rect(width / 2, height / 2, width, height);
+            image(ui[6], width/2, height/2, width, height);
             fill("black");
+            textAlign(CENTER, CENTER);
             text(this.dialogue[this.cut], width/2, height/2);
         }
-    }
+        textAlign(RIGHT, CENTER);
+        textSize(25);
+        fill(0);
+        text("덤벨 컬", width / 8 - 30, height / 2 - 230 + 80);
+        
+    } 
 
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다
     check(upperFraction, lowerFraction){
@@ -81,9 +127,9 @@ class Stage1 {
                 }
             }
 
-            textSize(100);
-            fill("black");
-            text(this.currChr, 50, 400);
+            // textSize(100);
+            // fill("black");
+            // text(this.currChr, 50, 400);
         }
     }
 
@@ -149,7 +195,8 @@ class Stage1 {
         let maxY = height*2/5 + 100;
         let minY = height*2/5 - 100;
         let dumbbellY = y/height * (minY - maxY);
-        image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
+        image(stage1_ui[3], width/ 2 - 10, minY - dumbbellY + 150, width, height);
+        // image(stage4_ui[1], width / 2 - 10, height / 2 + 60, width, height);
     }
 
     // 사운드 구현

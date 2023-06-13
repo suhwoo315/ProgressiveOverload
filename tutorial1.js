@@ -33,6 +33,7 @@ class Tutorial1 {
                 image(ui[5], width/2, height/2-180, width, height-100);
                 //text
                 textSize(25);
+                textAlign(CENTER, CENTER)
                 fill(0);
                 text(this.dialogue[this.cut], width/2, height/2);
                 //image(stage1_ui[1], 1000, 500, 300, 300);
@@ -71,30 +72,41 @@ class Tutorial1 {
                 image(coach[0], width / 2, height / 2, coach[0].width / 3, coach[0].height / 3);
                 //ui
                 image(stage1_ui[0], 20, 20, 100, 50); // 운동 이름
-                image(ui[6], width/2, height/2, width, height); //네모 박스
+                //image(ui[6], width/2, height/2, width, height); //네모 박스
                 image(ui[4], width/2, height/2, width, height); //게이지바
                 //text
                 textSize(25);
                 textAlign(CENTER, CENTER);
                 fill(255);
-                text("코치 볼트", width / 2 - 460, height / 2 + 65);
+                text("코치 볼트", width / 2 - 460, height / 2 + 40);
                 textAlign(LEFT, TOP);
                 fill(0);
-                text(this.dialogue[this.cut], width/2-580, height-250);
-                break;
+                text(this.dialogue[this.cut], width/2 - 580, height - 250);
+                //text
+               
 
             case 5: //7
                 //bg
                 imageMode(CENTER);
                 image(stage1_bg[0], width/2, height/2, width, height);
+                //ui
+                imageMode(CENTER);
+                image(stage1_ui[0], width / 2, height / 2 + 80, width, height); // 운동 이름
+                image(stage1_ui[6], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
+                image(stage1_ui[2], width / 2 - 10, height / 2 + 60, width, height); //게이지바
+                //text
+                textAlign(RIGHT, CENTER);
+                textSize(25);
+                fill(0);
+                text("덤벨 컬", width / 8 - 30, height / 2 - 230 + 80);
+                
+                image(ui[4], width/2, height/2+200, width, height/2); // 박스
                 //sil
-                image(stage1_sil[this.currSil], width/2 - 400, height/2, 300, 300);
+                // image(stage4_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
+                image(stage1_sil[this.currSil], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
                 //chr
                 image(stage1_chr[this.currChr], width/2 + 50, height/2+20, 500, 500);
-                //ui
-                image(stage1_ui[0], 20, 20, 100, 50); // 운동 이름
-                image(stage1_ui[2], width / 2 - 180, height / 2-30, width, height); //게이지바
-                image(ui[4], width/2, height/2+200, width, height/2); // 박스
+                
                 //text
                 textSize(25);
                 textAlign(CENTER, CENTER);
@@ -277,6 +289,6 @@ class Tutorial1 {
         let maxY = height*2/5 + 100;
         let minY = height*2/5 - 100;
         let dumbbellY = y/height * (minY - maxY);
-        image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
+        image(stage1_ui[3], width/ 2 - 10, minY - dumbbellY + 150, width, height);
     }
 }
