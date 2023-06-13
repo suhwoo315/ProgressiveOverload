@@ -12,6 +12,7 @@ class Clear1{
         image(coach[0], width / 2, height / 2, max[3].width / 3, max[3].height / 3);
         image(ui[4], width/2, height/2, width, height);
         textAlign(LEFT, TOP)
+        textSize(25);
         fill(0);
         text(this.dialogue[this.cut], width/2 - 580, height - 250);
         textAlign(CENTER, CENTER);

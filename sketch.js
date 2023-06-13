@@ -157,12 +157,12 @@ let rightShoulderX = 0;
 let rightShoulderY = 0;
 
 // 각 운동의 위, 아래 바운더리
-let dumbbellCurlUpper = 6/10;
-let dumbbellCurlLower = 8/10;
-let reverseCurlUpper = 6/10;
-let reverseCurlLower = 8/10;
+let dumbbellCurlUpper = 6.2/10;
+let dumbbellCurlLower = 7.5/10;
+let reverseCurlUpper = 6.2/10;
+let reverseCurlLower = 7.5/10;
 let pressUpper = 3/10;
-let pressLower = 4.8/10;
+let pressLower = 4.5/10;
 
 // 시간
 let savedTime = 0;
@@ -640,14 +640,15 @@ function mouseClicked() {
         stage1.cut = 0;
         stage1.count = 5;
         clear1.cut = 0;
-        stage4.countBoss = 0;
-        stage4.countMax = 0;
+        stage4.countBoss = 9;
+        stage4.countMax = 3;
         stage4.index = 0; //sequence의 인덱스
         stage4.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
         stage4.attackSuccess = false; // A,B에 성공, 보스의 hp -
         stage4.attackFail = false; // A,B 실패, 아무 영향 없음
         stage4.defendSuccess = false; // C 성공, 아무 영향 없음.
         stage4.defendFail = false;
+        stage4.gameStarted = false;
 
         // // phase2의 클래스 - reverse curl
         // let map2;
