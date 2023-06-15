@@ -14,6 +14,7 @@ let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
+let tutorial0;
 let gameIntro;
 
 // phase1의 클래스 - dumbbell curl
@@ -174,7 +175,8 @@ let savedTime = 0;
 function preload(){
 
   //phase0
-  gameTitle = new GameTitle(); 
+  gameTitle = new GameTitle();
+  tutorial0 = new Tutorial0();
   gameIntro = new GameIntro();
   //phase1
   map1 = new Map1();
@@ -389,6 +391,9 @@ function draw() {
         
       } 
       else if (scene == 1){
+        tutorial0.display();
+      }
+      else if (scene == 2){
         gameIntro.display();
         
       }
@@ -510,16 +515,17 @@ function keyPressed(){
       case 0:
         if (scene == 0){ //gameTitle
           scene++;
-          
         }
-        else if (scene == 1 && gameIntro.cut < gameIntro.maxcut){ //gameIntro
-          gameIntro.cut++; //배경이 바뀜
-          
+        else if (scene == 1){
+          if (tutorial0.getCut() < tutorial0.getMaxCut()) tutorial0.increaseCut();
+          else scene++;
         }
-        else if (scene == 1 && gameIntro.cut == gameIntro.maxcut){
+        else if (scene == 2){
+          if (gameIntro.cut < gameIntro.maxcut) gameIntro.cut++; //배경이 바뀜
+          else {
             phase++;
             scene = 0;
-            
+          }
         }
       break;
 
@@ -527,18 +533,14 @@ function keyPressed(){
         if(scene == 0){ //map1
           scene++;
         }
-        else if (scene == 1 && story1.cut < story1.maxcut){ //story1
-            story1.cut++;
-        }
-        else if(scene == 1 && story1.cut == story1.maxcut){
-            scene++;
+        else if (scene == 1){ //story1
+          if (story1.cut < story1.maxcut) story1.cut++;
+          else scene++;
         }
         else if (scene == 2){ //tutorial1
           if (tutorial1.getCut() < tutorial1.getMaxCut()){
             //if (tutorial1.getCut() != 2 && tutorial1.getCut() != 7){
-            if (tutorial1.getCut() != 5){
-              tutorial1.increaseCut();
-            }
+            if (tutorial1.getCut() != 5) tutorial1.increaseCut();
           }
           else {
             scene++;
@@ -554,7 +556,6 @@ function keyPressed(){
         else if (scene == 4){ //clear1
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
-            console.log("NEXT");
             phase = 4;
             scene = 2;
           }
@@ -565,16 +566,10 @@ function keyPressed(){
       case 3:
       case 4:
         if (scene == 2){
-          if (tutorial4.getCut() < tutorial4.getMaxCut()){
-            tutorial4.increaseCut();
-          }
-          else {
-
-            scene++;
-          }
+          if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
+          else scene++;
         }
         else if (scene == 3 && !stage4.gameStarted){
-          console.log("HERE!");
           stage4.gameStarted = true;
           stage4.gaming = true;
           savedtime = millis();
