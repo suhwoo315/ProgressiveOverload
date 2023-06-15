@@ -356,7 +356,8 @@ function setup() {
   // createCanvas(windowWidth, windowHeight);
   let canvasWidth = 1920*0.7;
   let canvasHeight = 1080*0.7;
-  let canvas = createCanvas(canvasWidth, canvasHeight);
+  //let canvas = createCanvas(canvasWidth, canvasHeight);
+  let canvas = createCanvas(windowWidth, windowWidth * 9 / 16);
   canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
   canvas.style('display', 'block');
   canvas.style('margin', 'auto');
