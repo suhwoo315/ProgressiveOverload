@@ -989,3 +989,7 @@ function trackShoulders(){
     }
   }
 }
+
+function playOnce(track){
+  if (!track.isPlaying()) track.play();
+}
