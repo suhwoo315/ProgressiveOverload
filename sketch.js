@@ -427,12 +427,12 @@ function draw() {
       }
       else if (scene == 2){ //tutorial1
         tutorial1.display();
-        if (tutorial1.getCut() == 6){
+        if (tutorial1.getCut() == 7){
           trackWrists();
           tutorial1.checkPass(dumbbellCurlUpper, dumbbellCurlLower);
           if (tutorial1.lowerPass) tutorial1.increaseCut();
         }
-        else if (tutorial1.getCut() == 7){
+        else if (tutorial1.getCut() == 8){
           trackWrists();
           tutorial1.checkPass(dumbbellCurlUpper, dumbbellCurlLower);
           if (tutorial1.upperPass){
@@ -441,7 +441,7 @@ function draw() {
             tutorial1.upperPass = false;
           }
         }
-        else if (tutorial1.getCut() == 8){
+        else if (tutorial1.getCut() == 9){
           trackWrists();
           tutorial1.checkPass(dumbbellCurlUpper, dumbbellCurlLower);
           if (tutorial1.lowerPass && tutorial1.upperPass) tutorial1.increaseCut();
