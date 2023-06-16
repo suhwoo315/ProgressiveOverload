@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 2;
+let phase = 0;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -650,27 +650,56 @@ function keyPressed(){
         else if (scene == 4){ //clear1
           if (clear1.cut < clear1.maxCut) clear1.cut++;
           else {
-            phase = 4;
-            scene = 2;
+            phase++;
+            scene = 0;
           }
         }
       break;
 
       case 2:
-        if(scene == 0){
-
+        if(scene == 0){ //map2
+          scene++;
         }
-        else if(scene == 1){
-
+        else if(scene == 1){ //story2
+          if(story2.cut < story2.maxcut){
+            story2.cut++;
+          }
+          else {
+            scene++;
+          }
         }
-        else if(scene == 2){
+        else if(scene == 2){ //tutorial2
           
         }
-        else if(scene == 3){
+        else if(scene == 3){ //stage2
           
+        }
+        else if(scene == 4){ //clear2
+
         }
       case 3:
+        if(scene == 0){ //map3
+          scene++;
+        }
+        else if(scene == 1){ //story3
+          
+        }
+        else if(scene == 2){ //tutorial3
+          
+        }
+        else if(scene == 3){ //stage3
+          
+        }
+        else if(scene == 4){ //clear3
+
+        }
       case 4:
+        // if(scene == 0){
+
+        // }
+        // else if(scene == 1){
+
+        // }
         if (scene == 2){
           if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
           else scene++;
