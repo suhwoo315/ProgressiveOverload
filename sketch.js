@@ -170,7 +170,7 @@ let pressLower = 4.5/10;
 
 // 시간
 let savedTime = 0;
-let autoNextTime = 3000;
+let autoNextTime = 5000;
 
 
 // 각 단계의 클래스 생성
@@ -191,14 +191,14 @@ function preload(){
   //phase2
   map2 = new Map2();
   story2 = new Story2();
-  // tutorial2 = new Tutorial2();
-  // stage2 = new Stage2();
+  tutorial2 = new Tutorial2();
+  stage2 = new Stage2();
   // clear2 = new Clear2();
   //phase3
   // map3 = new Map3();
   // story3 = new Story3();
-  // tutorial3 = new Tutorial3();
-  // stage3 = new Stage3();
+  tutorial3 = new Tutorial3();
+  stage3 = new Stage3();
   // clear3 = new Clear3();
   //phase4
   map4 = new Map4();
@@ -418,8 +418,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log("phase " + phase);
-  console.log("scene " + scene);
+  // console.log("phase " + phase);
+  // console.log("scene " + scene);
   
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
@@ -473,7 +473,6 @@ function draw() {
             }
             else {
               scene++;
-              //map4.moveOn = true;
             }
           }
         }
@@ -502,33 +501,56 @@ function draw() {
       else if(scene == 1){
         // story2.display();
       }
-      else if(scene == 2){
-        // tutorial2.display();
+      else if(scene == 2){ // tutorial2
+        tutorial2.display();
+        if (tutorial2.getCut() == 6){
+          trackWrists();
+          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          if (tutorial2.lowerPass) tutorial2.increaseCut();
+        }
+        else if (tutorial2.getCut() == 7){
+          trackWrists();
+          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          if (tutorial2.upperPass){
+            tutorial2.increaseCut();
+            tutorial2.lowerPass = false;
+            tutorial2.upperPass = false;
+          }
+        }
+        else if (tutorial1.getCut() == 8){
+          trackWrists();
+          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
+        }
+        else {
+          if (millis() - savedTime > autoNextTime){
+            if (tutorial2.getCut() < tutorial2.getMaxCut()){
+              tutorial2.increaseCut();
+              savedTime = millis();
+            }
+            else {
+              scene++;
+            }
+          }
+        }
       }
-      else if(scene == 3){
-        // stage2.display();
+      else if(scene == 3){ // stage2
+        trackWrists();
+        stage2.display();
+        stage2.check(reverseCurlUpper, reverseCurlLower);
+        //stage2.sound();
+        if (stage2.count <= 0){
+          if (millis() - savedTime > autoNextTime){
+            if (stage2.getCut() < stage2.getMaxCut()) stage2.increaseCut();
+            else scene++;
+          }
+        }
       }
       else if(scene == 4){
         // clear2.display();
       }
       break;
     case 3: //phase3
-      if(scene == 0){
-        // map3.display();
-      }
-      else if(scene == 1){
-        // story3.display();
-      }
-      else if(scene == 2){
-        // tutorial3.display();
-      }
-      else if(scene == 3){
-        // stage3.display();
-      }
-      else if(scene == 4){
-        // clear3.display();
-      }
-      break;
     case 4: //phase4
       if(scene == 0){ // map4
         map4.move();
@@ -614,19 +636,16 @@ function draw() {
       image(ui[2], width / 2, height / 2, width, height);
       image(ui[3], width / 2, height / 2, width, height);
     }
-   
   }
 
   //mouse cursor
   imageMode(CORNER);
   image(ui[8], mouseX, mouseY, ui[8].width / 2, ui[8].height / 2);
   imageMode(CENTER);
-  
 }
 
 // SPACEBAR 키를 누를 때, 다음 단계로 넘어간다
 function keyPressed(){
-    
   if (keyCode === 32){
     switch(phase){
       case 0:
@@ -685,11 +704,11 @@ function keyPressed(){
             scene++;
           }
         }
-        else if(scene == 2){ //tutorial2
-          
-        }
         else if(scene == 3){ //stage2
-          
+          if (stage2.count <= 0){
+            if (stage2.cut < stage2.maxCut) stage2.cut++;
+            else scene++;
+          }
         }
         else if(scene == 4){ //clear2
 
@@ -701,11 +720,11 @@ function keyPressed(){
         else if(scene == 1){ //story3
           
         }
-        else if(scene == 2){ //tutorial3
-          
-        }
         else if(scene == 3){ //stage3
-          
+          if (stage3.count <= 0){
+            if (stage3.cut < stage3.maxCut) stage3.cut++;
+            else scene++;
+          }
         }
         else if(scene == 4){ //clear3
 
@@ -816,10 +835,7 @@ function mouseClicked() {
        mouseY <= height / 2 - height / 7.5 + width / 50){
         exit = false;
     }
-    
-    
-  }
-     
+  }   
 }
 
 
@@ -874,8 +890,6 @@ function trackWrists(){
 
 // bodytracking - 손목의 위치 변수에 플레이어의 현재 위치를 저장한다
 function trackShoulders(){
-  //console.log(leftShoulderX + " " + leftShoulderY + " " + rightShoulderX + " " + rightShoulderY);
-
   for (let i = 0; i < poses.length; i++) {
     let pose = poses[i].pose;
     let leftShoulder = pose.keypoints[5];
@@ -919,4 +933,8 @@ function trackShoulders(){
       }
     }
   }
+}
+
+function playOnce(track){
+  if (!track.isPlaying()) track.play();
 }
