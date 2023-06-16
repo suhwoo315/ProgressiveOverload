@@ -11,8 +11,10 @@ class Story1{
         let textBoxY = height / 2;
         let textBoxW = width;
         let textBoxH = height;
-        let textX = width / 2 - 580;
-        let textY = height - 250;
+        let textX = width / 15;
+        let textY = height * 2/3;
+        let chrNameX = width / 15
+        let chrNameY = height * 4 / 7
         switch(this.cut){
             case 0:
                 background(100);
@@ -37,13 +39,13 @@ class Story1{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(30);
                 text(this.dialogue[0], textX, textY);
                 //name
                 fill(255);
-                textSize(25);
-                textAlign(CENTER, CENTER);
-                text("코치 볼트", width / 2 - 460, height / 2 + 65);
+                textSize(30);
+                textAlign(LEFT, TOP);
+                text("코치 볼트", chrNameX, chrNameY);
                 break;
         }
         // background(100);

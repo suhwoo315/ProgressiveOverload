@@ -354,13 +354,13 @@ function preload(){
 function setup() {
 
   // createCanvas(windowWidth, windowHeight);
-  let canvasWidth = 1920*0.7;
-  let canvasHeight = 1080*0.7;
+  // let canvasWidth = windowWidth
+  // let canvasHeight = windowWidth * 9 / 16;
   //let canvas = createCanvas(canvasWidth, canvasHeight);
-  let canvas = createCanvas(windowWidth, windowWidth * 9 / 16);
-  canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
-  canvas.style('display', 'block');
-  canvas.style('margin', 'auto');
+  createCanvas(windowWidth, windowWidth * 9 / 16);
+  // canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
+  // canvas.style('display', 'block');
+  // canvas.style('margin', 'auto');
   // createCanvas(1920* 0.7, 1080 * 0.7); //width 1044, height 756
 
   video = createCapture(VIDEO);

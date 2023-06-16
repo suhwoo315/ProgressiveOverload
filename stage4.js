@@ -71,68 +71,77 @@ class Stage4 {
       //hp bar
       image(stage4_ui[2], width / 2, height / 2 + 50, width, height); //보스와 맥스의 hp
       //max hp
+      let maxHpX = width / 4 - 10;
+      let maxHpY = height  * 7/ 8;
+      let maxHpW = width / 3 + 20;
+      let maxHpH = height / 12;
+      let bossHpX = width / 4 + width / 3 + 30;
+      let bossHpY = height * 7/8;
+      let bossHpW = width / 3 + 20;
+      let bossHpH = height / 12;
       if(this.countMax == 3){
         fill(0, 255, 0); //green
         rectMode(CORNER);
-        rect(width / 2 - 350, height - 135 + 50, 470, 60); 
+        rect(maxHpX, maxHpY, maxHpW, maxHpH); 
       }
       else if(this.countMax == 2){
         fill(255, 255, 0); //yellow
         rectMode(CORNER);
-        rect(width / 2 - 350 + (470 * 1/3), height - 135 + 50, 470 * 2/3, 60); 
+        rect(maxHpX + maxHpW / 3, maxHpY, maxHpW * 2/3, maxHpH); 
       }
       else if(this.countMax == 1){
         fill(255, 0, 0); //red
         rectMode(CORNER);
-        rect((width / 2) - 350 + (470 * 2/3), height - 135 + 50, 470 * 1/3, 60); 
+        rect(maxHpX + maxHpW * 2/3, maxHpY, maxHpW / 3, maxHpH); 
       }
       
       //boss hp : 1~3 red  4~6 yellow 7~9 blue
       switch(this.countBoss){
+        
         case 1:
           fill(255, 0, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 1/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 1/9, bossHpH);
           break;
         case 2:
           fill(255, 0, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 2/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 2/9, bossHpH);
           break;
         case 3:
           fill(255, 0, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 3/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 3/9, bossHpH);
           break;
         case 4:
           fill(255, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 4/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 4/9, bossHpH);
           break;
         case 5:
           fill(255, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 5/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 5/9, bossHpH);
           break;
         case 6:
           fill(255, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 6/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 6/9, bossHpH);
           break;
         case 7:
           fill(0, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 7/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 7/9, bossHpH);
           break;
         case 8:
           fill(0, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470 * 8/9, 60);
+          rect(bossHpX, bossHpY, bossHpW * 8/9, bossHpH);
           break;
         case 9:
           fill(0, 255, 0);
           rectMode(CORNER);
-          rect(width / 2 + 135, height - 135 + 50, 470, 60);
+          rect(bossHpX, bossHpY, bossHpW, bossHpH);
           break;
       }
 
