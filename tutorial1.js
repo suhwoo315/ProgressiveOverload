@@ -1,13 +1,13 @@
 class Tutorial1 {
     constructor(){
         this.cut = 0; // 현재 cut
-        this.maxCut = 10; // cut의 총 개수
+        this.maxCut = 11; // cut의 총 개수
         this.dialogue = ["지금부터 화면이 자동으로 넘어갑니다.", //0
                         "양손에 덤벨을 하나씩 쥐어보세요.", //1
                         "별도의 지시가 있기 전까지 덤벨을 놓지 말아주세요.", //2
-                        "이제부터 배울 동작은 '덤벨컬'입니다.", //3
+                        "이제부터 배울 동작은 '덤벨 컬'입니다.", //3
                         "화면에서 안내하는 동작을 직접 따라해볼까요?", //4
-                        "먼저 화면처럼 손등이 바깥을 보도록 한 채 팔을 접으세요.\n덤벨이 어깨 높이까지 올라옵니다.", //5
+                        "먼저 손등이 앞을 향하도록 한 채 팔을 접으세요.\n덤벨이 어깨 높이까지 올라옵니다.", //5
                         "좌측의 바는 덤벨의 실시간 위치를 나타냅니다.", //6
                         "팔꿈치를 고정하고 주황색 선까지 덤벨을 천천히 내려주세요.", //7
                         "아주 좋습니다!\n팔꿈치를 고정하고 팔을 접어 덤벨을 초록색 선까지 올려주세요.", //8
@@ -38,6 +38,7 @@ class Tutorial1 {
                 else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
                 else image(tutorial1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
                 break;
+
             case 5:
                 image(tutorial1_ui[1], width/2, height/2, width, height);
                 image(tutorial1_sil[2], width/2, height/2, 300, 300);
