@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
+let phase = 2;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -185,13 +185,24 @@ function preload(){
   stage1 = new Stage1();
   clear1 = new Clear1();
   //phase2
+  map2 = new Map2();
+  story2 = new Story2();
+  // tutorial2 = new Tutorial2();
+  // stage2 = new Stage2();
+  clear2 = new Clear2();
   //phase3
+  // map3 = new Map3();
+  // story3 = new Story3();
+  // tutorial3 = new Tutorial3();
+  // stage3 = new Stage3();
+  // clear3 = new Clear3();
   //phase4
   map4 = new Map4();
   story4 = new Story4();
   tutorial4 = new Tutorial4();
   stage4 = new Stage4();
   //phase5
+  // gameOutro = new gameOutro();
 
 
 
@@ -222,7 +233,7 @@ function preload(){
   }
 
   //ui v
-  for(let i=0; i<8; i++){
+  for(let i=0; i<9; i++){
     ui[i] = loadImage('assets/sketch/ui/' + i + '.png');
   }
   
@@ -237,7 +248,7 @@ function preload(){
   }
 
   //gameIntro v
-  for(let i=0; i<4; i++){
+  for(let i=0; i<5; i++){
     gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/' + i + '.png');
   }
   for(let i=0; i<0; i++){
@@ -266,7 +277,7 @@ function preload(){
   for(let i=0; i<0; i++){
     story1_snd[i] = loadSound('assets/phase1/story1/snd/' + i + '.mp3');
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     story1_ui[i] = loadImage('assets/phase1/story1/ui/' + i + '.png');
   }
 
@@ -294,6 +305,13 @@ function preload(){
   for(let i=0; i<2; i++){
     clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
   }
+
+  //phase2
+  //map2
+  //story2
+  //tutorial2
+  //stage2
+  //clear2
 
   // map4
   for(let i=0; i<1; i++){
@@ -383,8 +401,9 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  // console.log("phase " + phase);
-  // console.log("scene " + scene);
+  console.log("phase " + phase);
+  console.log("scene " + scene);
+  
   switch(phase){
     case 0: //phase0 : gameTitle~gameIntro
       if(scene == 0){
@@ -438,6 +457,21 @@ function draw() {
       break;
     
     case 2: //phase2
+      if(scene == 0){
+        // map2.display();
+      }
+      else if(scene == 1){
+        // story2.display();
+      }
+      else if(scene == 2){
+        // tutorial2.display();
+      }
+      else if(scene == 3){
+        // stage2.display();
+      }
+      else if(scene == 4){
+        // clear2.display();
+      }
     case 3: //phase3
     case 4: //phase4
       if(scene == 0){ // map4
@@ -491,32 +525,59 @@ function draw() {
   }
 
   //exit
-  if(phase == 1 || phase == 2 || phase == 3 || phase == 4 || scene == 1){
-    image(ui[0], width / 2 - 20, height / 2 + 10 ,  width, height); 
+  if(phase == 1 || phase == 2 || phase == 3 || phase == 4 || scene >= 1){
+    imageMode(CENTER);
+    image(ui[0], width / 2, height / 2,  width, height); 
   } 
-  
   if(exit == true){
     imageMode(CENTER);
     image(ui[1], width / 2, height / 2, width, height);
-    image(ui[2], width / 2, height / 2, width, height);
-    image(ui[3], width / 2, height / 2, width, height);
+    if(mouseIsPressed){
+      if(mouseX >= width / 2 - width / 150 - width / 6 &&
+      mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
+      mouseY >= height / 2 + height / 19 &&
+      mouseY <= height / 2 + height / 19 + height / 15){
+        image(ui[2], width / 2 - width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
+        image(ui[3], width / 2, height / 2, width, height);
+       }
+      else if(mouseX >= width / 2 + width / 60 &&
+      mouseX <= width / 2 + width / 60 + width / 6 &&
+      mouseY >= height / 2 + height / 19 &&
+      mouseY <= height / 2 + height / 19 + height / 15){
+        image(ui[2], width / 2, height / 2, width, height);
+        image(ui[3], width / 2 + width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
+      }
+      else {
+        image(ui[2], width / 2, height / 2, width, height);
+      image(ui[3], width / 2, height / 2, width, height);
+      }
+      
+    }
+    else {
+      
+      image(ui[2], width / 2, height / 2, width, height);
+      image(ui[3], width / 2, height / 2, width, height);
+    }
+   
   }
 
   //mouse cursor
   imageMode(CORNER);
-  image(ui[7], mouseX, mouseY, ui[7].width / 2, ui[7].height / 2);
+  image(ui[8], mouseX, mouseY, ui[8].width / 2, ui[8].height / 2);
   imageMode(CENTER);
   
 }
 
 // SPACEBAR 키를 누를 때, 다음 단계로 넘어간다
 function keyPressed(){
+    
   if (keyCode === 32){
     switch(phase){
       case 0:
         if (scene == 0){ //gameTitle
           scene++;
         }
+        //gameIntro
         else if (scene == 1){
           if (tutorial0.getCut() < tutorial0.getMaxCut()) tutorial0.increaseCut();
           else scene++;
@@ -564,6 +625,18 @@ function keyPressed(){
       break;
 
       case 2:
+        if(scene == 0){
+
+        }
+        else if(scene == 1){
+
+        }
+        else if(scene == 2){
+          
+        }
+        else if(scene == 3){
+          
+        }
       case 3:
       case 4:
         if (scene == 2){
@@ -584,67 +657,50 @@ function keyPressed(){
 
 
 function mouseClicked() {
-  switch(phase){
-    case 0:
-      if (scene == 0 && gameTitle.credit == false){ // gameTitle
-        if (mouseX >= width / 2 - 200 &&
-            mouseX <= width / 2 + 200 && 
-            mouseY >= height / 2 + 50 - 60 &&
-            mouseY <= height / 2 + 50 + 60){ //start
-          scene++;
-        }
-        else if (mouseX >= width / 2 - 80 &&
-                mouseX <= width / 2 + 80 && 
-                mouseY >= height / 2 + 200 - 60 &&
-                mouseY <= height / 2 + 200 + 60){ //credit
-          gameTitle.credit = !gameTitle.credit;
-        }
-      }
-      else if (scene == 0 && gameTitle.credit == true){
-        gameTitle.credit = !gameTitle.credit;
-      }
-    break;
-      
+  // rect(width * 12 / 13, height / 18, width / 20, height / 12);
+  // rect(width - 70, 63, 90, 90); exit box size
+  if(phase !=0 || scene >= 1 ){
+    if(mouseX >= width * 12 / 13 &&
+      mouseX <= width * 12 / 13 + width / 20 &&
+      mouseY >= height / 18 &&
+      mouseY <= height / 18 + height / 12){
+       exit = true;
+   }
   }
   
-  // rect(width - 70, 63, 90, 90); exit box size
-  if(mouseX >= width - 70 - 45 &&
-     mouseX <= width - 70 + 45 &&
-     mouseY >= 63 - 45 &&
-     mouseY <= 64 + 45){
-      exit = true;
-  }
-  // rect(width / 2 - 120, height / 2 + 65, 220, 50); yes box size
-  // rect(width / 2 + 135, height / 2 + 65, 220, 50); no box size
-  // rect(width / 2 + 251, height / 2 - 88, 24, 24); x box size
+  // rect(width / 2 - width / 150 - width / 6, height / 2 + height / 19, width / 6, height / 15); yes box size
+  // rect(width / 2 + width / 60, height / 2 + height / 19, width / 6, height / 15); no box size
+  // rect((width / 2 + width / 100 + width / 6), height / 2 - height / 7.5, width / 50, width / 50); x box size
   if(exit == true){
-    if(mouseX >= width / 2 - 120 - 110 &&
-       mouseX <= width / 2 - 120 + 110 &&
-       mouseY >= height / 2 + 65 - 25 &&
-       mouseY <= height / 2 + 65 + 25){
-        phase = 0;
-        scene = 0;
-        //turn every cut to 0
-        gameIntro.cut = 0;
+    if(mouseX >= width / 2 - width / 150 - width / 6 &&
+       mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
+       mouseY >= height / 2 + height / 19 &&
+       mouseY <= height / 2 + height / 19 + height / 15){
+        location.reload(); // 페이지 새로고침
+        // phase = 0;
+        // scene = 0;
 
-        //phase1
-        map1.cut = 0;
-        map1.moveOn = false;
-        story1.cut = 0;
-        tutorial1.cut = 0;
-        tutorial1.count = 3;
-        stage1.cut = 0;
-        stage1.count = 5;
-        clear1.cut = 0;
-        stage4.countBoss = 9;
-        stage4.countMax = 3;
-        stage4.index = 0; //sequence의 인덱스
-        stage4.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
-        stage4.attackSuccess = false; // A,B에 성공, 보스의 hp -
-        stage4.attackFail = false; // A,B 실패, 아무 영향 없음
-        stage4.defendSuccess = false; // C 성공, 아무 영향 없음.
-        stage4.defendFail = false;
-        stage4.gameStarted = false;
+        // //turn every cut to 0
+        // gameIntro.cut = 0;
+
+        // //phase1
+        // map1.cut = 0;
+        // map1.moveOn = false;
+        // story1.cut = 0;
+        // tutorial1.cut = 0;
+        // tutorial1.count = 3;
+        // stage1.cut = 0;
+        // stage1.count = 5;
+        // clear1.cut = 0;
+        // stage4.countBoss = 9;
+        // stage4.countMax = 3;
+        // stage4.index = 0; //sequence의 인덱스
+        // stage4.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
+        // stage4.attackSuccess = false; // A,B에 성공, 보스의 hp -
+        // stage4.attackFail = false; // A,B 실패, 아무 영향 없음
+        // stage4.defendSuccess = false; // C 성공, 아무 영향 없음.
+        // stage4.defendFail = false;
+        // stage4.gameStarted = false;
 
         // // phase2의 클래스 - reverse curl
         // let map2;
@@ -668,18 +724,18 @@ function mouseClicked() {
 
         // // phase5의 클래스 - end
         // let gameOutro;
+        // exit = false;
+    }
+    else if(mouseX >= width / 2 + width / 60 &&
+       mouseX <= width / 2 + width / 60 + width / 6 &&
+       mouseY >= height / 2 + height / 19 &&
+       mouseY <= height / 2 + height / 19 + height / 15){
         exit = false;
     }
-    else if(mouseX >= width / 2 + 135 - 110 &&
-       mouseX <= width / 2 + 135 + 110 &&
-       mouseY >= height / 2 + 65 - 25 &&
-       mouseY <= height / 2 + 65 + 25){
-        exit = false;
-    }
-    else if(mouseX >= width / 2 + 251 - 22 &&
-       mouseX <= width / 2 + 251 + 22 &&
-       mouseY >= height / 2 - 88 - 12 &&
-       mouseY <= height / 2 - 88 + 12){
+    else if(mouseX >= width / 2 + width / 100 + width / 6 &&
+       mouseX <= width / 2 + width / 100 + width / 6 + width / 50 &&
+       mouseY >= height / 2 - height / 7.5 &&
+       mouseY <= height / 2 - height / 7.5 + width / 50){
         exit = false;
     }
     

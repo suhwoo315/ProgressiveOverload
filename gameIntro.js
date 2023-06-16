@@ -3,23 +3,23 @@ class GameIntro{
         this.cut = 0; //컷 번호
         this.maxcut = 16; // 전체 컷 개수, 총 17개 0~16
         this.dialogue = [
-        "으으음..", //0 - 1
-        "으윽, 갑자기 운동하는 꿈을 꿨어. 티비나 봐야겠어.", //1 - 2
-        "채널 뭐 재밌는 게 없나...", //2 - 0
-        "엇, 이게 뭐지?", //3 - 2
-        "엥 골드짐? 이게 뭐지? 골드짐에 초대한다고? 심심한데 가볼까..?",//4 - 2
-        "휴 도착했네. 한 번 들어가봐야지 뭐.", //5 - 0
-        "으아아아~~~ 나 어디로 가는거야?!?!", //6 - 3
-        "여긴 어디지..? 마치 게임 속 같은데?", //7 - 2
-        "환영한다! 여긴 헬창월드!\n이곳은 힘이 모든 것을 좌우하고 그 힘은 물건을 들어올리는 능력으로 측정되지!\n하하하! 나약한 너가 골드짐의 초대를 받아들일 줄은 예상 못했지만\n그래도 힘을 키우고 싶은 생각은 있었나 보군!",
-        "뭐..뭐 이런 끔찍한 데가 다 있어? 얼른 날 집에 보내줘!!", //9 - 3
-        "하하하! 집에 돌아가고 싶나?\n이곳에서 탈출하려면 다양한 운동 도전을 통과해야한다!\n그동안 운동을 게을리한 너의 업보이지!!",//10
-        "내가 왜 그런 고통스러운 짓을…?!! 당장 돌려보내줘!!", //11 - 5
-        "네 말이 맞다.", //12
-        "..?", //13 - 3
-        "헬스는 너의 육체를 상처 입히고 고통스럽게 만들지. 그리고 에너지를 뽑아간다.", //14
-        "그러니까 내 말이..!", //15 - 4
-        "하지만 그걸 대가로 너에게 강한 힘을 주지.\n하하하!!!! 이 얼마나 짜릿한가. 자, 시간이 없다. 어서 가지." //16
+        "오늘도 헬스장 안 가면 한 달 동안 안 가는 건데…", //0 - 0 - 1
+        "하지만… 귀찮다… 내일 가자.", //1 - 0 - 1
+        "채널 뭐 재밌는 거 없나...", //2 - 0 - 0
+        "", //3 - 1
+        "엇, 이 화면은 뭐지?",//4 - 1 - 2
+        "아 화면이 너무 밝아... 으아아아~~", //5 - 2 - 3
+        "", //6 - 하얀배경
+        "여긴 어디지..? 아까 봤던 TV속 화면 같은데..?\n근데 내 손에 뭔가 쥐어져 있어!", //7 - 3 - 2
+        "", //8 - 3 + 4
+        "지금 이 쪽지가 보인다는 것은 몸 안에 선택 받은 헬창의 DNA가 흐른다는거겠지?\n우리의 헬창월드를 구해줄 유일한 영웅이 되어줄거야.",//9 - 3+4
+        "이곳 헬창월드는 헬스를 사랑하는 사람들이 모여서\n열심히 운동하며 살아가는 천국 같은 곳이야.", //10 - 3+4
+        "하지만 근손실의 망령 머슬로스가 나타나 여기에 있는 헬스 장비들과\n사람들의 운동 의욕을 모두 앗아가고 있어.", //11 - 3+4
+        "이 쪽지를 읽고 있을 땐 이미 머슬로스가 헬창월드를 완전히 파괴한 이후겠지…", //12 - 3+4
+        "그러나 우리의 영웅은 헬창의 3요소를 되찾아 머슬로스를 물리치고 우리 헬창월드를 되돌려줄거야.", //13 - 3+4
+        "그래야만 자신도 원래 세계로 되돌아갈 수 있을테니…\n우리의 헬창월드는 반드시 돌아올거야 언젠가…", //14 - 3+4
+        "뭐야…? 내가 헬창월드를 구원할 유일한 영웅이라고?\n난 헬스장도 귀찮아서 제대로 가지 않은 사람인데…", //15 - 3 - 3
+        "그래도 원래 내 세계로 돌아가야 하니 한번 해보자고!" //16 - 3 - 4
         ]
     }
     //max 표정
@@ -32,14 +32,17 @@ class GameIntro{
     // 6: 기쁨의 눈물 V
     // 7: 기쁘고 눈물을 닦음 V
     display(){
+        let maxSize = max[0].height * windowHeight / 1600 * 2 / 3;
         let textBoxX = width / 2;
         let textBoxY = height / 2;
         let textBoxW = width;
         let textBoxH = height;
-        let textX = width / 15;
+        let textX = width / 7;
         let textY = height * 2/3;
-        let chrNameX = width / 15
-        let chrNameY = height * 4 / 7
+        let chrNameX = width / 15;
+        let chrNameY = height * 2 / 3;
+        let messageX = width / 2
+        let messageY = height * 690 / 918.5625; 
 
         switch(this.cut){
             case 0:
@@ -47,11 +50,9 @@ class GameIntro{
                 imageMode(CENTER);
                 image(gameIntro_bg[0], width / 2, height / 2, width, height);
                 
-                
-                
                 //max
                 imageMode(CENTER);
-                image(max[1], width / 2, height / 2, max[1].width / 3, max[1].height / 3);
+                image(max[1], width / 2, height / 2, maxSize, maxSize);
                 
                 //ui
                 imageMode(CENTER);
@@ -65,7 +66,7 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textStyle('normal');
                 textSize(30);
                 textAlign(LEFT, TOP);
@@ -79,7 +80,7 @@ class GameIntro{
                 
                 //max
                 imageMode(CENTER);
-                image(max[2], width / 2, height / 2, max[2].width / 3, max[2].height / 3);
+                image(max[1], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -90,7 +91,7 @@ class GameIntro{
                 text(this.dialogue[this.cut], textX, textY);
                 //maxname
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
@@ -103,7 +104,7 @@ class GameIntro{
                 
                 //max
                 imageMode(CENTER);
-                image(max[0], width / 2, height / 2, max[0].width / 3, max[0].height / 3);
+                image(max[0], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -113,7 +114,7 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
@@ -121,33 +122,33 @@ class GameIntro{
             case 3:
                 background(100);
                 imageMode(CENTER);
-                image(gameIntro_bg[0], width / 2, height / 2, width, height);
+                image(gameIntro_bg[1], width / 2, height / 2, width, height);
                 
-                //max
-                imageMode(CENTER);
-                image(max[2], width / 2, height / 2, max[2].width / 3, max[2].height / 3);
-                //ui
-                imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
-                //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
-                textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
+                // //max
+                // imageMode(CENTER);
+                // image(max[2], width / 2, height / 2, maxSize, maxSize);
+                // //ui
+                // imageMode(CENTER);
+                // image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                // //dialogue
+                // textAlign(LEFT, TOP);
+                // fill(0);
+                // textSize(30);
+                // text(this.dialogue[this.cut], textX, textY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 4:
                 background(100);
                 imageMode(CENTER);
-                image(gameIntro_bg[0], width / 2, height / 2, width, height);
+                image(gameIntro_bg[1], width / 2, height / 2, width, height);
                 
                 //max
                 imageMode(CENTER);
-                image(max[2], width / 2, height / 2, max[2].width / 3, max[2].height / 3);
+                image(max[2], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -157,7 +158,7 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
@@ -165,11 +166,11 @@ class GameIntro{
             case 5:
                 background(100);
                 imageMode(CENTER);
-                image(gameIntro_bg[1], width / 2, height / 2, width, height);
+                image(gameIntro_bg[2], width / 2, height / 2, width, height);
                 
                 //max
                 imageMode(CENTER);
-                image(max[0], width / 2, height / 2, max[0].width / 3, max[0].height / 3);
+                image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -179,32 +180,32 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
             case 6:
-                background(100);
-                imageMode(CENTER);
-                image(gameIntro_bg[2], width / 2, height / 2, width, height);
+                background(255);
+                // imageMode(CENTER);
+                // image(gameIntro_bg[2], width / 2, height / 2, width, height);
                 
-                //max
-                imageMode(CENTER);
-                image(max[3], width / 2, height / 2, max[3].width / 3, max[3].height / 3);
-                //ui
-                imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
-                //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
-                textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
+                // //max
+                // imageMode(CENTER);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
+                // //ui
+                // imageMode(CENTER);
+                // image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                // //dialogue
+                // textAlign(LEFT, TOP);
+                // fill(0);
+                // textSize(30);
+                // text(this.dialogue[this.cut], textX, textY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 7:
                 background(100);
@@ -213,7 +214,7 @@ class GameIntro{
                 
                 //max
                 imageMode(CENTER);
-                image(max[2], width / 2, height / 2, max[2].width / 3, max[2].height / 3);
+                image(max[2], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -223,7 +224,7 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
@@ -232,177 +233,219 @@ class GameIntro{
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
                 // imageMode(CENTER);
                 // image(max[1], width / 2, height / 2, max[1].width, max[1].height);
                 
                 //coach
+                // imageMode(CENTER);
+                // image(coach[1], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
+                // //ui
                 imageMode(CENTER);
-                image(coach[1], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
-                //ui
-                imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
-                //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
-                textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("코치 볼트", chrNameX, chrNameY);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                // imageMode(CENTER);
+                // image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
+                // //dialogue
+                // textAlign(LEFT, TOP);
+                // fill(0);
+                // textSize(30);
+                // text(this.dialogue[this.cut], textX, textY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("코치 볼트", chrNameX, chrNameY);
                 break;
             case 9:
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
-                imageMode(CENTER);
-                image(max[3], width / 2, height / 2, max[3].width / 3, max[3].height / 3);
+                // imageMode(CENTER);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
                 // imageMode(CENTER);
                 // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
                 //ui
                 imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 10:
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
                 // imageMode(CENTER);
-                // image(max[1], width / 2, height / 2, max[1].width, max[1].height);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
-                imageMode(CENTER);
-                image(coach[1], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
+                // imageMode(CENTER);
+                // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
                 //ui
                 imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("코치 볼트", chrNameX, chrNameY);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 11:
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
-                imageMode(CENTER);
-                image(max[5], width / 2, height / 2, max[5].width / 3, max[5].height / 3);
+                // imageMode(CENTER);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
                 // imageMode(CENTER);
                 // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
                 //ui
                 imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 12:
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
                 // imageMode(CENTER);
-                // image(max[1], width / 2, height / 2, max[1].width, max[1].height);
-                //coach
-                imageMode(CENTER);
-                image(coach[2], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
-                //ui
-                imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
-                //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
-                textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("코치 볼트", chrNameX, chrNameY);
-                break;
-            case 13:
-                background(100);
-                imageMode(CENTER);
-                image(gameIntro_bg[3], width / 2, height / 2, width, height);
-                
-                //max
-                imageMode(CENTER);
-                image(max[3], width / 2, height / 2, max[3].width / 3, max[3].height / 3);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
                 // imageMode(CENTER);
                 // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
                 //ui
                 imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
+                break;
+            case 13:
+                background(100);
+                imageMode(CENTER);
+                image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
+                
+                //max
+                // imageMode(CENTER);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
+                //coach
+                // imageMode(CENTER);
+                // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
+                //ui
+                imageMode(CENTER);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
+                //dialogue
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 14:
                 background(100);
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 
                 //max
                 // imageMode(CENTER);
-                // image(max[1], width / 2, height / 2, max[1].width, max[1].height);
+                // image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
-                imageMode(CENTER);
-                image(coach[2], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
+                // imageMode(CENTER);
+                // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
                 //ui
                 imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
+                imageMode(CENTER);
+                image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
+                textAlign(CENTER, TOP);
+                fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("코치 볼트", chrNameX, chrNameY);
+                text(this.dialogue[this.cut], messageX, messageY);
+                // //name
+                // fill(70);
+                // textSize(30);
+                // textAlign(LEFT, TOP);
+                // text("맥스", chrNameX, chrNameY);
                 break;
             case 15:
                 background(100);
@@ -411,7 +454,7 @@ class GameIntro{
                 
                 //max
                 imageMode(CENTER);
-                image(max[4], width / 2, height / 2, max[4].width / 3, max[4].height / 3);
+                image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //coach
                 // imageMode(CENTER);
                 // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
@@ -424,7 +467,7 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
@@ -434,12 +477,12 @@ class GameIntro{
                 imageMode(CENTER);
                 image(gameIntro_bg[3], width / 2, height / 2, width, height);
                 
-                //max
-                // imageMode(CENTER);
-                // image(max[1], width / 2, height / 2, max[1].width, max[1].height);
-                //coach
+                // max
                 imageMode(CENTER);
-                image(coach[1], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
+                image(max[4], width / 2, height / 2, maxSize, maxSize);
+                // coach
+                // imageMode(CENTER);
+                // image(coach[1], width / 2, height / 2 - 100, coach[1].width / 3, coach[1].height / 3);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -449,36 +492,12 @@ class GameIntro{
                 textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
-                fill(255);
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("코치 볼트", chrNameX, chrNameY);
-                break;
-            case 17:
-                background(100);
-                imageMode(CENTER);
-                image(gameIntro_bg[3], width / 2, height / 2, width, height);
-                
-                //max
-                imageMode(CENTER);
-                image(max[1], width / 2, height / 2, max[1].width / 3, max[1].height / 3);
-                //coach
-                // imageMode(CENTER);
-                // image(coach[1], width / 2, height / 2 - 100, coach[1].width, coach[1].height);
-                //ui
-                imageMode(CENTER);
-                image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
-                //dialogue
-                textAlign(LEFT, TOP);
-                fill(0);
-                textSize(30);
-                text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(255);
+                fill(70);
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
+            
         }
         
     }
