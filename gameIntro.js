@@ -118,6 +118,9 @@ class GameIntro{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+
+                //sound
+                playOnce(gameIntro_snd[0]);
                 break;
             case 3:
                 background(100);

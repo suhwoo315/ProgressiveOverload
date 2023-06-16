@@ -255,7 +255,7 @@ function preload(){
   for(let i=0; i<5; i++){
     gameIntro_bg[i] = loadImage('assets/phase0/gameIntro/bg/' + i + '.png');
   }
-  for(let i=0; i<0; i++){
+  for(let i=0; i<1; i++){
     gameIntro_snd[i] = loadSound('assets/phase0/gameIntro/snd/' + i + '.mp3');
   }  
   for(let i=0; i<1; i++){
@@ -308,14 +308,11 @@ function preload(){
   for(let i=0; i<1; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
-  for(let i=0; i<3; i++){
+  for(let i=0; i<2; i++){
     stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
   }
   for(let i=0; i<3; i++){
     stage1_sil[i] = loadImage('assets/phase1/stage1/sil/' + i + '.png');
-  } //v
-  for(let i=0; i<3; i++){
-    stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
   }
 
   // clear1
