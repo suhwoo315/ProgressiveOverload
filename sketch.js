@@ -461,9 +461,15 @@ function draw() {
       }
       else if (scene == 3){ //stage1
         trackWrists();
-        stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
+        stage1.display();
         //stage1.sound();
+        if (stage1.count <= 0){
+          if (millis() - savedTime > autoNextTime){
+            if (stage1.getCut() < stage1.getMaxCut()) stage1.increaseCut();
+            else scene++;
+          }
+        }
       }
       else if (scene == 4){ //clear1
         clear1.display();

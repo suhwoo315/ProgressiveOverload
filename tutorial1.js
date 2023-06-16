@@ -42,7 +42,7 @@ class Tutorial1 {
                 this.drawDumbbell(this.y);
                 stroke(81, 209, 121);
                 noFill();
-                if (frameCount % 20 < 10) rect(width/2 - 350, height/2, 100, 300);
+                if (frameCount % 30 < 15) rect(width/2 - 350, height/2, 100, 300);
                 break;
             
             case 6:
