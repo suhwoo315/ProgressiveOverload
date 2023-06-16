@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 2;
+let phase = 0;
 let scene = 0;
 
 // phase0의 클래스 - start
@@ -193,7 +193,7 @@ function preload(){
   story2 = new Story2();
   // tutorial2 = new Tutorial2();
   // stage2 = new Stage2();
-  clear2 = new Clear2();
+  // clear2 = new Clear2();
   //phase3
   // map3 = new Map3();
   // story3 = new Story3();
@@ -480,8 +480,8 @@ function draw() {
       }
       else if (scene == 3){ //stage1
         trackWrists();
-        stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
         stage1.display();
+        stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
         //stage1.sound();
         if (stage1.count <= 0){
           if (millis() - savedTime > autoNextTime){
