@@ -511,7 +511,24 @@ function draw() {
       else if(scene == 4){
         // clear2.display();
       }
+      break;
     case 3: //phase3
+      if(scene == 0){
+        // map3.display();
+      }
+      else if(scene == 1){
+        // story3.display();
+      }
+      else if(scene == 2){
+        // tutorial3.display();
+      }
+      else if(scene == 3){
+        // stage3.display();
+      }
+      else if(scene == 4){
+        // clear3.display();
+      }
+      break;
     case 4: //phase4
       if(scene == 0){ // map4
         map4.move();
