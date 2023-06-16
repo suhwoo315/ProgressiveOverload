@@ -1,4 +1,4 @@
-class Stage2 {
+class Stage3 {
     constructor(){
         this.count = 5;
         this.currSil = 0;
