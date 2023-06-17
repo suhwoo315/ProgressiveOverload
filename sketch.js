@@ -10,7 +10,7 @@
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 1;
-let scene = 3;
+let scene = 4;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -88,6 +88,7 @@ let map2_chr = [];
 let map2_snd = [];
 let story2_bg = [];
 let story2_snd = [];
+let story2_ui = [];
 let stage2_bg = [];
 let stage2_chr = [];
 let stage2_sil = [];
@@ -300,7 +301,7 @@ function preload(){
   for(let i=0; i<3; i++){
     tutorial1_ui[i] = loadImage('assets/phase1/tutorial1/ui/' + i + '.png');
   }
-  for(let i=0; i<6; i++){
+  for(let i=0; i<12; i++){
     tutorial1_sil[i] = loadImage('assets/phase1/tutorial1/sil/' + i + '.png');
   }
 
@@ -308,7 +309,7 @@ function preload(){
   for(let i=0; i<6; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<22; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
   for(let i=0; i<1; i++){
@@ -328,11 +329,61 @@ function preload(){
 
   //phase2
   //map2
-  //story2
-  //tutorial2
-  //stage2
-  //clear2
+  for(let i=0; i<1; i++){
+    map2_bg[i] = loadImage('assets/phase2/map2/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   map2_snd[i] = loadSound('assets/phase1/map1/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<1; i++){
+    map2_chr[i] = loadImage('assets/phase2/map2/chr/' + i + '.png');
+  }
+  
+  //story2 v
+  for(let i=0; i<1; i++){
+    story2_bg[i] = loadImage('assets/phase2/story2/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   story2_snd[i] = loadSound('assets/phase2/story2/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<2; i++){
+    story2_ui[i] = loadImage('assets/phase2/story2/ui/' + i + '.png');
+  }
 
+  //tutorial2
+  for(let i=0; i<3; i++){
+    tutorial2_ui[i] = loadImage('assets/phase2/tutorial2/ui/' + i + '.png');
+  }
+  for(let i=0; i<12; i++){
+    tutorial2_sil[i] = loadImage('assets/phase2/tutorial2/sil/' + i + '.png');
+  }
+
+  // //stage2
+  // for(let i=0; i<6; i++){
+  //   stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
+  // }
+  // for(let i=0; i<22; i++){
+  //   stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png'); //********
+  // }
+  // for(let i=0; i<1; i++){
+  //   stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
+  // }
+  // for(let i=0; i<3; i++){
+  //   stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
+  // }
+
+  // // clear2
+  // for(let i=0; i<2; i++){
+  //   clear2_bg[i] = loadImage('assets/phase2/clear2/bg/' + i + '.png');
+  // }
+
+  //phase3
+
+
+  //phase4
   // map4
   for(let i=0; i<1; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
@@ -728,7 +779,8 @@ function keyPressed(){
         }
         else if (scene == 3){ //stage1
           if (stage1.count <= 0){
-            if (stage1.cut < stage1.maxCut) stage1.cut++;
+            // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
+            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
             else scene++;
           }
         }

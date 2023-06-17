@@ -9,7 +9,7 @@ class Tutorial2 {
                         "화면에서 안내하는 동작을 직접 따라해볼까요?", //4
                         "먼저 덤벨을 쥔 채 차렷 자세를 해주세요.", //5
                         "손등을 위로 한 채 양팔을 좌우로 초록색 선까지 올려주세요.", //6
-                        "아주 좋습니다!\n양팔을 천천히 주황색 선까지 내려주세요.", //7
+                        "아주 좋습니다!\n양팔을 천천히 초록색 선까지 내려주세요.", //7
                         "훌륭합니다! 혼자서 한 번 반복해볼까요?\n", //8
                         "완벽합니다!", //9
                         "지금부터 스테이지 2가 시작됩니다.\n이 자세를 잊지 말아주세요!"]; //10
@@ -25,7 +25,7 @@ class Tutorial2 {
         image(tutorial2_ui[0], width/2, height/2, width, height);
         textSize(25);
         textAlign(CENTER, CENTER)
-        fill(81, 209, 121);
+        // fill(81, 209, 121);
         text(this.dialogue[this.cut], width/2, height/2);
 
         switch(this.cut){ // 그림도 있는 경우

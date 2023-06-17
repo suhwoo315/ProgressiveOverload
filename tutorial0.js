@@ -18,6 +18,7 @@ class Tutorial0 {
         textSize(30);
         textAlign(CENTER, TOP);
         fill(0);
+        // fill(81, 209, 121)
         text(this.dialogue[this.cut], messageX, messageY);
     }
 

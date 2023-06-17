@@ -25,7 +25,7 @@ class Tutorial3 {
         image(tutorial3_ui[0], width/2, height/2, width, height);
         textSize(25);
         textAlign(CENTER, CENTER)
-        fill(81, 209, 121);
+        // fill(81, 209, 121);
         text(this.dialogue[this.cut], width/2, height/2);
 
         switch(this.cut){ // 그림도 있는 경우

@@ -36,39 +36,69 @@ class Stage1 {
             image(stage1_chr[this.currChr], width/2 + 50, height/2+20, 500, 500);
 
             // ui - 운동 이름
-            image(stage1_ui[0], width / 2, height / 2 + 80, width, height);
+            image(stage1_ui[0], width / 2, height / 2, width, height);
             textAlign(RIGHT, CENTER);
             textSize(25);
             fill(0);
-            text("덤벨 컬", width / 8 - 30, height / 2 - 230 + 80);
+            text("덤벨 컬", width / 9, height * 18.5 / 100);
 
-            // ui - 실루엣 및 게이지 바
-            image(stage1_ui[6], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
-            if (frameCount % 60 < 15) image(stage1_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300); // sil
-            else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(stage1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(stage1_sil[2], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            else image(stage1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            image(stage1_ui[2], width / 2 - 10, height / 2 + 60, width, height); //게이지 바
+            // ui - 실루엣 및 게이지 바 : 
+            image(stage1_ui[6], width / 2, height / 2, width, height); //실루엣 배경
+            if (frameCount % 60 < 15) image(stage1_sil[0], width /2, height / 2, width, height); // sil
+            else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(stage1_sil[1], width / 2, height / 2 , width, height);
+            else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(stage1_sil[2], width / 2, height / 2 , width, height);
+            else image(stage1_sil[1], width / 2, height / 2, width, height);
+            image(stage1_ui[1], width / 2, height / 2, width, height); //게이지 바
 
             // ui - 아령 차감
-            image(stage1_ui[4], width / 2, height / 2, width, height); //초록색 아령 5개
-            if(this.count == 4){ //회색 아령 하나씩 추가
-                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
+            image(stage1_ui[5], width / 2, height / 2, width, height); //아령 배경
+            
+            if(this.count == 5){
+                //남은 개수
+                image(stage1_ui[12], width / 2, height / 2, width, height); 
+                image(stage1_ui[13], width / 2, height / 2, width, height);
+                image(stage1_ui[14], width / 2, height / 2, width, height);
+                image(stage1_ui[15], width / 2, height / 2, width, height);
+                image(stage1_ui[16], width / 2, height / 2, width, height);
+            }
+
+            else if(this.count == 4){ //회색 아령 하나씩 추가
+                //남은 개수
+                image(stage1_ui[13], width / 2, height / 2, width, height);
+                image(stage1_ui[14], width / 2, height / 2, width, height);
+                image(stage1_ui[15], width / 2, height / 2, width, height);
+                image(stage1_ui[16], width / 2, height / 2, width, height);
+                //처리 횟수
+                image(stage1_ui[17], width / 2, height / 2, width, height);
+                
             }
             else if(this.count == 3){
-                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
+                //남은 개수
+                image(stage1_ui[14], width / 2, height / 2, width, height);
+                image(stage1_ui[15], width / 2, height / 2, width, height);
+                image(stage1_ui[16], width / 2, height / 2, width, height);
+                //처리 횟수
+                image(stage1_ui[17], width / 2, height / 2, width, height);
+                image(stage1_ui[18], width / 2, height / 2, width, height);
             }
             else if(this.count == 2){
-                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
-                image(stage1_ui[5], width / 2, height / 2, width, height);
+                //남은 개수
+                image(stage1_ui[15], width / 2, height / 2, width, height);
+                image(stage1_ui[16], width / 2, height / 2, width, height);
+                //처리 횟수
+                image(stage1_ui[17], width / 2, height / 2, width, height);
+                image(stage1_ui[18], width / 2, height / 2, width, height);
+                image(stage1_ui[19], width / 2, height / 2, width, height);
             }
             else if(this.count == 1){
-                image(stage1_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage1_ui[5], width / 2 + 210, height / 2, width, height);
-                image(stage1_ui[5], width / 2, height / 2, width, height);
-                image(stage1_ui[5], width / 2 - 210, height / 2, width, height);
+                //남은 개수
+                
+                image(stage1_ui[16], width / 2, height / 2, width, height);
+                //처리 횟수
+                image(stage1_ui[17], width / 2, height / 2, width, height);
+                image(stage1_ui[18], width / 2, height / 2, width, height);
+                image(stage1_ui[19], width / 2, height / 2, width, height);
+                image(stage1_ui[20], width / 2, height / 2, width, height);
             }
         }
         else {
@@ -158,7 +188,7 @@ class Stage1 {
         let maxY = height*2/5 + 100;
         let minY = height*2/5 - 100;
         let dumbbellY = y/height * (minY - maxY);
-        image(stage1_ui[3], width/ 2 - 10, minY - dumbbellY + 150, width, height);
+        image(stage1_ui[2], width/ 2, minY - dumbbellY + 150, width, height);
         // image(stage4_ui[1], width / 2 - 10, height / 2 + 60, width, height);
     }
 }
