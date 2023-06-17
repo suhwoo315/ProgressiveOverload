@@ -21,51 +21,101 @@ class Tutorial1 {
 
     // 해당 cut에 알맞은 화면을 표시한다
     display(){
+        let messageX = width / 2
+        let messageY = height * 690 / 918.5625; 
+        let silX1 = width / 2;
+        let silX2 = width / 2;
+        let silY = height / 2;
+        let silW = width * 0.8;
+        let silH = height * 0.8;
+        
         // 기본 화면 요소
         background(255);
+        imageMode(CENTER, CENTER);
         image(tutorial1_ui[0], width/2, height/2, width, height);
-        textSize(25);
-        textAlign(CENTER, CENTER)
-        fill(81, 209, 121);
-        text(this.dialogue[this.cut], width/2, height/2);
+        textSize(30);
+        textAlign(CENTER, CENTER);
+        // textAlign(CENTER, CENTER);
+        // fill(81, 209, 121);
+        fill(0);
+        text(this.dialogue[this.cut], messageX, messageY);
+        imageMode(CENTER)
+        // image(tutorial1_ui[1], width / 2, height / 2, width, height);
+        // rect(width*17/100, height * 17 / 100, width * 4.5 / 100, height * 35 / 100);
+        
+
 
         switch(this.cut){ // 그림도 있는 경우
             case 3:
+                imageMode(CENTER);
+                if (frameCount % 60 < 15) image(tutorial1_sil[0], silX1, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[1], silX1, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], silX1, silY, silW, silH);
+                else image(tutorial1_sil[1], silX1, silY, silW, silH);
+                if (frameCount % 60 < 15) image(tutorial1_sil[3], silX2, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[4], silX2, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[5], silX2, silY, silW, silH);
+                else image(tutorial1_sil[4], silX2, silY, silW, silH);
+                break;
             case 4:
-                image(tutorial1_ui[1], width/2, height/2, width, height);
-                if (frameCount % 60 < 15) image(tutorial1_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300); // sil
-                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-                else image(tutorial1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
+                // image(tutorial1_ui[1], width/2, height/2, width, height);
+                imageMode(CENTER);
+                if (frameCount % 60 < 15) image(tutorial1_sil[0], silX1, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[1], silX1, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], silX1, silY, silW, silH);
+                else image(tutorial1_sil[1], silX1, silY, silW, silH);
+                if (frameCount % 60 < 15) image(tutorial1_sil[3], silX2, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[4], silX2, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[5], silX2, silY, silW, silH);
+                else image(tutorial1_sil[4], silX2, silY, silW, silH);
+                // else image(tutorial1_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
+
                 break;
 
             case 5:
-                image(tutorial1_ui[1], width/2, height/2, width, height);
-                image(tutorial1_sil[2], width/2, height/2, 300, 300);
-                image(tutorial1_sil[2], width/2 + 350, height/2, 300, 300);
+                // image(tutorial1_ui[1], width/2, height/2, width, height);
+                // image(tutorial1_sil[2], width/2, height/2, 300, 300);
+                // image(tutorial1_sil[2], width/2 + 350, height/2, 300, 300);
+                imageMode(CENTER);
+                if (frameCount % 60 < 15) image(tutorial1_sil[0], silX1, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[1], silX1, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], silX1, silY, silW, silH);
+                else image(tutorial1_sil[1], silX1, silY, silW, silH);
+                if (frameCount % 60 < 15) image(tutorial1_sil[3], silX2, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[4], silX2, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[5], silX2, silY, silW, silH);
+                else image(tutorial1_sil[4], silX2, silY, silW, silH);
                 break;
 
-            case 6:
+            case 6: //좌측의 바는 덤벨의 실시간 위치를 나타냅니다.
                 image(tutorial1_ui[1], width/2, height/2, width, height);
-                image(tutorial1_sil[2], width/2, height/2, 300, 300);
-                image(tutorial1_sil[2], width/2 + 350, height/2, 300, 300);
+                if (frameCount % 60 < 15) image(tutorial1_sil[0], silX1, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[1], silX1, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[2], silX1, silY, silW, silH);
+                else image(tutorial1_sil[1], silX1, silY, silW, silH);
+                if (frameCount % 60 < 15) image(tutorial1_sil[3], silX2, silY, silW, silH); // sil
+                else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(tutorial1_sil[4], silX2, silY, silW, silH);
+                else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(tutorial1_sil[5], silX2, silY, silW, silH);
+                else image(tutorial1_sil[4], silX2, silY, silW, silH);
                 this.drawDumbbell(this.y);
                 stroke(81, 209, 121);
                 noFill();
-                if (frameCount % 30 < 15) rect(width/2 - 350, height/2, 100, 300);
+                rectMode(CORNER);
+                if (frameCount % 30 < 15) rect(width*17/100, height * 22 / 100, width * 4.5 / 100, height * 30 / 100);
                 break;
             
-            case 7:
+            case 7: //팔꿈치를 고정하고 주황색 선까지 덤벨을 천천히 내려주세요. **내려가는 화살표 추가
+                imageMode(CENTER);
                 image(tutorial1_ui[1], width/2, height/2, width, height);
-                image(tutorial1_sil[2], width/2, height/2, 300, 300);
-                image(tutorial1_sil[2], width/2 + 350, height/2, 300, 300);
+                image(tutorial1_sil[2], silX1, silY, silW, silH);
+                image(tutorial1_sil[5], silX2, silY, silW, silH);
                 this.drawDumbbell(this.y);
                 break;
             
-            case 8:
+            case 8: //아주 좋습니다!\n팔꿈치를 고정하고 팔을 접어 덤벨을 초록색 선까지 올려주세요. //올라가는 화살표 추가
                 image(tutorial1_ui[1], width/2, height/2, width, height);
-                image(tutorial1_sil[2], width/2, height/2, 300, 300);
-                image(tutorial1_sil[2], width/2 + 350, height/2, 300, 300);
+                image(tutorial1_sil[0], silX1, silY, silW, silH);
+                image(tutorial1_sil[3], silX2, silY, silW, silH);
                 this.drawDumbbell(this.y);
                 break;
             
@@ -113,6 +163,6 @@ class Tutorial1 {
         let maxY = height*2/5 + 100;
         let minY = height*2/5 - 100;
         let dumbbellY = y/height * (minY - maxY);
-        image(tutorial1_ui[2], width/ 2 - 10, minY - dumbbellY + 150, width, height);
+        image(tutorial1_ui[2], width/ 2, minY - dumbbellY + 150, width, tutorial1_ui.height);
     }
 }
