@@ -634,14 +634,16 @@ function draw() {
           }
         }
         else {
+          if (stage4.countMax > 0) gameOutro.success = true;
           phase++;
           scene = 0;
         }
       }
       break;
-      
+
     case 5: //phase5
-    default:
+      gameOutro.display();
+      break;
   }
 
   //exit
