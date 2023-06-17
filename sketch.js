@@ -95,6 +95,8 @@ let stage2_sil = [];
 let stage2_snd = [];
 let stage2_ui = [];
 let clear2_bg = [];
+let tutorial2_ui = [];
+let tutorial2_sil = [];
 
 // asset - phase3 overhead press
 let map3_bg = [];
@@ -780,7 +782,7 @@ function keyPressed(){
         else if (scene == 3){ //stage1
           if (stage1.count <= 0){
             // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
+            if (stage1.getCut() < stage1.maxCut()) stage1.increaseCut();
             else scene++;
           }
         }
