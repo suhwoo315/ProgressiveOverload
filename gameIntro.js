@@ -188,6 +188,12 @@ class GameIntro{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //sound
+                gameIntro_snd[0].amp(0, 0.3);
+                snd[2].setVolume(0.5);
+                snd[2].amp(0.8,0.3);
+                playOnce(snd[2]);
+
                 break;
             case 6:
                 background(255);
@@ -232,7 +238,15 @@ class GameIntro{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //sound
+                gameIntro_snd[0].stop();
+                snd[2].stop();
+                snd[0].setVolume(0);
+                snd[0].amp(1,0.3);
+                playOnce(snd[0]);
                 break;
+
+                
             case 8:
                 background(100);
                 imageMode(CENTER);
@@ -578,6 +592,8 @@ class GameIntro{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //sound
+                snd[0].amp(0,0.3);
                 break;
         }
     }

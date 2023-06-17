@@ -55,6 +55,7 @@ let coach = [];
 let boss = [];
 let ua  = [];
 let bgm = [];
+let snd = [];
 
 // asset - phase0
 let gameTitle_bg = [];
@@ -229,6 +230,11 @@ function preload(){
   //max v
   for(let i=0; i<8; i++){
     max[i] = loadImage('assets/sketch/max/' + i + '.png');
+  }
+
+  //sound v
+  for(let i=0; i<3; i++){
+    snd[i] = loadSound('assets/sketch/snd/' + i + '.mp3');
   }
 
   //ua v
