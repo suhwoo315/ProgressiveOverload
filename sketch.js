@@ -419,21 +419,19 @@ function draw() {
   // console.log("scene " + scene);
   
   switch(phase){
-    case 0: //phase0 : gameTitle~gameIntro
-      if(scene == 0){
+    case 0: //phase0
+      if(scene == 0){ // gameTitle
         gameTitle.display();
-        
       } 
-      else if (scene == 1){
+      else if (scene == 1){ // tutorial0
         tutorial0.display();
       }
-      else if (scene == 2){
+      else if (scene == 2){ // gameIntro
         gameIntro.display();
-        
       }
       break;
 
-    case 1: //phase1 : map1~clear1
+    case 1: //phase1
       if (scene == 0){ // map1
         // map1.move();
         map1.display();
@@ -492,11 +490,11 @@ function draw() {
       break;
     
     case 2: //phase2
-      if(scene == 0){
-        // map2.display();
+      if(scene == 0){ //map2
+        map2.display();
       }
-      else if(scene == 1){
-        // story2.display();
+      else if(scene == 1){ //story2
+        story2.display();
       }
       else if(scene == 2){ // tutorial2
         tutorial2.display();
@@ -543,18 +541,75 @@ function draw() {
           }
         }
       }
-      else if(scene == 4){
-        // clear2.display();
+      else if(scene == 4){ //clear2
+        clear2.display();
       }
       break;
+
     case 3: //phase3
+    if(scene == 0){ //map3
+      map3.display();
+    }
+    else if(scene == 1){ //story3
+      story3.display();
+    }
+    else if(scene == 2){ // tutorial3
+      tutorial3.display();
+      if (tutorial3.getCut() == 6){
+        trackWrists();
+        tutorial3.checkPass(pressUpper, pressLower);
+        if (tutorial3.lowerPass) tutorial3.increaseCut();
+      }
+      else if (tutorial3.getCut() == 7){
+        trackWrists();
+        tutorial3.checkPass(pressUpper, pressLower);
+        if (tutorial3.upperPass){
+          tutorial3.increaseCut();
+          tutorial3.lowerPass = false;
+          tutorial3.upperPass = false;
+        }
+      }
+      else if (tutorial3.getCut() == 8){
+        trackWrists();
+        tutorial3.checkPass(pressUpper, pressLower);
+        if (tutorial3.lowerPass && tutorial3.upperPass) tutorial3.increaseCut();
+      }
+      else {
+        if (millis() - savedTime > autoNextTime){
+          if (tutorial3.getCut() < tutorial3.getMaxCut()){
+            tutorial3.increaseCut();
+            savedTime = millis();
+          }
+          else {
+            scene++;
+          }
+        }
+      }
+    }
+    else if(scene == 3){ // stage3
+      trackWrists();
+      stage3.display();
+      stage3.check(pressUpper, pressLower);
+      //stage3.sound();
+      if (stage3.count <= 0){
+        if (millis() - savedTime > autoNextTime){
+          if (stage3.getCut() < stage3.getMaxCut()) stage3.increaseCut();
+          else scene++;
+        }
+      }
+    }
+    else if(scene == 4){ //clear3
+      clear3.display();
+    }
+    break;
+
     case 4: //phase4
       if(scene == 0){ // map4
         map4.move();
         map4.display();
       }
       else if (scene == 1){ // story4
-        // story4.display();
+        story4.display();
       }
       else if (scene == 2){ // tutorial4
         tutorial4.display();
@@ -578,23 +633,13 @@ function draw() {
             }
           }
         }
-        else { // temporary ending
-          if (stage4.countMax <= 0){
-            background(0);
-            fill(255, 0, 0);
-            textSize(100);
-            textAlign(CENTER, CENTER);
-            text("GAME OVER", width/2, height/2);
-          }
-          else {
-            background(0);
-            fill(0, 255, 0);
-            textSize(100);
-            textAlign(CENTER, CENTER);
-            text("YOU WIN", width/2, height/2);
-          }
+        else {
+          phase++;
+          scene = 0;
         }
       }
+      break;
+      
     case 5: //phase5
     default:
   }
@@ -649,12 +694,11 @@ function keyPressed(){
         if (scene == 0){ //gameTitle
           scene++;
         }
-        //gameIntro
-        else if (scene == 1){
+        else if (scene == 1){ //tutorial0
           if (tutorial0.getCut() < tutorial0.getMaxCut()) tutorial0.increaseCut();
           else scene++;
         }
-        else if (scene == 2){
+        else if (scene == 2){ //gameIntro
           if (gameIntro.cut < gameIntro.maxcut) gameIntro.cut++; //배경이 바뀜
           else {
             phase++;
@@ -708,14 +752,25 @@ function keyPressed(){
           }
         }
         else if(scene == 4){ //clear2
-
+          if (clear2.cut < clear2.maxCut) clear2.cut++;
+          else {
+            phase++;
+            scene = 0;
+          }
         }
+      break;
+
       case 3:
         if(scene == 0){ //map3
           scene++;
         }
         else if(scene == 1){ //story3
-          
+          if(story3.cut < story3.maxcut){
+            story3.cut++;
+          }
+          else {
+            scene++;
+          }
         }
         else if(scene == 3){ //stage3
           if (stage3.count <= 0){
@@ -724,24 +779,32 @@ function keyPressed(){
           }
         }
         else if(scene == 4){ //clear3
+          if (clear3.cut < clear3.maxCut) clear3.cut++;
+          else {
+            phase++;
+            scene = 0;
+          }
+        }
+      break;
+
+      case 4:
+        if(scene == 0){ //map4
 
         }
-      case 4:
-        // if(scene == 0){
+        else if(scene == 1){ //story4
 
-        // }
-        // else if(scene == 1){
-
-        // }
-        if (scene == 2){
+        }
+        else if (scene == 2){ //tutorial4
           if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
           else scene++;
         }
-        else if (scene == 3 && !stage4.gameStarted){
+        else if (scene == 3 && !stage4.gameStarted){ //stage4
           stage4.gameStarted = true;
           stage4.gaming = true;
           savedtime = millis();
         }
+      break;
+
       case 5:
       default:
     }
