@@ -37,6 +37,7 @@ class Story1{
                 textSize(30);
                 textAlign(CENTER, CENTER);
                 text("레인보우 바벨들이 박혀있다.", width / 2, height * 23/100)
+                snd[0].amp(0.8,0.3);
                 break;
 
             case 1:
@@ -88,6 +89,7 @@ class Story1{
                 // textSize(30);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
+                snd[0].amp(0,0.3);
                 break;
         }
         // background(100);

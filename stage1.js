@@ -84,6 +84,12 @@ class Stage1 {
             textAlign(CENTER, CENTER);
             text(this.dialogue[this.cut], width/2, height/2);
         }
+        // 아령을 들 때마다 점점 아우라가 커진다
+        if(this.count < 5) playOnce(stage1_snd[0]);
+        if(this.count == 4)stage1_snd[0].amp(1,0.2);
+        if(this.count == 3) stage1_snd[0].amp(2,0.2);
+        if(this.count == 2) stage1_snd[0].amp(3,0.2);
+        if(this.count == 1) stage1_snd[0].amp(4,0.2);
     }
 
     // 현재 cut을 반환한다 - sketch.js에서 사용
