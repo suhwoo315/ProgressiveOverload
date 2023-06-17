@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
-let scene = 4;
+let phase = 0;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -95,6 +95,8 @@ let stage2_sil = [];
 let stage2_snd = [];
 let stage2_ui = [];
 let clear2_bg = [];
+let tutorial2_ui = [];
+let tutorial2_sil = [];
 
 // asset - phase3 overhead press
 let map3_bg = [];
@@ -780,7 +782,7 @@ function keyPressed(){
         else if (scene == 3){ //stage1
           if (stage1.count <= 0){
             // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
+            if (stage1.getCut() < stage1.maxCut()) stage1.increaseCut();
             else scene++;
           }
         }

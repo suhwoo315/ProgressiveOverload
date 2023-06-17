@@ -1,4 +1,4 @@
-class gameOutro { 
+class GameOutro { 
     constructor(){
         this.succuess = false;
         this.cut = 0; // 현재 cut
