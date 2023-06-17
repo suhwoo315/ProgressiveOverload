@@ -99,10 +99,9 @@ class Clear2{
                 //hand
                 imageMode(CENTER);
                 image(gameIntro_bg[4], width / 2, height / 2, width, height);
-
-                
                 break;
-            case 3: //쪽지
+
+            case 3: //맥스
                 image(clear2_bg[0], width/2, height/2, width, height);
                 rectMode(CENTER);
                 noStroke();
@@ -119,20 +118,27 @@ class Clear2{
                 imageMode(CENTER);
                 image(gameIntro_bg[4], width / 2, height / 2, width, height);
                 
-                //max
+                // //max
                 imageMode(CENTER);
                 image(max[2], width / 2, height / 2, maxSize, maxSize);
                 
                 //ui
+                
                 imageMode(CENTER);
-                image(gameIntro_bg[4], width / 2, height * 2/5, width, height);
-                // imageMode(CENTER);
-                // image(ui[6], textBoxX, textBoxY, textBoxW, textBoxH);
+                image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
-                textAlign(CENTER, TOP);
-                fill(100);
+                textAlign(LEFT, TOP);
+                textLeading(35);
+                textStyle('normal');
+                fill(0);
                 textSize(30);
-                text(this.dialogue[this.cut], messageX, messageY);
+                text(this.dialogue[this.cut], textX, textY);
+                //name
+                fill(70);
+                textStyle('normal');
+                textSize(30);
+                textAlign(LEFT, TOP);
+                text("맥스", chrNameX, chrNameY);
                 break;
             case 4: //쪽지
                 image(clear2_bg[0], width/2, height/2, width, height);
@@ -354,7 +360,7 @@ class Clear2{
                 rect(width / 2, height / 2, width, height);
                 //max
                 imageMode(CENTER);
-                image(max[3], width / 2, height / 2, maxSize, maxSize);
+                image(max[2], width / 2, height / 2, maxSize, maxSize);
                 
                 //ui
                 imageMode(CENTER);

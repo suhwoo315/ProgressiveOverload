@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 3;
+let scene = 4;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -104,6 +104,7 @@ let map3_chr = [];
 let map3_snd = [];
 let story3_bg = [];
 let story3_snd = [];
+let story3_ui = []
 let stage3_bg = [];
 let stage3_chr = [];
 let stage3_sil = [];
@@ -117,6 +118,7 @@ let map4_chr = [];
 let map4_snd = [];
 let story4_bg = [];
 let story4_snd = [];
+let story4_ui = [];
 let tutorial4_bg = [];
 let tutorial4_chr_defend = [];
 let tutorial4_chr_kick = [];
@@ -197,13 +199,13 @@ function preload(){
   story2 = new Story2();
   tutorial2 = new Tutorial2();
   stage2 = new Stage2();
-  // clear2 = new Clear2();
+  clear2 = new Clear2();
   //phase3
-  // map3 = new Map3();
-  // story3 = new Story3();
+  map3 = new Map3();
+  story3 = new Story3();
   tutorial3 = new Tutorial3();
   stage3 = new Stage3();
-  // clear3 = new Clear3();
+  clear3 = new Clear3();
   //phase4
   map4 = new Map4();
   story4 = new Story4();
@@ -377,16 +379,97 @@ function preload(){
   //   stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
   // }
 
-  // // clear2
-  // for(let i=0; i<2; i++){
-  //   clear2_bg[i] = loadImage('assets/phase2/clear2/bg/' + i + '.png');
-  // }
+  // clear2
+  for(let i=0; i<1; i++){
+    clear2_bg[i] = loadImage('assets/phase2/clear2/bg/' + i + '.png');
+  }
 
   //phase3
 
+  //map3
+  for(let i=0; i<1; i++){
+    map3_bg[i] = loadImage('assets/phase3/map3/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   map3_snd[i] = loadSound('assets/phase3/map3/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<1; i++){
+    map3_chr[i] = loadImage('assets/phase3/map3/chr/' + i + '.png');
+  }
+
+  //story3
+  for(let i=0; i<1; i++){
+    story3_bg[i] = loadImage('assets/phase3/story3/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   story3_snd[i] = loadSound('assets/phase3/story3/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<2; i++){
+    story3_ui[i] = loadImage('assets/phase3/story3/ui/' + i + '.png');
+  }
+
+  //tutorial3
+  // for(let i=0; i<3; i++){
+  //   tutorial3_ui[i] = loadImage('assets/phase3/tutorial3/ui/' + i + '.png');
+  // }
+  // for(let i=0; i<12; i++){
+  //   tutorial3_sil[i] = loadImage('assets/phase3/tutorial3/sil/' + i + '.png');
+  // }
+
+  //stage3
+  // for(let i=0; i<6; i++){
+  //   stage3_chr[i] = loadImage('assets/phase3/stage3/chr/' + i + '.png');
+  // }
+  // for(let i=0; i<22; i++){
+  //   stage3_ui[i] = loadImage('assets/phase3/stage3/ui/' + i + '.png'); //********
+  // }
+  // for(let i=0; i<1; i++){
+  //   stage3_bg[i] = loadImage('assets/phase3/stage3/bg/' + i + '.png');
+  // }
+  // for(let i=0; i<2; i++){
+  //   stage3_snd[i] = loadSound('assets/phase3/stage3/snd/' + i + '.mp3');
+  // }
+  // for(let i=0; i<3; i++){
+  //   stage3_sil[i] = loadImage('assets/phase3/stage3/sil/' + i + '.png');
+  // }
+
+  // clear3
+  for(let i=0; i<1; i++){
+    clear3_bg[i] = loadImage('assets/phase3/clear3/bg/' + i + '.png');
+  }
 
   //phase4
   // map4
+  for(let i=0; i<1; i++){
+    map4_bg[i] = loadImage('assets/phase4/map4/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<1; i++){
+    map4_chr[i] = loadImage('assets/phase4/map4/chr/' + i + '.png');
+  }
+
+  //story4
+  for(let i=0; i<2; i++){
+    story4_bg[i] = loadImage('assets/phase4/story4/bg/' + i + '.png');
+  }
+  // for(let i=0; i<0; i++){
+  //   story4_snd[i] = loadSound('assets/phase4/story4/snd/' + i + '.mp3');
+  // }
+  for(let i=0; i<1; i++){
+    story4_ui[i] = loadImage('assets/phase4/story4/ui/' + i + '.png');
+  }
+
+  // //tutorial4
+  // for(let i=0; i<3; i++){
+  //   tutorial4_ui[i] = loadImage('assets/phase4/tutorial4/ui/' + i + '.png');
+  // }
+  // for(let i=0; i<12; i++){
+  //   tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
+  // }
+
+  // stage4
   for(let i=0; i<1; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
@@ -394,7 +477,7 @@ function preload(){
   //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
   // }
 
-  // stage4
+
   for(let i=0; i<3; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
@@ -429,6 +512,8 @@ function preload(){
   for(let i=0; i<10; i++){
     stage4_snd[i] = loadSound('assets/phase4/stage4/snd/' + i + '.mp3');
   }
+
+  //gameOutro
 
 
   leftWristValues[0] = [];
@@ -474,8 +559,8 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  // console.log("phase " + phase);
-  // console.log("scene " + scene);
+  console.log("phase " + phase);
+  console.log("scene " + scene);
   
   switch(phase){
     case 0: //phase0
@@ -571,7 +656,7 @@ function draw() {
             tutorial2.upperPass = false;
           }
         }
-        else if (tutorial1.getCut() == 8){
+        else if (tutorial2.getCut() == 8){
           trackWrists();
           tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
           if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
@@ -664,7 +749,7 @@ function draw() {
 
     case 4: //phase4
       if(scene == 0){ // map4
-        map4.move();
+        // map4.move();
         map4.display();
       }
       else if (scene == 1){ // story4
@@ -782,7 +867,7 @@ function keyPressed(){
         else if (scene == 3){ //stage1
           if (stage1.count <= 0){
             // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-            if (stage1.getCut() < stage1.maxCut()) stage1.increaseCut();
+            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
             else scene++;
           }
         }
@@ -851,10 +936,15 @@ function keyPressed(){
 
       case 4:
         if(scene == 0){ //map4
-
+          scene++;
         }
         else if(scene == 1){ //story4
-
+          if(story4.cut < story4.maxcut){
+            story4.cut++;
+          }
+          else {
+            scene++;
+          }
         }
         else if (scene == 2){ //tutorial4
           if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
