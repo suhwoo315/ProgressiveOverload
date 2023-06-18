@@ -181,6 +181,9 @@ let pressLower = 4.5/10;
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
+let autoNextTimeWater = 500;
+let autoNextTimeShield = 700;
+let autoNextTimeLock = 1500;
 let timerSpeed = 0.7;
 
 
