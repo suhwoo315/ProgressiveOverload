@@ -27,10 +27,42 @@ class GameOutro {
     }
 
     display(){
+
+        let maxSize = max[0].height * windowHeight / 1600 * 2 / 3;
+        let textBoxX = width / 2;
+        let textBoxY = height / 2;
+        let textBoxW = width;
+        let textBoxH = height;
+        let textX = width / 7;
+        let textY = height * 2/3;
+        let chrNameX = width / 15;
+        let chrNameY = height * 2 / 3;
+        let messageX = width / 2
+        let messageY = height * 690 / 918.5625; 
+
         if (!this.succuess){
-            background(100);
-            text("이런! 머슬로스로부터 헬창월드를 구해내지 못했네.\n하지만 포기하지 말자고!");
-            //replay button
+            //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나
+            //image(gameOutro_bg[2], width / 2, height / 2,  width, height);
+            //image(gameOutro_ui[0], width / 2, height / 2,  width, height);
+            //image(gameOutro_ui[1], width / 2, height / 2,  width, height);
+            //if (mouseIsPressed){
+                //if(mouseX >= width / 2 - width / 150 - width / 6 &&
+                //mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
+                //mouseY >= height / 2 + height / 19 &&
+                //mouseY <= height / 2 + height / 19 + height / 15){
+                    //phase = 4;
+                    //scene = 3;
+                    //countMax = 3;
+                    //bossMax = 7;
+                //} 여기는 replay
+                //else if(mouseX >= width / 2 + width / 60 &&
+                //mouseX <= width / 2 + width / 60 + width / 6 &&
+                //mouseY >= height / 2 + height / 19 &&
+                //mouseY <= height / 2 + height / 19 + height / 15){
+                    //exit = true;
+                //} 여기는 quit. 이 버튼 누르면 exit 누른 거랑 마찬가지로 '정말 나가시겠습니까?' 뜨는 패턴
+            //}
+
         }
         else {
             switch(this.cut){

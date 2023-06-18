@@ -512,9 +512,17 @@ function preload(){
   for(let i=0; i<10; i++){
     stage4_snd[i] = loadSound('assets/phase4/stage4/snd/' + i + '.mp3');
   }
-
+  //phase 5
   //gameOutro
-
+  //for(let i=0; i<3; i++){
+  //  gameOutro_bg[i] = loadImage('assets/phase5/gameOutro/bg/' + i + '.png');
+  //}
+  //for(let i=0; i<1; i++){
+  //  gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
+  //}  
+  //for(let i=0; i<2; i++){
+  //  gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
+  //} 
 
   leftWristValues[0] = [];
   leftWristValues[1] = [];
@@ -778,9 +786,10 @@ function draw() {
           }
         }
         else {
-          if (stage4.countMax > 0) gameOutro.success = true;
           phase++;
           scene = 0;
+          if(stage4.countMax > 0) gameOutro.success = false;
+          else gameOutro.success = true;
         }
       }
       break;
