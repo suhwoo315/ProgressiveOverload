@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 3;
-let scene = 4;
+let phase = 1;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -280,13 +280,13 @@ function preload(){
   
   //phase1
   //map1
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     map1_bg[i] = loadImage('assets/phase1/map1/bg/' + i + '.png');
   }
   for(let i=0; i<0; i++){
     map1_snd[i] = loadSound('assets/phase1/map1/snd/' + i + '.mp3');
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<3; i++){
     map1_chr[i] = loadImage('assets/phase1/map1/chr/' + i + '.png');
   }
   
@@ -577,7 +577,7 @@ function draw() {
 
     case 1: //phase1
       if (scene == 0){ // map1
-        // map1.move();
+        map1.move();
         map1.display();
       }
       else if (scene == 1){ // story1
@@ -849,13 +849,19 @@ function keyPressed(){
           else {
             phase++;
             scene = 0;
+            
           }
         }
       break;
 
       case 1:
         if(scene == 0){ //map1
-          scene++;
+          if(map1.moveOn == false){
+            map1.moveOn = true;
+          }
+          else  {
+            scene++;
+          }
         }
         else if (scene == 1){ //story1
           if (story1.cut < story1.maxcut) story1.cut++;
