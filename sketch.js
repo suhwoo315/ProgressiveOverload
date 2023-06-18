@@ -581,8 +581,7 @@ function setup() {
 
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
-function draw() {
-  
+function draw() {  
   switch(phase){
     case 0: //phase0
       if(scene == 0){ // gameTitle
@@ -811,9 +810,10 @@ function draw() {
           }
         }
         else {
-          if(stage4.countBoss <= 0) gameOutro.success = true;
-          else if(stage4.countMax <= 0) gameOutro.success = false;
-          stage4.displayGame();          ;
+          //stage4.increasePhase();
+          if (stage4.countMax > 0) gameOutro.success = true;
+          phase++;
+          scene = 0;
         }
       }
       break;
@@ -993,12 +993,22 @@ function keyPressed(){
           stage4.gameStarted = true;
           stage4.gaming = true;
           savedtime = millis();
+          //if(stage4.countMax <= 0 || stage4.countBoss <= 0){
+            //if (stage4.getCut < stage4.maxCut) stage4.increaseCut();
+            //else {
+              //phase++;            
+              //scene = 0;
+            //}
+          //}
         }
       break;
 
       case 5:
         if(scene == 0){ //outro
-          gameOutro.cut++;
+          if(gameOutro.cut < gameOutro.maxCut) gameOutro.cut++;
+          else {
+            location.reload();
+          }
         }
     }
   }

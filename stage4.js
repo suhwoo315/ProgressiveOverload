@@ -1,7 +1,6 @@
 class Stage4 {
     constructor(){
         this.gameStarted = false;
-
         this.seq = ["A", //0 A= 덤벨컬
                     "C", //1 B=리버스컬
                     "B",
@@ -550,4 +549,10 @@ class Stage4 {
       this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
       fill(255, 0, 0);
     }
+
+
+    // 다음 phase로 넘어간다
+    //increasePhase(){
+      //phase++;
+    //}
 }
