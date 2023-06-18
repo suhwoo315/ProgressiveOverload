@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
-let scene = 3;
+let phase = 3;
+let scene = 4;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -81,6 +81,7 @@ let stage1_sil = [];
 let stage1_snd = [];
 let stage1_ui = [];
 let clear1_bg = [];
+let clear1_ui = [];
 
 // asset - phase2 reverse curl
 let map2_bg = [];
@@ -178,6 +179,7 @@ let pressLower = 4.5/10;
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
+let autoNextTimeLock = 2000;
 let timerSpeed = 0.7;
 
 
@@ -235,7 +237,7 @@ function preload(){
   }
 
   //max v
-  for(let i=0; i<8; i++){
+  for(let i=0; i<9; i++){
     max[i] = loadImage('assets/sketch/max/' + i + '.png');
   }
 
@@ -257,7 +259,7 @@ function preload(){
 
   //phase0
   //gameTitle
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/' + i + '.png');
   }
   for(let i=0; i<0; i++){
@@ -329,19 +331,23 @@ function preload(){
   }
 
   // clear1
-  for(let i=0; i<2; i++){
+  for(let i=0; i<1; i++){
     clear1_bg[i] = loadImage('assets/phase1/clear1/bg/' + i + '.png');
+  }
+
+  for(let i=0; i<1; i++){
+    clear1_ui[i] = loadImage('assets/phase1/clear1/ui/' + i + '.png');
   }
 
   //phase2
   //map2
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     map2_bg[i] = loadImage('assets/phase2/map2/bg/' + i + '.png');
   }
   // for(let i=0; i<0; i++){
   //   map2_snd[i] = loadSound('assets/phase1/map1/snd/' + i + '.mp3');
   // }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<3; i++){
     map2_chr[i] = loadImage('assets/phase2/map2/chr/' + i + '.png');
   }
   
@@ -382,20 +388,20 @@ function preload(){
   // }
 
   // clear2
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     clear2_bg[i] = loadImage('assets/phase2/clear2/bg/' + i + '.png');
   }
 
   //phase3
 
   //map3
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     map3_bg[i] = loadImage('assets/phase3/map3/bg/' + i + '.png');
   }
   // for(let i=0; i<0; i++){
   //   map3_snd[i] = loadSound('assets/phase3/map3/snd/' + i + '.mp3');
   // }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<3; i++){
     map3_chr[i] = loadImage('assets/phase3/map3/chr/' + i + '.png');
   }
 
@@ -442,13 +448,13 @@ function preload(){
 
   //phase4
   // map4
-  for(let i=0; i<1; i++){
+  for(let i=0; i<4; i++){
     map4_bg[i] = loadImage('assets/phase4/map4/bg/' + i + '.png');
   }
   // for(let i=0; i<0; i++){
   //   map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
   // }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<3; i++){
     map4_chr[i] = loadImage('assets/phase4/map4/chr/' + i + '.png');
   }
 
@@ -483,7 +489,7 @@ function preload(){
   for(let i=0; i<2; i++){
     tutorial4_bg[i] = loadImage('assets/phase4/tutorial4/bg/' + i + '.png');
   }
-  for(let i=0; i<6; i++){
+  for(let i=0; i<5; i++){
     tutorial4_chr[i] = loadImage('assets/phase4/tutorial4/chr/' + i + '.png');
   }
   for(let i=0; i<18; i++){
@@ -645,7 +651,10 @@ function draw() {
         if (stage1.count <= 0){
           if (millis() - savedTime > autoNextTime){
             if (stage1.getCut() < stage1.getMaxCut()) stage1.increaseCut();
-            else scene++;
+            else {
+              savedTime = millis();
+              scene++;
+            }
           }
         }
       }
@@ -656,6 +665,7 @@ function draw() {
     
     case 2: //phase2
       if(scene == 0){ //map2
+        map2.move();
         map2.display();
       }
       else if(scene == 1){ //story2
@@ -713,6 +723,7 @@ function draw() {
 
     case 3: //phase3
     if(scene == 0){ //map3
+      map3.move();
       map3.display();
     }
     else if(scene == 1){ //story3
@@ -770,7 +781,17 @@ function draw() {
 
     case 4: //phase4
       if(scene == 0){ // map4
-        // map4.move();
+        if (!map4.timerStarted){
+          savedTime = millis();
+          map4.timerStarted = true;
+        }
+        if (map4.cut < map4.maxcut){
+          if (millis() - savedTime > autoNextTimeLock){
+            map4.cut++;
+            savedTime = millis();
+          }
+        }
+        map4.move();
         map4.display();
       }
       else if (scene == 1){ // story4
@@ -911,17 +932,24 @@ function keyPressed(){
           }
         }
         else if (scene == 4){ //clear1
-          if (clear1.cut < clear1.maxCut) clear1.cut++;
-          else {
-            phase++;
-            scene = 0;
+          if (clear1.getCut() >= 0){
+            if (clear1.cut < clear1.maxCut) clear1.cut++;
+            else {
+              phase++;
+              scene = 0;
+            }
           }
         }
       break;
 
       case 2:
         if(scene == 0){ //map2
-          scene++;
+          if(map2.moveOn == false){
+            map2.moveOn = true;
+          }
+          else  {
+            scene++;
+          }
         }
         else if(scene == 1){ //story2
           if(story2.cut < story2.maxcut){
@@ -948,7 +976,12 @@ function keyPressed(){
 
       case 3:
         if(scene == 0){ //map3
-          scene++;
+          if(map3.moveOn == false){
+            map3.moveOn = true;
+          }
+          else  {
+            scene++;
+          }
         }
         else if(scene == 1){ //story3
           if(story3.cut < story3.maxcut){
@@ -975,7 +1008,15 @@ function keyPressed(){
 
       case 4:
         if(scene == 0){ //map4
-          scene++;
+          if(map4.cut == 2){
+            if(map4.moveOn == false){
+              map4.moveOn = true;
+            }
+            else  {
+              scene++;
+            }
+          }
+          
         }
         else if(scene == 1){ //story4
           if(story4.cut < story4.maxcut){

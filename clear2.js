@@ -42,7 +42,7 @@ class Clear2{
                 rect(width / 2, height / 2, width, height);
                 //max
                 imageMode(CENTER);
-                image(max[3], width / 2, height / 2, maxSize, maxSize);
+                image(max[8], width / 2, height / 2, maxSize, maxSize);
                 
                 //ui
                 imageMode(CENTER);
@@ -100,7 +100,7 @@ class Clear2{
 
                 //hand
                 imageMode(CENTER);
-                image(gameIntro_bg[4], width / 2, height / 2, width, height);
+                image(clear2_bg[1], width / 2, height / 2, width, height);
                 break;
 
             case 3: //맥스
@@ -116,9 +116,9 @@ class Clear2{
                 fill(0, 90);
                 rect(width / 2, height / 2, width, height);
 
-                //hand
-                imageMode(CENTER);
-                image(gameIntro_bg[4], width / 2, height / 2, width, height);
+                // //hand
+                // imageMode(CENTER);
+                // image(gameIntro_bg[4], width / 2, height / 2, width, height);
                 
                 // //max
                 imageMode(CENTER);

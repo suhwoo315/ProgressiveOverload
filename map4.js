@@ -1,51 +1,102 @@
 class Map4 {
   constructor() {
-    // this.chrX = width / 2;
-    // this.chrY = height * 2/3;
-    // this.targetX = 0;
-    // this.targetY = 0;
+    this.chrX = 0;
+    this.chrY = 0;
+    // this.chrX = width * 17.5 / 100;
+    // this.chrY = height * 40 / 100;
+    this.targetX = 0;
+    this.targetY = 0;
+    // this.targetY = height * 45 / 100;
     // this.speed = 5;
-    // this.moveOn = false;
+    this.moveOn = false;
+    this.cut = 0
+    this.maxcut = 2;
+    this.timerStarted = false;
   }
 
   display() {
       imageMode(CENTER);
-      image(map4_bg[0], width / 2, height / 2, width, height);
+      if(this.cut == 0){
+        image(map4_bg[0], width / 2, height / 2, width, height);
+      }
+      else if(this.cut == 1){
+        image(map4_bg[1], width / 2, height / 2, width, height);
+      }
+      else if(this.cut == 2){
+        if (frameCount % 60 < 30) image(map4_bg[2], width / 2, height / 2, width, height);
+        else image(map4_bg[3], width / 2, height / 2, width, height);
+
+        //spacebar
+        if (frameCount % 60 < 30) image(map4_chr[1], width / 2, height / 2, width, height);
+        else image(map4_chr[2], width / 2, height / 2, width, height);
+      }
+      
   
       // 캐릭터 그리기
-      // image(map1_chr[0], this.chrX, this.chrY, 200, 200);
-      image(map4_chr[0], width / 2, height / 2, width, height);
+      imageMode(CENTER);
+      image(map4_chr[0], this.chrX, this.chrY, map4_chr[0].width, map4_chr[0].height);
+      // image(map4_chr[0], width / 2, height / 2);
+      
         
   }
 
-  // move() {
-  //   this.targetX = width / 4;
-  //   this.targetY = height / 2
-  //     if (this.moveOn) {
-  //         if (this.chrX > this.targetX + width / 8) {
-  //           this.chrX -= 10;
-  //         } 
-  //         else if (this.chrY > this.targetY + height / 12) {
-  //           this.chrY -= 10;
-  //         } 
-  //         else if (this.chrX > this.targetX) {
-  //           this.chrX -= 10;
-  //         } 
-  //         else if (this.chrY > this.targetY) {
-  //           this.chrY -= 10;
-  //         } 
-  //         else if (this.chrX <= this.targetX && this.chrY <=this.targetY) {
-  //           // Reached the destination
-  //           //playOnce(snd[1]);
-  //           scene++;
-  //         }
-  //       } else {
-  //         this.chrX = width / 2;
-  //         this.chrY = height * 2 / 3;
-  //       }
+  move() {
+    // this.chrX = width * 17.5 / 100;
+    // this.chrY = height * 40 / 100;
+    this.targetX = width * 82 / 100;
+    this.targetY = height * 40 / 100;
 
-  // }
+    if(this.moveOn == true) {
+      if(this.chrX <= width * 49.2 / 100 + (this.targetX - width * 49.2 / 100) * 3 / 5){
+        this.chrX += 5;
+        
+      }
+      
+      else if(this.chrX > width * 49.2 / 100 + (this.targetX - width * 49.2 / 100) * 3 / 5){
+        this.chrX +=5;
+        this.chrY -=6;
+      }
+      if(this.chrX >= this.targetX){
+        this.chrX = this.targetX;
+        this.chrY = this.targetY;
+        //playOnce(snd[1]);
+      }
+    }
+    else if (this.moveOn == false){
+      
+      this.chrX = width * 49.2 / 100;
+      this.chrY = height * 68 / 100;
+      
+
+    }
       
     
+      
+    }
+      // if (this.moveOn) {
+      //     if (this.chrX > this.targetX + width / 8) {
+      //       this.chrX -= 10;
+      //     } 
+      //     else if (this.chrY > this.targetY + height / 12) {
+      //       this.chrY -= 10;
+      //     } 
+      //     else if (this.chrX > this.targetX) {
+      //       this.chrX -= 10;
+      //     } 
+      //     else if (this.chrY > this.targetY) {
+      //       this.chrY -= 10;
+      //     } 
+      //     else if (this.chrX <= this.targetX && this.chrY <=this.targetY) {
+      //       // Reached the destination
+      //       scene++;
+      //     }
+      //   } else {
+      //     this.chrX = width / 2;
+      //     this.chrY = height * 2 / 3;
+      //   }
+
 }
-  
+      
+    
+
+

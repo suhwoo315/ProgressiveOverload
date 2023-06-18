@@ -2,7 +2,8 @@ class Clear1{
     constructor(){
         this.cut = 0; // 현재 cut
         this.maxCut = 7; // cut의 총 개수
-        this.dialogue = ["어후, 죽는 줄 알았네..!\n그래도 꺼내긴 꺼냈네. 이 쪽지가 하는 말이 완전 허무맹랑한 소리는 아닌가 봐..", //0
+        this.dialogue = [
+                        "어후, 죽는 줄 알았네..!\n그래도 꺼내긴 꺼냈네. 이 쪽지가 하는 말이 완전 허무맹랑한 소리는 아닌가 봐..", //0
                         "오, 선택받은 자여!", //1
                         "우리의 기대대로 첫 번째 도전을 성공적으로 마쳤는가보군!\n역시 헬창 마스터의 DNA네!", //2
                         "이 레인보우 바벨은 나중에 머슬로스와의 결투에서 요긴하게 쓰일 것이라네.", //3
@@ -38,7 +39,7 @@ class Clear1{
                 rect(width / 2, height / 2, width, height);
                 //max
                 imageMode(CENTER);
-                image(max[0], width / 2, height / 2, maxSize, maxSize);
+                image(max[8], width / 2, height / 2, maxSize, maxSize);
                 
                 //ui
                 imageMode(CENTER);
@@ -298,5 +299,20 @@ class Clear1{
                 //snd[0].amp(0,0.3);   
                 break;
         }
+    }
+
+    // 현재 cut을 반환한다 - sketch.js에서 사용
+    getCut(){
+        return this.cut;
+    }
+
+    // cut의 총 개수를 반환한다
+    getMaxCut(){
+        return this.maxCut;
+    }
+
+    // 다음 cut으로 넘어간다
+    increaseCut(){
+        this.cut++;
     }
 } 
