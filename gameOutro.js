@@ -1,6 +1,5 @@
 class GameOutro { 
     constructor(){
-        this.succuess = false;
         this.cut = 0; // 현재 cut
         this.maxCut = 0; // cut의 총 개수
         this.dialogue = ["히이이이잉.. 근성장에 대한 의지는 영원히 꺾을 수 없는 것이군...", // 0
@@ -73,7 +72,7 @@ class GameOutro {
             }
 
         }
-        else {
+        else if(this.success == true) {
             switch(this.cut){
                 case 0:
                     background(100);
