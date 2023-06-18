@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
+let phase = 4;
 let scene = 2;
 
 // phase0의 클래스 - start
@@ -139,6 +139,9 @@ let clear4_ui = [];
 
 
 // asset - phase5 gameOutro
+let gameOutro_bg = [];
+let gameOutro_snd = [];
+let gameOutro_ui = [];
 
 // asset - exit
 let exit = false;
@@ -211,7 +214,7 @@ function preload(){
   tutorial4 = new Tutorial4();
   stage4 = new Stage4();
   //phase5
-  // gameOutro = new gameOutro();
+  gameOutro = new GameOutro();
 
 
 
@@ -526,15 +529,15 @@ function preload(){
   }
   //phase 5
   //gameOutro
-  //for(let i=0; i<3; i++){
-  //  gameOutro_bg[i] = loadImage('assets/phase5/gameOutro/bg/' + i + '.png');
-  //}
-  //for(let i=0; i<1; i++){
-  //  gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
-  //}  
-  //for(let i=0; i<2; i++){
-  //  gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
-  //} 
+  for(let i=0; i<3; i++){
+    gameOutro_bg[i] = loadImage('assets/phase5/gameOutro/bg/' + i + '.png');
+  }
+  for(let i=0; i<0; i++){
+    gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
+  }  
+  for(let i=0; i<2; i++){
+    gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
+  } 
 
   leftWristValues[0] = [];
   leftWristValues[1] = [];

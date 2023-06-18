@@ -41,28 +41,28 @@ class GameOutro {
         let messageY = height * 690 / 918.5625; 
 
         if (!this.succuess){
-            //background(100);
+            background(100);
             //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나
-            //image(gameOutro_bg[2], width / 2, height / 2,  width, height);
-            //image(gameOutro_ui[0], width / 2, height / 2,  width, height);
-            //image(gameOutro_ui[1], width / 2, height / 2,  width, height);
-            //if (mouseIsPressed){
-                //if(mouseX >= width / 7 + width / 35  &&
-                //mouseX <= width * 5 / 14 &&
-                //mouseY >= height * 7 / 10 &&
-                //mouseY <= height * 4 / 5){
-                    //phase = 4;
-                    //scene = 3;
-                    //countMax = 3;
-                    //bossMax = 7;
-                //} 여기는 replay
-                //else if(mouseX >= width * 4 / 7  &&
-                //mouseX <= width * 27 / 35  &&
-                //mouseY >= height * 7 / 10 &&
-                //mouseY <= height * 4 / 5){
-                    //exit = true;
-                //} 여기는 quit. 이 버튼 누르면 exit 누른 거랑 마찬가지로 '정말 나가시겠습니까?' 뜨는 패턴
-            //}
+            image(gameOutro_bg[2], width / 2, height / 2,  width, height);
+            image(gameOutro_ui[0], width / 2, height / 2,  width, height);
+            image(gameOutro_ui[1], width / 2, height / 2,  width, height);
+            if (mouseIsPressed){
+                if(mouseX >= width / 7 + width / 35  &&
+                mouseX <= width * 5 / 14 &&
+                mouseY >= height * 7 / 10 &&
+                mouseY <= height * 4 / 5){
+                    phase = 4;
+                    scene = 3;
+                    stage4.countMax = 3;
+                    stage4.bossMax = 7;
+                } // 여기는 replay
+                else if(mouseX >= width * 4 / 7  &&
+                mouseX <= width * 27 / 35  &&
+                mouseY >= height * 7 / 10 &&
+                mouseY <= height * 4 / 5){
+                    exit = true;
+                } //여기는 quit. 이 버튼 누르면 exit 누른 거랑 마찬가지로 '정말 나가시겠습니까?' 뜨는 패턴
+            }
 
         }
         else {
