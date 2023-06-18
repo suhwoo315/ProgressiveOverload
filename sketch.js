@@ -779,6 +779,17 @@ function draw() {
       else if (scene == 2){ // tutorial4
         tutorial4.display();
         if (tutorial4.getCut() == 6) tutorial4.arcLength += timerSpeed;
+        if (tutorial4.getCut() > 7){
+          if (millis() - savedTime > autoNextTime){
+            if (tutorial4.getCut() < tutorial4.getMaxCut()){
+              tutorial4.increaseCut();
+              savedTime = millis();
+            }
+            else {
+              scene++;
+            }
+          }
+        }
       }
       else if (scene == 3){ // stage4
         if(stage4.countMax > 0 && stage4.countBoss > 0){
@@ -976,8 +987,8 @@ function keyPressed(){
           }
         }
         else if (scene == 2){ //tutorial4
-          if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-          else scene++;
+          if (tutorial4.getCut() == 7) savedTime = millis();
+          if (tutorial4.getCut() < 8) tutorial4.increaseCut();
         }
         else if (scene == 3 && !stage4.gameStarted){ //stage4
           stage4.gameStarted = true;

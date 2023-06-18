@@ -1,7 +1,7 @@
 class Tutorial4{
     constructor(){
         this.cut = 0; // 현재 cut
-        this.maxCut = 8; // cut의 총 개수
+        this.maxCut = 10; // cut의 총 개수
         this.dialogue = ["레인보우 바벨을 뽑았던 첫 번째 동작 '덤벨 컬'은\n바벨로 머슬로스를 공격하게 해줍니다.", //0
                         "화면에 해당 아이콘이 뜨면 '덤벨 컬'으로 머슬로스를 공격하세요!", //1
                         "프로틴 우물을 재가동시켰던 두 번째 동작 '레터럴 라이즈'는\n프로틴 쉐이크로 머슬로스를 공격하게 해줍니다.", //2
@@ -10,7 +10,9 @@ class Tutorial4{
                         "화면에 해당 아이콘이 뜨면 '숄더 프레스'로 자신을 방어하세요!", //5
                         "시간이 모두 지나기\n전에 해당 동작을\n수행해야 합니다.", //6
                         "머슬로스의 HP를\n없애 머슬로스를\n물리치세요!", //7
-                        "건투를 빕니다!"]; //8
+                        "지금부터 화면이 자동으로 넘어갑니다.", //8
+                        "양손에 덤벨을 하나씩 들어주세요.", //9
+                        "준비 되었나요? 건투를 빕니다!"]; //10
         this.exercises = ["덤벨 컬", "레터럴 라이즈", "숄더 프레스"];
         this.colors = [color(213, 41, 41), color(213, 122, 41), color(41, 159, 213)];
         
@@ -30,7 +32,7 @@ class Tutorial4{
         let silH = height * 0.8;
         
         // 기본 화면 요소
-        if (this.cut < 6 || this.cut == 8){
+        if (this.cut < 6 || this.cut > 7){
             background(255);
             imageMode(CENTER, CENTER);
             image(tutorial4_ui[0], width/2, height/2, width, height);

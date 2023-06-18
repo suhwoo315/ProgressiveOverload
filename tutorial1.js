@@ -96,7 +96,7 @@ class Tutorial1 {
                 this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
                 break;
             
-            case 9: //서우 부탁
+            case 9:
                 if (!this.lowerPass){
                     image(tutorial1_sil[10], width/2, height/2, width, height);
                     image(tutorial1_sil[2], silX1, silY, silW, silH);
@@ -144,7 +144,7 @@ class Tutorial1 {
         }
     }
 
-    // 움직이는 아령 UI를 그린다 **서우가 확인 필
+    // 움직이는 아령 UI를 그린다
     drawDumbbell(y, upperFraction, lowerFraction){
         let upperBound = height*upperFraction;
         let lowerBound = height*lowerFraction;
