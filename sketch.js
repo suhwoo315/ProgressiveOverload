@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 4;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -118,9 +118,7 @@ let map4_snd = [];
 let story4_bg = [];
 let story4_snd = [];
 let tutorial4_bg = [];
-let tutorial4_chr_defend = [];
-let tutorial4_chr_kick = [];
-let tutorial4_chr_punch = [];
+let tutorial4_chr = [];
 let tutorial4_sil = [];
 let tutorial4_ui = [];
 let stage4_bg = [];
@@ -174,7 +172,8 @@ let pressLower = 4.5/10;
 
 // 시간
 let savedTime = 0;
-let autoNextTime = 5000;
+let autoNextTime = 4000;
+let timerSpeed = 0.7;
 
 
 // 각 단계의 클래스 생성
@@ -394,11 +393,24 @@ function preload(){
   //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
   // }
 
+  // tutorial4
+  for(let i=0; i<2; i++){
+    tutorial4_bg[i] = loadImage('assets/phase4/tutorial4/bg/' + i + '.png');
+  }
+  for(let i=0; i<6; i++){
+    tutorial4_chr[i] = loadImage('assets/phase4/tutorial4/chr/' + i + '.png');
+  }
+  for(let i=0; i<18; i++){
+    tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
+  }
+  for(let i=0; i<6; i++){
+    tutorial4_ui[i] = loadImage('assets/phase4/tutorial4/ui/' + i + '.png');
+  }
+
   // stage4
   for(let i=0; i<3; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
-  
   for(let i=0; i<1; i++){
     stage4_chr_max_default[i] = loadImage('assets/phase4/stage4/chr/max/default/' + i + '.png'); // 1
   }
@@ -672,6 +684,7 @@ function draw() {
       }
       else if (scene == 2){ // tutorial4
         tutorial4.display();
+        if (tutorial4.getCut() == 6) tutorial4.arcLength += timerSpeed;
       }
       else if (scene == 3){ // stage4
         if(stage4.countMax > 0 && stage4.countBoss > 0){
@@ -679,7 +692,7 @@ function draw() {
             trackWrists();
             stage4.play();
             stage4.displayGame();
-            stage4.arcLength += 0.7;
+            stage4.arcLength += timerSpeed;
           }
           else if(stage4.gaming == false){
             if (stage4.check2sec() == true){
