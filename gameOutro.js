@@ -1,7 +1,8 @@
 class GameOutro { 
     constructor(){
+        this.success = false;
         this.cut = 0; // 현재 cut
-        this.maxCut = 0; // cut의 총 개수
+        this.maxCut = 20; // cut의 총 개수
         this.dialogue = ["히이이이잉.. 근성장에 대한 의지는 영원히 꺾을 수 없는 것이군...", // 0
                         "머슬.. 머슬.. 도대체 머슬이 뭐라고..", // 1
                         "(퓨슈슈슉.. 소멸하는 머슬로스)", // 2
@@ -21,7 +22,7 @@ class GameOutro {
                         "...", // 16
                         "잠깐! 이제부터 다시 운동을 가야겠어!", // 17
                         "(가방을 챙겨 나가는 맥스)", // 18
-                        "(소파 위에 있는 쪽지)", // 19
+                        "(맥스가 나간 사이 탁자 위에 있는 쪽지가 놓여져 있다)", // 19
                         "(쪽지 클로즈업 - 반드시 해낼지어니!)"]; //20
                         
     }
@@ -46,7 +47,9 @@ class GameOutro {
         let creditsY = 0;
         let creditsSpeed = 0.1;
 
-        if (this.succuess == false){
+        //sound
+        //stage4_snd[2].stop();
+        if (this.success == false){
             background(100);
             //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나
             image(gameOutro_bg[2], width / 2, height / 2,  width, height);
@@ -78,7 +81,12 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
                     image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
@@ -103,7 +111,12 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
                     image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
@@ -124,14 +137,14 @@ class GameOutro {
                     text("머슬로스", bossNameX, bossNameY);
                     break;
 
+
                 case 2:
                     background(100);
+                    //sound
+                    playOnce(gameOutro_snd[3]);                                                          
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
-                    //boss
-                    imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -141,22 +154,21 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-                    //name
-                    fill(70);
-                    textStyle('normal');
-                    textSize(30);
-                    textAlign(LEFT, TOP);
-                    text("머슬로스", bossNameX, bossNameY);
                     break;
 
                 case 3:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
-                    //boss
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
+                    //coach
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -171,14 +183,16 @@ class GameOutro {
                     textStyle('normal');
                     textSize(30);
                     textAlign(LEFT, TOP);
-                    text("머슬로스", bossNameX, bossNameY);
+                    text("코치볼트", bossNameX, bossNameY);
+                    //sound
+                    snd[0].amp(0.8,1);                      
                     break;
 
                 case 4:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -187,7 +201,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[4], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -209,10 +223,15 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[1], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -234,10 +253,15 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[1], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -259,10 +283,15 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[3], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -284,7 +313,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[0], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -293,7 +322,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[1], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -309,16 +338,29 @@ class GameOutro {
                     textSize(30);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
+                    //sound
+                    snd[0].amp(0,0.3);                      
                     break;
+
 
                 case 9:
                     background(100);
+                    //sound
+                    snd[0].stop();
+                    gameOutro_snd[1].setVolume(0);
+                    playOnce(gameOutro_snd[1]);
+                    gameOutro_snd[1].amp(1,1);                                       
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[1], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -340,10 +382,15 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[1], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -365,7 +412,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[1], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -374,7 +421,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[6], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -396,10 +443,15 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[1], width / 2, height / 2, width, height);
+                    //dark mode
+                    rectMode(CENTER);
+                    noStroke();
+                    fill(0, 90);
+                    rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -421,16 +473,8 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //dark mode
-                    rectMode(CENTER);
-                    noStroke();
-                    fill(0, 90);
-                    rect(width / 2, height / 2, width, height);
-                    //max
-                    imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -440,19 +484,16 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-                    //name
-                    fill(70);
-                    textStyle('normal');
-                    textSize(30);
-                    textAlign(LEFT, TOP);
-                    text("맥스", chrNameX, chrNameY);
+                    //sound
+                    gameOutro_snd[1].amp(0,0.2);
+                    playOnce(gameOutro_snd[2]);
                     break;
 
                 case 14:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -461,7 +502,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[3], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -477,13 +518,16 @@ class GameOutro {
                     textSize(30);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
+                    //sound
+                    gameOutro_snd[1].stop();
+                    gameOutro_snd[2].amp(0,0.5);                    
                     break;
 
                 case 15:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -492,7 +536,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[1], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -514,7 +558,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -545,7 +589,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //dark mode
                     rectMode(CENTER);
@@ -554,7 +598,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);
                     //max
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(max[4], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -570,22 +614,19 @@ class GameOutro {
                     textSize(30);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
+                    //sound
+                    gameOutro_snd[2].stop();
+                    gameOutro_snd[0].setVolume(0);
+                    playOnce(gameOutro_snd[0]);
+                    gameOutro_snd[0].amp(0.6,2);                                           
                     break;
 
                 case 18:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[5], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //dark mode
-                    rectMode(CENTER);
-                    noStroke();
-                    fill(0, 90);
-                    rect(width / 2, height / 2, width, height);
-                    //max
-                    imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -595,28 +636,14 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-                    //name
-                    fill(70);
-                    textStyle('normal');
-                    textSize(30);
-                    textAlign(LEFT, TOP);
-                    text("맥스", chrNameX, chrNameY);
                     break;
 
                 case 19:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[4], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //dark mode
-                    rectMode(CENTER);
-                    noStroke();
-                    fill(0, 90);
-                    rect(width / 2, height / 2, width, height);
-                    //max
-                    imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -626,28 +653,17 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-                    //name
-                    fill(70);
-                    textStyle('normal');
-                    textSize(30);
-                    textAlign(LEFT, TOP);
-                    text("맥스", chrNameX, chrNameY);
                     break;
 
                 case 20:
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(story4_bg[1], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //dark mode
-                    rectMode(CENTER);
-                    noStroke();
-                    fill(0, 90);
-                    rect(width / 2, height / 2, width, height);
-                    //max
+                    //memo
                     imageMode(CENTER);
-                    image(max[0], width / 2, height / 2, maxSize, maxSize);
+                    image(gameOutro_ui[3], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -657,16 +673,13 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-                    //name
-                    fill(70);
-                    textStyle('normal');
-                    textSize(30);
-                    textAlign(LEFT, TOP);
-                    text("맥스", chrNameX, chrNameY);
+
                     
                     break;
                 
                 //case 21:
+                //    sound
+                //    gameOutro_snd[0].amp(1,0.3);                
                 //    background(0);
                 //    fill(255);
                 //    textAlign(CENTER, TOP);
