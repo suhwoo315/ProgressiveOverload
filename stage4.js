@@ -364,7 +364,7 @@ class Stage4 {
       }
       else {
         if(this.attackSuccess == true){
-          if (!stage4_snd[3].isPlaying()) stage4_snd[3].play();
+          //playOnce(stage4_snd[3]);
           image(stage4_chr_boss_defend[0], width/2 + 400, height/2  - 100, 450, 450); //boss
           switch(this.seq[this.index]){
             case 'A':
@@ -381,20 +381,20 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.attackFail == true){
-          if (!stage4_snd[9].isPlaying()) stage4_snd[9].play();
+          //playOnce(stage4_snd[9]);
           image(stage4_chr_boss_defend[1], width/2 + 400, height/2  - 100, 450, 450);
           image(stage4_chr_max_default[0], width/2, height/2, 600, 600); //max
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){
-          if (!stage4_snd[5].isPlaying()) stage4_snd[5].play();
+          //playOnce(stage4_snd[5]);
           image(stage4_chr_boss_attack[0], width/2 + 400, height/2  - 100, 450, 450); //boss
           image(stage4_chr_max_defend[1], width / 2, height / 2, 600, 600);
           image(stage4_chr_max_defend[0], width / 2, height / 2, 600, 600);
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.defendFail == true){
-          if (!stage4_snd[3].isPlaying()) stage4_snd[3].play();
+          //playOnce(stage4_snd[3]);
           image(stage4_chr_boss_attack[0], width/2 + 400, height/2  - 100, 450, 450);
           image(stage4_chr_max_default[0], width/2, height/2, 600, 600); //max
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss

@@ -21,7 +21,7 @@ class Map1 {
         imageMode(CENTER);
         image(map1_chr[0], this.chrX, this.chrY, map1_chr[0].width, map1_chr[0].height);
         // image(map1_chr[0], width / 2, height / 2);
-        playOnce(snd[1]);
+        
           
     }
 
@@ -34,11 +34,13 @@ class Map1 {
         this.chrX += 3;
         if(this.chrX >= this.targetX){
           this.chrX = width * 17.5 / 100;
+          //playOnce(snd[1]);
         }
       }
       else {
         this.chrX +=0;
         this.chrY = height * 40 / 100;
+ 
       }
         
       

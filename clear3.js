@@ -35,6 +35,8 @@ class Clear3{
         switch(this.cut){
             case 0:
                 image(clear3_bg[0], width/2, height/2, width, height);
+                //sound
+                //snd[0].amp(0.8,1);                     
                 break;
 
             case 1: //max
@@ -359,6 +361,8 @@ class Clear3{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //sound
+                //snd[0].amp(0,0.3);                  
                 break;
         }
     }

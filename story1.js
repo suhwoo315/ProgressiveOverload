@@ -57,7 +57,11 @@ class Story1{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //sound
+                //snd[0].amp(0.8,1);                
+                
                 break;
+
 
             // //max
             // imageMode(CENTER);
@@ -73,7 +77,7 @@ class Story1{
                 // textSize(30);
                 // textAlign(CENTER, CENTER);
                 // text("레인보우 바벨들이 박혀있다.", width / 2, height * 23/100)
-                // snd[0].amp(0.8,0.3);
+
                 // break;
 
             case 1:
@@ -116,7 +120,6 @@ class Story1{
                 textSize(30);
                 textAlign(CENTER, CENTER);
                 text("레인보우 바벨들이 박혀있다.", width / 2, height * 23/100)
-                snd[0].amp(0.8,0.3);
                 break;
             case 3:
                 background(100);
@@ -392,6 +395,8 @@ class Story1{
                 fill(100);
                 textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
+                //sound
+                //snd[0].amp(0,0.3);  
                 break;
         }
         // background(100);

@@ -36,6 +36,7 @@ class Map2 {
     //         } 
     //         else if (this.chrX <= this.targetX && this.chrY <=this.targetY) {
     //           // Reached the destination
+    //           //playOnce(snd[1]);
     //           scene++;
     //         }
     //       } else {

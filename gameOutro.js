@@ -24,10 +24,13 @@ class GameOutro {
                         "(가방을 챙겨 나가는 맥스)", // 18
                         "(소파 위에 있는 쪽지)", // 19
                         "(쪽지 클로즈업 - 반드시 해낼지어니!)"]; //20
+                        
     }
 
     display(){
-
+        let bossX = width / 2;
+        let bossY = height / 2;
+        let bossSize = width / 3;
         let maxSize = max[0].height * windowHeight / 1600 * 2 / 3;
         let textBoxX = width / 2;
         let textBoxY = height / 2;
@@ -37,10 +40,14 @@ class GameOutro {
         let textY = height * 2/3;
         let chrNameX = width / 15;
         let chrNameY = height * 2 / 3;
+        let bossNameX = width / 19.5;
+        let bossNameY = height * 2 / 3;
         let messageX = width / 2
-        let messageY = height * 690 / 918.5625; 
+        let messageY = height * 690 / 918.5625;
+        let creditsY = 0;
+        let creditsSpeed = 0.1;
 
-        if (!this.succuess){
+        if (this.succuess == false){
             background(100);
             //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나
             image(gameOutro_bg[2], width / 2, height / 2,  width, height);
@@ -52,7 +59,8 @@ class GameOutro {
                 mouseY >= height * 7 / 10 &&
                 mouseY <= height * 4 / 5){
                     phase = 4;
-                    scene = 3;
+                    scene = 2;
+                    tutorial4.cut = 8;
                     stage4.countMax = 3;
                     stage4.bossMax = 7;
                 } // 여기는 replay
@@ -656,7 +664,32 @@ class GameOutro {
                     textSize(30);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
+                    
                     break;
+                
+                //case 21:
+                //    background(0);
+                //    fill(255);
+                //    textAlign(CENTER, TOP);
+                //    textSize(50);
+                //    creditsY += creditsSpeed;
+                //    text("Credit", windowWidth / 2, windowWidth * (19-creditsY) / 32);
+                //    textSize(30);
+                //    text("두부 온 리더 : 안다겸", windowWidth / 2, windowWidth * (21-creditsY) / 32);
+                //    text("불꽃 카리스마 : 윤서우", windowWidth / 2, windowWidth * (22-creditsY) / 32);
+                //    text("블링블링 이즈 : 임승현", windowWidth / 2, windowWidth * (23-creditsY) / 32);
+                //    text("마이네임 이즈 : 임승현", windowWidth / 2, windowWidth * (23-creditsY) / 32);                
+                //    text("박력짐은 : 조지은", windowWidth / 2, windowWidth * (24-creditsY) / 32);
+                //    text("만능열쇠 황인호", windowWidth / 2, windowWidth * (25-creditsY) / 32);
+                //    text("주말 : 사라짐", windowWidth / 2, windowWidth * (26-creditsY) / 32);
+                //    text("종강 : 안 옴", windowWidth / 2, windowWidth * (27-creditsY) / 32);
+                //    text("수면 : 부족", windowWidth / 2, windowWidth * (28-creditsY) / 32);
+                //    text("살려 : 주세요", windowWidth / 2, windowWidth * (29-creditsY) / 32);
+                //    text("당근 : 흔들고 있음", windowWidth / 2, windowWidth * (30-creditsY) / 32);
+                //    text("여러분들의 근성장을 응원합니다", windowWidth / 2, windowWidth * (31-creditsY) / 32);
+                //    text("잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동", windowWidth / 2, windowWidth * (32-creditsY) / 32);
+
+                //    break;
             }
         }
     }
