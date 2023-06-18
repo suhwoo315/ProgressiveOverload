@@ -183,7 +183,6 @@ let pressLower = 4.5/10;
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
-let autoNextTimeWater = 500;
 let autoNextTimeShield = 700;
 let autoNextTimeLock = 1500;
 let timerSpeed = 0.7;
@@ -383,13 +382,13 @@ function preload(){
   }  
 
   //stage2
-  for(let i=0; i<11; i++){
+  for(let i=0; i<6; i++){
     stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
   }
   for(let i=0; i<12; i++){
     stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
   }
-  for(let i=0; i<1; i++){ //6
+  for(let i=0; i<6; i++){ //6
     stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
   }
   for(let i=0; i<3; i++){
@@ -729,20 +728,12 @@ function draw() {
           stage2.clear = true;
         }
         if (stage2.clear){
-          if (stage2.getCut() < 4){
-            if (millis() - savedTime > autoNextTimeWater){
+          if (millis() - savedTime > autoNextTime){
+            if (stage2.getCut() < stage2.getMaxCut()){
               stage2.increaseCut();
               savedTime = millis();
             }
-          }
-          else {
-            if (millis() - savedTime > autoNextTime){
-              if (stage2.getCut() < stage2.getMaxCut()){
-                stage2.increaseCut();
-                savedTime = millis();
-              }
-              else scene++;
-            }
+            else scene++;
           }
         }
       }
