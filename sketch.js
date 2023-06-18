@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
+let phase = 1;
 let scene = 2;
 
 // phase0의 클래스 - start
@@ -571,8 +571,6 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {
-  console.log("phase " + phase);
-  console.log("scene " + scene);
   
   switch(phase){
     case 0: //phase0
