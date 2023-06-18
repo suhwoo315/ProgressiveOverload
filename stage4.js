@@ -1,7 +1,6 @@
 class Stage4 {
     constructor(){
         this.gameStarted = false;
-
         this.seq = ["A", //0 A= 덤벨컬
                     "C", //1 B=리버스컬
                     "B",
@@ -12,7 +11,7 @@ class Stage4 {
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
-        this.countMax = 3; // max의 hp, 0이 되면 게임 종료
+        this.countMax = 1; // max의 hp, 0이 되면 게임 종료
         this.countBoss = 7; // 보스의 hp, 0이 되면 게임 종료
 
         this.startAngle = -90;
@@ -550,4 +549,10 @@ class Stage4 {
       this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
       fill(255, 0, 0);
     }
+
+
+    // 다음 phase로 넘어간다
+    //increasePhase(){
+      //phase++;
+    //}
 }

@@ -1,8 +1,8 @@
 class GameOutro { 
     constructor(){
-        this.succuess = false;
+        this.success = false;
         this.cut = 0; // 현재 cut
-        this.maxCut = 0; // cut의 총 개수
+        this.maxCut = 21; // cut의 총 개수
         this.dialogue = ["히이이이잉.. 근성장에 대한 의지는 영원히 꺾을 수 없는 것이군...", // 0
                         "머슬.. 머슬.. 도대체 머슬이 뭐라고..", // 1
                         "(퓨슈슈슉.. 소멸하는 머슬로스)", // 2
@@ -47,7 +47,7 @@ class GameOutro {
         let creditsY = 0;
         let creditsSpeed = 0.1;
 
-        if (this.succuess == false){
+        if (this.success == false){
             background(100);
             //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나
             image(gameOutro_bg[2], width / 2, height / 2,  width, height);
@@ -73,7 +73,7 @@ class GameOutro {
             }
 
         }
-        else {
+        else if(this.success == true) {
             switch(this.cut){
                 case 0:
                     background(100);
