@@ -1,6 +1,6 @@
 class Tutorial1 {
     constructor(){
-        this.cut = 6; // 현재 cut
+        this.cut = 0; // 현재 cut
         this.maxCut = 11; // cut의 총 개수
         this.dialogue = ["지금부터 화면이 자동으로 넘어갑니다.", //0
                         "양손에 덤벨을 하나씩 쥐어보세요.", //1
@@ -37,13 +37,8 @@ class Tutorial1 {
         fill(0);
         textSize(30);
         textAlign(CENTER, TOP);
-        // textAlign(CENTER, CENTER);
-        // fill(81, 209, 121);
         fill(0);
         text(this.dialogue[this.cut], messageX, messageY);
-        // imageMode(CENTER)
-        // image(tutorial1_sil[10], width / 2, height / 2, width, height);
-        // rect(width*19.2/100, height * 21 / 100, width * 4.5 / 100, height * 30 / 100);
 
 
         switch(this.cut){ // 그림도 있는 경우

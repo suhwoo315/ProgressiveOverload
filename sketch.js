@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 1;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -312,13 +312,13 @@ function preload(){
   }
 
   //stage1
-  for(let i=0; i<6; i++){
+  for(let i=0; i<7; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<22; i++){
+  for(let i=0; i<12; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<6; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
   for(let i=0; i<2; i++){
@@ -642,9 +642,16 @@ function draw() {
         stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
         //stage1.sound();
-        if (stage1.count <= 0){
+        if (stage1.count == 0 && !stage1.clear){
+          savedTime = millis();
+          stage1.clear = true;
+        }
+        if (stage1.clear){
           if (millis() - savedTime > autoNextTime){
-            if (stage1.getCut() < stage1.getMaxCut()) stage1.increaseCut();
+            if (stage1.getCut() < stage1.getMaxCut()){
+              stage1.increaseCut();
+              savedTime = millis();
+            }
             else scene++;
           }
         }
@@ -902,13 +909,6 @@ function keyPressed(){
           else {
             scene++;
             savedTime = millis();
-          }
-        }
-        else if (scene == 3){ //stage1
-          if (stage1.count <= 0){
-            // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
-            else scene++;
           }
         }
         else if (scene == 4){ //clear1
