@@ -352,12 +352,7 @@ class Stage4 {
       fill(0); // 색상 설정
       noStroke();
       arc(135, 70, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
-
-      if (this.arcLength > 300) {
-        this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
-        fill(255, 0, 0);
-        //rect(width / 2, height / 2, 500, 500);
-      }
+      if (this.arcLength > 300) this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
 
       this.drawDumbbell();
 
