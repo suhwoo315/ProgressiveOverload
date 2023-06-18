@@ -10,7 +10,7 @@
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 2;
-let scene = 2;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -178,6 +178,7 @@ let pressLower = 4.5/10;
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
+let autoNextTimeWater = 500;
 let timerSpeed = 0.7;
 
 
@@ -364,22 +365,22 @@ function preload(){
     tutorial2_sil[i] = loadImage('assets/phase2/tutorial2/sil/' + i + '.png');
   }
 
-  // //stage2
-  // for(let i=0; i<6; i++){
-  //   stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
-  // }
-  // for(let i=0; i<22; i++){
-  //   stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png'); //********
-  // }
-  // for(let i=0; i<1; i++){
-  //   stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
-  // }
+  //stage2
+  for(let i=0; i<11; i++){
+    stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
+  }
+  for(let i=0; i<12; i++){
+    stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){ //6
+    stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
+  }
   // for(let i=0; i<2; i++){
   //   stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
   // }
-  // for(let i=0; i<3; i++){
-  //   stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
-  // }
+  for(let i=0; i<3; i++){
+    stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
+  }
 
   // clear2
   for(let i=0; i<1; i++){
@@ -704,11 +705,26 @@ function draw() {
         trackWrists();
         stage2.display();
         stage2.check(sideUpper, sideLower);
-        //stage2.sound();
-        if (stage2.count <= 0){
-          if (millis() - savedTime > autoNextTime){
-            if (stage2.getCut() < stage2.getMaxCut()) stage2.increaseCut();
-            else scene++;
+        //stage1.sound();
+        if (stage2.count == 0 && !stage2.clear){
+          savedTime = millis();
+          stage2.clear = true;
+        }
+        if (stage2.clear){
+          if (stage2.getCut() < 5){
+            if (millis() - savedTime > autoNextTimeWater){
+              stage2.increaseCut();
+              savedTime = millis();
+            }
+          }
+          else {
+            if (millis() - savedTime > autoNextTime){
+              if (stage2.getCut() < stage2.getMaxCut()){
+                stage2.increaseCut();
+                savedTime = millis();
+              }
+              else scene++;
+            }
           }
         }
       }
