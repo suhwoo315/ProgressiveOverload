@@ -83,10 +83,13 @@ class Stage2 {
             if (this.count > 4) image(stage2_ui[10], width / 2, height / 2, width, height);
         }
         else {
+            stage2_snd[0].stop();
+            stage2_snd[2].stop();            
             imageMode(CENTER);
             image(stage2_bg[0], width / 2, height / 2, width, height);
             image(stage2_bg[5], width / 2, height / 2, width, height);
             image(stage2_chr[0], width/2, height/2, width, height);
+            if(this.cut != 2) playOnce(snd[3]);            
             if (this.cut > 0) {
                 if (!this.bgOn){
                     background(255, 255, 255, 150);
@@ -101,9 +104,8 @@ class Stage2 {
                 text(this.dialogue[this.cut], width/2, height*9.3/20);
             }
             
-            stage2_snd[0].stop();
-            stage2_snd[2].stop();
-            if(this.cut != 6) playOnce(snd[3]);
+
+
         }
     }
 
