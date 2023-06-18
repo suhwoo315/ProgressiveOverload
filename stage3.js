@@ -1,15 +1,19 @@
 class Stage3 {
     constructor(){
+        this.clear = false;
         this.count = 5;
         this.currSil = 0;
         this.currChr = 0;
-        this.touchLower = false;
-        this.touchUpper = true;
+        this.touchLower = true;
+        this.touchUpper = false;
         this.bgOn = false;
         this.cut = 0;
-        this.maxCut = 1;
-        this.dialogue = ["세 번째 도전과제를 달성하였습니다!", //0
-                        "덤벨을 제자리에 내려놓아주세요."]; //1
+        this.maxCut = 4;
+        this.dialogue = ["", //0
+                        "", //1
+                        "", //2
+                        "세 번째 도전과제를\n달성하였습니다!", //3
+                        "덤벨을 제자리에\n내려놓아주세요."]; //4
     }
 
     // 알맞은 화면을 표시한다
@@ -19,70 +23,82 @@ class Stage3 {
 
             //background
             image(stage3_bg[0], width / 2, height / 2, width, height);
+            image(stage3_bg[1], width / 2, height / 2, width, height);
             if(this.count == 4){
-                image(stage3_ui[7], width / 2, height / 2, width, height);
+                image(stage3_bg[2], width / 2, height / 2, width, height);
             }
             else if(this.count == 3){
-                image(stage3_ui[8], width / 2, height / 2, width, height);
+                image(stage3_bg[3], width / 2, height / 2, width, height);
             }
             else if(this.count == 2){
-                image(stage3_ui[9], width / 2, height / 2, width, height);
+                image(stage3_bg[4], width / 2, height / 2, width, height);
             }
             else if(this.count == 1){
-                image(stage3_ui[10], width / 2, height / 2, width, height);
+                image(stage3_bg[5], width / 2, height / 2, width, height);
             }
 
-            // character 
-            image(stage3_chr[this.currChr], width/2 + 50, height/2+20, 500, 500);
+            // character
+            if (this.count > 3){
+                image(stage3_chr[this.currChr], width/2, height/2, width, height);
+            }
+            else if (this.count > 1){
+                image(stage3_chr[this.currChr + 6], width/2, height/2, width, height);
+            }
+            else {
+                image(stage3_chr[this.currChr + 12], width/2, height/2, width, height);
+            }
 
             // ui - 운동 이름
-            image(stage3_ui[0], width / 2, height / 2 + 80, width, height);
+            image(stage3_ui[0], width / 2, height / 2, width, height);
             textAlign(RIGHT, CENTER);
             textSize(25);
             fill(0);
-            text("숄더 프레스", width / 8 - 30, height / 2 - 230 + 80);
+            text("숄더 프레스", width * 1.1 / 9, height * 18.5 / 100);
 
-            // ui - 실루엣 및 게이지 바
-            image(stage3_ui[6], width / 2, height / 2 + 40 + 80, width, height); //실루엣 배경
-            if (frameCount % 60 < 15) image(stage3_sil[0], width / 10 + 20, height / 2 - 20 + 80, 300, 300); // sil
-            else if (frameCount % 60 >= 15 && frameCount % 45 < 30) image(stage3_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            else if (frameCount % 60 >= 30 && frameCount % 60 < 45) image(stage3_sil[2], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            else image(stage3_sil[1], width / 10 + 20, height / 2 - 20 + 80, 300, 300);
-            image(stage3_ui[2], width / 2 - 10, height / 2 + 60, width, height); //게이지 바
+            // ui - 실루엣 및 게이지 바 : 
+            image(stage3_ui[3], width / 2, height / 2, width, height); //실루엣 배경
+            if (frameCount % 60 < 15) image(stage3_sil[0], width /2, height / 2, width, height); // sil
+            else if (frameCount % 60 < 30) image(stage3_sil[1], width / 2, height / 2 , width, height);
+            else if (frameCount % 60 < 45) image(stage3_sil[2], width / 2, height / 2 , width, height);
+            else image(stage3_sil[1], width / 2, height / 2, width, height);
+            image(stage3_ui[1], width / 2, height / 2, width, height); //게이지 바
 
             // ui - 아령 차감
-            image(stage3_ui[4], width / 2, height / 2, width, height); //초록색 아령 5개
-            if(this.count == 4){ //회색 아령 하나씩 추가
-                image(stage3_ui[5], width / 2 + 420, height / 2, width, height);
-            }
-            else if(this.count == 3){
-                image(stage3_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage3_ui[5], width / 2 + 210, height / 2, width, height);
-            }
-            else if(this.count == 2){
-                image(stage3_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage3_ui[5], width / 2 + 210, height / 2, width, height);
-                image(stage3_ui[5], width / 2, height / 2, width, height);
-            }
-            else if(this.count == 1){
-                image(stage3_ui[5], width / 2 + 420, height / 2, width, height);
-                image(stage3_ui[5], width / 2 + 210, height / 2, width, height);
-                image(stage3_ui[5], width / 2, height / 2, width, height);
-                image(stage3_ui[5], width / 2 - 210, height / 2, width, height);
-            }
+            image(stage3_ui[4], width / 2, height / 2, width, height); //아령 배경
+            image(stage3_ui[5], width / 2, height / 2, width, height); //회색 아령
+            if (this.count > 0) image(stage3_ui[6], width / 2, height / 2, width, height);
+            if (this.count > 1) image(stage3_ui[7], width / 2, height / 2, width, height);
+            if (this.count > 2) image(stage3_ui[8], width / 2, height / 2, width, height);
+            if (this.count > 3) image(stage3_ui[9], width / 2, height / 2, width, height);
+            if (this.count > 4) image(stage3_ui[10], width / 2, height / 2, width, height);
         }
         else {
-            if (!this.bgOn){
-                background(255, 255, 255, 150);
-                this.bgOn = true;
+            imageMode(CENTER);
+            image(stage3_bg[0], width / 2, height / 2, width, height);
+            switch(this.cut){
+                case 0:
+                    image(stage3_bg[6], width / 2, height / 2, width, height);
+                    image(stage3_chr[12], width/2, height/2, width, height);
+                    break;
+                case 1:
+                    image(stage3_bg[7], width / 2, height / 2, width, height);
+                    image(stage3_chr[12], width/2, height/2, width, height);
+                    break;
+                case 2:
+                    image(stage3_bg[7], width / 2, height / 2, width, height);
+                    image(stage3_chr[18], width/2, height/2, width, height);
+                    break;
+                case 3:
+                case 4:
+                    image(stage3_ui[11], width / 2, height / 2, width, height);
+                    noStroke();
+                    fill(0);
+                    textSize(30);
+                    textAlign(CENTER, CENTER);
+                    fill(0);
+                    text(this.dialogue[this.cut], width/2, height*9.3/20);
+                    break;
             }
-            fill(255);
-            rectMode(CENTER);
-            rect(width / 2, height / 2, width, height);
-            image(ui[6], width/2, height/2, width, height);
-            fill("black");
-            textAlign(CENTER, CENTER);
-            text(this.dialogue[this.cut], width/2, height/2);
         }
     }
 
@@ -114,10 +130,8 @@ class Stage3 {
                 this.currChr = 5;
                 this.currSil = 2;
                 if (this.touchLower){
-                    this.count--;
                     this.touchLower = false;
                     this.touchUpper = true;
-                    stage3_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }
             else if (y < upperBound + (lowerBound-upperBound)*1/4) {
@@ -140,19 +154,30 @@ class Stage3 {
                 this.currChr = 0;
                 this.currSil = 0;
                 if (this.touchUpper){
+                    this.count--;
                     this.touchLower = true;
                     this.touchUpper = false;
+                    //stage2_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }
         }
     }
 
     // 움직이는 아령 UI를 그린다
-    drawDumbbell(y){
-        let maxY = height*2/5 + 100;
-        let minY = height*2/5 - 100;
-        let dumbbellY = y/height * (minY - maxY);
-        image(stage3_ui[3], width/ 2 - 10, minY - dumbbellY + 150, width, height);
-        // image(stage4_ui[1], width / 2 - 10, height / 2 + 60, width, height);
+    drawDumbbell(y, upperFraction, lowerFraction){
+        let upperBound = height*upperFraction;
+        let lowerBound = height*lowerFraction;
+        let boundHeight = lowerBound - upperBound;
+        let boundY;
+        if (y < upperBound) boundY = upperBound;
+        else if (y > lowerBound) boundY = lowerBound;
+        else boundY = y;
+        
+        let upperY = height*5.7/20;
+        let lowerY = height*8.7/20;
+        let barHeight = lowerY - upperY;
+        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+
+        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
     }
 }

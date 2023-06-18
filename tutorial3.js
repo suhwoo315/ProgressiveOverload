@@ -66,7 +66,7 @@ class Tutorial3 {
                 image(tutorial3_sil[2], silX1, silY, silW, silH);
                 image(tutorial3_sil[5], silX2, silY, silW, silH);
                 image(tutorial3_sil[6], width / 2, height / 2, width, height);
-                this.drawDumbbell(this.y, sideUpper, sideLower);
+                this.drawDumbbell(this.y, pressUpper, pressLower);
                 break;
 
             case 7:
@@ -75,7 +75,7 @@ class Tutorial3 {
                 image(tutorial3_sil[0], silX1, silY, silW, silH);
                 image(tutorial3_sil[3], silX2, silY, silW, silH);
                 image(tutorial3_sil[7], width / 2, height / 2, width, height);
-                this.drawDumbbell(this.y, sideUpper, sideLower);
+                this.drawDumbbell(this.y, pressUpper, pressLower);
                 break;
             
             case 8:
@@ -141,6 +141,6 @@ class Tutorial3 {
         let barHeight = lowerY - upperY;
         let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
 
-        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        image(tutorial3_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
     }
 }

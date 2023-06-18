@@ -35,7 +35,7 @@ class Stage1 {
             }
 
             // character 
-            image(stage1_chr[this.currChr], width/2 + 50, height/2+20, 500, 500);
+            image(stage1_chr[this.currChr], width/2, height/2, width, height);
 
             // ui - 운동 이름
             image(stage1_ui[0], width / 2, height / 2, width, height);
@@ -66,7 +66,7 @@ class Stage1 {
             for (let i=0; i<5; i++){
                 image(stage1_bg[i], width / 2, height / 2, width, height);
             }
-            image(stage1_chr[6], width/2 + 50, height/2+20, 500, 500);
+            image(stage1_chr[6], width/2, height/2, width, height);
             if (this.cut > 0){
                 if (!this.bgOn){
                     background(255, 255, 255, 150);
