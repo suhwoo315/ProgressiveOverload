@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 5;
-let scene = 0;
+let phase = 3;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -111,6 +111,8 @@ let stage3_sil = [];
 let stage3_snd = [];
 let stage3_ui = [];
 let clear3_bg = [];
+let tutorial3_ui = [];
+let tutorial3_sil = [];
 
 // asset - phase4 boss stage
 let map4_bg = [];
@@ -170,14 +172,15 @@ let rightShoulderY = 0;
 // 각 운동의 위, 아래 바운더리
 let dumbbellCurlUpper = 6.2/10;
 let dumbbellCurlLower = 7.5/10;
-let reverseCurlUpper = 6.2/10;
-let reverseCurlLower = 7.5/10;
+let sideUpper = 6.2/10;
+let sideLower = 7.5/10;
 let pressUpper = 3/10;
 let pressLower = 4.5/10;
 
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
+let autoNextTimeWater = 500;
 let timerSpeed = 0.7;
 
 
@@ -304,7 +307,7 @@ function preload(){
   }
 
   //tutorial 1
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     tutorial1_ui[i] = loadImage('assets/phase1/tutorial1/ui/' + i + '.png');
   }
   for(let i=0; i<12; i++){
@@ -312,13 +315,13 @@ function preload(){
   }
 
   //stage1
-  for(let i=0; i<6; i++){
+  for(let i=0; i<7; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<22; i++){
+  for(let i=0; i<12; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<6; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
   for(let i=0; i<2; i++){
@@ -357,29 +360,29 @@ function preload(){
   }
 
   //tutorial2
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     tutorial2_ui[i] = loadImage('assets/phase2/tutorial2/ui/' + i + '.png');
   }
   for(let i=0; i<12; i++){
     tutorial2_sil[i] = loadImage('assets/phase2/tutorial2/sil/' + i + '.png');
   }
 
-  // //stage2
-  // for(let i=0; i<6; i++){
-  //   stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
-  // }
-  // for(let i=0; i<22; i++){
-  //   stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png'); //********
-  // }
-  // for(let i=0; i<1; i++){
-  //   stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
-  // }
+  //stage2
+  for(let i=0; i<11; i++){
+    stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
+  }
+  for(let i=0; i<12; i++){
+    stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){ //6
+    stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
+  }
   // for(let i=0; i<2; i++){
   //   stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
   // }
-  // for(let i=0; i<3; i++){
-  //   stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
-  // }
+  for(let i=0; i<3; i++){
+    stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
+  }
 
   // clear2
   for(let i=0; i<1; i++){
@@ -411,12 +414,12 @@ function preload(){
   }
 
   //tutorial3
-  // for(let i=0; i<3; i++){
-  //   tutorial3_ui[i] = loadImage('assets/phase3/tutorial3/ui/' + i + '.png');
-  // }
-  // for(let i=0; i<12; i++){
-  //   tutorial3_sil[i] = loadImage('assets/phase3/tutorial3/sil/' + i + '.png');
-  // }
+  for(let i=0; i<1; i++){
+    tutorial3_ui[i] = loadImage('assets/phase3/tutorial3/ui/' + i + '.png');
+  }
+  for(let i=0; i<12; i++){
+    tutorial3_sil[i] = loadImage('assets/phase3/tutorial3/sil/' + i + '.png');
+  }
 
   //stage3
   // for(let i=0; i<6; i++){
@@ -641,9 +644,16 @@ function draw() {
         stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
         //stage1.sound();
-        if (stage1.count <= 0){
+        if (stage1.count == 0 && !stage1.clear){
+          savedTime = millis();
+          stage1.clear = true;
+        }
+        if (stage1.clear){
           if (millis() - savedTime > autoNextTime){
-            if (stage1.getCut() < stage1.getMaxCut()) stage1.increaseCut();
+            if (stage1.getCut() < stage1.getMaxCut()){
+              stage1.increaseCut();
+              savedTime = millis();
+            }
             else scene++;
           }
         }
@@ -664,12 +674,12 @@ function draw() {
         tutorial2.display();
         if (tutorial2.getCut() == 6){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass) tutorial2.increaseCut();
         }
         else if (tutorial2.getCut() == 7){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.upperPass){
             tutorial2.increaseCut();
             tutorial2.lowerPass = false;
@@ -678,7 +688,7 @@ function draw() {
         }
         else if (tutorial2.getCut() == 8){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
         }
         else {
@@ -696,12 +706,27 @@ function draw() {
       else if(scene == 3){ // stage2
         trackWrists();
         stage2.display();
-        stage2.check(reverseCurlUpper, reverseCurlLower);
-        //stage2.sound();
-        if (stage2.count <= 0){
-          if (millis() - savedTime > autoNextTime){
-            if (stage2.getCut() < stage2.getMaxCut()) stage2.increaseCut();
-            else scene++;
+        stage2.check(sideUpper, sideLower);
+        //stage1.sound();
+        if (stage2.count == 0 && !stage2.clear){
+          savedTime = millis();
+          stage2.clear = true;
+        }
+        if (stage2.clear){
+          if (stage2.getCut() < 5){
+            if (millis() - savedTime > autoNextTimeWater){
+              stage2.increaseCut();
+              savedTime = millis();
+            }
+          }
+          else {
+            if (millis() - savedTime > autoNextTime){
+              if (stage2.getCut() < stage2.getMaxCut()){
+                stage2.increaseCut();
+                savedTime = millis();
+              }
+              else scene++;
+            }
           }
         }
       }
@@ -735,7 +760,7 @@ function draw() {
       }
       else if (tutorial3.getCut() == 8){
         trackWrists();
-        tutorial3.checkPass(pressUpper, pressLower);
+        tutorial3.checkPass(sideUpper, sideLower);
         if (tutorial3.lowerPass && tutorial3.upperPass) tutorial3.increaseCut();
       }
       else {
@@ -901,13 +926,6 @@ function keyPressed(){
           else {
             scene++;
             savedTime = millis();
-          }
-        }
-        else if (scene == 3){ //stage1
-          if (stage1.count <= 0){
-            // if (tutorial4.getCut() < tutorial4.getMaxCut()) tutorial4.increaseCut();
-            if (stage1.getCut < stage1.maxCut) stage1.increaseCut();
-            else scene++;
           }
         }
         else if (scene == 4){ //clear1
