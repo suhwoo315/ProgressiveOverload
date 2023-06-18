@@ -44,7 +44,6 @@ class Tutorial1 {
         switch(this.cut){ // 그림도 있는 경우
             case 3:
             case 4:
-            case 5:
                 imageMode(CENTER);
                 if (frameCount % 60 < 15) image(tutorial1_sil[0], silX1, silY, silW, silH); // sil
                 else if (frameCount % 60 < 30) image(tutorial1_sil[1], silX1, silY, silW, silH);
@@ -54,6 +53,12 @@ class Tutorial1 {
                 else if (frameCount % 60 < 30) image(tutorial1_sil[4], silX2, silY, silW, silH);
                 else if (frameCount % 60 < 45) image(tutorial1_sil[5], silX2, silY, silW, silH);
                 else image(tutorial1_sil[4], silX2, silY, silW, silH);
+                break;
+
+            case 5:
+                imageMode(CENTER);
+                image(tutorial1_sil[2], silX1, silY, silW, silH);
+                image(tutorial1_sil[5], silX1, silY, silW, silH);
                 break;
 
             case 6: //좌측의 바는 덤벨의 실시간 위치를 나타냅니다.

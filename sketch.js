@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
-let scene = 3;
+let phase = 2;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -170,8 +170,8 @@ let rightShoulderY = 0;
 // 각 운동의 위, 아래 바운더리
 let dumbbellCurlUpper = 6.2/10;
 let dumbbellCurlLower = 7.5/10;
-let reverseCurlUpper = 6.2/10;
-let reverseCurlLower = 7.5/10;
+let sideUpper = 6.2/10;
+let sideLower = 7.5/10;
 let pressUpper = 3/10;
 let pressLower = 4.5/10;
 
@@ -304,7 +304,7 @@ function preload(){
   }
 
   //tutorial 1
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     tutorial1_ui[i] = loadImage('assets/phase1/tutorial1/ui/' + i + '.png');
   }
   for(let i=0; i<12; i++){
@@ -357,7 +357,7 @@ function preload(){
   }
 
   //tutorial2
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     tutorial2_ui[i] = loadImage('assets/phase2/tutorial2/ui/' + i + '.png');
   }
   for(let i=0; i<12; i++){
@@ -671,12 +671,12 @@ function draw() {
         tutorial2.display();
         if (tutorial2.getCut() == 6){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass) tutorial2.increaseCut();
         }
         else if (tutorial2.getCut() == 7){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.upperPass){
             tutorial2.increaseCut();
             tutorial2.lowerPass = false;
@@ -685,7 +685,7 @@ function draw() {
         }
         else if (tutorial2.getCut() == 8){
           trackWrists();
-          tutorial2.checkPass(reverseCurlUpper, reverseCurlLower);
+          tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
         }
         else {
@@ -703,7 +703,7 @@ function draw() {
       else if(scene == 3){ // stage2
         trackWrists();
         stage2.display();
-        stage2.check(reverseCurlUpper, reverseCurlLower);
+        stage2.check(sideUpper, sideLower);
         //stage2.sound();
         if (stage2.count <= 0){
           if (millis() - savedTime > autoNextTime){
