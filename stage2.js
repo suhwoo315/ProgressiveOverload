@@ -19,10 +19,25 @@ class Stage2 {
     }
 
     // 알맞은 화면을 표시한다
-    display(){
+    display(){            
         if (this.count > 0){
             imageMode(CENTER);
-
+            //sound
+            playOnce(stage2_snd[0]);
+            if(this.count == 4){
+                stage2_snd[2].amp(0.2);                
+                playOnce(stage2_snd[2]);
+            }
+            else if(this.count == 3){
+                stage2_snd[2].amp(0.6);
+            }
+            else if(this.count == 2){
+                stage2_snd[2].amp(1);
+            }
+            else if(this.count == 1){
+                stage2_snd[2].amp(1.5);
+            }
+                      
             //background
             image(stage2_bg[0], width / 2, height / 2, width, height);
             // if(this.count == 4){
@@ -59,7 +74,10 @@ class Stage2 {
             // ui - 아령 차감
             image(stage2_ui[4], width / 2, height / 2, width, height); //아령 배경
             image(stage2_ui[5], width / 2, height / 2, width, height); //회색 아령
-            if (this.count > 0) image(stage2_ui[6], width / 2, height / 2, width, height);
+            if (this.count > 0) {
+                image(stage2_ui[6], width / 2, height / 2, width, height);
+                
+            }   
             if (this.count > 1) image(stage2_ui[7], width / 2, height / 2, width, height);
             if (this.count > 2) image(stage2_ui[8], width / 2, height / 2, width, height);
             if (this.count > 3) image(stage2_ui[9], width / 2, height / 2, width, height);
@@ -67,10 +85,13 @@ class Stage2 {
         }
         else {
             imageMode(CENTER);
+            stage2_snd[0].stop();
+            stage2_snd[2].stop();      
             for (let i=0; i<1; i++){ //5
                 image(stage2_bg[i], width / 2, height / 2, width, height);
             }
             if (this.cut < 5) image(stage2_chr[this.cut + 6], width/2, height/2, width, height);
+            if(this.cut != 6) playOnce(snd[3]);
             else {
                 image(stage2_chr[10], width/2, height/2, width, height);
                 if (!this.bgOn){
@@ -143,7 +164,8 @@ class Stage2 {
                     this.count--;
                     this.touchLower = true;
                     this.touchUpper = false;
-                    //stage2_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
+                    stage2_snd[1].amp(1.5);
+                    stage2_snd[1].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }
         }

@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 2;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -75,6 +75,7 @@ let story1_snd = [];
 let story1_ui = [];
 let tutorial1_ui = [];
 let tutorial1_sil = [];
+let tutorial1_snd = [];
 let stage1_bg = [];
 let stage1_chr = [];
 let stage1_sil = [];
@@ -98,6 +99,7 @@ let stage2_ui = [];
 let clear2_bg = [];
 let tutorial2_ui = [];
 let tutorial2_sil = [];
+let tutorial2_snd = [];
 
 // asset - phase3 overhead press
 let map3_bg = [];
@@ -246,7 +248,7 @@ function preload(){
   }
 
   //sound v
-  for(let i=0; i<3; i++){
+  for(let i=0; i<4; i++){
     snd[i] = loadSound('assets/sketch/snd/' + i + '.mp3');
   }
 
@@ -316,6 +318,9 @@ function preload(){
   for(let i=0; i<12; i++){
     tutorial1_sil[i] = loadImage('assets/phase1/tutorial1/sil/' + i + '.png');
   }
+  for(let i=0; i<1; i++){
+    tutorial1_snd[i] = loadSound('assets/phase1/tutorial1/snd/' + i + '.mp3');
+  }
 
   //stage1
   for(let i=0; i<7; i++){
@@ -327,7 +332,7 @@ function preload(){
   for(let i=0; i<6; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<4; i++){
     stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
   }
   for(let i=0; i<3; i++){
@@ -373,6 +378,9 @@ function preload(){
   for(let i=0; i<12; i++){
     tutorial2_sil[i] = loadImage('assets/phase2/tutorial2/sil/' + i + '.png');
   }
+  for(let i=0; i<1; i++){
+    tutorial2_snd[i] = loadSound('assets/phase2/tutorial2/snd/' + i + '.mp3');
+  }  
 
   //stage2
   for(let i=0; i<11; i++){
@@ -384,9 +392,9 @@ function preload(){
   for(let i=0; i<1; i++){ //6
     stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
   }
-  // for(let i=0; i<2; i++){
-  //   stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
-  // }
+  for(let i=0; i<3; i++){
+    stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
+  }
   for(let i=0; i<3; i++){
     stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
   }
@@ -455,9 +463,9 @@ function preload(){
   for(let i=0; i<4; i++){
     map4_bg[i] = loadImage('assets/phase4/map4/bg/' + i + '.png');
   }
-  // for(let i=0; i<0; i++){
-  //   map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
-  // }
+  for(let i=0; i<1; i++){
+    map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
+  }
   for(let i=0; i<3; i++){
     map4_chr[i] = loadImage('assets/phase4/map4/chr/' + i + '.png');
   }

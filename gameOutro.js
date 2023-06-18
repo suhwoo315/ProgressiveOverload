@@ -673,8 +673,6 @@ class GameOutro {
                     fill(0);
                     textSize(25);
                     text(this.dialogue[this.cut], textX, textY);
-
-                    
                     break;
                 
                 //case 21:
@@ -697,7 +695,7 @@ class GameOutro {
                 //    text("종강 : 안 옴", windowWidth / 2, windowWidth * (27-creditsY) / 32);
                 //    text("수면 : 부족", windowWidth / 2, windowWidth * (28-creditsY) / 32);
                 //    text("살려 : 주세요", windowWidth / 2, windowWidth * (29-creditsY) / 32);
-                //    text("당근 : 흔들고 있음", windowWidth / 2, windowWidth * (30-creditsY) / 32);
+                //   text("당근 : 흔들고 있음", windowWidth / 2, windowWidth * (30-creditsY) / 32);
                 //    text("여러분들의 근성장을 응원합니다", windowWidth / 2, windowWidth * (31-creditsY) / 32);
                 //    text("잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동", windowWidth / 2, windowWidth * (32-creditsY) / 32);
 

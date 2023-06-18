@@ -59,7 +59,7 @@ class Clear1{
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
-                //snd[0].amp(0.8,1);   
+                snd[0].amp(0.8,1);   
                 break;
 
             case 1: //쪽지
@@ -296,7 +296,7 @@ class Clear1{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
-                //snd[0].amp(0,0.3);   
+                snd[0].amp(0,0.3);   
                 break;
         }
     }

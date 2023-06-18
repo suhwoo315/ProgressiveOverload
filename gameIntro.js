@@ -680,7 +680,7 @@ class GameIntro{
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
-                //snd[0].amp(0,0.3);
+                snd[0].amp(0,0.3);
                 break;
         }
     }
