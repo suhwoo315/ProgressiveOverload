@@ -97,18 +97,18 @@ class Tutorial1 {
                 break;
             
             case 9: //서우 부탁
-                //내려야 할 때
-                image(tutorial1_sil[10], width/2, height/2, width, height);
-                image(tutorial1_sil[2], silX1, silY, silW, silH);
-                image(tutorial1_sil[5], silX2, silY, silW, silH);
-                image(tutorial1_sil[7], width / 2, height / 2, width, height)
-
-                //올려야 할 때
-                // image(tutorial1_sil[9], width/2, height/2, width, height);
-                // image(tutorial1_sil[0], silX1, silY, silW, silH);
-                // image(tutorial1_sil[3], silX2, silY, silW, silH);
-                // image(tutorial1_sil[6], width / 2, height / 2, width, height);
-
+                if (!this.lowerPass){
+                    image(tutorial1_sil[10], width/2, height/2, width, height);
+                    image(tutorial1_sil[2], silX1, silY, silW, silH);
+                    image(tutorial1_sil[5], silX2, silY, silW, silH);
+                    image(tutorial1_sil[7], width / 2, height / 2, width, height);
+                }
+                else {
+                    image(tutorial1_sil[9], width/2, height/2, width, height);
+                    image(tutorial1_sil[0], silX1, silY, silW, silH);
+                    image(tutorial1_sil[3], silX2, silY, silW, silH);
+                    image(tutorial1_sil[6], width / 2, height / 2, width, height);
+                }
                 this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
                 break;
         }
@@ -149,21 +149,16 @@ class Tutorial1 {
         let upperBound = height*upperFraction;
         let lowerBound = height*lowerFraction;
         let boundHeight = lowerBound - upperBound;
+        let boundY;
+        if (y < upperBound) boundY = upperBound;
+        else if (y > lowerBound) boundY = lowerBound;
+        else boundY = y;
         
         let upperY = height*5.7/20;
         let lowerY = height*8.7/20;
         let barHeight = lowerY - upperY;
+        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
 
-        let dumbbellY = lowerY + (y - lowerBound) * barHeight / boundHeight;
-
-        if (dumbbellY < upperY) image(tutorial1_sil[11], width/ 2, upperY, width, tutorial1_ui.height);
-        if (dumbbellY < lowerY) image(tutorial1_sil[11], width/ 2, lowerY, width, tutorial1_ui.height);
-        else image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
-
-        strokeWeight(5);
-        stroke(0);
-        line(0, lowerY, width, lowerY);
-        stroke(255, 0, 0);
-        line(0, upperY, width, upperY);
+        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
     }
 }
