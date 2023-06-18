@@ -52,7 +52,7 @@ class Story4{
                 fill(255);
                 textSize(30);
                 textAlign(CENTER, CENTER);
-                text("무서운 머슬로스의 방 문", width / 2, height * 23/100);
+                text("머슬로스의 방 앞", width / 2, height * 23/100);
                 //sound
                 //story4_snd[0].setVolume(0);
                 //story4_snd[0].amp(1,0.3);

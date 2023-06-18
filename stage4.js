@@ -12,7 +12,7 @@ class Stage4 {
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
         this.countMax = 3; // max의 hp, 0이 되면 게임 종료
-        this.countBoss = 0; // 보스의 hp, 0이 되면 게임 종료
+        this.countBoss = 3; // 보스의 hp, 0이 되면 게임 종료
 
         this.startAngle = -90;
         this.endAngle = 0;
@@ -508,7 +508,7 @@ class Stage4 {
           savedTime = millis();
         }
         else{ //시간 안에 성공
-          if(this.check(reverseCurlUpper, reverseCurlLower) == true){
+          if(this.check(sideUpper, sideLower) == true){
             this.attackSuccess = true;
             this.gaming = false;
             savedTime = millis();

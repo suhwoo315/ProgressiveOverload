@@ -1,7 +1,7 @@
 class Map1 {
     constructor() {
-      this.chrX = -30;
-      this.chrY = height * 40 / 100;
+      this.chrX = 0;
+      this.chrY = 0;
       this.targetX = 0;
       // this.targetY = height * 45 / 100;
       // this.speed = 5;
@@ -38,7 +38,8 @@ class Map1 {
         }
       }
       else {
-        this.chrX +=0;
+        // this.chrX +=0;
+        this.chrX = 0
         this.chrY = height * 40 / 100;
  
       }

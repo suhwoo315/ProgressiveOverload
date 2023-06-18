@@ -123,7 +123,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 image(story2_ui[1], width / 2, height / 2, width, height);
                 fill(255);
                 textSize(30);
@@ -137,7 +137,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
                 
                 //dark mode
@@ -171,7 +171,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -200,7 +200,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -229,7 +229,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -258,7 +258,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -287,7 +287,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -316,7 +316,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
@@ -345,7 +345,7 @@ class Story2{
                 imageMode(CENTER);
                 image(story2_bg[0], width / 2, height / 2, width, height);
                 //펌프
-                image(story2_ui[0], width / 2, height / 2, width, height);
+                //image(story2_ui[0], width / 2, height / 2, width, height);
                 // image(story2_ui[1], width / 2, height / 2, width, height);
 
                 //dark mode
