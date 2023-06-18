@@ -11,8 +11,8 @@ class Stage4 {
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
-        this.countMax = 1; // max의 hp, 0이 되면 게임 종료
-        this.countBoss = 7; // 보스의 hp, 0이 되면 게임 종료
+        this.countMax = 3; // max의 hp, 0이 되면 게임 종료
+        this.countBoss = 0; // 보스의 hp, 0이 되면 게임 종료
 
         this.startAngle = -90;
         this.endAngle = 0;
@@ -47,12 +47,26 @@ class Stage4 {
       imageMode(CENTER); //보스 hp에 따라서 달라짐 9~7, 6~4, 3~0
       if(this.countBoss > 6) {
         image(stage4_bg[0], width / 2, height / 2, width, height);
+        //sound
+        //stage4_snd[0].setVolume(0);
+        //stage4_snd[0].amp(1,0.3);
+        //playOnce(stage4_snd[0]);  
       }
       else if(this.countBoss >= 4 && this.countBoss <= 6){
         image(stage4_bg[1], width / 2, height / 2, width, height);
+        //sound
+        //stage4_snd[0].stop();
+        //stage4_snd[1].setVolume(0);
+        //stage4_snd[1].amp(1,0.3);
+        //playOnce(stage4_snd[1]);          
       }
       else if(this.countBoss < 4){
         image(stage4_bg[2], width / 2, height / 2, width, height);
+        //sound
+        //stage4_snd[1].stop();
+        //stage4_snd[2].setVolume(0);
+        //stage4_snd[2].amp(1,0.3);
+        //playOnce(stage4_snd[2]);           
       }
       image(stage4_ui[15], width / 2, height / 2, width, height);
       

@@ -228,7 +228,7 @@ class GameIntro{
                 snd[2].stop();
                 snd[0].setVolume(0);
                 snd[0].amp(1,0.3);
-                //playOnce(snd[0]);                
+                playOnce(snd[0]);                
                 // //max
                 // imageMode(CENTER);
                 // image(max[3], width / 2, height / 2, maxSize, maxSize);

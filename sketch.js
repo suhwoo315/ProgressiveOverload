@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
-let scene = 3;
+let phase = 5;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -230,7 +230,7 @@ function preload(){
   }
 
   //coach v
-  for(let i=0; i<3; i++){
+  for(let i=0; i<4; i++){
     coach[i] = loadImage('assets/sketch/coach/' + i + '.png');
   }
 
@@ -456,9 +456,9 @@ function preload(){
   for(let i=0; i<2; i++){
     story4_bg[i] = loadImage('assets/phase4/story4/bg/' + i + '.png');
   }
-  // for(let i=0; i<0; i++){
-  //   story4_snd[i] = loadSound('assets/phase4/story4/snd/' + i + '.mp3');
-  // }
+  for(let i=0; i<1; i++){
+    story4_snd[i] = loadSound('assets/phase4/story4/snd/' + i + '.mp3');
+  }
   for(let i=0; i<1; i++){
     story4_ui[i] = loadImage('assets/phase4/story4/ui/' + i + '.png');
   }
@@ -529,13 +529,13 @@ function preload(){
   }
   //phase 5
   //gameOutro
-  for(let i=0; i<3; i++){
+  for(let i=0; i<6; i++){
     gameOutro_bg[i] = loadImage('assets/phase5/gameOutro/bg/' + i + '.png');
   }
-  for(let i=0; i<0; i++){
+  for(let i=0; i<4; i++){
     gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
   }  
-  for(let i=0; i<2; i++){
+  for(let i=0; i<4; i++){
     gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
   } 
 

@@ -31,6 +31,8 @@ class Tutorial4{
         let silW = width * 0.8;
         let silH = height * 0.8;
         
+        //sound
+        //story4_snd[0].stop();
         // 기본 화면 요소
         if (this.cut < 6 || this.cut > 7){
             background(255);
