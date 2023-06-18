@@ -31,7 +31,7 @@ class Tutorial2 {
         // 기본 화면 요소
         background(255);
         imageMode(CENTER, CENTER);
-        image(tutorial1_ui[0], width/2, height/2, width, height);
+        image(tutorial2_ui[0], width/2, height/2, width, height);
         noStroke();
         fill(0);
         textSize(30);
@@ -63,33 +63,33 @@ class Tutorial2 {
             case 6:
                 imageMode(CENTER);
                 image(tutorial2_sil[9], width/2, height/2, width, height);
-                image(tutorial1_sil[2], silX1, silY, silW, silH);
-                image(tutorial1_sil[5], silX2, silY, silW, silH);
-                image(tutorial1_sil[6], width / 2, height / 2, width, height);
+                image(tutorial2_sil[2], silX1, silY, silW, silH);
+                image(tutorial2_sil[5], silX2, silY, silW, silH);
+                image(tutorial2_sil[6], width / 2, height / 2, width, height);
                 this.drawDumbbell(this.y, sideUpper, sideLower);
                 break;
 
             case 7:
                 imageMode(CENTER);
                 image(tutorial2_sil[10], width/2, height/2, width, height);
-                image(tutorial1_sil[0], silX1, silY, silW, silH);
-                image(tutorial1_sil[3], silX2, silY, silW, silH);
-                image(tutorial1_sil[7], width / 2, height / 2, width, height);
+                image(tutorial2_sil[0], silX1, silY, silW, silH);
+                image(tutorial2_sil[3], silX2, silY, silW, silH);
+                image(tutorial2_sil[7], width / 2, height / 2, width, height);
                 this.drawDumbbell(this.y, sideUpper, sideLower);
                 break;
             
             case 8:
                 if (!this.upperPass){
                     image(tutorial2_sil[9], width/2, height/2, width, height);
-                    image(tutorial1_sil[2], silX1, silY, silW, silH);
-                    image(tutorial1_sil[5], silX2, silY, silW, silH);
-                    image(tutorial1_sil[6], width / 2, height / 2, width, height);
+                    image(tutorial2_sil[2], silX1, silY, silW, silH);
+                    image(tutorial2_sil[5], silX2, silY, silW, silH);
+                    image(tutorial2_sil[6], width / 2, height / 2, width, height);
                 }
                 else {
                     image(tutorial2_sil[10], width/2, height/2, width, height);
-                    image(tutorial1_sil[0], silX1, silY, silW, silH);
-                    image(tutorial1_sil[3], silX2, silY, silW, silH);
-                    image(tutorial1_sil[7], width / 2, height / 2, width, height);
+                    image(tutorial2_sil[0], silX1, silY, silW, silH);
+                    image(tutorial2_sil[3], silX2, silY, silW, silH);
+                    image(tutorial2_sil[7], width / 2, height / 2, width, height);
                 }
                 this.drawDumbbell(this.y, sideUpper, sideLower);
                 break;
@@ -141,6 +141,6 @@ class Tutorial2 {
         let barHeight = lowerY - upperY;
         let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
 
-        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        image(tutorial2_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
     }
 }

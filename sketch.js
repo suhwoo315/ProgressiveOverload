@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 2;
-let scene = 3;
+let phase = 3;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -111,6 +111,8 @@ let stage3_sil = [];
 let stage3_snd = [];
 let stage3_ui = [];
 let clear3_bg = [];
+let tutorial3_ui = [];
+let tutorial3_sil = [];
 
 // asset - phase4 boss stage
 let map4_bg = [];
@@ -412,12 +414,12 @@ function preload(){
   }
 
   //tutorial3
-  // for(let i=0; i<3; i++){
-  //   tutorial3_ui[i] = loadImage('assets/phase3/tutorial3/ui/' + i + '.png');
-  // }
-  // for(let i=0; i<12; i++){
-  //   tutorial3_sil[i] = loadImage('assets/phase3/tutorial3/sil/' + i + '.png');
-  // }
+  for(let i=0; i<1; i++){
+    tutorial3_ui[i] = loadImage('assets/phase3/tutorial3/ui/' + i + '.png');
+  }
+  for(let i=0; i<12; i++){
+    tutorial3_sil[i] = loadImage('assets/phase3/tutorial3/sil/' + i + '.png');
+  }
 
   //stage3
   // for(let i=0; i<6; i++){
@@ -758,7 +760,7 @@ function draw() {
       }
       else if (tutorial3.getCut() == 8){
         trackWrists();
-        tutorial3.checkPass(pressUpper, pressLower);
+        tutorial3.checkPass(sideUpper, sideLower);
         if (tutorial3.lowerPass && tutorial3.upperPass) tutorial3.increaseCut();
       }
       else {
