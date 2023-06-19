@@ -21,6 +21,7 @@ class Map4 {
       }
       else if(this.cut == 1){
         image(map4_bg[1], width / 2, height / 2, width, height);
+        playOnce(map4_snd[0]);
       }
       else if(this.cut == 2){
         if (frameCount % 60 < 30) image(map4_bg[2], width / 2, height / 2, width, height);
@@ -59,7 +60,7 @@ class Map4 {
       if(this.chrX >= this.targetX){
         this.chrX = this.targetX;
         this.chrY = this.targetY;
-        //playOnce(snd[1]);
+        playOnce(snd[1]);
       }
     }
     else if (this.moveOn == false){

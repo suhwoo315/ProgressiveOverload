@@ -40,8 +40,15 @@ class Tutorial1 {
         fill(0);
         text(this.dialogue[this.cut], messageX, messageY);
 
+        
+
 
         switch(this.cut){ // 그림도 있는 경우
+            case 0:
+                //sound
+                playOnce(tutorial1_snd[0]);
+                break;
+
             case 3:
             case 4:
                 imageMode(CENTER);
@@ -109,7 +116,10 @@ class Tutorial1 {
                     image(tutorial1_sil[3], silX2, silY, silW, silH);
                     image(tutorial1_sil[6], width / 2, height / 2, width, height);
                 }
-                this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
+                this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);                
+                break;
+            case 11:
+                tutorial1_snd[0].stop();
                 break;
         }
     }

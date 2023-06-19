@@ -47,7 +47,7 @@ class Map2 {
       if(this.chrX >= this.targetX && this.chrY <= this.targetY){
         this.chrX = this.targetX;
         this.chrY = this.targetY;
-        //playOnce(snd[1]);
+        playOnce(snd[1]);
       }
     }
     else if (this.moveOn == false){
