@@ -28,7 +28,7 @@ class GameOutro {
                         ""]; //22
         this.creditsY = 0;
         this.creditsSpeed = -2;
-        this.credits = ["Credit\n\n\n안다겸팀\n\n\n기획 : 안다겸  황인호\n\n\n디자인 : 안다겸  조지은\n\n\n개발 : 윤서우  임승현  황인호\n\n\n사운드 : 황인호\n\n\n주말 : 사라짐\n\n\n종강 : 안 옴\n\n\n수면 : 부족\n\n\n살려 : 주세요\n\n\n당근 : 흔들고 있음\n\n\n여러분들의 근성장을 응원합니다\n\n\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동\n\n\nThank You"];                
+        this.credits = ["Credit\n\n\n안다겸팀\n\n\n기획 : 안다겸  조지은  황인호\n\n\n디자인 : 안다겸  조지은\n\n\n개발 : 윤서우  임승현  황인호\n\n\n사운드 : 황인호\n\n\n주말 : 사라짐\n\n\n종강 : 안 옴\n\n\n수면 : 부족\n\n\n살려 : 주세요\n\n\n당근 : 흔들고 있음\n\n\n여러분들의 근성장을 응원합니다\n\n\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동\n\n\nThank You\n\n\n스페이스바를 눌러 종료해주세요"];                
     }
 
     display(){
@@ -94,6 +94,7 @@ class GameOutro {
         else if(this.success == true) {
             switch(this.cut){
                 case 0:
+                    console.log("0");
                     playOnce(gameOutro_snd[4]);
                     imageMode(CENTER); 
                     image(stage4_bg[0], width / 2, height / 2, width, height);
@@ -106,6 +107,7 @@ class GameOutro {
                     break;
 
                 case 1:
+                    console.log("1");
                     imageMode(CENTER); 
                     image(stage4_bg[0], width / 2, height / 2, width, height);
                     image(stage4_ui[2], width / 2, height / 2, width, height);
