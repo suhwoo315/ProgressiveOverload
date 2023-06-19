@@ -9,16 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 3;
-let scene = 3;
-
-// 각 운동의 위, 아래 바운더리
-let dumbbellCurlUpper = 5.3/10;
-let dumbbellCurlLower = 7/10;
-let sideUpper = 6/10;
-let sideLower = 7/10;
-let pressUpper = 4.3/10;
-let pressLower = 5.4/10;
+let phase = 0;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -166,7 +158,7 @@ let exit = false;
 let video;
 let poseNet;
 let poses = [];
-let tracking_num = 10;
+let tracking_num = 15;
 let leftWristValues = [];
 let rightWristValues = [];
 let leftShoulderValues = [];
@@ -188,13 +180,13 @@ let leftElbowY = 0;
 let rightElbowX = 0;
 let rightElbowY = 0;
 
-// // 각 운동의 위, 아래 바운더리
-// let dumbbellCurlUpper = 5.5/10;
-// let dumbbellCurlLower = 7.5/10;
-// let sideUpper = 6.2/10;
-// let sideLower = 8/10;
-// let pressUpper = 4/10;
-// let pressLower = 5.5/10;
+// 각 운동의 위, 아래 바운더리
+let dumbbellCurlUpper = 5.3/10;
+let dumbbellCurlLower = 7/10;
+let sideUpper = 5.8/10;
+let sideLower = 6.2/10;
+let pressUpper = 4.3/10;
+let pressLower = 5.4/10;
 
 // 시간
 let savedTime = 0;
