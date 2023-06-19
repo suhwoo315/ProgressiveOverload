@@ -271,7 +271,7 @@ class Stage4 {
       }
       else {
         if(this.attackSuccess == true){
-          //playOnce(stage4_snd[3]);
+          playOnce(stage4_snd[3]);
           imageMode(CENTER)
           
           switch(this.seq[this.index]){
@@ -291,7 +291,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.attackFail == true){
-          //playOnce(stage4_snd[9]);
+          playOnce(stage4_snd[9]);
           imageMode(CENTER);
 
           switch(this.seq[this.index]){
@@ -312,7 +312,7 @@ class Stage4 {
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){
-          //playOnce(stage4_snd[5]);
+          playOnce(stage4_snd[5]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height); //boss
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
           // image(stage4_chr_max_defend[1], width / 2, height / 2, 600, 600);
@@ -320,7 +320,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.defendFail == true){
-          //playOnce(stage4_snd[3]);
+          playOnce(stage4_snd[3]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height);
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
           image(stage4_chr_max_default[0], width/2, height/2, width, height); //max

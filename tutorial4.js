@@ -55,6 +55,7 @@ class Tutorial4{
         switch(this.cut){
             case 0:
                 imageMode(CENTER);
+                playOnce(tutorial4_snd[0]);
                 // 정면 실루엣
                 if (frameCount % 60 < 15) image(tutorial4_sil[this.cut * 3], silX1, silY, silW, silH);
                 else if (frameCount % 60 < 30) image(tutorial4_sil[this.cut * 3 + 1], silX1, silY, silW, silH);
@@ -214,7 +215,8 @@ class Tutorial4{
                 if (frameCount % 60 < 30) image(map1_chr[1], width * 71 / 100, height * 72 / 100, width * 0.6, height * 0.6);
                 else image(map1_chr[2], width * 71 / 100, height * 72 / 100, width * 0.6, height * 0.6);
                 break;
-
+            case 10:
+                tutorial4_snd[0].stop();
             default:
                 
         }
