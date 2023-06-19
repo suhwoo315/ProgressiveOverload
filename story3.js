@@ -58,9 +58,7 @@ class Story3{
                 textStyle('normal');
                 textSize(30);
                 textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
-                //sound
-                snd[0].amp(0.8,1);                   
+                text("맥스", chrNameX, chrNameY);               
                 break;
 
             case 1:
@@ -359,9 +357,7 @@ class Story3{
                 textAlign(CENTER, TOP);
                 fill(100);
                 textSize(30);
-                text(this.dialogue[this.cut], messageX, messageY);
-                //sound
-                snd[0].amp(0,0.3);                  
+                text(this.dialogue[this.cut], messageX, messageY);                 
                 break;
         }
         // background(100);

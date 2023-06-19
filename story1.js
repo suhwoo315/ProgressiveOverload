@@ -57,8 +57,7 @@ class Story1{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
-                //sound
-                snd[0].amp(0.8,1);                
+                
                 
                 break;
 
@@ -395,8 +394,6 @@ class Story1{
                 fill(100);
                 textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
-                //sound
-                snd[0].amp(0,0.3);  
                 break;
         }
         // background(100);

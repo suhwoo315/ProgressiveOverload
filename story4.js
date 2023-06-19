@@ -54,8 +54,7 @@ class Story4{
                 textAlign(CENTER, CENTER);
                 text("머슬로스의 방 앞", width / 2, height * 23/100);
                 //sound
-                story4_snd[0].setVolume(0);
-                story4_snd[0].amp(1,0.3);
+                story4_snd[0].setVolume(2);
                 playOnce(story4_snd[0]);                  
                 break;
 
@@ -271,9 +270,7 @@ class Story4{
                 textStyle('normal');
                 textSize(30);
                 textAlign(LEFT, TOP);
-                text("머슬로스", bossNameX, bossNameY);
-                //sound
-                story4_snd[0].amp(0,0.3);                
+                text("머슬로스", bossNameX, bossNameY);             
                 break;
         }
         // background(100);

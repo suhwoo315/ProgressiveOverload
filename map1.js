@@ -35,6 +35,7 @@ class Map1 {
         if(this.chrX >= this.targetX){
           this.chrX = width * 17.5 / 100;
           //sound
+          snd[1].setVolume(2.5);
           playOnce(snd[1]);
         }
       }

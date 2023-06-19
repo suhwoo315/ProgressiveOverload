@@ -151,6 +151,7 @@ class GameOutro {
                 case 2:
                     background(100);
                     //sound
+                    gameOutro_snd[3].setVolume(2.5);
                     playOnce(gameOutro_snd[3]);                                                          
                     //bg
                     imageMode(CENTER);
@@ -195,7 +196,8 @@ class GameOutro {
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     //sound
-                    snd[0].amp(0.8,1);                      
+                    snd[0].setVolume(1.5);
+                    playOnce(snd[0]);                      
                     break;
 
                 case 4:
@@ -496,6 +498,7 @@ class GameOutro {
                     text(this.dialogue[this.cut], textX, textY);
                     //sound
                     gameOutro_snd[1].amp(0,0.2);
+                    gameOutro_snd[2].setVolume(2.5);
                     playOnce(gameOutro_snd[2]);
                     break;
 
@@ -530,7 +533,7 @@ class GameOutro {
                     text("맥스", chrNameX, chrNameY);
                     //sound
                     gameOutro_snd[1].stop();
-                    gameOutro_snd[2].amp(0,0.5);                    
+                    gameOutro_snd[2].stop();                    
                     break;
 
                 case 15:
@@ -625,10 +628,9 @@ class GameOutro {
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     //sound
-                    gameOutro_snd[2].stop();
                     gameOutro_snd[0].setVolume(0);
                     playOnce(gameOutro_snd[0]);
-                    gameOutro_snd[0].amp(0.6,2);                                           
+                    gameOutro_snd[0].amp(0.8,2);                                           
                     break;
 
                 case 18:
@@ -657,7 +659,7 @@ class GameOutro {
                 
                 case 21:
                     //sound
-                    //gameOutro_snd[0].amp(1,0.3);                
+                    gameOutro_snd[0].amp(1.5,0.3);                
                     background(0);
                     fill(255);
                     textAlign(CENTER, TOP);

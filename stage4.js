@@ -85,9 +85,6 @@ class Stage4 {
       text("맥스", width*4.1/20, height*16.4/20);
       text("머슬로스", width*15.85/20, height*16.4/20);
       
-      //sound
-      tutorial4_snd[0].stop();
-      playOnce(stage4_snd[0]);
 
       //max hp
       let maxHpX = width*2.99/20;
@@ -281,6 +278,7 @@ class Stage4 {
       }
       else {
         if(this.attackSuccess == true){
+          stage4_snd[3].setVolume(2);
           playOnce(stage4_snd[3]);
           imageMode(CENTER)
           
@@ -301,6 +299,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.attackFail == true){
+          stage4_snd[9].setVolume(2);
           playOnce(stage4_snd[9]);
           imageMode(CENTER);
 
@@ -322,6 +321,7 @@ class Stage4 {
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){
+          stage4_snd[5].setVolume(2);
           playOnce(stage4_snd[5]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height); //boss
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
@@ -330,6 +330,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.defendFail == true){
+          stage4_snd[3].setVolume(2);
           playOnce(stage4_snd[3]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height);
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);

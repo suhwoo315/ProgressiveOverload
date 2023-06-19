@@ -46,7 +46,7 @@ class Tutorial1 {
         switch(this.cut){ // 그림도 있는 경우
             case 0:
                 //sound
-                playOnce(tutorial1_snd[0]);
+                
                 break;
 
             case 3:
@@ -117,9 +117,6 @@ class Tutorial1 {
                     image(tutorial1_sil[6], width / 2, height / 2, width, height);
                 }
                 this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);                
-                break;
-            case 11:
-                tutorial1_snd[0].stop();
                 break;
         }
     }

@@ -22,8 +22,6 @@ class Stage3 {
         if (this.count > 0){
             
             imageMode(CENTER);
-            //sound
-            playOnce(stage3_snd[0]);
             //background
             image(stage3_bg[0], width / 2, height / 2, width, height);
             image(stage3_bg[1], width / 2, height / 2, width, height);
@@ -87,6 +85,7 @@ class Stage3 {
             stage3_snd[0].stop();
             stage3_snd[2].stop();
             image(stage3_bg[0], width / 2, height / 2, width, height);
+            snd[3].setVolume(2);
             if(this.cut == 0 || this.cut == 3) playOnce(snd[3]);
             switch(this.cut){
                 case 0:

@@ -20,6 +20,7 @@ class Tutorial0 {
         fill(0);
         // fill(81, 209, 121)
         text(this.dialogue[this.cut], messageX, messageY);
+        gameTitle_snd[0].stop();
     }
 
     // 현재 cut을 반환한다 - sketch.js에서 사용
