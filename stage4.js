@@ -399,8 +399,8 @@ class Stage4 {
       else if (y > lowerBound) boundY = lowerBound;
       else boundY = y;
       
-      let upperY = height*11.5/20;
-      let lowerY = height*14.5/20;
+      let upperY = height*8.5/20;
+      let lowerY = height*11.5/20;
       let barHeight = lowerY - upperY;
       this.dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
