@@ -11,8 +11,8 @@ class Stage4 {
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
-        this.countMax = 2; // max의 hp, 0이 되면 게임 종료
-        this.countBoss = 2; // 보스의 hp, 0이 되면 게임 종료
+        this.countMax = 6; // max의 hp, 0이 되면 게임 종료
+        this.countBoss = 6; // 보스의 hp, 0이 되면 게임 종료
         this.colors = [color(213, 41, 41), color(213, 122, 41), color(41, 159, 213)];
 
         this.startAngle = -90;
@@ -20,10 +20,10 @@ class Stage4 {
         this.radius = 87;
         this.arcLength = 10;
 
-        // 아직 쓰일지 모르는 변수들
         this.currSil = 0;
         this.currChr = 0;
         this.touchUpper = false;
+        this.touchMiddle = false;
         this.touchLower = false;
         this.actionTime = 9000;
         this.resultTime = 2000;
@@ -61,11 +61,11 @@ class Stage4 {
       
       //게이지 막대 1 2
       imageMode(CENTER);
-      image(stage4_ui[4], width / 2, height / 2, width, height); // 내려와야 할 때
-      image(stage4_ui[16], width / 2, height / 2, width, height); //올라와야 할 때
-
-      //게이지 바
-      image(stage4_ui[5], width / 2, height / 2, width, height);
+      if (!this.touchLower) image(stage4_ui[4], width / 2, height / 2, width, height); // 내려와야 할 때
+      else image(stage4_ui[16], width / 2, height / 2, width, height); //올라와야 할 때
+      if (this.seq[this.index] == "A") this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
+      else if (this.seq[this.index] == "B") this.drawDumbbell(this.y, sideUpper, sideLower);
+      else this.drawDumbbell(this.y, pressUpper, pressLower);
 
       //hp bar
       image(stage4_ui[0], width / 2, height / 2, width, height);
@@ -78,37 +78,16 @@ class Stage4 {
       
 
       //max hp
-      // let maxHpX = 0;
-      // // let maxHpX = width*2.99/20;
-      // let maxHpY = height*17.11/20;
-      // let maxHpW = 0;
-      // // let maxHpW = width*6.95/20;
-      // let maxHpH = height*1.135/20;
-      // // let maxLength = width*6.95/20;
+      let maxHpX = width*2.99/20;
+      let maxHpY = height*17.11/20;
+      let maxHpW = width*6.95/20;
+      let maxHpH = height*1.135/20;
       rectMode(CORNER);
-
-      if(this.countMax == 3){
-        noStroke();
-        fill(103, 255, 67);
-        // maxHpX = width*2.99/20;
-        // let maxHPW = width*6.95/20;
-        rect(width*2.99/20, height*17.11/20, width*6.95/20, height*1.135/20); // max
-      }
-      else if(this.countMax == 2){
-        noStroke();
-        fill(245, 122, 67);
-        // maxHpX = width*2.99/20; + width*6.95/20 / 3;
-        // maxHpW = width*6.95/20 * 2 / 3;
-        rect(width*2.99/20 + width*6.95/20 / 3, height*17.11/20, width*6.95/20 * 2 / 3, height*1.135/20); // max
-      }
-      else if(this.countMax == 1){
-        noStroke();
-        fill(254, 24, 26);
-        // maxHpX = width*2.99/20 + width*6.95/20 * 2 / 3;
-        // maxHpW = width*6.95/20 * 1 / 3;
-        rect(width*2.99/20 + width*6.95/20 * 2 / 3, height*17.11/20, width*6.95/20 * 1 / 3, height*1.135/20); // max
-      }
-      
+      noStroke();
+      if (this.countMax > 4) fill(103, 255, 67);
+      else if (this.countMax > 2) fill(245, 122, 67);
+      else fill(254, 24, 26);
+      rect(maxHpX, maxHpY, maxHpW * this.countMax/6, maxHpH);
 
       //bossHp
       let bossHpX = width*10.05/20;
@@ -116,54 +95,12 @@ class Stage4 {
       let bossHpW = width*6.95/20;
       let bossHpH = height*1.135/20;
       //boss hp : 1~2 red  3~4 yellow 5~6 blue
-      switch(this.countBoss){
-        
-        case 1:
-          fill(254, 24, 26);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 1/6, bossHpH);
-          break;
-        case 2:
-          fill(254, 24, 26);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 2/6, bossHpH);
-          break;
-        case 3:
-          fill(245, 122, 67);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 3/6, bossHpH);
-          break;
-        case 4:
-          fill(245, 122, 67);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 4/6, bossHpH);
-          break;
-        case 5:
-          fill(103, 255, 67);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 5/6, bossHpH);
-          break;
-        case 6:
-          fill(103, 255, 67);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 6/6, bossHpH);
-          break;
-        // case 7:
-        //   fill(0, 255, 0);
-        //   rectMode(CORNER);
-        //   rect(bossHpX, bossHpY, bossHpW * 7/9, bossHpH);
-        //   break;
-        // case 8:
-        //   fill(0, 255, 0);
-        //   rectMode(CORNER);
-        //   rect(bossHpX, bossHpY, bossHpW * 8/9, bossHpH);
-        //   break;
-        // case 9:
-        //   fill(0, 255, 0);
-        //   rectMode(CORNER);
-        //   rect(bossHpX, bossHpY, bossHpW, bossHpH);
-        //   break;
-      }
+      fill(254, 24, 26);
+      rectMode(CORNER);
+      if (this.countBoss > 4) fill(103, 255, 67);
+      else if (this.countBoss > 2) fill(245, 122, 67);
+      else fill(254, 24, 26);
+      rect(bossHpX, bossHpY, bossHpW * this.countBoss/6, bossHpH);
 
       //운동에 따라 달라지는 asset : 시퀀스 아이콘
       // let aX1 = width / 2 - 330;
@@ -198,10 +135,10 @@ class Stage4 {
         // image(stage4_ui[3], aX1, iconY, iconW, iconH);
         image(stage4_ui[9], width / 2, height / 2, width, height);
         noStroke();
-                fill(this.colors[0]);
-                textSize(30);
-                textAlign(CENTER, CENTER);
-                text("덤벨 컬", textX, textY);
+        fill(this.colors[0]);
+        textSize(30);
+        textAlign(CENTER, CENTER);
+        text("덤벨 컬", textX, textY);
         
         // 두번째로 오는 운동
         if(this.seq[(this.index+1)%this.seq.length] == 'A') {
@@ -403,9 +340,9 @@ class Stage4 {
     }
 
     check(upperFraction, lowerFraction){
-      this.y = (leftWristY + rightWristY) / 2;
-      console.log(this.y);
-      //this.drawDumbbell();
+      if (this.seq[this.index] == "A") this.y = (leftWristY + rightWristY) / 2;
+      else if (this.seq[this.index] == "B") this.y = (leftElbowY + rightElbowY) / 2;
+      else this.y = (leftElbowY + rightElbowY) / 2;
 
       let upperBound = height*upperFraction;
       let lowerBound = height*lowerFraction;
@@ -413,7 +350,7 @@ class Stage4 {
       if (this.y < upperBound) {
         this.currChr = 5;
         this.currSil = 2;
-        this.touchUpper = true;
+        if (this.touchMiddle) this.touchUpper = true;
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*1/4) {
           this.currChr = 4;
@@ -422,6 +359,7 @@ class Stage4 {
       else if (this.y < upperBound + (lowerBound-upperBound)*2/4) {
           this.currChr = 3;
           this.currSil = 1;
+          this.touchMiddle = true;
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*3/4) {
           this.currChr = 2;
@@ -434,35 +372,40 @@ class Stage4 {
       else {
           this.currChr = 0;
           this.currSil = 0;
-          this.touchLower = true;
+          if (this.touchMiddle) this.touchLower = true;
       }
 
-      if (this.touchLower && this.touchUpper) return true;
+      if (this.touchLower && this.touchUpper){
+        this.touchLower = false;
+        this.touchUpper = false;
+        this.touchMiddle = false;
+        return true;
+      }
       else return false;
-
-      // textSize(100);
-      // fill("black");
-      // text(this.currChr, 50, 400);
     }
 
-  // 움직이는 아령 UI를 그린다
-    drawDumbbell(){
-      // let maxY = height;
-      // let minY = 0;
-      // let dumbbellY = y;
-      // image(stage4_ui[1], width/ 2 - 10, this.y, width, height);
-      // console.log("111111");
-      // console.log(this.y);
-      let maxY = height*2/5 + 100;
-        let minY = height*2/5 - 100;
-        let dumbbellY = this.y/height * (minY - maxY);
-        imageMode(CENTER);
-        image(stage4_ui[5], width / 2, height / 2, width, height);
+    // 움직이는 아령 UI를 그린다
+    drawDumbbell(y, upperFraction, lowerFraction){
+      let upperBound = height*upperFraction;
+      let lowerBound = height*lowerFraction;
+      let boundHeight = lowerBound - upperBound;
+      let boundY;
+      if (y < upperBound) boundY = upperBound;
+      else if (y > lowerBound) boundY = lowerBound;
+      else boundY = y;
+      
+      let upperY = height*9.9/20;
+      let lowerY = height*12.9/20;
+      let barHeight = lowerY - upperY;
+      let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-    // image(stage1_ui[3], width/3.5, minY - dumbbellY, 50, 50);
-    }
+      imageMode(CENTER);
+      image(stage4_ui[5], width/ 2, dumbbellY, width, stage4_ui[5].height);
 
-// 제한된 시간 안에 동작을 성공해야한다
+      console.log(this.y);
+  }
+
+    // 제한된 시간 안에 동작을 성공해야한다
     play(){
       //gaming=true일 때만 실행. 3초 내에 미션을 수행했는지를 점검
       if(this.seq[this.index] == 'A'){
@@ -528,7 +471,6 @@ class Stage4 {
       }
       else if (this.defendFail == true) {
         this.countMax--; // 맥스 hp 감소
-        console.log(this.countMax);
       }
       
       this.attackSuccess = false;

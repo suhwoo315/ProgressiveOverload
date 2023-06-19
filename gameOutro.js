@@ -21,9 +21,9 @@ class GameOutro {
                         "하.. 꿈이 참 생생하네.. 힘들게 싸웠으니까 좀 쉬어야겠어..", // 15
                         "...", // 16
                         "잠깐! 이제부터 다시 운동을 가야겠어!", // 17
-                        "(가방을 챙겨 나가는 맥스)", // 18
-                        "(맥스가 나간 사이 탁자 위에 있는 쪽지가 놓여져 있다)", // 19
-                        "(쪽지 클로즈업 - 반드시 해낼지어니!)"]; //20
+                        "", // 18
+                        "", // 19
+                        ""]; //20
         this.creditsY = 0;
         this.creditsSpeed = -2;
         this.credits = ["Credit\n\n\n두부 겸리더 : 안다겸\n불꽃 카리스마 : 윤서우\n블링블링 이즈 : 임승현\n박력징은 : 조지은\n만능열쇠 : 황인호\n주말 : 사짐\n종강 : 안 옴\n수면 : 부족\n살려 : 주세요\n당근 : 흔들고 있음\n여러분들의 근성장을 응원합니다\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동"];                
@@ -61,15 +61,27 @@ class GameOutro {
                     phase = 4;
                     scene = 2;
                     tutorial4.cut = 8;
-                    stage4.countMax = 3;
-                    stage4.bossMax = 7;
+                    stage4.gameStarted = false;
+                    stage4.index = 0;
+                    stage4.gaming = false;
+                    stage4.attackSuccess = false;
+                    stage4.attackFail = false;
+                    stage4.defendSuccess = false;
+                    stage4.defendFail = false;
+                    stage4.countMax = 6;
+                    stage4.bossMax = 6;
+                    stage4.touchLower = false;
+                    stage4.touchMiddle = false;
+                    stage4.touchUpper = false;
+                    stage4.y = 0;
                 } // 여기는 replay
                 else if(mouseX >= width * 4 / 7  &&
                 mouseX <= width * 27 / 35  &&
                 mouseY >= height * 7 / 10 &&
                 mouseY <= height * 4 / 5){
-                    exit = true;
-                } //여기는 quit. 이 버튼 누르면 exit 누른 거랑 마찬가지로 '정말 나가시겠습니까?' 뜨는 패턴
+                    //exit = true;
+                    location.reload();
+                } //여기는 quit. 이 버튼 누르면 새로고침
             }
 
         }
@@ -625,15 +637,6 @@ class GameOutro {
                     imageMode(CENTER);
                     image(gameOutro_bg[4], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //ui
-                    imageMode(CENTER);
-                    image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
-                    //txt
-                    //dialogue
-                    textAlign(LEFT, TOP);
-                    fill(0);
-                    textSize(25);
-                    text(this.dialogue[this.cut], textX, textY);
                     break;
 
                 case 19:
@@ -642,15 +645,6 @@ class GameOutro {
                     imageMode(CENTER);
                     image(gameOutro_bg[5], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //ui
-                    imageMode(CENTER);
-                    image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
-                    //txt
-                    //dialogue
-                    textAlign(LEFT, TOP);
-                    fill(0);
-                    textSize(25);
-                    text(this.dialogue[this.cut], textX, textY);
                     break;
 
                 case 20:
@@ -659,15 +653,6 @@ class GameOutro {
                     imageMode(CENTER);
                     image(gameOutro_bg[6], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //ui
-                    imageMode(CENTER);
-                    image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
-                    //txt
-                    //dialogue
-                    textAlign(LEFT, TOP);
-                    fill(0);
-                    textSize(25);
-                    text(this.dialogue[this.cut], textX, textY);
                     break;
                 
                 case 21:

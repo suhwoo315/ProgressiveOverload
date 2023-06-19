@@ -587,8 +587,7 @@ function setup() {
 
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
-function draw() {  
-  console.log(this.index);
+function draw() {
   switch(phase){
     case 0: //phase0
       if(scene == 0) gameTitle.display(); // gameTitle
@@ -834,8 +833,10 @@ function draw() {
       }
       else if (scene == 3){ // stage4
         if(stage4.countMax > 0 && stage4.countBoss > 0){
+          console.log(stage4.index + " " + stage4.seq[stage4.index]);
           if(stage4.gaming == true){
-            trackWrists();
+            if (stage4.seq[stage4.index] == "A") trackWrists();
+            else trackElbows();
             stage4.play();
             stage4.displayGame();
             stage4.arcLength += timerSpeed;
