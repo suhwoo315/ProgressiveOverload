@@ -128,9 +128,11 @@ class Stage2 {
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다
     check(upperFraction, lowerFraction){
         if (this.count > 0){
-            let y = (leftElbowY + rightElbowY) / 2;
+            let y = (rightElbowY + leftElbowY) / 2;
             this.drawDumbbell(y, sideUpper, sideLower);
-            console.log(y/height);
+            // strokeWeight(5);
+            // stroke(255, 0, 0);
+            // line(0, y, width, y);
 
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
@@ -190,5 +192,9 @@ class Stage2 {
 
         imageMode(CENTER);
         image(stage2_ui[2], width/ 2, dumbbellY, width, stage2_ui[2].height);
+
+        // stroke(0);
+        // line(0, upperBound, width, upperBound);
+        // line(0, lowerBound, width, lowerBound);
     }
 }
