@@ -837,7 +837,6 @@ function draw() {
       }
       else if (scene == 3){ // stage4
         if(stage4.countMax > 0 && stage4.countBoss > 0){
-          console.log(stage4.index + " " + stage4.seq[stage4.index]);
           if(stage4.gaming == true){
             if (stage4.seq[stage4.index] == "A") trackWrists();
             else trackElbows();
