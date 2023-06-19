@@ -216,6 +216,7 @@ class Tutorial4{
                 else image(map1_chr[2], width * 71 / 100, height * 72 / 100, width * 0.6, height * 0.6);
                 break;
             case 10:
+                
                 tutorial4_snd[0].stop();
             default:
                 

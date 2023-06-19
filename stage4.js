@@ -86,6 +86,7 @@ class Stage4 {
       text("머슬로스", width*15.85/20, height*16.4/20);
       
       //sound
+      tutorial4_snd[0].stop();
       playOnce(stage4_snd[0]);
 
       //max hp
