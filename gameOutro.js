@@ -46,7 +46,7 @@ class GameOutro {
         let bossNameY = height * 2 / 3;
 
         //sound
-        //stage4_snd[2].stop();
+        stage4_snd[0].stop();
         if (this.success == false){
             background(100);
             //game over + 멘트 + replay button + exit button 같이 있는 창 asset 하나

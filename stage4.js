@@ -11,8 +11,8 @@ class Stage4 {
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
-        this.countMax = 2; // max의 hp, 0이 되면 게임 종료
-        this.countBoss = 2; // 보스의 hp, 0이 되면 게임 종료
+        this.countMax = 3; // max의 hp, 0이 되면 게임 종료
+        this.countBoss = 6; // 보스의 hp, 0이 되면 게임 종료
         this.colors = [color(213, 41, 41), color(213, 122, 41), color(41, 159, 213)];
 
         this.startAngle = -90;
@@ -108,7 +108,8 @@ class Stage4 {
         // maxHpW = width*6.95/20 * 1 / 3;
         rect(width*2.99/20 + width*6.95/20 * 2 / 3, height*17.11/20, width*6.95/20 * 1 / 3, height*1.135/20); // max
       }
-      
+      //sound
+      playOnce(stage4_snd[0]);
 
       //bossHp
       let bossHpX = width*10.05/20;
@@ -117,37 +118,38 @@ class Stage4 {
       let bossHpH = height*1.135/20;
       //boss hp : 1~2 red  3~4 yellow 5~6 blue
       switch(this.countBoss){
-        
-        case 1:
-          fill(254, 24, 26);
+        case 6:
+          fill(103, 255, 67);
           rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 1/6, bossHpH);
+          rect(bossHpX, bossHpY, bossHpW * 6/6, bossHpH);
           break;
-        case 2:
-          fill(254, 24, 26);
+        case 5:         
+          fill(103, 255, 67);
           rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 2/6, bossHpH);
-          break;
-        case 3:
-          fill(245, 122, 67);
-          rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 3/6, bossHpH);
+          rect(bossHpX, bossHpY, bossHpW * 5/6, bossHpH);
           break;
         case 4:
           fill(245, 122, 67);
           rectMode(CORNER);
           rect(bossHpX, bossHpY, bossHpW * 4/6, bossHpH);
           break;
-        case 5:
-          fill(103, 255, 67);
+        case 3:
+          fill(245, 122, 67);
           rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 5/6, bossHpH);
+          rect(bossHpX, bossHpY, bossHpW * 3/6, bossHpH);
           break;
-        case 6:
-          fill(103, 255, 67);
+        case 2: 
+          fill(254, 24, 26);
           rectMode(CORNER);
-          rect(bossHpX, bossHpY, bossHpW * 6/6, bossHpH);
+          rect(bossHpX, bossHpY, bossHpW * 2/6, bossHpH);
+          break;        
+        case 1:
+          fill(254, 24, 26);
+          rectMode(CORNER);
+          rect(bossHpX, bossHpY, bossHpW * 1/6, bossHpH);
           break;
+
+      
         // case 7:
         //   fill(0, 255, 0);
         //   rectMode(CORNER);
@@ -164,7 +166,6 @@ class Stage4 {
         //   rect(bossHpX, bossHpY, bossHpW, bossHpH);
         //   break;
       }
-
       //운동에 따라 달라지는 asset : 시퀀스 아이콘
       // let aX1 = width / 2 - 330;
       // let aX2 = width / 2 - 330 + 126;
@@ -334,7 +335,7 @@ class Stage4 {
       }
       else {
         if(this.attackSuccess == true){
-          //playOnce(stage4_snd[3]);
+          playOnce(stage4_snd[3]);
           imageMode(CENTER)
           
           switch(this.seq[this.index]){
@@ -354,7 +355,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.attackFail == true){
-          //playOnce(stage4_snd[9]);
+          playOnce(stage4_snd[9]);
           imageMode(CENTER);
 
           switch(this.seq[this.index]){
@@ -375,7 +376,7 @@ class Stage4 {
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){
-          //playOnce(stage4_snd[5]);
+          playOnce(stage4_snd[5]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height); //boss
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
           // image(stage4_chr_max_defend[1], width / 2, height / 2, 600, 600);
@@ -383,7 +384,7 @@ class Stage4 {
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
         else if(this.defendFail == true){
-          //playOnce(stage4_snd[3]);
+          playOnce(stage4_snd[3]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height);
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
           image(stage4_chr_max_default[0], width/2, height/2, width, height); //max

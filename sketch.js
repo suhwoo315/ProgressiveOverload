@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 3;
+let phase = 4;
 let scene = 3;
 
 // phase0의 클래스 - start
@@ -128,6 +128,7 @@ let story4_ui = [];
 let tutorial4_bg = [];
 let tutorial4_chr = [];
 let tutorial4_sil = [];
+let tutorial4_snd = [];
 let tutorial4_ui = [];
 let stage4_bg = [];
 let stage4_chr_boss_attack = [];
@@ -499,6 +500,9 @@ function preload(){
   }
   for(let i=0; i<18; i++){
     tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    tutorial4_snd[i] = loadSound('assets/phase4/tutorial4/snd/' + i + '.mp3');
   }
   for(let i=0; i<6; i++){
     tutorial4_ui[i] = loadImage('assets/phase4/tutorial4/ui/' + i + '.png');
