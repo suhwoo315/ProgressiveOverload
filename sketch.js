@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 3;
+let phase = 4;
 let scene = 3;
 
 // phase0의 클래스 - start

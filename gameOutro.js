@@ -99,7 +99,7 @@ class GameOutro {
                     image(stage4_chr_boss_default[0], width/2 , height/2 , width, height); //boss
                     image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
                     background(0, 150);
-                    image(stage4_ui[5], width / 2, height / 2, width, height);
+                    image(gameOutro_ui[5], width / 2, height / 2, width, height);
                     break;
 
                 case 1:
@@ -110,7 +110,7 @@ class GameOutro {
                     image(stage4_chr_boss_default[0], width/2 , height/2 , width, height); //boss
                     image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
                     background(0, 150);
-                    image(stage4_ui[6], width / 2, height / 2, width, height);
+                    image(gameOutro_ui[6], width / 2, height / 2, width, height);
                     noStroke();
                     fill(0);
                     textSize(40);
