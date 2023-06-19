@@ -6,7 +6,6 @@ class Stage1 {
         this.currChr = 0;
         this.touchLower = false;
         this.touchUpper = true;
-        this.bgOn = false;
         this.cut = 0;
         this.maxCut = 2;
         this.dialogue = ["", //0
@@ -72,10 +71,7 @@ class Stage1 {
             snd[3].setVolume(2);
             if(this.cut == 0 || this.cut == 1) playOnce(snd[3]);
             if (this.cut > 0){
-                if (!this.bgOn){
-                    background(255, 255, 255, 150);
-                    this.bgOn = true;
-                }
+                background(0, 150);
                 image(stage1_ui[11], width / 2, height / 2, width, height);
                 noStroke();
                 fill(0);

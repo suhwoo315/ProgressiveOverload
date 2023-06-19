@@ -6,7 +6,6 @@ class Stage3 {
         this.currChr = 0;
         this.touchLower = true;
         this.touchUpper = false;
-        this.bgOn = false;
         this.cut = 0;
         this.maxCut = 4;
         this.dialogue = ["", //0
@@ -102,6 +101,7 @@ class Stage3 {
                     break;
                 case 3:
                 case 4:
+                    background(0, 150);
                     image(stage3_ui[11], width / 2, height / 2, width, height);
                     noStroke();
                     fill(0);
@@ -134,7 +134,6 @@ class Stage3 {
         if (this.count > 0){
             let y = (leftElbowY + rightElbowY) / 2;
             this.drawDumbbell(y, pressUpper, pressLower);
-            console.log(y/height);
 
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
