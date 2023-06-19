@@ -63,8 +63,7 @@ class Story3{
                 //스페이스바
                 if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
-                //sound
-                snd[0].amp(0.8,1);                   
+                  
                 break;
 
             case 1:
@@ -367,9 +366,7 @@ class Story3{
                 textAlign(CENTER, TOP);
                 fill(100);
                 textSize(40);
-                text(this.dialogue[this.cut], messageX, messageY);
-                //sound
-                snd[0].amp(0,0.3);                  
+                text(this.dialogue[this.cut], messageX, messageY);               
                 break;
         }
         // background(100);

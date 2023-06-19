@@ -59,8 +59,6 @@ class Clear1{
                 textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
-                //sound
-                snd[0].amp(0.8,1);  
 
                 //스페이스바
                 //스페이스바
@@ -301,8 +299,7 @@ class Clear1{
                 textStyle('normal');
                 textSize(40);
                 textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
-                snd[0].amp(0,0.3);   
+                text("맥스", chrNameX, chrNameY);  
                 break;
         }
     }

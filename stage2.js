@@ -18,20 +18,18 @@ class Stage2 {
     display(){            
         if (this.count > 0){
             imageMode(CENTER);
-            //sound
-            playOnce(stage2_snd[0]);
             if(this.count == 4){
-                stage2_snd[2].amp(0.2);                
+                stage2_snd[2].amp(0.6);                
                 playOnce(stage2_snd[2]);
             }
             else if(this.count == 3){
-                stage2_snd[2].amp(0.6);
+                stage2_snd[2].amp(1.5);
             }
             else if(this.count == 2){
-                stage2_snd[2].amp(1);
+                stage2_snd[2].amp(2);
             }
             else if(this.count == 1){
-                stage2_snd[2].amp(1.5);
+                stage2_snd[2].amp(3);
             }
                       
             //background
@@ -90,6 +88,7 @@ class Stage2 {
             image(stage2_bg[0], width / 2, height / 2, width, height);
             image(stage2_bg[5], width / 2, height / 2, width, height);
             image(stage2_chr[0], width/2, height/2, width, height);
+            snd[3].setVolume(2);
             if(this.cut != 2) playOnce(snd[3]);            
             if (this.cut > 0) {
                 if (!this.bgOn){
@@ -168,7 +167,7 @@ class Stage2 {
                     this.count--;
                     this.touchLower = true;
                     this.touchUpper = false;
-                    stage2_snd[1].amp(1.5);
+                    stage2_snd[1].amp(3.5);
                     stage2_snd[1].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }

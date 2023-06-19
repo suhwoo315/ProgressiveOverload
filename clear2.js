@@ -61,9 +61,7 @@ class Clear2{
                 textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
-                //sound
-                snd[0].amp(0.8,1);                  
-                //snd[0].amp(0.8,1);
+
 
                 //스페이스바
                 if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
@@ -385,9 +383,7 @@ class Clear2{
                 textStyle('normal');
                 textSize(40);
                 textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
-                //sound
-                snd[0].amp(0,0.3);                 
+                text("맥스", chrNameX, chrNameY);             
                 break;
         }
     }

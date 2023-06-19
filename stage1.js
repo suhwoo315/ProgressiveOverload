@@ -16,10 +16,10 @@ class Stage1 {
 
     // 알맞은 화면을 표시한다
     display(){
+        //sound
+       
         if (this.count > 0){
             imageMode(CENTER);
-            //sound
-            playOnce(stage1_snd[0]);
             //background
             image(stage1_bg[0], width / 2, height / 2, width, height);
             if(this.count == 4){
@@ -69,6 +69,7 @@ class Stage1 {
                 image(stage1_bg[i], width / 2, height / 2, width, height);
             }
             image(stage1_chr[6], width/2, height/2, width, height);
+            snd[3].setVolume(2);
             if(this.cut == 0 || this.cut == 1) playOnce(snd[3]);
             if (this.cut > 0){
                 if (!this.bgOn){
@@ -128,6 +129,7 @@ class Stage1 {
                     this.count--;
                     this.touchLower = false;
                     this.touchUpper = true;
+                    stage1_snd[3].setVolume(2.5);
                     stage1_snd[3].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }

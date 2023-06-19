@@ -65,6 +65,7 @@ let gameIntro_bg = [];
 let gameIntro_ui = [];
 let gameIntro_snd = [];
 let tutorial0_ui = [];
+let tutorial0_snd = [];
 
 // asset - phase1 dumbbell curl
 let map1_bg = [];
@@ -293,6 +294,9 @@ function preload(){
   //tutorial 0
   for(let i=0; i<1; i++){
     tutorial0_ui[i] = loadImage('assets/phase0/tutorial0/ui/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    tutorial0_snd[i] = loadSound('assets/phase0/tutorial0/snd/' + i + '.mp3');
   }
   
   //phase1
@@ -595,8 +599,14 @@ function draw() {
   switch(phase){
     case 0: //phase0
       if(scene == 0) gameTitle.display(); // gameTitle
-      else if (scene == 1) tutorial0.display(); // tutorial0
-      else if (scene == 2) gameIntro.display(); // gameIntro
+      else if (scene == 1) {
+        tutorial0.display();
+        playOnce(tutorial0_snd[0]);
+       } // tutorial0
+      else if (scene == 2) {
+        tutorial0_snd[0].stop();
+        gameIntro.display();
+       } // gameIntro
       break;
 
     case 1: //phase1
@@ -606,8 +616,13 @@ function draw() {
       }
       else if (scene == 1){ // story1
         story1.display();
+        //sound
+        snd[0].setVolume(1.5);
+        playOnce(snd[0]);        
       }
       else if (scene == 2){ //tutorial1
+        snd[0].stop();
+        playOnce(tutorial1_snd[0]);
         tutorial1.display();
         if (tutorial1.getCut() == 7){
           trackWrists();
@@ -641,6 +656,9 @@ function draw() {
         }
       }
       else if (scene == 3){ //stage1
+        tutorial1_snd[0].stop();
+        stage1_snd[0].setVolume(2);
+        playOnce(stage1_snd[0]); 
         trackWrists();
         stage1.display();
         stage1.check(dumbbellCurlUpper, dumbbellCurlLower);
@@ -660,19 +678,27 @@ function draw() {
         }
       }
       else if (scene == 4){ //clear1
+        //sound
+        snd[0].setVolume(1.5);
+        playOnce(snd[0]); 
         clear1.display();
       }
       break;
     
     case 2: //phase2
       if(scene == 0){ //map2
+        snd[0].stop();
         map2.move();
         map2.display();
       }
       else if(scene == 1){ //story2
+        snd[0].setVolume(1.5);
+        playOnce(snd[0]); 
         story2.display();
       }
       else if(scene == 2){ // tutorial2
+        snd[0].stop();
+        playOnce(tutorial2_snd[0]);
         tutorial2.display();
         if (tutorial2.getCut() == 6){
           trackElbows();
@@ -706,6 +732,9 @@ function draw() {
         }
       }
       else if(scene == 3){ // stage2
+        tutorial2_snd[0].stop();
+        stage2_snd[0].setVolume(1.6);
+        playOnce(stage2_snd[0]);
         trackElbows();
         stage2.display();
         stage2.check(sideUpper, sideLower);
@@ -725,20 +754,28 @@ function draw() {
         }
       }
       else if(scene == 4){ //clear2
+        //sound
+        snd[0].setVolume(1.5);
+        playOnce(snd[0]);         
         clear2.display();
       }
       break;
 
     case 3: //phase3
     if(scene == 0){ //map3
+      snd[0].stop();      
       map3.move();
       map3.display();
     }
     else if(scene == 1){ //story3
       story3.display();
+      snd[0].setVolume(1.5);
+      playOnce(snd[0]);        
     }
     else if(scene == 2){ // tutorial3
       tutorial3.display();
+      snd[0].stop();
+      playOnce(tutorial3_snd[0]);      
       if (tutorial3.getCut() == 6){
         trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
@@ -771,6 +808,9 @@ function draw() {
       }
     }
     else if(scene == 3){ // stage3
+      tutorial3_snd[0].stop();
+      stage3_snd[0].setVolume(1.6);
+      playOnce(stage3_snd[0]);
       trackElbows();
       stage3.display();
       stage3.check(pressUpper, pressLower);
@@ -798,6 +838,9 @@ function draw() {
       }
     }
     else if(scene == 4){ //clear3
+      //sound
+      snd[0].setVolume(1.5);
+      playOnce(snd[0]);       
       clear3.display();
     }
     break;
@@ -816,11 +859,15 @@ function draw() {
         }
         map4.move();
         map4.display();
+        snd[0].stop();
       }
       else if (scene == 1){ // story4
         story4.display();
       }
       else if (scene == 2){ // tutorial4
+        story4_snd[0].stop();
+        tutorial4_snd[0].setVolume(0.5);
+        playOnce(tutorial4_snd[0]);
         tutorial4.display();
         if (tutorial4.getCut() == 6) tutorial4.arcLength += timerSpeed;
         if (tutorial4.getCut() > 7){
@@ -836,8 +883,10 @@ function draw() {
         }
       }
       else if (scene == 3){ // stage4
-        console.log(stage4.index);
-        console.log(stage4.gaming);
+        // console.log(stage4.index);
+        // console.log(stage4.gaming);
+        tutorial4_snd[0].stop();
+        playOnce(stage4_snd[0]);
         if(stage4.countMax > 0 && stage4.countBoss > 0){
           if(stage4.gaming == true){
             if (stage4.seq[stage4.index] == "A") trackWrists();
@@ -868,6 +917,7 @@ function draw() {
       break;
 
     case 5: //phase5
+      stage4_snd[0].stop();
       gameOutro.display();
       break;
   }

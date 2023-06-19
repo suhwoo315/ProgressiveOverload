@@ -40,6 +40,7 @@ class Map3 {
       }
       else if(this.chrY >= this.targetY){
         this.chrY = this.targetY;
+        snd[1].setVolume(2.5);
         playOnce(snd[1]);
       }
 
