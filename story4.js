@@ -54,9 +54,9 @@ class Story4{
                 textAlign(CENTER, CENTER);
                 text("머슬로스의 방 앞", width / 2, height * 23/100);
                 //sound
-                //story4_snd[0].setVolume(0);
-                //story4_snd[0].amp(1,0.3);
-                //playOnce(story4_snd[0]);                  
+                story4_snd[0].setVolume(0);
+                story4_snd[0].amp(1,0.3);
+                playOnce(story4_snd[0]);                  
                 break;
 
 
@@ -116,14 +116,6 @@ class Story4{
                 fill(0);
                 textSize(25);
                 text(this.dialogue[this.cut], textX, textY);
-                //name
-                fill(70);
-                textStyle('normal');
-                textSize(30);
-                textAlign(LEFT, TOP);
-                text("맥스", chrNameX, chrNameY);
-
-                
                 break;
 
             case 3:
@@ -131,10 +123,14 @@ class Story4{
                 //bg
                 imageMode(CENTER);
                 image(story4_bg[1], width / 2, height / 2, width, height);
-
+                //dark mode
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -183,8 +179,6 @@ class Story4{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
-
-                
                 break;
 
             case 5:
@@ -192,10 +186,14 @@ class Story4{
                 //bg
                 imageMode(CENTER);
                 image(story4_bg[1], width / 2, height / 2, width, height);
-
+                //dark mode
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -244,16 +242,21 @@ class Story4{
                 textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                break;
 
             case 7:
                 background(100);
                 //bg
                 imageMode(CENTER);
                 image(story4_bg[1], width / 2, height / 2, width, height);
-
+                //dark mode
+                rectMode(CENTER);
+                noStroke();
+                fill(0, 90);
+                rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -270,7 +273,7 @@ class Story4{
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 //sound
-                //story4_snd[0].amp(0,0.3);                
+                story4_snd[0].amp(0,0.3);                
                 break;
         }
         // background(100);

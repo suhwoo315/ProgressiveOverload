@@ -89,7 +89,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(gameOutro_ui[4], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -119,7 +119,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(stage4_chr_boss_default[0], bossX, bossY, bossSize, bossSize);
+                    image(gameOutro_ui[4], bossX, bossY, bossSize, bossSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -625,7 +625,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(gameOutro_bg[5], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[4], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //ui
                     imageMode(CENTER);
@@ -642,7 +642,7 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(gameOutro_bg[4], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[5], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
                     //ui
                     imageMode(CENTER);
@@ -659,11 +659,8 @@ class GameOutro {
                     background(100);
                     //bg
                     imageMode(CENTER);
-                    image(gameOutro_bg[3], width / 2, height / 2, width, height);
+                    image(gameOutro_bg[6], width / 2, height / 2, width, height);
                     // image(story4_ui[0], width / 2, height / 2, width, height);
-                    //memo
-                    imageMode(CENTER);
-                    image(gameOutro_ui[3], width / 2, height / 2, maxSize, maxSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
