@@ -551,7 +551,7 @@ function preload(){
   for(let i=0; i<7; i++){
     gameOutro_bg[i] = loadImage('assets/phase5/gameOutro/bg/' + i + '.png');
   }
-  for(let i=0; i<4; i++){
+  for(let i=0; i<5; i++){
     gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
   }  
   for(let i=0; i<7; i++){
