@@ -360,6 +360,7 @@ class Stage4 {
         if (this.touchMiddle){
           this.touchUpper = true;
           this.touchMiddle = false;
+          console.log("touchUpper");
         }
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*1/4) {
@@ -367,6 +368,7 @@ class Stage4 {
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*2/4) {
           this.touchMiddle = true;
+          console.log("touchMiddle");
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*3/4) {
 
@@ -378,6 +380,7 @@ class Stage4 {
           if (this.touchMiddle) {
             this.touchLower = true;
             this.touchMiddle = false;
+            console.log("touchLower");
           }
       }
 
@@ -400,8 +403,8 @@ class Stage4 {
       else if (y > lowerBound) boundY = lowerBound;
       else boundY = y;
       
-      let upperY = height*11.5/20;
-      let lowerY = height*14.5/20;
+      let upperY = height*9.3/20;
+      let lowerY = height*12.3/20;
       let barHeight = lowerY - upperY;
       this.dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
