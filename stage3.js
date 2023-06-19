@@ -121,7 +121,7 @@ class Stage3 {
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다
     check(upperFraction, lowerFraction){
         if (this.count > 0){
-            let y = (leftWristY + rightWristY) / 2;
+            let y = (leftElbowY + rightElbowY) / 2;
             this.drawDumbbell(y, pressUpper, pressLower);
 
             let upperBound = height*upperFraction;

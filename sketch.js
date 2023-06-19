@@ -161,6 +161,8 @@ let leftWristValues = [];
 let rightWristValues = [];
 let leftShoulderValues = [];
 let rightShoulderValues = [];
+let leftElbowValues = [];
+let rightElbowValues = []
 
 // 손목의 위치 변수 - 이 변수들을 사용해서 플레이어의 위치 확인
 let leftWristX = 0;
@@ -171,6 +173,10 @@ let leftShoulderX = 0;
 let leftShoulderY = 0;
 let rightShoulderX = 0;
 let rightShoulderY = 0;
+let leftElbowX = 0;
+let leftElbowY = 0;
+let rightElbowX = 0;
+let rightElbowY = 0;
 
 // 각 운동의 위, 아래 바운더리
 let dumbbellCurlUpper = 6.2/10;
@@ -688,12 +694,12 @@ function draw() {
       else if(scene == 2){ // tutorial2
         tutorial2.display();
         if (tutorial2.getCut() == 6){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass) tutorial2.increaseCut();
         }
         else if (tutorial2.getCut() == 7){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.upperPass){
             tutorial2.increaseCut();
@@ -702,7 +708,7 @@ function draw() {
           }
         }
         else if (tutorial2.getCut() == 8){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
         }
@@ -719,7 +725,7 @@ function draw() {
         }
       }
       else if(scene == 3){ // stage2
-        trackWrists();
+        trackElbows();
         stage2.display();
         stage2.check(sideUpper, sideLower);
         //stage2.sound();
@@ -753,12 +759,12 @@ function draw() {
     else if(scene == 2){ // tutorial3
       tutorial3.display();
       if (tutorial3.getCut() == 6){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.lowerPass) tutorial3.increaseCut();
       }
       else if (tutorial3.getCut() == 7){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.upperPass){
           tutorial3.increaseCut();
@@ -767,7 +773,7 @@ function draw() {
         }
       }
       else if (tutorial3.getCut() == 8){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.lowerPass && tutorial3.upperPass) tutorial3.increaseCut();
       }
@@ -784,7 +790,7 @@ function draw() {
       }
     }
     else if(scene == 3){ // stage3
-      trackWrists();
+      trackElbows();
       stage3.display();
       stage3.check(pressUpper, pressLower);
       //stage3.sound();
@@ -1252,6 +1258,53 @@ function trackShoulders(){
         for (let i = 0; i < tracking_num; i++) rightShoulderY += rightShoulderValues[1][i];
         rightShoulderY /= tracking_num;
         rightShoulderValues[1] = [];
+      }
+    }
+  }
+}
+
+// bodytracking - 팔꿈치의 위치 변수에 플레이어의 현재 위치를 저장한다
+function trackElbows(){
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i].pose;
+    let leftElbow = pose.keypoints[7];
+    let rightElbow = pose.keypoints[8];
+
+    if (leftElbow.score > 0.3){
+      if (leftElbowValues[0].length < tracking_num) {
+        leftElbowValues[0].push(leftElbow.position.x);
+        leftElbowValues[1].push(leftElbow.position.y);
+      }
+
+      if (leftElbowValues[0].length == tracking_num) {
+        leftElbowX = 0;
+        for (let i = 0; i < tracking_num; i++) leftElbowX += leftElbowValues[0][i];
+        leftElbowX /= tracking_num;
+        leftElbowValues[0] = [];
+
+        leftElbowY = 0;
+        for (let i = 0; i < tracking_num; i++) leftElbowY += leftElbowValues[1][i];
+        leftElbowY /= tracking_num;
+        leftElbowValues[1] = [];
+      }
+    }
+
+    if (rightElbow.score > 0.3){
+      if (rightElbowValues[0].length < tracking_num) {
+        rightElbowValues[0].push(rightElbow.position.x);
+        rightElbowValues[1].push(rightElbow.position.y);
+      }
+
+      if (rightElbowValues[0].length == tracking_num) {
+        rightElbowX = 0;
+        for (let i = 0; i < tracking_num; i++) rightElbowX += rightElbowValues[0][i];
+        rightElbowX /= tracking_num;
+        rightElbowValues[0] = [];
+
+        rightElbowY = 0;
+        for (let i = 0; i < tracking_num; i++) rightElbowY += rightElbowValues[1][i];
+        rightElbowY /= tracking_num;
+        rightElbowValues[1] = [];
       }
     }
   }
