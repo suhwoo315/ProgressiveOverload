@@ -41,6 +41,11 @@ class Tutorial3 {
 
 
         switch(this.cut){ // 그림도 있는 경우
+            case 0:
+                //sound
+                playOnce(tutorial3_snd[0]);
+                break;   
+
             case 3:
             case 4:
                 imageMode(CENTER);
@@ -93,6 +98,10 @@ class Tutorial3 {
                 }
                 this.drawDumbbell(this.y, pressUpper, pressLower);
                 break;
+
+                case 10:
+                    tutorial3_snd[0].stop();
+                    break;                  
         }
     }
 

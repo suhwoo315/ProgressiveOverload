@@ -1,6 +1,6 @@
 class Tutorial1 {
     constructor(){
-        this.cut = 7; // 현재 cut
+        this.cut = 0; // 현재 cut
         this.maxCut = 11; // cut의 총 개수
         this.dialogue = ["지금부터 화면이 자동으로 넘어갑니다.", //0
                         "양손에 덤벨을 하나씩 쥐어보세요.", //1

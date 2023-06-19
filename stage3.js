@@ -18,28 +18,39 @@ class Stage3 {
 
     // 알맞은 화면을 표시한다
     display(){
-        if (this.count > 0){
-            imageMode(CENTER);
 
+        if (this.count > 0){
+            
+            imageMode(CENTER);
+            //sound
+            playOnce(stage3_snd[0]);
             //background
             image(stage3_bg[0], width / 2, height / 2, width, height);
             image(stage3_bg[1], width / 2, height / 2, width, height);
             if(this.count == 4){
                 image(stage3_bg[2], width / 2, height / 2, width, height);
+                playOnce(stage3_snd[2]);
             }
             else if(this.count == 3){
                 image(stage3_bg[3], width / 2, height / 2, width, height);
             }
             else if(this.count == 2){
                 image(stage3_bg[4], width / 2, height / 2, width, height);
+                playOnce(stage3_snd[2]);
             }
             else if(this.count == 1){
                 image(stage3_bg[5], width / 2, height / 2, width, height);
+                playOnce(stage3_snd[2]);
+            }
+            else if(this.count == 0){
+                stage3_snd[0].stop();
+
             }
 
             // character
             if (this.count > 3){
                 image(stage3_chr[this.currChr], width/2, height/2, width, height);
+                
             }
             else if (this.count > 1){
                 image(stage3_chr[this.currChr + 6], width/2, height/2, width, height);
@@ -76,6 +87,7 @@ class Stage3 {
         else {
             imageMode(CENTER);
             image(stage3_bg[0], width / 2, height / 2, width, height);
+            if(this.cut != 4) playOnce(snd[3]);
             switch(this.cut){
                 case 0:
                     image(stage3_bg[6], width / 2, height / 2, width, height);
@@ -156,6 +168,7 @@ class Stage3 {
                 this.currSil = 0;
                 if (this.touchUpper){
                     this.count--;
+                    playOnce(stage3_snd[1]);
                     this.touchLower = true;
                     this.touchUpper = false;
                     //stage2_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
