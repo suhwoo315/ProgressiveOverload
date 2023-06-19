@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 4;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -836,6 +836,8 @@ function draw() {
         }
       }
       else if (scene == 3){ // stage4
+        console.log(stage4.index);
+        console.log(stage4.gaming);
         if(stage4.countMax > 0 && stage4.countBoss > 0){
           if(stage4.gaming == true){
             if (stage4.seq[stage4.index] == "A") trackWrists();
@@ -927,6 +929,7 @@ function keyPressed(){
           else {
             phase++;
             scene = 0;
+            
           }
         }
       break;
@@ -1009,7 +1012,7 @@ function keyPressed(){
         else if (scene == 3 && !stage4.gameStarted){ //stage4
           stage4.gameStarted = true;
           stage4.gaming = true;
-          savedtime = millis();
+          savedTime = millis();
         }
       break;
 

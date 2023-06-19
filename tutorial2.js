@@ -34,7 +34,7 @@ class Tutorial2 {
         image(tutorial2_ui[0], width/2, height/2, width, height);
         noStroke();
         fill(0);
-        textSize(30);
+        textSize(40);
         textAlign(CENTER, TOP);
         fill(0);
         text(this.dialogue[this.cut], messageX, messageY);

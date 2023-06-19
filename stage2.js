@@ -99,7 +99,7 @@ class Stage2 {
                 image(stage2_ui[11], width / 2, height / 2, width, height);
                 noStroke();
                 fill(0);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 fill(0);
                 text(this.dialogue[this.cut], width/2, height*9.3/20);

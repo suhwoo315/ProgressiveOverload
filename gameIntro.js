@@ -85,14 +85,17 @@ class GameIntro{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+                //스페이스바
+            if (frameCount % 60 < 30) image(map1_chr[1], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
+            else image(map1_chr[2], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
                 
                 break;
             case 1:
@@ -109,12 +112,12 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //maxname
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 
@@ -133,11 +136,11 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
 
@@ -158,11 +161,11 @@ class GameIntro{
                 // //dialogue
                 // textAlign(LEFT, TOP);
                 // fill(0);
-                // textSize(30);
+                // textSize(40);
                 // text(this.dialogue[this.cut], textX, textY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
 
@@ -183,11 +186,11 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -205,11 +208,11 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
@@ -238,11 +241,11 @@ class GameIntro{
                 // //dialogue
                 // textAlign(LEFT, TOP);
                 // fill(0);
-                // textSize(30);
+                // textSize(40);
                 // text(this.dialogue[this.cut], textX, textY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -253,18 +256,18 @@ class GameIntro{
                 
                 //max
                 imageMode(CENTER);
-                image(max[4], width / 2, height / 2, maxSize, maxSize);
+                image(max[3], width / 2, height / 2, maxSize, maxSize);
                 //ui
                 imageMode(CENTER);
                 image(gameIntro_ui[0], textBoxX, textBoxY, textBoxW, textBoxH);
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
 
@@ -285,11 +288,11 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -310,11 +313,11 @@ class GameIntro{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -341,11 +344,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -372,11 +375,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -403,11 +406,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -434,11 +437,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -465,11 +468,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -496,11 +499,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -527,11 +530,11 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 // //name
                 // fill(70);
-                // textSize(30);
+                // textSize(40);
                 // textAlign(LEFT, TOP);
                 // text("맥스", chrNameX, chrNameY);
                 break;
@@ -551,7 +554,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 18:
@@ -570,7 +573,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 19:
@@ -589,7 +592,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 20:
@@ -608,7 +611,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 21:
@@ -627,7 +630,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 22:
@@ -646,7 +649,7 @@ class GameIntro{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 23:
@@ -671,12 +674,12 @@ class GameIntro{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound

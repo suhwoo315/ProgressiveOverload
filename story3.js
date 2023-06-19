@@ -51,14 +51,18 @@ class Story3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 //sound
                 snd[0].amp(0.8,1);                   
                 break;
@@ -81,12 +85,12 @@ class Story3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -108,12 +112,12 @@ class Story3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -135,12 +139,12 @@ class Story3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -170,7 +174,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 5:
@@ -199,7 +203,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 6:
@@ -228,7 +232,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 7:
@@ -241,9 +245,13 @@ class Story3{
                 image(story3_ui[1], width / 2, height / 2, width, height); //텍스트
                 //text
                 fill(255);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text("정체를 알 수 없는 신비한 힘이 깃든 비석", width / 2, height * 23/100);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 break;
             case 8:
                 //bg
@@ -271,7 +279,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 9:
@@ -300,7 +308,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 10:
@@ -329,7 +337,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 11:
@@ -358,7 +366,7 @@ class Story3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 //sound
                 snd[0].amp(0,0.3);                  

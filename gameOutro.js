@@ -32,7 +32,8 @@ class GameOutro {
     display(){
         let bossX = width / 2;
         let bossY = height / 2;
-        let bossSize = width / 3;
+        let bossW = width;
+        let bossH = height;
         let maxSize = max[0].height * windowHeight / 1600 * 2 / 3;
         let textBoxX = width / 2;
         let textBoxY = height / 2;
@@ -42,7 +43,7 @@ class GameOutro {
         let textY = height * 2/3;
         let chrNameX = width / 15;
         let chrNameY = height * 2 / 3;
-        let bossNameX = width / 19.5;
+        let bossNameX = width / 18.5;
         let bossNameY = height * 2 / 3;
 
         //sound
@@ -99,7 +100,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(gameOutro_ui[4], bossX, bossY, bossSize, bossSize);
+                    image(gameOutro_ui[4], bossX, bossY, bossW, bossH);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -107,14 +108,18 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("머슬로스", bossNameX, bossNameY);
+
+                    //스페이스바
+                    if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                    else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                     break;
 
                 case 1:
@@ -129,7 +134,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(gameOutro_ui[4], bossX, bossY, bossSize, bossSize);
+                    image(gameOutro_ui[4], bossX, bossY, bossW, bossH);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -137,12 +142,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("머슬로스", bossNameX, bossNameY);
                     break;
@@ -162,7 +167,7 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     break;
 
@@ -186,12 +191,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     //sound
@@ -219,12 +224,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     break;
@@ -249,12 +254,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -279,12 +284,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -309,12 +314,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -340,12 +345,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     //sound
@@ -378,12 +383,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -408,12 +413,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -439,12 +444,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     break;
@@ -469,12 +474,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("코치볼트", bossNameX, bossNameY);
                     break;
@@ -492,7 +497,7 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //sound
                     gameOutro_snd[1].amp(0,0.2);
@@ -520,12 +525,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     //sound
@@ -554,12 +559,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     break;
@@ -585,12 +590,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     break;
@@ -616,12 +621,12 @@ class GameOutro {
                     //dialogue
                     textAlign(LEFT, TOP);
                     fill(0);
-                    textSize(25);
+                    textSize(40);
                     text(this.dialogue[this.cut], textX, textY);
                     //name
                     fill(70);
                     textStyle('normal');
-                    textSize(30);
+                    textSize(40);
                     textAlign(LEFT, TOP);
                     text("맥스", chrNameX, chrNameY);
                     //sound
@@ -661,7 +666,7 @@ class GameOutro {
                     background(0);
                     fill(255);
                     textAlign(CENTER, TOP);
-                    textSize(30);
+                    textSize(40);
                     text(this.credits, width/2, this.creditsY);
                     this.creditsY += this.creditsSpeed;
                     break;

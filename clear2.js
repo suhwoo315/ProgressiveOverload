@@ -53,12 +53,12 @@ class Clear2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
@@ -66,8 +66,8 @@ class Clear2{
                 //snd[0].amp(0.8,1);
 
                 //스페이스바
-                if (frameCount % 60 < 30) image(map1_chr[1], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
-                else image(map1_chr[2], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 break;
 
             case 1: //쪽지
@@ -89,12 +89,12 @@ class Clear2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -138,12 +138,12 @@ class Clear2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -174,7 +174,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 5: //쪽지
@@ -204,7 +204,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             
@@ -236,7 +236,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 7: //맥스
@@ -266,7 +266,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 8:
@@ -296,7 +296,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 9:
@@ -326,7 +326,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 10:
@@ -356,7 +356,7 @@ class Clear2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 11:
@@ -378,12 +378,12 @@ class Clear2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
@@ -412,7 +412,7 @@ class Clear2{
     //             image(clear2_bg[0], width / 2, height / 2, width, height);
     //             //ui
     //             // fill(255);
-    //             // textSize(30);
+    //             // textSize(40);
     //             // textAlign(CENTER, CENTER);
     //             // text("생긴지 오래되어 보이는 한 펌프", width / 2, height * 23/100)
     //             break;
@@ -441,11 +441,11 @@ class Clear2{
     //             //dialogue
     //             textAlign(CENTER, TOP);
     //             fill(100);
-    //             textSize(30);
+    //             textSize(40);
     //             text(this.dialogue[this.cut], textX, textY);
     //             // //name
     //             // fill(255);
-    //             // textSize(30);
+    //             // textSize(40);
     //             // textAlign(LEFT, TOP);
     //             // text("맥스", chrNameX, chrNameY);
     //             break;
@@ -465,7 +465,7 @@ class Clear2{
     //             //dialogue
     //             textAlign(CENTER, TOP);
     //             fill(100);
-    //             textSize(30);
+    //             textSize(40);
     //             text(this.dialogue[this.cut], messageX, messageY);
     //             break;
     //     }

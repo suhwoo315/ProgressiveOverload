@@ -28,14 +28,14 @@ class Map4 {
         else image(map4_bg[3], width / 2, height / 2, width, height);
 
         //spacebar
-        if (frameCount % 60 < 30) image(map4_chr[1], width / 2, height / 2, width, height);
-        else image(map4_chr[2], width / 2, height / 2, width, height);
+        if (frameCount % 60 < 30) image(map1_chr[1], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
+        else image(map1_chr[2], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
       }
       
   
       // 캐릭터 그리기
       imageMode(CENTER);
-      image(map4_chr[0], this.chrX, this.chrY, map4_chr[0].width, map4_chr[0].height);
+      image(map4_chr[0], this.chrX, this.chrY, map4_chr[0].width * 1.5, map4_chr[0].height * 1.5);
       // image(map4_chr[0], width / 2, height / 2);
       
         
@@ -49,13 +49,13 @@ class Map4 {
 
     if(this.moveOn == true) {
       if(this.chrX <= width * 49.2 / 100 + (this.targetX - width * 49.2 / 100) * 3 / 5){
-        this.chrX += 5;
+        this.chrX += 7;
         
       }
       
       else if(this.chrX > width * 49.2 / 100 + (this.targetX - width * 49.2 / 100) * 3 / 5){
-        this.chrX +=5;
-        this.chrY -=6;
+        this.chrX +=7;
+        this.chrY -=8;
       }
       if(this.chrX >= this.targetX){
         this.chrX = this.targetX;

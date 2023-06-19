@@ -17,12 +17,12 @@ class Map3 {
       else image(map3_bg[1], width / 2, height / 2, width, height);
 
       //spacebar
-      if (frameCount % 60 < 30) image(map3_chr[1], width / 2, height / 2, width, height);
-      else image(map3_chr[2], width / 2, height / 2, width, height);
+      if (frameCount % 60 < 30) image(map1_chr[1], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
+      else image(map1_chr[2], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
   
       // 캐릭터 그리기
       imageMode(CENTER);
-      image(map3_chr[0], this.chrX, this.chrY, map3_chr[0].width, map3_chr[0].height);
+      image(map3_chr[0], this.chrX, this.chrY, map3_chr[0].width * 1.5, map3_chr[0].height * 1.5);
       // image(map3_chr[0], width / 2, height / 2);
       
         
@@ -36,7 +36,7 @@ class Map3 {
 
     if(this.moveOn == true) {
       if(this.chrY < this.targetY){
-        this.chrY +=5;
+        this.chrY +=7;
       }
       else if(this.chrY >= this.targetY){
         this.chrY = this.targetY;

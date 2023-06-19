@@ -13,13 +13,15 @@ class Map1 {
         if (frameCount % 60 < 30) image(map1_bg[0], width / 2, height / 2, width, height);
         else image(map1_bg[1], width / 2, height / 2, width, height);
 
-        //spacebar
-        if (frameCount % 60 < 30) image(map1_chr[1], width / 2, height / 2, width, height);
-        else image(map1_chr[2], width / 2, height / 2, width, height);
+          //spacebar
+          if (frameCount % 60 < 30) image(map1_chr[1], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
+          else image(map1_chr[2], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
+        
+        
     
         // 캐릭터 그리기
         imageMode(CENTER);
-        image(map1_chr[0], this.chrX, this.chrY, map1_chr[0].width, map1_chr[0].height);
+        image(map1_chr[0], this.chrX, this.chrY, map1_chr[0].width * 1.5, map1_chr[0].height * 1.5);
         // image(map1_chr[0], width / 2, height / 2);
         
           
@@ -31,7 +33,7 @@ class Map1 {
       this.targetX = width * 17.5 / 100;
 
       if(this.moveOn == true) {
-        this.chrX += 3;
+        this.chrX += 7;
         if(this.chrX >= this.targetX){
           this.chrX = width * 17.5 / 100;
           //sound
@@ -40,7 +42,7 @@ class Map1 {
       }
       else {
         // this.chrX +=0;
-        this.chrX = 0
+        this.chrX = - width * 8 / 100 
         this.chrY = height * 40 / 100;
  
       }

@@ -6,18 +6,20 @@ class Stage4 {
                     "B",
                    "C", "A", "B", "C", "B"]; //2 C= 숄더프레스
         this.index = 0; //sequence의 인덱스
-        this.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
+        this.gaming = false; //동작을 수행, false는 결과를 보여주는 단계
         this.attackSuccess = false; // A,B에 성공, 보스의 hp -
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
+        this.maxHp = 6;
+        this.bossHp = 6;
         this.countMax = 6; // max의 hp, 0이 되면 게임 종료
         this.countBoss = 6; // 보스의 hp, 0이 되면 게임 종료
         this.colors = [color(213, 41, 41), color(213, 122, 41), color(41, 159, 213)];
 
         this.startAngle = -90;
         this.endAngle = 0;
-        this.radius = 87;
+        this.radius = 135;
         this.arcLength = 10;
 
         this.touchUpper = false;
@@ -80,7 +82,7 @@ class Stage4 {
       image(stage4_ui[0], width / 2, height / 2, width, height);
       noStroke();
       fill(0);
-      textSize(30);
+      textSize(40);
       textAlign(CENTER, CENTER);
       text("맥스", width*4.1/20, height*16.4/20);
       text("머슬로스", width*15.85/20, height*16.4/20);
@@ -99,7 +101,7 @@ class Stage4 {
       if (this.countMax > 4) fill(103, 255, 67);
       else if (this.countMax > 2) fill(245, 122, 67);
       else fill(254, 24, 26);
-      rect(maxHpX, maxHpY, maxHpW * this.countMax/6, maxHpH);
+      rect(maxHpX + maxHpW * (this.maxHp - this.countMax)/this.maxHp, maxHpY, maxHpW * this.countMax/this.maxHp, maxHpH);
 
       //bossHp
       let bossHpX = width*10.05/20;
@@ -112,7 +114,7 @@ class Stage4 {
       if (this.countBoss > 4) fill(103, 255, 67);
       else if (this.countBoss > 2) fill(245, 122, 67);
       else fill(254, 24, 26);
-      rect(bossHpX, bossHpY, bossHpW * this.countBoss/6, bossHpH);
+      rect(bossHpX, bossHpY, bossHpW * this.countBoss/this.bossHp, bossHpH);
 
       //운동에 따라 달라지는 asset : 시퀀스 아이콘
       // let aX1 = width / 2 - 330;
@@ -148,7 +150,7 @@ class Stage4 {
         image(stage4_ui[9], width / 2, height / 2, width, height);
         noStroke();
         fill(this.colors[0]);
-        textSize(30);
+        textSize(40);
         textAlign(CENTER, CENTER);
         text("덤벨 컬", textX, textY);
         
@@ -189,7 +191,7 @@ class Stage4 {
         image(stage4_ui[15], width / 2, height / 2, width, height);
                 noStroke();
                 fill(this.colors[1]);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text("레터럴 레이즈", textX, textY);
 
@@ -230,7 +232,7 @@ class Stage4 {
         image(stage4_ui[13], width / 2, height / 2, width, height);
                 noStroke();
                 fill(this.colors[2]);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text("숄더 프레스", textX, textY);
 
@@ -267,7 +269,7 @@ class Stage4 {
       this.endAngle = map(this.arcLength, 0, 300, 0, 360);
 
       // 부채꼴 그리기
-      fill(0); // 색상 설정
+      fill(0, 150); // 색상 설정
       noStroke();
       arc(width*14.7/20, height*11.6/20, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
       if (this.arcLength > 300) this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림

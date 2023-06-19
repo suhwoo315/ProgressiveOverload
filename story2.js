@@ -50,14 +50,18 @@ class Story2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 //sound
                 snd[0].amp(0.8,1);  
                 break;
@@ -80,12 +84,12 @@ class Story2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -108,12 +112,12 @@ class Story2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -126,9 +130,14 @@ class Story2{
                 //image(story2_ui[0], width / 2, height / 2, width, height);
                 image(story2_ui[1], width / 2, height / 2, width, height);
                 fill(255);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text("너무 낡아서 사용할 수 없는 펌프", width / 2, height * 23/100);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                
                 snd[0].amp(0.8,0.3);
                 break;
             case 4:
@@ -157,12 +166,12 @@ class Story2{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -192,7 +201,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 6:
@@ -221,7 +230,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 7:
@@ -250,7 +259,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 8:
@@ -279,7 +288,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 9:
@@ -308,7 +317,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 10:
@@ -337,7 +346,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 11:
@@ -366,7 +375,7 @@ class Story2{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(30);
+                textSize(40);
                 text(this.dialogue[this.cut], messageX, messageY);
                 //sound
                 snd[0].amp(0,0.3);                  

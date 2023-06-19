@@ -8,7 +8,7 @@ class Story4{
                         "이잉? 이미 이 세상에 근성장과 관련한 건 모조리 없앴는데! 저 애송이는 뭐지?", //3
                         "뭐야.. 생각보다 조그맣잖아. 한주먹거리도 안 되겠는데?", //4
                         "지금 뭐라고 혼자서 중얼거리는 것이지! 넌 누구냐!\n어떻게 내 마법의 영향을 받지 않는 것이지!", //5
-                        "어이, 머슬로스! 운동, 식단, 정신력을 다 얻은 나를 감당할 수 있겠나!", //6
+                        "어이, 머슬로스! 장비, 식단, 정신력을 다 얻은 나를 감당할 수 있겠나!", //6
                         "애송이같으니라고.. 너도 결국 근손실에서 벗어날 수 없을 것이야! 후훗..."]; //7
     }
 
@@ -27,7 +27,8 @@ class Story4{
          // 고치기 필요 (임시 코드)
          let bossX = width / 2;
          let bossY = height / 2;
-         let bossSize = width / 3;
+         let bossW = width;
+         let bossH = height;
          let maxSize = max[0].height * windowHeight / 1600 * 2 / 3;
          let textBoxX = width / 2;
          let textBoxY = height / 2;
@@ -37,10 +38,10 @@ class Story4{
          let textY = height * 2/3;
          let chrNameX = width / 15;
          let chrNameY = height * 2 / 3;
-         let bossNameX = width / 19.5;
+         let bossNameX = width / 18.5;
          let bossNameY = height * 2 / 3;
-         let messageX = width / 2
-         let messageY = height * 690 / 918.5625;
+        //  let messageX = width / 2;
+        //  let messageY = height * 690 / 918.5625;
         switch(this.cut){
             case 0:
                 background(100);
@@ -50,9 +51,14 @@ class Story4{
 
                 //text
                 fill(255);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text("머슬로스의 방 앞", width / 2, height * 23/100);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
+
                 //sound
                 story4_snd[0].setVolume(0);
                 story4_snd[0].amp(1,0.3);
@@ -81,12 +87,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -114,7 +120,7 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 break;
 
@@ -130,7 +136,7 @@ class Story4{
                 rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossW, bossH);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -138,12 +144,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 break;
@@ -171,12 +177,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -193,7 +199,7 @@ class Story4{
                 rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossW, bossH);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -201,12 +207,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 break;
@@ -234,12 +240,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -256,7 +262,7 @@ class Story4{
                 rect(width / 2, height / 2, width, height);
                 //boss
                 imageMode(CENTER);
-                image(story4_ui[1], bossX, bossY, bossSize, bossSize);
+                image(story4_ui[1], bossX, bossY, bossW, bossH);
                 //ui
                 imageMode(CENTER);
                 image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -264,12 +270,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(25);
+                textSize(40);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(30);
+                textSize(40);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 //sound

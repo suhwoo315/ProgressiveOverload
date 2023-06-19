@@ -19,7 +19,7 @@ class Tutorial4{
         this.endAngle = 0;
         // this.radius = windowWidth * 87 / 1016;
         // this.arcLength = windowWidth * 10 / 1016;
-        this.radius = 87;
+        this.radius = 135;
         this.arcLength = 10;
         //windowWidth 1016
         //windowHeight 899
@@ -47,7 +47,7 @@ class Tutorial4{
             image(tutorial4_ui[0], width/2, height/2, width, height);
             noStroke();
             fill(0);
-            textSize(30);
+            textSize(40);
             textAlign(CENTER, TOP);
             text(this.dialogue[this.cut], messageX, messageY);
         }
@@ -118,7 +118,7 @@ class Tutorial4{
                 image(tutorial4_ui[(this.cut + 1) / 2], width/2, height/2, width, height);
                 noStroke();
                 fill(this.colors[(this.cut + 1) / 2 - 1]);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text(this.exercises[(this.cut + 1) / 2 - 1], width*12.4/20, height*5.9/20);
                 //스페이스바
@@ -131,7 +131,7 @@ class Tutorial4{
                 image(tutorial4_ui[(this.cut + 1) / 2], width/2, height/2, width, height);
                 noStroke();
                 fill(this.colors[(this.cut + 1) / 2 - 1]);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text(this.exercises[(this.cut + 1) / 2 - 1], width*12.4/20, height*5.9/20);
                 //스페이스바
@@ -144,7 +144,7 @@ class Tutorial4{
                 image(tutorial4_ui[(this.cut + 1) / 2], width/2, height/2, width, height);
                 noStroke();
                 fill(this.colors[(this.cut + 1) / 2 - 1]);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text(this.exercises[(this.cut + 1) / 2 - 1], width*12.4/20, height*5.9/20);
                 //스페이스바
@@ -165,7 +165,7 @@ class Tutorial4{
                 // text
                 noStroke();
                 fill(0);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text(this.dialogue[this.cut], width*10.7/20, height*8.7/20);
                 fill(this.colors[0]);
@@ -206,7 +206,7 @@ class Tutorial4{
                 // text
                 noStroke();
                 fill(0);
-                textSize(30);
+                textSize(40);
                 textAlign(CENTER, CENTER);
                 text(this.dialogue[this.cut], width*4.5/20, height*12.5/20);
                 text("맥스", width*4.1/20, height*16.4/20);

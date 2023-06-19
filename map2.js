@@ -17,12 +17,12 @@ class Map2 {
       else image(map2_bg[1], width / 2, height / 2, width, height);
 
       //spacebar
-      if (frameCount % 60 < 30) image(map2_chr[1], width / 2, height / 2, width, height);
-      else image(map2_chr[2], width / 2, height / 2, width, height);
+      if (frameCount % 60 < 30) image(map1_chr[1], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
+      else image(map1_chr[2], width * 60 / 100, height * 60 / 100, width * 0.8, height * 0.8);
   
       // 캐릭터 그리기
       imageMode(CENTER);
-      image(map2_chr[0], this.chrX, this.chrY, map2_chr[0].width, map2_chr[0].height);
+      image(map2_chr[0], this.chrX, this.chrY, map2_chr[0].width * 1.5, map2_chr[0].height * 1.5);
       // image(map2_chr[0], width / 2, height / 2);
       
         
@@ -36,12 +36,12 @@ class Map2 {
 
     if(this.moveOn == true) {
       if(this.chrX <= this.targetX && this.chrY > this.targetY){
-        this.chrX += 5;
-        this.chrY -= 5;
+        this.chrX += 7;
+        this.chrY -= 7;
       }
       
       else if(this.chrY <= this.targetY){
-        this.chrX +=5;
+        this.chrX +=7;
         this.chrY = this.targetY;
       }
       if(this.chrX >= this.targetX && this.chrY <= this.targetY){
