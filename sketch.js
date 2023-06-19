@@ -10,7 +10,7 @@
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
 let phase = 1;
-let scene = 2;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -325,7 +325,7 @@ function preload(){
   for(let i=0; i<7; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
   for(let i=0; i<6; i++){
@@ -385,7 +385,7 @@ function preload(){
   for(let i=0; i<6; i++){
     stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
   }
   for(let i=0; i<6; i++){ //6
@@ -439,7 +439,7 @@ function preload(){
   for(let i=0; i<19; i++){
     stage3_chr[i] = loadImage('assets/phase3/stage3/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage3_ui[i] = loadImage('assets/phase3/stage3/ui/' + i + '.png');
   }
   for(let i=0; i<8; i++){
