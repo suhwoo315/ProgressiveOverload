@@ -181,12 +181,12 @@ let rightElbowX = 0;
 let rightElbowY = 0;
 
 // 각 운동의 위, 아래 바운더리
-let dumbbellCurlUpper = 6.2/10;
-let dumbbellCurlLower = 7.5/10;
+let dumbbellCurlUpper = 5/10;
+let dumbbellCurlLower = 8/10;
 let sideUpper = 6.2/10;
-let sideLower = 7.5/10;
+let sideLower = 8/10;
 let pressUpper = 3/10;
-let pressLower = 4.5/10;
+let pressLower = 6/10;
 
 // 시간
 let savedTime = 0;
