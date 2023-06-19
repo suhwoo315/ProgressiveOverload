@@ -1,8 +1,8 @@
 class GameOutro { 
     constructor(){
-        this.success = false;
+        this.success = true; //false로 바꾸기 (디버깅 용)
         this.cut = 0; // 현재 cut
-        this.maxCut = 20; // cut의 총 개수
+        this.maxCut = 21; // cut의 총 개수
         this.dialogue = ["히이이이잉.. 근성장에 대한 의지는 영원히 꺾을 수 없는 것이군...", // 0
                         "머슬.. 머슬.. 도대체 머슬이 뭐라고..", // 1
                         "(퓨슈슈슉.. 소멸하는 머슬로스)", // 2
@@ -24,7 +24,9 @@ class GameOutro {
                         "(가방을 챙겨 나가는 맥스)", // 18
                         "(맥스가 나간 사이 탁자 위에 있는 쪽지가 놓여져 있다)", // 19
                         "(쪽지 클로즈업 - 반드시 해낼지어니!)"]; //20
-                        
+        this.creditsY = 0;
+        this.creditsSpeed = -0.5;
+        this.credits = ["Credit\n\n\n두부 겸리더 : 안다겸\n불꽃 카리스마 : 윤서우\n블링블링 이즈 : 임승현\n박력징은 : 조지은\n만능열쇠 : 황인호\n주말 : 사짐\n종강 : 안 옴\n수면 : 부족\n살려 : 주세요\n당근 : 흔들고 있음\n여러분들의 근성장을 응원합니다\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동"];                
     }
 
     display(){
@@ -42,10 +44,6 @@ class GameOutro {
         let chrNameY = height * 2 / 3;
         let bossNameX = width / 19.5;
         let bossNameY = height * 2 / 3;
-        let messageX = width / 2
-        let messageY = height * 690 / 918.5625;
-        let creditsY = 0;
-        let creditsSpeed = 0.1;
 
         //sound
         //stage4_snd[2].stop();
@@ -672,31 +670,16 @@ class GameOutro {
                     text(this.dialogue[this.cut], textX, textY);
                     break;
                 
-                //case 21:
-                //    sound
-                //    gameOutro_snd[0].amp(1,0.3);                
-                //    background(0);
-                //    fill(255);
-                //    textAlign(CENTER, TOP);
-                //    textSize(50);
-                //    creditsY += creditsSpeed;
-                //    text("Credit", windowWidth / 2, windowWidth * (19-creditsY) / 32);
-                //    textSize(30);
-                //    text("두부 온 리더 : 안다겸", windowWidth / 2, windowWidth * (21-creditsY) / 32);
-                //    text("불꽃 카리스마 : 윤서우", windowWidth / 2, windowWidth * (22-creditsY) / 32);
-                //    text("블링블링 이즈 : 임승현", windowWidth / 2, windowWidth * (23-creditsY) / 32);
-                //    text("마이네임 이즈 : 임승현", windowWidth / 2, windowWidth * (23-creditsY) / 32);                
-                //    text("박력짐은 : 조지은", windowWidth / 2, windowWidth * (24-creditsY) / 32);
-                //    text("만능열쇠 황인호", windowWidth / 2, windowWidth * (25-creditsY) / 32);
-                //    text("주말 : 사라짐", windowWidth / 2, windowWidth * (26-creditsY) / 32);
-                //    text("종강 : 안 옴", windowWidth / 2, windowWidth * (27-creditsY) / 32);
-                //    text("수면 : 부족", windowWidth / 2, windowWidth * (28-creditsY) / 32);
-                //    text("살려 : 주세요", windowWidth / 2, windowWidth * (29-creditsY) / 32);
-                //   text("당근 : 흔들고 있음", windowWidth / 2, windowWidth * (30-creditsY) / 32);
-                //    text("여러분들의 근성장을 응원합니다", windowWidth / 2, windowWidth * (31-creditsY) / 32);
-                //    text("잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동", windowWidth / 2, windowWidth * (32-creditsY) / 32);
-
-                //    break;
+                case 21:
+                    //sound
+                    //gameOutro_snd[0].amp(1,0.3);                
+                    background(0);
+                    fill(255);
+                    textAlign(CENTER, TOP);
+                    textSize(30);
+                    text(this.credits, width/2, this.creditsY);
+                    this.creditsY += this.creditsSpeed;
+                    break;
             }
         }
     }

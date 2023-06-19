@@ -51,7 +51,8 @@ class Stage1 {
             else if (frameCount % 60 < 30) image(stage1_sil[1], width / 2, height / 2 , width, height);
             else if (frameCount % 60 < 45) image(stage1_sil[2], width / 2, height / 2 , width, height);
             else image(stage1_sil[1], width / 2, height / 2, width, height);
-            image(stage1_ui[1], width / 2, height / 2, width, height); //게이지 바
+            if (!this.touchLower) image(stage1_ui[12], width / 2, height / 2, width, height); //게이지 바
+            else image(stage1_ui[1], width / 2, height / 2, width, height);
 
             // ui - 아령 차감
             image(stage1_ui[4], width / 2, height / 2, width, height); //아령 배경
@@ -115,7 +116,7 @@ class Stage1 {
     check(upperFraction, lowerFraction){
         if (this.count > 0){
             let y = (leftWristY + rightWristY) / 2;
-            this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
+            this.drawDumbbell(y, dumbbellCurlUpper, dumbbellCurlLower);
 
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
@@ -167,11 +168,12 @@ class Stage1 {
         else if (y > lowerBound) boundY = lowerBound;
         else boundY = y;
         
-        let upperY = height*5.7/20;
-        let lowerY = height*8.7/20;
+        let upperY = height*10.7/20;
+        let lowerY = height*13.7/20;
         let barHeight = lowerY - upperY;
-        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+        let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        imageMode(CENTER);
+        image(stage1_ui[2], width/ 2, dumbbellY, width, stage1_ui[2].height);
     }
 }

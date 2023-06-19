@@ -72,7 +72,8 @@ class Stage3 {
             else if (frameCount % 60 < 30) image(stage3_sil[1], width / 2, height / 2 , width, height);
             else if (frameCount % 60 < 45) image(stage3_sil[2], width / 2, height / 2 , width, height);
             else image(stage3_sil[1], width / 2, height / 2, width, height);
-            image(stage3_ui[1], width / 2, height / 2, width, height); //게이지 바
+            if (!this.touchLower) image(stage3_ui[12], width / 2, height / 2, width, height); //게이지 바
+            else image(stage3_ui[1], width / 2, height / 2, width, height);
 
             // ui - 아령 차감
             image(stage3_ui[4], width / 2, height / 2, width, height); //아령 배경
@@ -132,8 +133,8 @@ class Stage3 {
     // 플레이어의 현재 위치를 확인해서 점수를 부여한다
     check(upperFraction, lowerFraction){
         if (this.count > 0){
-            let y = (leftWristY + rightWristY) / 2;
-            this.drawDumbbell(y);
+            let y = (leftElbowY + rightElbowY) / 2;
+            this.drawDumbbell(y, pressUpper, pressLower);
 
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
@@ -186,11 +187,12 @@ class Stage3 {
         else if (y > lowerBound) boundY = lowerBound;
         else boundY = y;
         
-        let upperY = height*5.7/20;
-        let lowerY = height*8.7/20;
+        let upperY = height*10.7/20;
+        let lowerY = height*13.7/20;
         let barHeight = lowerY - upperY;
-        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+        let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        imageMode(CENTER);
+        image(stage3_ui[2], width/ 2, dumbbellY, width, stage3_ui[2].height);
     }
 }

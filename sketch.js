@@ -162,6 +162,8 @@ let leftWristValues = [];
 let rightWristValues = [];
 let leftShoulderValues = [];
 let rightShoulderValues = [];
+let leftElbowValues = [];
+let rightElbowValues = []
 
 // 손목의 위치 변수 - 이 변수들을 사용해서 플레이어의 위치 확인
 let leftWristX = 0;
@@ -172,6 +174,10 @@ let leftShoulderX = 0;
 let leftShoulderY = 0;
 let rightShoulderX = 0;
 let rightShoulderY = 0;
+let leftElbowX = 0;
+let leftElbowY = 0;
+let rightElbowX = 0;
+let rightElbowY = 0;
 
 // 각 운동의 위, 아래 바운더리
 let dumbbellCurlUpper = 6.2/10;
@@ -326,7 +332,7 @@ function preload(){
   for(let i=0; i<7; i++){
     stage1_chr[i] = loadImage('assets/phase1/stage1/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage1_ui[i] = loadImage('assets/phase1/stage1/ui/' + i + '.png'); //********
   }
   for(let i=0; i<6; i++){
@@ -386,7 +392,7 @@ function preload(){
   for(let i=0; i<6; i++){
     stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
   }
   for(let i=0; i<6; i++){ //6
@@ -443,7 +449,7 @@ function preload(){
   for(let i=0; i<19; i++){
     stage3_chr[i] = loadImage('assets/phase3/stage3/chr/' + i + '.png');
   }
-  for(let i=0; i<12; i++){
+  for(let i=0; i<13; i++){
     stage3_ui[i] = loadImage('assets/phase3/stage3/ui/' + i + '.png');
   }
   for(let i=0; i<8; i++){
@@ -484,22 +490,6 @@ function preload(){
     story4_ui[i] = loadImage('assets/phase4/story4/ui/' + i + '.png');
   }
 
-  // //tutorial4
-  // for(let i=0; i<3; i++){
-  //   tutorial4_ui[i] = loadImage('assets/phase4/tutorial4/ui/' + i + '.png');
-  // }
-  // for(let i=0; i<12; i++){
-  //   tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
-  // }
-
-  // stage4
-  for(let i=0; i<1; i++){
-    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
-  }
-  // for(let i=0; i<1; i++){
-  //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
-  // }
-
   // tutorial4
   for(let i=0; i<2; i++){
     tutorial4_bg[i] = loadImage('assets/phase4/tutorial4/bg/' + i + '.png');
@@ -515,7 +505,7 @@ function preload(){
   }
 
   // stage4
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
   for(let i=0; i<1; i++){
@@ -527,19 +517,19 @@ function preload(){
   for(let i=0; i<2; i++){
     stage4_chr_max_kick[i] = loadImage('assets/phase4/stage4/chr/max/kick/' + i + '.png'); // 2
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<1; i++){
     stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend/' + i + '.png'); // 2
   }
   for(let i=0; i<1; i++){
     stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default/' + i + '.png'); // 1
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack/' + i + '.png'); // 2
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<4; i++){
     stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend/' + i + '.png'); // 2
   }
-  for(let i=0; i<16; i++){
+  for(let i=0; i<17; i++){
     stage4_ui[i] = loadImage('assets/phase4/stage4/ui/' + i + '.png');
   }
   for(let i=0; i<9; i++){
@@ -572,16 +562,7 @@ function preload(){
 
 // 기본 설정
 function setup() {
-
-  // createCanvas(windowWidth, windowHeight);
-  // let canvasWidth = windowWidth
-  // let canvasHeight = windowWidth * 9 / 16;
-  //let canvas = createCanvas(canvasWidth, canvasHeight);
   createCanvas(windowWidth, windowWidth * 9 / 16);
-  // canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
-  // canvas.style('display', 'block');
-  // canvas.style('margin', 'auto');
-  // createCanvas(1920* 0.7, 1080 * 0.7); //width 1044, height 756
 
   video = createCapture(VIDEO);
   video.size(width, height);
@@ -605,15 +586,9 @@ function setup() {
 function draw() {  
   switch(phase){
     case 0: //phase0
-      if(scene == 0){ // gameTitle
-        gameTitle.display();
-      } 
-      else if (scene == 1){ // tutorial0
-        tutorial0.display();
-      }
-      else if (scene == 2){ // gameIntro
-        gameIntro.display();
-      }
+      if(scene == 0) gameTitle.display(); // gameTitle
+      else if (scene == 1) tutorial0.display(); // tutorial0
+      else if (scene == 2) gameIntro.display(); // gameIntro
       break;
 
     case 1: //phase1
@@ -692,12 +667,12 @@ function draw() {
       else if(scene == 2){ // tutorial2
         tutorial2.display();
         if (tutorial2.getCut() == 6){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass) tutorial2.increaseCut();
         }
         else if (tutorial2.getCut() == 7){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.upperPass){
             tutorial2.increaseCut();
@@ -706,7 +681,7 @@ function draw() {
           }
         }
         else if (tutorial2.getCut() == 8){
-          trackWrists();
+          trackElbows();
           tutorial2.checkPass(sideUpper, sideLower);
           if (tutorial2.lowerPass && tutorial2.upperPass) tutorial2.increaseCut();
         }
@@ -723,7 +698,7 @@ function draw() {
         }
       }
       else if(scene == 3){ // stage2
-        trackWrists();
+        trackElbows();
         stage2.display();
         stage2.check(sideUpper, sideLower);
         //stage2.sound();
@@ -757,12 +732,12 @@ function draw() {
     else if(scene == 2){ // tutorial3
       tutorial3.display();
       if (tutorial3.getCut() == 6){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.lowerPass) tutorial3.increaseCut();
       }
       else if (tutorial3.getCut() == 7){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.upperPass){
           tutorial3.increaseCut();
@@ -771,7 +746,7 @@ function draw() {
         }
       }
       else if (tutorial3.getCut() == 8){
-        trackWrists();
+        trackElbows();
         tutorial3.checkPass(pressUpper, pressLower);
         if (tutorial3.lowerPass && tutorial3.upperPass) tutorial3.increaseCut();
       }
@@ -788,7 +763,7 @@ function draw() {
       }
     }
     else if(scene == 3){ // stage3
-      trackWrists();
+      trackElbows();
       stage3.display();
       stage3.check(pressUpper, pressLower);
       //stage3.sound();
@@ -876,6 +851,7 @@ function draw() {
           if (stage4.countMax > 0) gameOutro.success = true;
           phase++;
           scene = 0;
+          gameOutro.creditsY = height * 1.1;
         }
       }
       break;
@@ -895,27 +871,25 @@ function draw() {
     image(ui[1], width / 2, height / 2, width, height);
     if(mouseIsPressed){
       if(mouseX >= width / 2 - width / 150 - width / 6 &&
-      mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
-      mouseY >= height / 2 + height / 19 &&
-      mouseY <= height / 2 + height / 19 + height / 15){
+        mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
+        mouseY >= height / 2 + height / 19 &&
+        mouseY <= height / 2 + height / 19 + height / 15){
         image(ui[2], width / 2 - width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
         image(ui[3], width / 2, height / 2, width, height);
-       }
+      }
       else if(mouseX >= width / 2 + width / 60 &&
-      mouseX <= width / 2 + width / 60 + width / 6 &&
-      mouseY >= height / 2 + height / 19 &&
-      mouseY <= height / 2 + height / 19 + height / 15){
+              mouseX <= width / 2 + width / 60 + width / 6 &&
+              mouseY >= height / 2 + height / 19 &&
+              mouseY <= height / 2 + height / 19 + height / 15){
         image(ui[2], width / 2, height / 2, width, height);
         image(ui[3], width / 2 + width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
       }
       else {
         image(ui[2], width / 2, height / 2, width, height);
-      image(ui[3], width / 2, height / 2, width, height);
+        image(ui[3], width / 2, height / 2, width, height);
       }
-      
     }
     else {
-      
       image(ui[2], width / 2, height / 2, width, height);
       image(ui[3], width / 2, height / 2, width, height);
     }
@@ -944,19 +918,14 @@ function keyPressed(){
           else {
             phase++;
             scene = 0;
-            
           }
         }
       break;
 
       case 1:
         if(scene == 0){ //map1
-          if(map1.moveOn == false){
-            map1.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map1.moveOn == false) map1.moveOn = true;
+          else scene++;
         }
         else if (scene == 1){ //story1
           if (story1.cut < story1.maxcut) story1.cut++;
@@ -978,20 +947,12 @@ function keyPressed(){
 
       case 2:
         if(scene == 0){ //map2
-          if(map2.moveOn == false){
-            map2.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map2.moveOn == false) map2.moveOn = true;
+          else scene++;
         }
         else if(scene == 1){ //story2
-          if(story2.cut < story2.maxcut){
-            story2.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story2.cut < story2.maxcut) story2.cut++;
+          else scene++;
         }
         else if(scene == 4){ //clear2
           if (clear2.cut < clear2.maxCut) clear2.cut++;
@@ -1004,20 +965,12 @@ function keyPressed(){
 
       case 3:
         if(scene == 0){ //map3
-          if(map3.moveOn == false){
-            map3.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map3.moveOn == false) map3.moveOn = true;
+          else scene++;
         }
         else if(scene == 1){ //story3
-          if(story3.cut < story3.maxcut){
-            story3.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story3.cut < story3.maxcut) story3.cut++;
+          else scene++;
         }
         else if(scene == 4){ //clear3
           if (clear3.cut < clear3.maxCut) clear3.cut++;
@@ -1031,22 +984,14 @@ function keyPressed(){
       case 4:
         if(scene == 0){ //map4
           if(map4.cut == 2){
-            if(map4.moveOn == false){
-              map4.moveOn = true;
-            }
-            else  {
-              scene++;
-            }
+            if(map4.moveOn == false) map4.moveOn = true;
+            else scene++;
           }
           
         }
         else if(scene == 1){ //story4
-          if(story4.cut < story4.maxcut){
-            story4.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story4.cut < story4.maxcut) story4.cut++;
+          else scene++;
         }
         else if (scene == 2){ //tutorial4
           if (tutorial4.getCut() == 7) savedTime = millis();
@@ -1056,13 +1001,6 @@ function keyPressed(){
           stage4.gameStarted = true;
           stage4.gaming = true;
           savedtime = millis();
-          //if(stage4.countMax <= 0 || stage4.countBoss <= 0){
-            //if (stage4.getCut < stage4.maxCut) stage4.increaseCut();
-            //else {
-              //phase++;            
-              //scene = 0;
-            //}
-          //}
         }
       break;
 
@@ -1088,7 +1026,7 @@ function mouseClicked() {
       mouseY >= height / 18 &&
       mouseY <= height / 18 + height / 12){
        exit = true;
-   }
+    }
   }
   
   // rect(width / 2 - width / 150 - width / 6, height / 2 + height / 19, width / 6, height / 15); yes box size
@@ -1256,6 +1194,53 @@ function trackShoulders(){
         for (let i = 0; i < tracking_num; i++) rightShoulderY += rightShoulderValues[1][i];
         rightShoulderY /= tracking_num;
         rightShoulderValues[1] = [];
+      }
+    }
+  }
+}
+
+// bodytracking - 팔꿈치의 위치 변수에 플레이어의 현재 위치를 저장한다
+function trackElbows(){
+  for (let i = 0; i < poses.length; i++) {
+    let pose = poses[i].pose;
+    let leftElbow = pose.keypoints[7];
+    let rightElbow = pose.keypoints[8];
+
+    if (leftElbow.score > 0.3){
+      if (leftElbowValues[0].length < tracking_num) {
+        leftElbowValues[0].push(leftElbow.position.x);
+        leftElbowValues[1].push(leftElbow.position.y);
+      }
+
+      if (leftElbowValues[0].length == tracking_num) {
+        leftElbowX = 0;
+        for (let i = 0; i < tracking_num; i++) leftElbowX += leftElbowValues[0][i];
+        leftElbowX /= tracking_num;
+        leftElbowValues[0] = [];
+
+        leftElbowY = 0;
+        for (let i = 0; i < tracking_num; i++) leftElbowY += leftElbowValues[1][i];
+        leftElbowY /= tracking_num;
+        leftElbowValues[1] = [];
+      }
+    }
+
+    if (rightElbow.score > 0.3){
+      if (rightElbowValues[0].length < tracking_num) {
+        rightElbowValues[0].push(rightElbow.position.x);
+        rightElbowValues[1].push(rightElbow.position.y);
+      }
+
+      if (rightElbowValues[0].length == tracking_num) {
+        rightElbowX = 0;
+        for (let i = 0; i < tracking_num; i++) rightElbowX += rightElbowValues[0][i];
+        rightElbowX /= tracking_num;
+        rightElbowValues[0] = [];
+
+        rightElbowY = 0;
+        for (let i = 0; i < tracking_num; i++) rightElbowY += rightElbowValues[1][i];
+        rightElbowY /= tracking_num;
+        rightElbowValues[1] = [];
       }
     }
   }

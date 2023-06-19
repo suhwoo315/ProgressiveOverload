@@ -122,7 +122,7 @@ class Tutorial3 {
 
     // 손이 위, 아래 기준선을 넘었는지 확인한다
     checkPass(upperFraction, lowerFraction){
-        this.y = (leftWristY + rightWristY) / 2;
+        this.y = (leftElbowY + rightElbowY) / 2;
 
         let upperBound = height*upperFraction;
         let lowerBound = height*lowerFraction;
@@ -148,8 +148,9 @@ class Tutorial3 {
         let upperY = height*5.7/20;
         let lowerY = height*8.7/20;
         let barHeight = lowerY - upperY;
-        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+        let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-        image(tutorial3_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        imageMode(CENTER);
+        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_sil[11].height);
     }
 }

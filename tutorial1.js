@@ -1,6 +1,6 @@
 class Tutorial1 {
     constructor(){
-        this.cut = 0; // 현재 cut
+        this.cut = 7; // 현재 cut
         this.maxCut = 11; // cut의 총 개수
         this.dialogue = ["지금부터 화면이 자동으로 넘어갑니다.", //0
                         "양손에 덤벨을 하나씩 쥐어보세요.", //1
@@ -167,8 +167,9 @@ class Tutorial1 {
         let upperY = height*5.7/20;
         let lowerY = height*8.7/20;
         let barHeight = lowerY - upperY;
-        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+        let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        imageMode(CENTER);
+        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_sil[11].height);
     }
 }
