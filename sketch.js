@@ -275,7 +275,7 @@ function preload(){
   for(let i=0; i<2; i++){
     gameTitle_bg[i] = loadImage('assets/phase0/gameTitle/bg/' + i + '.png');
   }
-  for(let i=0; i<0; i++){
+  for(let i=0; i<1; i++){
     gameTitle_snd[i] = loadSound('assets/phase0/gameTitle/snd/' + i + '.mp3');
   }
 
