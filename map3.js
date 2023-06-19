@@ -40,6 +40,7 @@ class Map3 {
       }
       else if(this.chrY >= this.targetY){
         this.chrY = this.targetY;
+        playOnce(snd[1]);
       }
 
       // if(this.chrX <= this.targetX && this.chrY > this.targetY){
