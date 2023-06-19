@@ -76,6 +76,8 @@ class Stage4 {
       text("맥스", width*4.1/20, height*16.4/20);
       text("머슬로스", width*15.85/20, height*16.4/20);
       
+      //sound
+      playOnce(stage4_snd[0]);
 
       //max hp
       let maxHpX = width*2.99/20;
