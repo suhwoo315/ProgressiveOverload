@@ -9,7 +9,7 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 4;
+let phase = 3;
 let scene = 3;
 
 // phase0의 클래스 - start
@@ -554,7 +554,7 @@ function preload(){
   for(let i=0; i<4; i++){
     gameOutro_snd[i] = loadSound('assets/phase5/gameOutro/snd/' + i + '.mp3');
   }  
-  for(let i=0; i<5; i++){
+  for(let i=0; i<7; i++){
     gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
   } 
 
@@ -919,6 +919,12 @@ function draw() {
     case 5: //phase5
       stage4_snd[0].stop();
       gameOutro.display();
+      if (gameOutro.cut < 2){
+        if (millis() - savedTime > autoNextTime){
+          gameOutro.cut++;
+          savedTime = millis();
+        }
+      }
       break;
   }
 
@@ -1068,7 +1074,7 @@ function keyPressed(){
 
       case 5:
         if(scene == 0){ //outro
-          if(gameOutro.cut < gameOutro.maxCut) gameOutro.cut++;
+          if(gameOutro.cut < gameOutro.maxCut && gameOutro.cut > 1) gameOutro.cut++;
           else {
             location.reload();
           }
