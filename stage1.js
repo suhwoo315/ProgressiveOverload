@@ -18,7 +18,8 @@ class Stage1 {
     display(){
         if (this.count > 0){
             imageMode(CENTER);
-
+            //sound
+            playOnce(stage1_snd[0]);
             //background
             image(stage1_bg[0], width / 2, height / 2, width, height);
             if(this.count == 4){
@@ -67,6 +68,7 @@ class Stage1 {
                 image(stage1_bg[i], width / 2, height / 2, width, height);
             }
             image(stage1_chr[6], width/2, height/2, width, height);
+            if(this.cut == 0 || this.cut == 1) playOnce(snd[3]);
             if (this.cut > 0){
                 if (!this.bgOn){
                     background(255, 255, 255, 150);
@@ -78,16 +80,20 @@ class Stage1 {
                 textSize(30);
                 textAlign(CENTER, CENTER);
                 fill(0);
-                text(this.dialogue[this.cut], width/2, height*9.3/20);
+                text(this.dialogue[this.cut], width/2, height*9.3/20);                
             }
         }
         // 아령을 들 때마다 점점 아우라가 커진다
-        //if(this.count < 5) playOnce(stage1_snd[0]);
-        //if(this.count == 4)stage1_snd[0].amp(1,0.2);
-        //if(this.count == 3) stage1_snd[0].amp(2,0.2);
-        //if(this.count == 2) stage1_snd[0].amp(3,0.2);
-        //if(this.count == 1) stage1_snd[0].amp(4,0.2);
-        //if(this.count == 0) stage1_snd[0].stop();
+        //if(this.count < 5) playOnce(stage1_snd[2]);
+        //if(this.count == 4)stage1_snd[2].amp(1,0.2);
+        //if(this.count == 3) stage1_snd[2].amp(2,0.2);
+        //if(this.count == 2) stage1_snd[2].amp(3,0.2);
+        //if(this.count == 1) stage1_snd[2].amp(4,0.2);
+        if(this.count == 0) {
+        //    stage1_snd[2].stop();
+            stage1_snd[0].stop();
+            }
+
     }
 
     // 현재 cut을 반환한다 - sketch.js에서 사용
@@ -121,7 +127,7 @@ class Stage1 {
                     this.count--;
                     this.touchLower = false;
                     this.touchUpper = true;
-                    //stage1_snd[2].play(); // 한 세트를 성공할 때마다 소리가 나옴
+                    stage1_snd[3].play(); // 한 세트를 성공할 때마다 소리가 나옴
                 }
             }
             else if (y < upperBound + (lowerBound-upperBound)*1/4) {

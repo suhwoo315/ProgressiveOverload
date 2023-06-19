@@ -75,6 +75,7 @@ let story1_snd = [];
 let story1_ui = [];
 let tutorial1_ui = [];
 let tutorial1_sil = [];
+let tutorial1_snd = [];
 let stage1_bg = [];
 let stage1_chr = [];
 let stage1_sil = [];
@@ -98,6 +99,7 @@ let stage2_ui = [];
 let clear2_bg = [];
 let tutorial2_ui = [];
 let tutorial2_sil = [];
+let tutorial2_snd = [];
 
 // asset - phase3 overhead press
 let map3_bg = [];
@@ -181,7 +183,6 @@ let pressLower = 4.5/10;
 // 시간
 let savedTime = 0;
 let autoNextTime = 4000;
-let autoNextTimeWater = 500;
 let autoNextTimeShield = 700;
 let autoNextTimeLock = 1500;
 let timerSpeed = 0.7;
@@ -246,7 +247,7 @@ function preload(){
   }
 
   //sound v
-  for(let i=0; i<3; i++){
+  for(let i=0; i<4; i++){
     snd[i] = loadSound('assets/sketch/snd/' + i + '.mp3');
   }
 
@@ -316,6 +317,9 @@ function preload(){
   for(let i=0; i<12; i++){
     tutorial1_sil[i] = loadImage('assets/phase1/tutorial1/sil/' + i + '.png');
   }
+  for(let i=0; i<1; i++){
+    tutorial1_snd[i] = loadSound('assets/phase1/tutorial1/snd/' + i + '.mp3');
+  }
 
   //stage1
   for(let i=0; i<7; i++){
@@ -327,7 +331,7 @@ function preload(){
   for(let i=0; i<6; i++){
     stage1_bg[i] = loadImage('assets/phase1/stage1/bg/' + i + '.png');
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<4; i++){
     stage1_snd[i] = loadSound('assets/phase1/stage1/snd/' + i + '.mp3');
   }
   for(let i=0; i<3; i++){
@@ -373,20 +377,23 @@ function preload(){
   for(let i=0; i<12; i++){
     tutorial2_sil[i] = loadImage('assets/phase2/tutorial2/sil/' + i + '.png');
   }
+  for(let i=0; i<1; i++){
+    tutorial2_snd[i] = loadSound('assets/phase2/tutorial2/snd/' + i + '.mp3');
+  }  
 
   //stage2
-  for(let i=0; i<11; i++){
+  for(let i=0; i<6; i++){
     stage2_chr[i] = loadImage('assets/phase2/stage2/chr/' + i + '.png');
   }
   for(let i=0; i<12; i++){
     stage2_ui[i] = loadImage('assets/phase2/stage2/ui/' + i + '.png');
   }
-  for(let i=0; i<1; i++){ //6
+  for(let i=0; i<6; i++){ //6
     stage2_bg[i] = loadImage('assets/phase2/stage2/bg/' + i + '.png');
   }
-  // for(let i=0; i<2; i++){
-  //   stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
-  // }
+  for(let i=0; i<3; i++){
+    stage2_snd[i] = loadSound('assets/phase2/stage2/snd/' + i + '.mp3');
+  }
   for(let i=0; i<3; i++){
     stage2_sil[i] = loadImage('assets/phase2/stage2/sil/' + i + '.png');
   }
@@ -455,9 +462,9 @@ function preload(){
   for(let i=0; i<4; i++){
     map4_bg[i] = loadImage('assets/phase4/map4/bg/' + i + '.png');
   }
-  // for(let i=0; i<0; i++){
-  //   map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
-  // }
+  for(let i=0; i<1; i++){
+    map4_snd[i] = loadSound('assets/phase4/map4/snd/' + i + '.mp3');
+  }
   for(let i=0; i<3; i++){
     map4_chr[i] = loadImage('assets/phase4/map4/chr/' + i + '.png');
   }
@@ -721,20 +728,12 @@ function draw() {
           stage2.clear = true;
         }
         if (stage2.clear){
-          if (stage2.getCut() < 4){
-            if (millis() - savedTime > autoNextTimeWater){
+          if (millis() - savedTime > autoNextTime){
+            if (stage2.getCut() < stage2.getMaxCut()){
               stage2.increaseCut();
               savedTime = millis();
             }
-          }
-          else {
-            if (millis() - savedTime > autoNextTime){
-              if (stage2.getCut() < stage2.getMaxCut()){
-                stage2.increaseCut();
-                savedTime = millis();
-              }
-              else scene++;
-            }
+            else scene++;
           }
         }
       }
