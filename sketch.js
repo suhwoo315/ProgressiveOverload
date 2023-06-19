@@ -65,6 +65,7 @@ let gameIntro_bg = [];
 let gameIntro_ui = [];
 let gameIntro_snd = [];
 let tutorial0_ui = [];
+let tutorial0_snd = [];
 
 // asset - phase1 dumbbell curl
 let map1_bg = [];
@@ -293,6 +294,9 @@ function preload(){
   //tutorial 0
   for(let i=0; i<1; i++){
     tutorial0_ui[i] = loadImage('assets/phase0/tutorial0/ui/' + i + '.png');
+  }
+  for(let i=0; i<1; i++){
+    tutorial0_snd[i] = loadSound('assets/phase0/tutorial0/snd/' + i + '.mp3');
   }
   
   //phase1
@@ -595,8 +599,14 @@ function draw() {
   switch(phase){
     case 0: //phase0
       if(scene == 0) gameTitle.display(); // gameTitle
-      else if (scene == 1) tutorial0.display(); // tutorial0
-      else if (scene == 2) gameIntro.display(); // gameIntro
+      else if (scene == 1) {
+        tutorial0.display();
+        playOnce(tutorial0_snd[0]);
+       } // tutorial0
+      else if (scene == 2) {
+        tutorial0_snd[0].stop();
+        gameIntro.display();
+       } // gameIntro
       break;
 
     case 1: //phase1
@@ -723,7 +733,7 @@ function draw() {
       }
       else if(scene == 3){ // stage2
         tutorial2_snd[0].stop();
-        stage2_snd[0].setVolume(2);
+        stage2_snd[0].setVolume(1.6);
         playOnce(stage2_snd[0]);
         trackElbows();
         stage2.display();
@@ -799,7 +809,7 @@ function draw() {
     }
     else if(scene == 3){ // stage3
       tutorial3_snd[0].stop();
-      stage3_snd[0].setVolume(2);
+      stage3_snd[0].setVolume(1.6);
       playOnce(stage3_snd[0]);
       trackElbows();
       stage3.display();
