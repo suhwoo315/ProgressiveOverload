@@ -1,6 +1,6 @@
 class GameOutro { 
     constructor(){
-        this.success = true; //false로 바꾸기 (디버깅 용)
+        this.success = false; //false로 바꾸기 (디버깅 용)
         this.cut = 0; // 현재 cut
         this.maxCut = 21; // cut의 총 개수
         this.dialogue = ["히이이이잉.. 근성장에 대한 의지는 영원히 꺾을 수 없는 것이군...", // 0
@@ -25,7 +25,7 @@ class GameOutro {
                         "(맥스가 나간 사이 탁자 위에 있는 쪽지가 놓여져 있다)", // 19
                         "(쪽지 클로즈업 - 반드시 해낼지어니!)"]; //20
         this.creditsY = 0;
-        this.creditsSpeed = -0.5;
+        this.creditsSpeed = -2;
         this.credits = ["Credit\n\n\n두부 겸리더 : 안다겸\n불꽃 카리스마 : 윤서우\n블링블링 이즈 : 임승현\n박력징은 : 조지은\n만능열쇠 : 황인호\n주말 : 사짐\n종강 : 안 옴\n수면 : 부족\n살려 : 주세요\n당근 : 흔들고 있음\n여러분들의 근성장을 응원합니다\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동"];                
     }
 

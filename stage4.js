@@ -11,8 +11,8 @@ class Stage4 {
         this.attackFail = false; // A,B 실패, 아무 영향 없음
         this.defendSuccess = false; // C 성공, 아무 영향 없음.
         this.defendFail = false; // C 실패, Max의 hp - 
-        this.countMax = 3; // max의 hp, 0이 되면 게임 종료
-        this.countBoss = 6; // 보스의 hp, 0이 되면 게임 종료
+        this.countMax = 2; // max의 hp, 0이 되면 게임 종료
+        this.countBoss = 2; // 보스의 hp, 0이 되면 게임 종료
         this.colors = [color(213, 41, 41), color(213, 122, 41), color(41, 159, 213)];
 
         this.startAngle = -90;
