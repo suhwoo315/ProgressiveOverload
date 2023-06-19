@@ -20,8 +20,6 @@ class Stage4 {
         this.radius = 87;
         this.arcLength = 10;
 
-        this.currSil = 0;
-        this.currChr = 0;
         this.touchUpper = false;
         this.touchMiddle = false;
         this.touchLower = false;
@@ -29,6 +27,8 @@ class Stage4 {
         this.resultTime = 2000;
 
         this.y = 0;
+        this.dumbbellY = 0;
+        this.isUpper = false;
     }
 
     //////////////gaming == true일 때의 함수////////////
@@ -61,11 +61,20 @@ class Stage4 {
       
       //게이지 막대 1 2
       imageMode(CENTER);
-      if (!this.touchLower) image(stage4_ui[4], width / 2, height / 2, width, height); // 내려와야 할 때
-      else image(stage4_ui[16], width / 2, height / 2, width, height); //올라와야 할 때
-      if (this.seq[this.index] == "A") this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower);
-      else if (this.seq[this.index] == "B") this.drawDumbbell(this.y, sideUpper, sideLower);
-      else this.drawDumbbell(this.y, pressUpper, pressLower);
+      if (this.touchUpper && !this.touchLower) image(stage4_ui[4], width / 2, height / 2, width, height);//내려야 함
+      else if (!this.touchUpper && this.touchLower) image(stage4_ui[16], width / 2, height / 2, width, height); //올려야 함
+      else {
+        if (this.seq[this.index] == "A") this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower, false);
+        else if (this.seq[this.index] == "B") this.drawDumbbell(this.y, sideUpper, sideLower, false);
+        else this.drawDumbbell(this.y, pressUpper, pressLower, false);
+        if (this.isUpper) image(stage4_ui[4], width / 2, height / 2, width, height); //내려야 함
+        else image(stage4_ui[16], width / 2, height / 2, width, height); //올려야 함
+      }
+
+      // 게이지 바
+      if (this.seq[this.index] == "A") this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower, true);
+      else if (this.seq[this.index] == "B") this.drawDumbbell(this.y, sideUpper, sideLower, true);
+      else this.drawDumbbell(this.y, pressUpper, pressLower, true);
 
       //hp bar
       image(stage4_ui[0], width / 2, height / 2, width, height);
@@ -260,8 +269,6 @@ class Stage4 {
       arc(width*14.7/20, height*11.6/20, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
       if (this.arcLength > 300) this.arcLength = 10; // 호의 길이가 최대값에 도달하면 초기값으로 되돌림
 
-      this.drawDumbbell();
-
       if (this.gaming){
         // 캐릭터
         imageMode(CENTER);
@@ -341,38 +348,34 @@ class Stage4 {
 
     check(upperFraction, lowerFraction){
       if (this.seq[this.index] == "A") this.y = (leftWristY + rightWristY) / 2;
-      else if (this.seq[this.index] == "B") this.y = (leftElbowY + rightElbowY) / 2;
       else this.y = (leftElbowY + rightElbowY) / 2;
 
       let upperBound = height*upperFraction;
       let lowerBound = height*lowerFraction;
 
       if (this.y < upperBound) {
-        this.currChr = 5;
-        this.currSil = 2;
-        if (this.touchMiddle) this.touchUpper = true;
+        if (this.touchMiddle){
+          this.touchUpper = true;
+          this.touchMiddle = false;
+        }
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*1/4) {
-          this.currChr = 4;
-          this.currSil = 2;
+          
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*2/4) {
-          this.currChr = 3;
-          this.currSil = 1;
           this.touchMiddle = true;
       }
       else if (this.y < upperBound + (lowerBound-upperBound)*3/4) {
-          this.currChr = 2;
-          this.currSil = 1;
+
       }
       else if (this.y < lowerBound) {
-          this.currChr = 1;
-          this.currSil = 0;
+
       }
       else {
-          this.currChr = 0;
-          this.currSil = 0;
-          if (this.touchMiddle) this.touchLower = true;
+          if (this.touchMiddle) {
+            this.touchLower = true;
+            this.touchMiddle = false;
+          }
       }
 
       if (this.touchLower && this.touchUpper){
@@ -385,7 +388,7 @@ class Stage4 {
     }
 
     // 움직이는 아령 UI를 그린다
-    drawDumbbell(y, upperFraction, lowerFraction){
+    drawDumbbell(y, upperFraction, lowerFraction, isVisible){
       let upperBound = height*upperFraction;
       let lowerBound = height*lowerFraction;
       let boundHeight = lowerBound - upperBound;
@@ -394,15 +397,18 @@ class Stage4 {
       else if (y > lowerBound) boundY = lowerBound;
       else boundY = y;
       
-      let upperY = height*9.9/20;
-      let lowerY = height*12.9/20;
+      let upperY = height*11.5/20;
+      let lowerY = height*14.5/20;
       let barHeight = lowerY - upperY;
-      let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
+      this.dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-      imageMode(CENTER);
-      image(stage4_ui[5], width/ 2, dumbbellY, width, stage4_ui[5].height);
+      if (y > (upperBound + lowerBound) / 2) this.isUpper = false; //아래에 있다
+      else this.isUpper = true; //위에 있다
 
-      console.log(this.y);
+      if (isVisible){
+        imageMode(CENTER);
+        image(stage4_ui[5], width/ 2, this.dumbbellY, width, stage4_ui[5].height);
+      }
   }
 
     // 제한된 시간 안에 동작을 성공해야한다
