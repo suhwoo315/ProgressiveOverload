@@ -130,6 +130,7 @@ class Stage2 {
         if (this.count > 0){
             let y = (leftElbowY + rightElbowY) / 2;
             this.drawDumbbell(y, sideUpper, sideLower);
+            console.log(y/height);
 
             let upperBound = height*upperFraction;
             let lowerBound = height*lowerFraction;
