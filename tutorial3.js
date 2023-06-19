@@ -139,8 +139,9 @@ class Tutorial3 {
         let upperY = height*5.7/20;
         let lowerY = height*8.7/20;
         let barHeight = lowerY - upperY;
-        let dumbbellY = (boundY * barHeight / boundHeight) - barHeight
+        let dumbbellY = (barHeight/boundHeight)*(boundY - upperBound) + upperY;
 
-        image(tutorial3_sil[11], width/ 2, dumbbellY, width, tutorial1_ui.height);
+        imageMode(CENTER);
+        image(tutorial1_sil[11], width/ 2, dumbbellY, width, tutorial1_sil[11].height);
     }
 }
