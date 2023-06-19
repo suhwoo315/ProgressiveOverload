@@ -60,7 +60,7 @@ class Story1{
 
                 //스페이스바
                 if (frameCount % 60 < 30) image(map1_chr[1], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
-                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);             
+                else image(map1_chr[2], width * 75 / 100, height * 72 / 100, width * 0.4, height * 0.4);
                 
                 break;
 

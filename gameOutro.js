@@ -24,9 +24,9 @@ class GameOutro {
                         "", // 18
                         "", // 19
                         ""]; //20
-        this.creditsY = 0;
+        this.creditsY = 1500;
         this.creditsSpeed = -2;
-        this.credits = ["Credit\n\n\n두부 겸리더 : 안다겸\n불꽃 카리스마 : 윤서우\n블링블링 이즈 : 임승현\n박력징은 : 조지은\n만능열쇠 : 황인호\n주말 : 사짐\n종강 : 안 옴\n수면 : 부족\n살려 : 주세요\n당근 : 흔들고 있음\n여러분들의 근성장을 응원합니다\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동"];                
+        this.credits = ["Credit\n\n\n안다겸팀\n\n\n기획 : 안다겸  황인호\n\n\n디자인 : 안다겸  조지은\n\n\n개발 : 윤서우  임승현  황인호\n\n\n사운드 : 황인호\n\n\n주말 : 사라짐\n\n\n종강 : 안 옴\n\n\n수면 : 부족\n\n\n살려 : 주세요\n\n\n당근 : 흔들고 있음\n\n\n여러분들의 근성장을 응원합니다\n\n\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동\n\n\nThank You"];                
     }
 
     display(){
@@ -43,8 +43,11 @@ class GameOutro {
         let textY = height * 2/3;
         let chrNameX = width / 15;
         let chrNameY = height * 2 / 3;
-        let bossNameX = width / 18.5;
+        let bossNameX = width / 17.6;
         let bossNameY = height * 2 / 3;
+        let coachSize = height * 60 / 100;
+        let bossW1 = width;
+        let bossH1 = height;
 
         //sound
         stage4_snd[0].stop();
@@ -161,6 +164,17 @@ class GameOutro {
                     //bg
                     imageMode(CENTER);
                     image(gameOutro_bg[0], width / 2, height / 2, width, height);
+                    // //보스 사라지게
+                    // // //boss
+                    
+                    // bossW1 -= 16;
+                    // bossH1 -= 9;
+                    // if(bossW1 <= 0 || bossH1 <= 0) {
+                    //     bossW1 = 0;
+                    //     bossH1 = 0;
+                    // }
+                    // imageMode(CENTER);
+                    // image(gameOutro_ui[4], bossX, bossY, bossW1, bossH1);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -184,7 +198,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //coach
                     imageMode(CENTER);
-                    image(coach[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -248,7 +262,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[1], bossX, bossY, bossSize, bossSize);
+                    image(coach[1], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -278,7 +292,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[1], bossX, bossY, bossSize, bossSize);
+                    image(coach[1], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -308,7 +322,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[3], bossX, bossY, bossSize, bossSize);
+                    image(coach[3], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -377,7 +391,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -407,7 +421,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);
@@ -468,7 +482,7 @@ class GameOutro {
                     rect(width / 2, height / 2, width, height);                    
                     //boss
                     imageMode(CENTER);
-                    image(coach[0], bossX, bossY, bossSize, bossSize);
+                    image(coach[0], bossX, bossY, coachSize, coachSize);
                     //ui
                     imageMode(CENTER);
                     image(ui[4], textBoxX, textBoxY, textBoxW, textBoxH);

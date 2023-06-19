@@ -38,7 +38,7 @@ class Story4{
          let textY = height * 2/3;
          let chrNameX = width / 15;
          let chrNameY = height * 2 / 3;
-         let bossNameX = width / 18.5;
+         let bossNameX = width / 17.6;
          let bossNameY = height * 2 / 3;
         //  let messageX = width / 2;
         //  let messageY = height * 690 / 918.5625;

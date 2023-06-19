@@ -82,7 +82,7 @@ class Stage1 {
                 textSize(40);
                 textAlign(CENTER, CENTER);
                 fill(0);
-                text(this.dialogue[this.cut], width/2, height*9.3/20);                
+                text(this.dialogue[this.cut], width/2, height / 2);                
             }
         }
         // 아령을 들 때마다 점점 아우라가 커진다

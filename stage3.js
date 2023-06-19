@@ -108,7 +108,7 @@ class Stage3 {
                     textSize(40);
                     textAlign(CENTER, CENTER);
                     fill(0);
-                    text(this.dialogue[this.cut], width/2, height*9.3/20);
+                    text(this.dialogue[this.cut], width/2, height / 2);
                     break;
             }
         }
