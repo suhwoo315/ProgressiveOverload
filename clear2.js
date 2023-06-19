@@ -5,7 +5,7 @@ class Clear2{
         this.dialogue = ["와, 쉽지 않았다. 하마터면 실패할 뻔했네.\n아니, 나 왜 열심히 하고 있는 거지?", //0,
                         "아니야, 그래도 움직이니까 기분이 좋긴 하다.\n프로틴 쉐이커? 이건 무슨 맛일까..?", //1
                         "", //프로틴쉐이커 들고 있는 손
-                        "음, 초콜릿 맛이네! 생각보다 맛있는데..?", //3
+                        "음, 딸기 맛이네! 생각보다 맛있는데..?", //3
                         "오, 선택받은 자여!",
                         "두 번째 도전까지 성공적으로 마치다니 자네가 너무나 자랑스럽다네!",
                         "이 프로틴 쉐이커 또한 나중에 머슬로스와의 결투에서 요긴하게 쓰일 것이라네.",
@@ -62,7 +62,12 @@ class Clear2{
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //sound
-                //snd[0].amp(0.8,1);                  
+                //snd[0].amp(0.8,1);
+
+                //스페이스바
+                if (frameCount % 60 < 30) image(map1_chr[1], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
+                else image(map1_chr[2], width * 63 / 100, height * 63 / 100, width * 0.6, height * 0.6);
+                       
                 break;
 
             case 1: //쪽지

@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 4;
+let scene = 3;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -481,10 +481,10 @@ function preload(){
   //   tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
   // }
 
-  // stage4
-  for(let i=0; i<1; i++){
-    stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
-  }
+  // // stage4
+  // for(let i=0; i<1; i++){
+  //   stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
+  // }
   // for(let i=0; i<1; i++){
   //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
   // }
@@ -504,7 +504,7 @@ function preload(){
   }
 
   // stage4
-  for(let i=0; i<3; i++){
+  for(let i=0; i<1; i++){
     stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
   }
   for(let i=0; i<1; i++){
@@ -516,19 +516,19 @@ function preload(){
   for(let i=0; i<2; i++){
     stage4_chr_max_kick[i] = loadImage('assets/phase4/stage4/chr/max/kick/' + i + '.png'); // 2
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<1; i++){
     stage4_chr_max_defend[i] = loadImage('assets/phase4/stage4/chr/max/defend/' + i + '.png'); // 2
   }
   for(let i=0; i<1; i++){
     stage4_chr_boss_default[i] = loadImage('assets/phase4/stage4/chr/boss/default/' + i + '.png'); // 1
   }
-  for(let i=0; i<1; i++){
+  for(let i=0; i<2; i++){
     stage4_chr_boss_attack[i] = loadImage('assets/phase4/stage4/chr/boss/attack/' + i + '.png'); // 2
   }
-  for(let i=0; i<2; i++){
+  for(let i=0; i<4; i++){
     stage4_chr_boss_defend[i] = loadImage('assets/phase4/stage4/chr/boss/defend/' + i + '.png'); // 2
   }
-  for(let i=0; i<16; i++){
+  for(let i=0; i<17; i++){
     stage4_ui[i] = loadImage('assets/phase4/stage4/ui/' + i + '.png');
   }
   for(let i=0; i<9; i++){
