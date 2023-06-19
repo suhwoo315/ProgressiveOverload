@@ -17,7 +17,7 @@ class Stage4 {
 
         this.startAngle = -90;
         this.endAngle = 0;
-        this.radius = 45;
+        this.radius = 87;
         this.arcLength = 10;
 
         // 아직 쓰일지 모르는 변수들
@@ -192,7 +192,7 @@ class Stage4 {
       //아이콘 and 운동 이름
       let textX = width * 86 / 100;
       let textY = height * 51 / 100;
-      if(this.seq[this.index % this.seq.length] == "A"){
+      if(this.seq[this.index] == "A"){
         //ui
         //현재 진행중인 운동
         // image(stage4_ui[3], aX1, iconY, iconW, iconH);
@@ -214,11 +214,25 @@ class Stage4 {
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
           // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[13], width / 2, height / 2, width, height);
+          image(stage4_ui[10], width / 2, height / 2, width, height);
+        }
+
+        // 세번째로 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
+          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
+          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
+          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
+          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
         }
 
       }
-      else if(this.seq[this.index % this.seq.length] == "B"){
+      else if(this.seq[this.index] == "B"){
         //ui
         //시퀀스 아이콘 2개
         //현재 진행중인 운동
@@ -241,10 +255,25 @@ class Stage4 {
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
           // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[13], width / 2, height / 2, width, height);
+          image(stage4_ui[10], width / 2, height / 2, width, height);
         }
+
+        // 세번째로 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
+          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
+          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
+          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
+          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
+        }
+
       }
-      else if(this.seq[this.index % this.seq.length] == "C"){
+      else if(this.seq[this.index] == "C"){
         //ui
         //시퀀스 아이콘 2개
         //현재 진행중인 운동
@@ -267,7 +296,21 @@ class Stage4 {
         }
         else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
           // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[13], width / 2, height / 2, width, height);
+          image(stage4_ui[10], width / 2, height / 2, width, height);
+        }
+
+        // 세번째로 오는 운동
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
+          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
+          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
+          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
+          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        }
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
+          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
+          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
         }
       }
 
@@ -293,15 +336,17 @@ class Stage4 {
         if(this.attackSuccess == true){
           //playOnce(stage4_snd[3]);
           imageMode(CENTER)
-          image(stage4_chr_boss_defend[0], width / 2, height / 2, width, height); //boss
+          
           switch(this.seq[this.index]){
             case 'A':
               if (frameCount % 20 < 10) image(stage4_chr_max_punch[0], width / 2, height / 2, width, height);
               else image(stage4_chr_max_punch[1], width / 2, height / 2, width, height);
+              image(stage4_chr_boss_defend[2], width / 2, height / 2, width, height); //boss
               break;
             case 'B':
               if (frameCount % 20 < 10) image(stage4_chr_max_kick[0], width / 2, height / 2, width, height);
               else image(stage4_chr_max_kick[1], width / 2, height / 2, width, height);
+              image(stage4_chr_boss_defend[3], width / 2, height / 2, width, height); //boss
               break;
             default:
               break;
@@ -311,8 +356,22 @@ class Stage4 {
         else if(this.attackFail == true){
           //playOnce(stage4_snd[9]);
           imageMode(CENTER);
-          image(stage4_chr_boss_defend[1], width/2, height/2, width, height);
-          image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
+
+          switch(this.seq[this.index]){
+            case 'A':
+              if (frameCount % 20 < 10) image(stage4_chr_max_punch[0], width / 2, height / 2, width, height);
+              else image(stage4_chr_max_punch[1], width / 2, height / 2, width, height);
+              image(stage4_chr_boss_defend[0], width / 2, height / 2, width, height); //boss
+              break;
+
+            case 'B':
+              if (frameCount % 20 < 10) image(stage4_chr_max_kick[0], width / 2, height / 2, width, height);
+              else image(stage4_chr_max_kick[1], width / 2, height / 2, width, height);
+              image(stage4_chr_boss_defend[1], width / 2, height / 2, width, height); //boss
+              break;
+          }
+          // image(stage4_chr_boss_defend[1], width/2, height/2, width, height);
+          // image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){

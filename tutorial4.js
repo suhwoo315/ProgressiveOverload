@@ -201,7 +201,7 @@ class Tutorial4{
                     length *= 1/6;
                     fill(254, 24, 26);
                 }
-                rect(width*10.05/20, height*17.11/20, length, height*1.135/20);
+                rect(width*10.05/20, height*17.11/20, length, height*1.135/20); //boss
                 // text
                 noStroke();
                 fill(0);

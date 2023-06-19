@@ -580,6 +580,7 @@ function setup() {
 
 // phase, scene, cut에 따서 실행해야 하는 함수를 부른다
 function draw() {  
+  console.log(this.index);
   switch(phase){
     case 0: //phase0
       if(scene == 0) gameTitle.display(); // gameTitle
