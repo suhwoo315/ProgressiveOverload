@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 1;
-let scene = 3;
+let phase = 5;
+let scene = 0;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -486,22 +486,6 @@ function preload(){
     story4_ui[i] = loadImage('assets/phase4/story4/ui/' + i + '.png');
   }
 
-  // //tutorial4
-  // for(let i=0; i<3; i++){
-  //   tutorial4_ui[i] = loadImage('assets/phase4/tutorial4/ui/' + i + '.png');
-  // }
-  // for(let i=0; i<12; i++){
-  //   tutorial4_sil[i] = loadImage('assets/phase4/tutorial4/sil/' + i + '.png');
-  // }
-
-  // // stage4
-  // for(let i=0; i<1; i++){
-  //   stage4_bg[i] = loadImage('assets/phase4/stage4/bg/' + i + '.png');
-  // }
-  // for(let i=0; i<1; i++){
-  //   stage4_chr[i] = loadImage('assets/phase4/stage4/chr/' + i + '.png');
-  // }
-
   // tutorial4
   for(let i=0; i<2; i++){
     tutorial4_bg[i] = loadImage('assets/phase4/tutorial4/bg/' + i + '.png');
@@ -574,16 +558,7 @@ function preload(){
 
 // 기본 설정
 function setup() {
-
-  // createCanvas(windowWidth, windowHeight);
-  // let canvasWidth = windowWidth
-  // let canvasHeight = windowWidth * 9 / 16;
-  //let canvas = createCanvas(canvasWidth, canvasHeight);
   createCanvas(windowWidth, windowWidth * 9 / 16);
-  // canvas.position(windowWidth / 2 - canvasWidth / 2, windowHeight / 2 - canvasHeight / 2);
-  // canvas.style('display', 'block');
-  // canvas.style('margin', 'auto');
-  // createCanvas(1920* 0.7, 1080 * 0.7); //width 1044, height 756
 
   video = createCapture(VIDEO);
   video.size(width, height);
@@ -607,15 +582,9 @@ function setup() {
 function draw() {  
   switch(phase){
     case 0: //phase0
-      if(scene == 0){ // gameTitle
-        gameTitle.display();
-      } 
-      else if (scene == 1){ // tutorial0
-        tutorial0.display();
-      }
-      else if (scene == 2){ // gameIntro
-        gameIntro.display();
-      }
+      if(scene == 0) gameTitle.display(); // gameTitle
+      else if (scene == 1) tutorial0.display(); // tutorial0
+      else if (scene == 2) gameIntro.display(); // gameIntro
       break;
 
     case 1: //phase1
@@ -878,6 +847,7 @@ function draw() {
           if (stage4.countMax > 0) gameOutro.success = true;
           phase++;
           scene = 0;
+          gameOutro.creditsY = height * 1.1;
         }
       }
       break;
@@ -897,27 +867,25 @@ function draw() {
     image(ui[1], width / 2, height / 2, width, height);
     if(mouseIsPressed){
       if(mouseX >= width / 2 - width / 150 - width / 6 &&
-      mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
-      mouseY >= height / 2 + height / 19 &&
-      mouseY <= height / 2 + height / 19 + height / 15){
+        mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
+        mouseY >= height / 2 + height / 19 &&
+        mouseY <= height / 2 + height / 19 + height / 15){
         image(ui[2], width / 2 - width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
         image(ui[3], width / 2, height / 2, width, height);
-       }
+      }
       else if(mouseX >= width / 2 + width / 60 &&
-      mouseX <= width / 2 + width / 60 + width / 6 &&
-      mouseY >= height / 2 + height / 19 &&
-      mouseY <= height / 2 + height / 19 + height / 15){
+              mouseX <= width / 2 + width / 60 + width / 6 &&
+              mouseY >= height / 2 + height / 19 &&
+              mouseY <= height / 2 + height / 19 + height / 15){
         image(ui[2], width / 2, height / 2, width, height);
         image(ui[3], width / 2 + width / 100, height / 2 + height / 120, width * 0.9, height * 0.9);
       }
       else {
         image(ui[2], width / 2, height / 2, width, height);
-      image(ui[3], width / 2, height / 2, width, height);
+        image(ui[3], width / 2, height / 2, width, height);
       }
-      
     }
     else {
-      
       image(ui[2], width / 2, height / 2, width, height);
       image(ui[3], width / 2, height / 2, width, height);
     }
@@ -946,19 +914,14 @@ function keyPressed(){
           else {
             phase++;
             scene = 0;
-            
           }
         }
       break;
 
       case 1:
         if(scene == 0){ //map1
-          if(map1.moveOn == false){
-            map1.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map1.moveOn == false) map1.moveOn = true;
+          else scene++;
         }
         else if (scene == 1){ //story1
           if (story1.cut < story1.maxcut) story1.cut++;
@@ -980,20 +943,12 @@ function keyPressed(){
 
       case 2:
         if(scene == 0){ //map2
-          if(map2.moveOn == false){
-            map2.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map2.moveOn == false) map2.moveOn = true;
+          else scene++;
         }
         else if(scene == 1){ //story2
-          if(story2.cut < story2.maxcut){
-            story2.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story2.cut < story2.maxcut) story2.cut++;
+          else scene++;
         }
         else if(scene == 4){ //clear2
           if (clear2.cut < clear2.maxCut) clear2.cut++;
@@ -1006,20 +961,12 @@ function keyPressed(){
 
       case 3:
         if(scene == 0){ //map3
-          if(map3.moveOn == false){
-            map3.moveOn = true;
-          }
-          else  {
-            scene++;
-          }
+          if(map3.moveOn == false) map3.moveOn = true;
+          else scene++;
         }
         else if(scene == 1){ //story3
-          if(story3.cut < story3.maxcut){
-            story3.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story3.cut < story3.maxcut) story3.cut++;
+          else scene++;
         }
         else if(scene == 4){ //clear3
           if (clear3.cut < clear3.maxCut) clear3.cut++;
@@ -1033,22 +980,14 @@ function keyPressed(){
       case 4:
         if(scene == 0){ //map4
           if(map4.cut == 2){
-            if(map4.moveOn == false){
-              map4.moveOn = true;
-            }
-            else  {
-              scene++;
-            }
+            if(map4.moveOn == false) map4.moveOn = true;
+            else scene++;
           }
           
         }
         else if(scene == 1){ //story4
-          if(story4.cut < story4.maxcut){
-            story4.cut++;
-          }
-          else {
-            scene++;
-          }
+          if(story4.cut < story4.maxcut) story4.cut++;
+          else scene++;
         }
         else if (scene == 2){ //tutorial4
           if (tutorial4.getCut() == 7) savedTime = millis();
@@ -1058,13 +997,6 @@ function keyPressed(){
           stage4.gameStarted = true;
           stage4.gaming = true;
           savedtime = millis();
-          //if(stage4.countMax <= 0 || stage4.countBoss <= 0){
-            //if (stage4.getCut < stage4.maxCut) stage4.increaseCut();
-            //else {
-              //phase++;            
-              //scene = 0;
-            //}
-          //}
         }
       break;
 
@@ -1090,7 +1022,7 @@ function mouseClicked() {
       mouseY >= height / 18 &&
       mouseY <= height / 18 + height / 12){
        exit = true;
-   }
+    }
   }
   
   // rect(width / 2 - width / 150 - width / 6, height / 2 + height / 19, width / 6, height / 15); yes box size
