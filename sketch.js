@@ -9,8 +9,8 @@
 
 
 // 게임 단계 - phase, scene, cut(각 클래스 안에서 다룸)
-let phase = 0;
-let scene = 0;
+let phase = 4;
+let scene = 2;
 
 // phase0의 클래스 - start
 let gameTitle;
@@ -887,8 +887,6 @@ function draw() {
         }
       }
       else if (scene == 3){ // stage4
-        // console.log(stage4.index);
-        // console.log(stage4.gaming);
         tutorial4_snd[0].stop();
         playOnce(stage4_snd[0]);
         if(stage4.countMax > 0 && stage4.countBoss > 0){
@@ -911,8 +909,8 @@ function draw() {
           }
         }
         else {
-          //stage4.increasePhase();
           if (stage4.countMax > 0) gameOutro.success = true;
+          gameOutro.cut = 0;
           phase++;
           scene = 0;
           gameOutro.creditsY = height;

@@ -47,8 +47,6 @@ class GameOutro {
         let bossNameX = width / 17.6;
         let bossNameY = height * 2 / 3;
         let coachSize = height * 60 / 100;
-        let bossW1 = width;
-        let bossH1 = height;
 
         //sound
         stage4_snd[0].stop();
@@ -73,9 +71,10 @@ class GameOutro {
                     stage4.attackFail = false;
                     stage4.defendSuccess = false;
                     stage4.defendFail = false;
-                    stage4.countMax = 6;
-                    stage4.bossMax = 6;
+                    stage4.countMax = 5;
+                    stage4.countBoss = 5;
                     stage4.touchLower = false;
+                    stage4.touchMiddle = false;
                     stage4.touchUpper = false;
                     stage4.y = 0;
                 } // 여기는 replay
@@ -92,7 +91,6 @@ class GameOutro {
         else if(this.success == true) {
             switch(this.cut){
                 case 0:
-                    console.log("0");
                     playOnce(gameOutro_snd[4]);
                     imageMode(CENTER); 
                     image(stage4_bg[0], width / 2, height / 2, width, height);
@@ -105,7 +103,6 @@ class GameOutro {
                     break;
 
                 case 1:
-                    console.log("1");
                     imageMode(CENTER); 
                     image(stage4_bg[0], width / 2, height / 2, width, height);
                     image(stage4_ui[2], width / 2, height / 2, width, height);
@@ -691,7 +688,7 @@ class GameOutro {
                     gameOutro_snd[0].amp(1.5,0.3);
                     background(0);
                     imageMode(CORNER);
-                    image(gameOutro_credit[0], 0, this.creditsY, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
+                    image(gameOutro_credit[0], 0, 300, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
                     this.creditsY += this.creditsSpeed;
                     break;
             }
