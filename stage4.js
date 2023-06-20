@@ -34,7 +34,6 @@ class Stage4 {
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
-      console.log(this.countMax + " : " + this.countBoss);
       //운동에 상관없는 asset : 배경, , ui(standing point12,캐릭터(디폴트), 아이콘 배경, 큰 아이콘, 작은 아이콘, 게이지 막대12, 게이지 바, hp bar, hp)
       // 배경
       imageMode(CENTER); 

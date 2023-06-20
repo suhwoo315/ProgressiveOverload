@@ -1072,7 +1072,7 @@ function keyPressed(){
           stage4.gaming = true;
           savedTime = millis();
         }
-      break;
+        break;
 
       case 5:
         if(scene == 0){ //outro
@@ -1081,6 +1081,7 @@ function keyPressed(){
             if (gameOutro.cut >= gameOutro.maxCut) location.reload();
           }
         }
+        break;
     }
   }
 }
@@ -1088,8 +1089,6 @@ function keyPressed(){
 
 
 function mouseClicked() {
-  // rect(width * 12 / 13, height / 18, width / 20, height / 12);
-  // rect(width - 70, 63, 90, 90); exit box size
   if(phase !=0 || scene >= 1 ){
     if(mouseX >= width * 12 / 13 &&
       mouseX <= width * 12 / 13 + width / 20 &&
@@ -1098,64 +1097,12 @@ function mouseClicked() {
        exit = true;
     }
   }
-  
-  // rect(width / 2 - width / 150 - width / 6, height / 2 + height / 19, width / 6, height / 15); yes box size
-  // rect(width / 2 + width / 60, height / 2 + height / 19, width / 6, height / 15); no box size
-  // rect((width / 2 + width / 100 + width / 6), height / 2 - height / 7.5, width / 50, width / 50); x box size
   if(exit == true){
     if(mouseX >= width / 2 - width / 150 - width / 6 &&
        mouseX <= width / 2 - width / 150 - width / 6 + width / 6 &&
        mouseY >= height / 2 + height / 19 &&
        mouseY <= height / 2 + height / 19 + height / 15){
         location.reload(); // 페이지 새로고침
-        // phase = 0;
-        // scene = 0;
-
-        // //turn every cut to 0
-        // gameIntro.cut = 0;
-
-        // //phase1
-        // map1.cut = 0;
-        // map1.moveOn = false;
-        // story1.cut = 0;
-        // tutorial1.cut = 0;
-        // tutorial1.count = 3;
-        // stage1.cut = 0;
-        // stage1.count = 5;
-        // clear1.cut = 0;
-        // stage4.countBoss = 9;
-        // stage4.countMax = 3;
-        // stage4.index = 0; //sequence의 인덱스
-        // stage4.gaming = false ; //동작을 수행, false는 결과를 보여주는 단계
-        // stage4.attackSuccess = false; // A,B에 성공, 보스의 hp -
-        // stage4.attackFail = false; // A,B 실패, 아무 영향 없음
-        // stage4.defendSuccess = false; // C 성공, 아무 영향 없음.
-        // stage4.defendFail = false;
-        // stage4.gameStarted = false;
-
-        // // phase2의 클래스 - reverse curl
-        // let map2;
-        // let story2;
-        // let tutorial2;
-        // let stage2;
-        // let clear2;
-
-        // // phase3의 클래스 - overhead press
-        // let map3;
-        // let story3;
-        // let tutorial3;
-        // let stage3;
-        // let clear3;
-
-        // // phase4의 클래스 - boss stage
-        // let map4;
-        // let story4;
-        // let tutorial4;
-        // let stage4;
-
-        // // phase5의 클래스 - end
-        // let gameOutro;
-        // exit = false;
     }
     else if(mouseX >= width / 2 + width / 60 &&
        mouseX <= width / 2 + width / 60 + width / 6 &&
@@ -1222,53 +1169,6 @@ function trackWrists(){
   }
 }
 
-// bodytracking - 손목의 위치 변수에 플레이어의 현재 위치를 저장한다
-function trackShoulders(){
-  for (let i = 0; i < poses.length; i++) {
-    let pose = poses[i].pose;
-    let leftShoulder = pose.keypoints[5];
-    let rightShoulder = pose.keypoints[6];
-
-    if (leftShoulder.score > 0.3){
-      if (leftShoulderValues[0].length < tracking_num) {
-        leftShoulderValues[0].push(leftShoulder.position.x);
-        leftShoulderValues[1].push(leftShoulder.position.y);
-      }
-
-      if (leftShoulderValues[0].length == tracking_num) {
-        leftShoulderX = 0;
-        for (let i = 0; i < tracking_num; i++) leftShoulderX += leftShoulderValues[0][i];
-        leftShoulderX /= tracking_num;
-        leftShoulderValues[0] = [];
-
-        leftShoulderY = 0;
-        for (let i = 0; i < tracking_num; i++) leftShoulderY += leftShoulderValues[1][i];
-        leftShoulderY /= tracking_num;
-        leftShoulderValues[1] = [];
-      }
-    }
-
-    if (rightShoulder.score > 0.3){
-      if (rightShoulderValues[0].length < tracking_num) {
-        rightShoulderValues[0].push(rightShoulder.position.x);
-        rightShoulderValues[1].push(rightShoulder.position.y);
-      }
-
-      if (rightShoulderValues[0].length == tracking_num) {
-        rightShoulderX = 0;
-        for (let i = 0; i < tracking_num; i++) rightShoulderX += rightShoulderValues[0][i];
-        rightShoulderX /= tracking_num;
-        rightShoulderValues[0] = [];
-
-        rightShoulderY = 0;
-        for (let i = 0; i < tracking_num; i++) rightShoulderY += rightShoulderValues[1][i];
-        rightShoulderY /= tracking_num;
-        rightShoulderValues[1] = [];
-      }
-    }
-  }
-}
-
 // bodytracking - 팔꿈치의 위치 변수에 플레이어의 현재 위치를 저장한다
 function trackElbows(){
   for (let i = 0; i < poses.length; i++) {
@@ -1315,6 +1215,9 @@ function trackElbows(){
     }
   }
 }
+
+
+
 
 function playOnce(track){
   if (!track.isPlaying()) track.play();

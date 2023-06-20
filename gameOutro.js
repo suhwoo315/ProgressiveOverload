@@ -1,6 +1,6 @@
 class GameOutro { 
     constructor(){
-        this.success = false; //false로 바꾸기 (디버깅 용)
+        this.success = true; //false로 바꾸기 (디버깅 용)
         this.cut = 0; // 현재 cut
         this.maxCut = 23; // cut의 총 개수
         this.dialogue = ["", //0
@@ -688,7 +688,7 @@ class GameOutro {
                     gameOutro_snd[0].amp(1.5,0.3);
                     background(0);
                     imageMode(CORNER);
-                    image(gameOutro_credit[0], 0, 300, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
+                    image(gameOutro_credit[0], 0, this.creditsY, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
                     this.creditsY += this.creditsSpeed;
                     break;
             }
