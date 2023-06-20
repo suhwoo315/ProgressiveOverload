@@ -76,7 +76,6 @@ class GameOutro {
                     stage4.countMax = 6;
                     stage4.bossMax = 6;
                     stage4.touchLower = false;
-                    stage4.touchMiddle = false;
                     stage4.touchUpper = false;
                     stage4.y = 0;
                 } // 여기는 replay

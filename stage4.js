@@ -25,10 +25,9 @@ class Stage4 {
         this.actionTime = 9000;
         this.resultTime = 2000;
 
-        this.startUpper = false;
+        this.startUpper = true;
         this.startLower = false;
         this.touchUpper = false;
-        this.touchMiddle = false;
         this.touchLower = false;
 
         this.y = 0;
@@ -37,16 +36,6 @@ class Stage4 {
 
     //////////////gaming == true일 때의 함수////////////
     displayGame(){//리듬게임 아이콘 3개 asset과 유저 실루엣 관련 게이지 asset + 보스와 맥스(둘 다 대기모션, abc공통)
-      // if (!this.gameStarted){
-      //   image(stage4_bg[0], width / 2, height / 2, width, height);
-      //   rectMode(CORNER);
-      //   fill(255, 150);
-      //   rect(0, 0, width, height);
-      //   textAlign(CENTER, CENTER);
-      //   // text("자, 그럼 SPACE BAR를 눌러서 시작해볼까!!!", width/2, height/2);
-      //   return;
-      // }
-
       //운동에 상관없는 asset : 배경, , ui(standing point12,캐릭터(디폴트), 아이콘 배경, 큰 아이콘, 작은 아이콘, 게이지 막대12, 게이지 바, hp bar, hp)
       // 배경
       imageMode(CENTER); 
@@ -64,16 +53,6 @@ class Stage4 {
       image(stage4_ui[1], width / 2, height / 2, width, height);
       
       //게이지 막대 1 2
-      // imageMode(CENTER);
-      // if (this.touchUpper && !this.touchLower) image(stage4_ui[4], width / 2, height / 2, width, height);//내려야 함
-      // else if (!this.touchUpper && this.touchLower) image(stage4_ui[16], width / 2, height / 2, width, height); //올려야 함
-      // else {
-      //   if (this.seq[this.index] == "A") this.drawDumbbell(this.y, dumbbellCurlUpper, dumbbellCurlLower, false);
-      //   else if (this.seq[this.index] == "B") this.drawDumbbell(this.y, sideUpper, sideLower, false);
-      //   else this.drawDumbbell(this.y, pressUpper, pressLower, false);
-      //   if (this.isUpper) image(stage4_ui[4], width / 2, height / 2, width, height); //내려야 함
-      //   else image(stage4_ui[16], width / 2, height / 2, width, height); //올려야 함
-      // }
       if (this.startUpper && this.touchLower || this.startLower) image(stage4_ui[16], width / 2, height / 2, width, height); //올려야 함
       else if (this.startLower && this.touchUpper || this.startUpper) image(stage4_ui[4], width / 2, height / 2, width, height); //내려야 함
 
@@ -90,7 +69,6 @@ class Stage4 {
       textAlign(CENTER, CENTER);
       text("맥스", width*4.1/20, height*16.4/20);
       text("머슬로스", width*15.85/20, height*16.4/20);
-      
 
       //max hp
       let maxHpX = width*2.99/20;
@@ -116,30 +94,6 @@ class Stage4 {
       else if (this.countBoss > 2) fill(245, 122, 67);
       else fill(254, 24, 26);
       rect(bossHpX, bossHpY, bossHpW * this.countBoss/this.bossHp, bossHpH);
-
-      //운동에 따라 달라지는 asset : 시퀀스 아이콘
-      // let aX1 = width / 2 - 330;
-      // let aX2 = width / 2 - 330 + 126;
-      // let aX3 = width / 2 - 330 + 126*2;
-      // let aX4 = width / 2 - 330 + 126*3;
-      // let aX5 = width / 2 - 330 + 126*4;
-      // let bX1 = width / 2 - 330 - 126;
-      // let bX2 = width / 2 - 330;
-      // let bX3 = width / 2 - 330 + 126;
-      // let bX4 = width / 2 - 330 + 126*2;
-      // let bX5 = width / 2 - 330 + 126*3;
-      // let cX1 = width / 2 - 330 - 126*2;
-      // let cX2 = width / 2 - 330 - 126;
-      // let cX3 = width / 2 - 330;
-      // let cX4 = width / 2 - 330 + 126;
-      // let cX5 = width / 2 - 330 + 126*2;
-      // let iconY = height / 2 - 44;
-      // let iconW = width * 0.9;
-      // let iconH = height * 0.9;
-      //시퀀스 아이콘 2개 a = stage4_ui[3] / b = stage4_ui[4] / c = stage4_ui[5]
-        //a의 x좌표 : width / 2 - 330 || width / 2 - 330 + 126 || width / 2 - 330 + 126*2|| width / 2 - 330 + 126*3 || width / 2 - 330 + 126*3
-        //b의 x좌표 : width / 2 - 142 || width / 2 || 2 or width + 142
-        //c의 x좌표 : width / 2 - 282 || width / 2 - 142 || width / 2
       
       //아이콘 and 운동 이름
       let textX = width * 86 / 100;
@@ -147,7 +101,6 @@ class Stage4 {
       if(this.seq[this.index] == "A"){
         //ui
         //현재 진행중인 운동
-        // image(stage4_ui[3], aX1, iconY, iconW, iconH);
         image(stage4_ui[9], width / 2, height / 2, width, height);
         noStroke();
         fill(this.colors[0]);
@@ -156,120 +109,60 @@ class Stage4 {
         text("덤벨 컬", textX, textY);
         
         // 두번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width / 2, height / 2, width, height);
-        }
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') image(stage4_ui[6], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B') image(stage4_ui[14], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C') image(stage4_ui[10], width / 2, height / 2, width, height);
 
         // 세번째로 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
-        }
-
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B') image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C') image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
       }
       else if(this.seq[this.index] == "B"){
         //ui
         //시퀀스 아이콘 2개
         //현재 진행중인 운동
-        // image(stage4_ui[4], bX1, iconY, iconW, iconH);
         image(stage4_ui[15], width / 2, height / 2, width, height);
-                noStroke();
-                fill(this.colors[1]);
-                textSize(40);
-                textAlign(CENTER, CENTER);
-                text("레터럴 레이즈", textX, textY);
+        noStroke();
+        fill(this.colors[1]);
+        textSize(40);
+        textAlign(CENTER, CENTER);
+        text("레터럴 레이즈", textX, textY);
 
         // 두번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width / 2, height / 2, width, height);
-        }
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') image(stage4_ui[6], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B') image(stage4_ui[14], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C') image(stage4_ui[10], width / 2, height / 2, width, height);
 
         // 세번째로 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
-        }
-
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B') image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C') image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
       }
       else if(this.seq[this.index] == "C"){
         //ui
         //시퀀스 아이콘 2개
         //현재 진행중인 운동
-        // image(stage4_ui[4], bX1, iconY, iconW, iconH);
         image(stage4_ui[13], width / 2, height / 2, width, height);
-                noStroke();
-                fill(this.colors[2]);
-                textSize(40);
-                textAlign(CENTER, CENTER);
-                text("숄더 프레스", textX, textY);
+        noStroke();
+        fill(this.colors[2]);
+        textSize(40);
+        textAlign(CENTER, CENTER);
+        text("숄더 프레스", textX, textY);
 
         // 두번째로 오는 운동
-        if(this.seq[(this.index+1)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width / 2, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+1)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width / 2, height / 2, width, height);
-        }
+        if(this.seq[(this.index+1)%this.seq.length] == 'A') image(stage4_ui[6], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'B') image(stage4_ui[14], width / 2, height / 2, width, height);
+        else if(this.seq[(this.index+1)%this.seq.length] == 'C') image(stage4_ui[10], width / 2, height / 2, width, height);
 
         // 세번째로 오는 운동
-        if(this.seq[(this.index+2)%this.seq.length] == 'A') {
-          // image(stage4_ui[3], aX2, iconY, iconW, iconH);
-          image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'B'){
-          // image(stage4_ui[4], bX2, iconY, iconW, iconH);
-          image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
-        }
-        else if(this.seq[(this.index+2)%this.seq.length] == 'C'){
-          // image(stage4_ui[5], cX2, iconY, iconW, iconH);
-          image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
-        }
+        if(this.seq[(this.index+2)%this.seq.length] == 'A') image(stage4_ui[6], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'B') image(stage4_ui[14], width * 58 / 100, height / 2, width, height);
+        else if(this.seq[(this.index+2)%this.seq.length] == 'C') image(stage4_ui[10], width * 58 / 100, height / 2, width, height);
       }
 
-      // 호의 길이에 따라 끝 각도 계산
+      // timer
       this.endAngle = map(this.arcLength, 0, 300, 0, 360);
-
-      // 부채꼴 그리기
       fill(0, 150); // 색상 설정
       noStroke();
       arc(width*14.7/20, height*11.6/20, this.radius * 2, this.radius * 2, this.startAngle, this.startAngle + this.endAngle); // 원 중심 좌표와 크기, 시작각과 끝각 설정
@@ -280,7 +173,6 @@ class Stage4 {
         imageMode(CENTER);
         image(stage4_chr_boss_default[0], width/2 , height/2 , width, height); //boss
         image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
-        //image(max[5], width / 2 - 100, height / 2, 600, 600); //max
       }
       else {
         if(this.attackSuccess == true){
@@ -322,8 +214,6 @@ class Stage4 {
               image(stage4_chr_boss_defend[1], width / 2, height / 2, width, height); //boss
               break;
           }
-          // image(stage4_chr_boss_defend[1], width/2, height/2, width, height);
-          // image(stage4_chr_max_default[0], width/2, height/2, width, height); //max
           image(stage4_ui[8], width/2, height/2, stage4_ui[8].width*1.5, stage4_ui[8].height*1.5); // miss
         }
         else if(this.defendSuccess == true){
@@ -331,7 +221,6 @@ class Stage4 {
           playOnce(stage4_snd[5]);
           image(stage4_chr_boss_attack[0], width/2, height/2, width, height); //boss
           image(stage4_chr_boss_attack[1], width/2, height/2, width, height);
-          // image(stage4_chr_max_defend[1], width / 2, height / 2, 600, 600);
           image(stage4_chr_max_defend[0], width / 2, height / 2, width, height);
           image(stage4_ui[7], width/2, height/2, stage4_ui[7].width*1.5, stage4_ui[7].height*1.5); // perfect
         }
@@ -347,8 +236,8 @@ class Stage4 {
 
     }//displayGame()의 끝
   
+    // 3초가 지났는지 확인한다
     check3sec(){
-      //if(3초 지났으면) {return false}; / else if(3초 이내일 때에는) {return true};
       let passedTime = millis() - savedTime;
       if(passedTime > this.actionTime){
         return false;
@@ -476,9 +365,6 @@ class Stage4 {
       if (this.seq[this.index] == "A") this.getStartPosition(this.y, dumbbellCurlUpper, dumbbellCurlLower);
       else if (this.seq[this.index] == "B") this.getStartPosition(this.y, sideUpper, sideLower);
       else this.getStartPosition(this.y, pressUpper, pressLower);
-      
-      if (this.startLower) console.log("startLower");
-      else if (this.startUpper) console.log("startUpper");
 
       if (this.attackSuccess == true) {
         this.countBoss--; // 보스 hp 감소
