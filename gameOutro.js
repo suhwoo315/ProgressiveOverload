@@ -1,6 +1,6 @@
 class GameOutro { 
     constructor(){
-        this.success = true; //false로 바꾸기 (디버깅 용)
+        this.success = false; //false로 바꾸기 (디버깅 용)
         this.cut = 0; // 현재 cut
         this.maxCut = 23; // cut의 총 개수
         this.dialogue = ["", //0
