@@ -27,8 +27,7 @@ class GameOutro {
                         "", // 21
                         ""]; //22
         this.creditsY = 0;
-        this.creditsSpeed = -2;
-        this.credits = ["Credit\n\n\n안다겸팀\n\n\n기획 : 안다겸  조지은  황인호\n\n\n디자인 : 안다겸  조지은\n\n\n개발 : 윤서우  임승현  황인호\n\n\n사운드 : 황인호\n\n\n주말 : 사라짐\n\n\n종강 : 안 옴\n\n\n수면 : 부족\n\n\n살려 : 주세요\n\n\n당근 : 흔들고 있음\n\n\n여러분들의 근성장을 응원합니다\n\n\n잦은 밤샘으로 이미 근손실이 난 게임 제작자들 일동\n\n\nThank You\n\n\n스페이스바를 눌러 종료해주세요"];                
+        this.creditsSpeed = -1;               
     }
 
     display(){
@@ -690,12 +689,10 @@ class GameOutro {
                 
                 case 23:
                     //sound
-                    gameOutro_snd[0].amp(1.5,0.3);                
+                    gameOutro_snd[0].amp(1.5,0.3);
                     background(0);
-                    fill(255);
-                    textAlign(CENTER, TOP);
-                    textSize(40);
-                    text(this.credits, width/2, this.creditsY);
+                    imageMode(CORNER);
+                    image(gameOutro_credit[0], 0, this.creditsY, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
                     this.creditsY += this.creditsSpeed;
                     break;
             }

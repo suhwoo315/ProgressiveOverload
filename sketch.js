@@ -150,6 +150,7 @@ let clear4_ui = [];
 let gameOutro_bg = [];
 let gameOutro_snd = [];
 let gameOutro_ui = [];
+let gameOutro_credit = [];
 
 // asset - exit
 let exit = false;
@@ -557,6 +558,9 @@ function preload(){
   for(let i=0; i<7; i++){
     gameOutro_ui[i] = loadImage('assets/phase5/gameOutro/ui/' + i + '.png');
   } 
+  for(let i=0; i<1; i++){
+    gameOutro_credit[i] = loadImage('assets/phase5/gameOutro/credit/' + i + '.png');
+  }
 
   leftWristValues[0] = [];
   leftWristValues[1] = [];
@@ -911,7 +915,7 @@ function draw() {
           if (stage4.countMax > 0) gameOutro.success = true;
           phase++;
           scene = 0;
-          gameOutro.creditsY = height * 1.1;
+          gameOutro.creditsY = height;
         }
       }
       break;
@@ -1076,7 +1080,7 @@ function keyPressed(){
         if(scene == 0){ //outro
           if(gameOutro.cut < gameOutro.maxCut && gameOutro.cut > 1) gameOutro.cut++;
           else {
-            location.reload();
+            if (gameOutro.cut >= gameOutro.maxCut) location.reload();
           }
         }
     }
