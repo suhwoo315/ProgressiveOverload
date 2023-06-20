@@ -26,8 +26,6 @@ class Tutorial4{
     }
 
     display(){
-        // console.log(windowWidth);
-        // console.log(windowHeight);
         let messageX = width / 2
         let messageY = height * 690 / 918.5625; 
         let silX1 = width / 2;
