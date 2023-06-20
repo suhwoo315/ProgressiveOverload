@@ -913,7 +913,6 @@ function draw() {
           gameOutro.cut = 0;
           phase++;
           scene = 0;
-          gameOutro.creditsY = height;
         }
       }
       break;

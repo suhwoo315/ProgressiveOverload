@@ -27,7 +27,8 @@ class GameOutro {
                         "", // 21
                         ""]; //22
         this.creditsY = 0;
-        this.creditsSpeed = -1;               
+        this.creditsSpeed = -1;        
+        this.isInitialised = false;       
     }
 
     display(){
@@ -688,6 +689,10 @@ class GameOutro {
                     gameOutro_snd[0].amp(1.5,0.3);
                     background(0);
                     imageMode(CORNER);
+                    if (!this.isInitialised){
+                        this.creditsY = height;
+                        this.isInitialised = true;
+                    }
                     image(gameOutro_credit[0], 0, this.creditsY, width, gameOutro_credit[0].height * width / gameOutro_credit[0].width);
                     this.creditsY += this.creditsSpeed;
                     break;
