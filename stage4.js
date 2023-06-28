@@ -19,7 +19,7 @@ class Stage4 {
 
         this.startAngle = -90;
         this.endAngle = 0;
-        this.radius = 135;
+        this.radius = 87;
         this.arcLength = 10;
 
         this.actionTime = 9000;
@@ -71,7 +71,7 @@ class Stage4 {
       image(stage4_ui[0], width / 2, height / 2, width, height);
       noStroke();
       fill(0);
-      textSize(40);
+      textSize(30);
       textAlign(CENTER, CENTER);
       text("맥스", width*4.1/20, height*16.4/20);
       text("머슬로스", width*15.85/20, height*16.4/20);
@@ -110,7 +110,7 @@ class Stage4 {
         image(stage4_ui[9], width / 2, height / 2, width, height);
         noStroke();
         fill(this.colors[0]);
-        textSize(40);
+        textSize(30);
         textAlign(CENTER, CENTER);
         text("덤벨 컬", textX, textY);
         
@@ -131,7 +131,7 @@ class Stage4 {
         image(stage4_ui[15], width / 2, height / 2, width, height);
         noStroke();
         fill(this.colors[1]);
-        textSize(40);
+        textSize(30);
         textAlign(CENTER, CENTER);
         text("레터럴 레이즈", textX, textY);
 
@@ -152,7 +152,7 @@ class Stage4 {
         image(stage4_ui[13], width / 2, height / 2, width, height);
         noStroke();
         fill(this.colors[2]);
-        textSize(40);
+        textSize(30);
         textAlign(CENTER, CENTER);
         text("숄더 프레스", textX, textY);
 

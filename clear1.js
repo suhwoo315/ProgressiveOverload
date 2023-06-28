@@ -51,12 +51,12 @@ class Clear1{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
 
@@ -97,7 +97,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -132,7 +132,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 3: //쪽지
@@ -166,7 +166,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 4: //쪽지
@@ -200,7 +200,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 5: //쪽지
@@ -234,7 +234,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             
@@ -270,7 +270,7 @@ class Clear1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 7: //맥스
@@ -292,12 +292,12 @@ class Clear1{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);  
                 break;

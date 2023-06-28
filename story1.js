@@ -49,12 +49,12 @@ class Story1{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
 
@@ -76,7 +76,7 @@ class Story1{
                 // image(story1_ui[0], width / 2, height / 2, width, height);
                 // image(story1_ui[1], width / 2, height / 2, width, height);
                 // fill(255);
-                // textSize(40);
+                // textSize(30);
                 // textAlign(CENTER, CENTER);
                 // text("레인보우 바벨들이 박혀있다.", width / 2, height * 23/100)
 
@@ -100,12 +100,12 @@ class Story1{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -119,7 +119,7 @@ class Story1{
                 image(story1_ui[0], width / 2, height / 2, width, height);
                 image(story1_ui[1], width / 2, height / 2, width, height);
                 fill(255);
-                textSize(40);
+                textSize(30);
                 textAlign(CENTER, CENTER);
                 text("레인보우 바벨들이 박혀있다.", width / 2, height * 23/100)
 
@@ -153,12 +153,12 @@ class Story1{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -189,7 +189,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 5:
@@ -219,12 +219,12 @@ class Story1{
             textLeading(35);
             textStyle('normal');
             fill(0);
-            textSize(40);
+            textSize(30);
             text(this.dialogue[this.cut], textX, textY);
             //name
             fill(70);
             textStyle('normal');
-            textSize(40);
+            textSize(30);
             textAlign(LEFT, TOP);
             text("맥스", chrNameX, chrNameY);
 
@@ -254,7 +254,7 @@ class Story1{
                 // //dialogue
                 // textAlign(CENTER, TOP);
                 // fill(100);
-                // textSize(40);
+                // textSize(30);
                 // text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 6:
@@ -283,7 +283,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 7:
@@ -312,7 +312,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 8:
@@ -341,7 +341,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 9:
@@ -370,7 +370,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
             case 10:
@@ -399,7 +399,7 @@ class Story1{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
         }

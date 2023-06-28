@@ -21,7 +21,7 @@ class Map1 {
     
         // 캐릭터 그리기
         imageMode(CENTER);
-        image(map1_chr[0], this.chrX, this.chrY, map1_chr[0].width * 1.5, map1_chr[0].height * 1.5);
+        image(map1_chr[0], this.chrX, this.chrY, map1_chr[0].width, map1_chr[0].height);
         // image(map1_chr[0], width / 2, height / 2);
         
           

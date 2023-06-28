@@ -47,12 +47,12 @@ class Clear3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
              
@@ -78,12 +78,12 @@ class Clear3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -115,7 +115,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -147,7 +147,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -179,7 +179,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -211,7 +211,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -243,7 +243,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -275,7 +275,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -307,7 +307,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -339,7 +339,7 @@ class Clear3{
                 //dialogue
                 textAlign(CENTER, TOP);
                 fill(100);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], messageX, messageY);
                 break;
 
@@ -358,12 +358,12 @@ class Clear3{
                 textLeading(35);
                 textStyle('normal');
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);              
                 break;

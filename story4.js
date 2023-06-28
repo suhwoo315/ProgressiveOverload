@@ -38,7 +38,7 @@ class Story4{
          let textY = height * 2/3;
          let chrNameX = width / 15;
          let chrNameY = height * 2 / 3;
-         let bossNameX = width / 17.6;
+         let bossNameX = width / 18;
          let bossNameY = height * 2 / 3;
         //  let messageX = width / 2;
         //  let messageY = height * 690 / 918.5625;
@@ -51,7 +51,7 @@ class Story4{
 
                 //text
                 fill(255);
-                textSize(40);
+                textSize(30);
                 textAlign(CENTER, CENTER);
                 text("머슬로스의 방 앞", width / 2, height * 23/100);
 
@@ -86,12 +86,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -119,7 +119,7 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 break;
 
@@ -143,12 +143,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 break;
@@ -176,12 +176,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -206,12 +206,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);
                 break;
@@ -239,12 +239,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 break;
@@ -269,12 +269,12 @@ class Story4{
                 //dialogue
                 textAlign(LEFT, TOP);
                 fill(0);
-                textSize(40);
+                textSize(30);
                 text(this.dialogue[this.cut], textX, textY);
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(30);
                 textAlign(LEFT, TOP);
                 text("머슬로스", bossNameX, bossNameY);             
                 break;

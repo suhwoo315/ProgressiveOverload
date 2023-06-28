@@ -16,7 +16,7 @@ class Tutorial0 {
         let messageY = height * 690 / 918.5625; 
         background(255);
         image(tutorial0_ui[0], width/2, height/2, width, height);
-        textSize(40);
+        textSize(30);
         textAlign(CENTER, TOP);
         fill(0);
         // fill(81, 209, 121)
