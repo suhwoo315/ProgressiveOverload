@@ -90,7 +90,7 @@ class GameIntro{
                 //name
                 fill(70);
                 textStyle('normal');
-                textSize(40);
+                textSize(20);
                 textAlign(LEFT, TOP);
                 text("맥스", chrNameX, chrNameY);
                 //스페이스바
