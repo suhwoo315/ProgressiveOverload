@@ -582,11 +582,16 @@ function setup() {
 
   video = createCapture(VIDEO);
   video.size(width, height);
-  poseNet = ml5.poseNet(video);
+  poseNet = ml5.poseNet(video, modelReady);
   poseNet.on("pose", function (results) {
     poses = results;
   });
   video.hide();
+
+  // 포즈넷 테스트
+  function modelReady() {
+    console.log("PoseNet 모델이 로드되었습니다.");
+}
 
   myFont = loadFont('assets/sketch/font/neodgm.ttf'); //폰트 불러오기
   textFont(myFont);
